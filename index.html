@@ -152,6 +152,110 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-oracle" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/05/21/oracle/">oracle</a>
+    </h1>
+  
+
+        
+        <a href="/2020/05/21/oracle/" class="archive-article-date">
+  	<time datetime="2020-05-21T14:51:35.612Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-21</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="���n��ռ�"><a href="#���n��ռ�" class="headerlink" title="���ñ��ռ�"></a>���ñ��ռ�</h2><p>�洢���ݿ�����Ҫ���û��洢�Ķ��󣬱����ά������ͼ���洢���̡�������</p>
+<h2 id="��ʱ���ռ�"><a href="#��ʱ���ռ�" class="headerlink" title="��ʱ���ռ�"></a>��ʱ���ռ�</h2><p>�洢���ݿ���м�ִ�й��̣��磺����order by���ݿ����򣬷���ʱ��������ʱ���ݡ�������ɺ�洢�����ݻᱻ�Զ��ͷš���ʱ���ռ���ͨ�õģ������û���ʹ��TEMP��Ϊ��ʱ���ռ䡣һ��ֻ��tmpһ����ʱ���ռ䣬�������Ҫ�����ʱ���ռ�ʱ�������Լ�������</p>
+<h2 id="undo���ռ�"><a href="#undo���ռ�" class="headerlink" title="undo���ռ�"></a>undo���ռ�</h2><p>���������޸�ǰ�ĸ������洢�������޸ĵľ�ַ�������޸�֮ǰ�����ݡ������Ƕ�һ�ű��е����ݽ����޸ĵ�ͬʱ����޸�֮ǰ����Ϣ���б��棬Ϊ�˶�����ִ�лع����ָ��������Ĳ�����</p>
+<p>Oracle�ڴ������ݿ���mysql�������ݿ������</p>
+<p>Mysql�������ݿ�ĸ��һ����Ŀ��Ӧһ��������database��Ϊ���ݿⴴ���������û���</p>
+<p>Oracleһ�����ݿ����һ�����񣬴���table space������ռ䣩��һ����Ŀ��Ӧһ�������ı��ռ䣬����һ���û������б��ռ�ʹ�õ�Ȩ�ޡ�</p>
+<p>��¼oracle<br>1������SQLPLUS����</p>
+<p>����C:\Users\wd-pc&gt;sqlplus</p>
+<p>2��ֱ�ӽ���SQLPLUS������ʾ��</p>
+<p>����C:\Users\wd-pc&gt;sqlplus /nolog</p>
+<p>3����OS��������</p>
+<p>����C:\Users\wd-pc&gt;sqlplus / as sysdba ��</p>
+<p>����SQL&gt;connect / as sysdba</p>
+<p>4����ͨ�û���¼</p>
+<p>����C:\Users\wd-pc&gt;sqlplus scott/123456����</p>
+<p>����SQL&gt;connect scott/123456��</p>
+<p>����SQL&gt;connect scott/123456@servername</p>
+<p>5���Թ���Ա��¼</p>
+<p>����C:\Users\wd-pc&gt;sqlplus sys/123456 as sysdba����</p>
+<p>����SQL&gt;connect sys/123456 as sysdba</p>
+<p>6���л��û�</p>
+<p>����SQL&gt;conn hr/123456</p>
+<p>����ע��connͬconnect</p>
+<p>7���˳�</p>
+<p>����exit</p>
+<p>(1)�������ռ�</p>
+<p>create tablespace test1 datafile ‘test1file.dbf’ size 10m;<br>create temporary tablespace temptest1 tempfile ‘temptest1.dbf’ size 10m;</p>
+<p>test1�Ǳ��ռ������<br>test1file.dbfΪ�´����ı��ռ������ļ�<br>size 10m ��ʾ���ռ�Ĵ�С<br>extent management local autoallocate�����õ����ռ��С����ʱ�����Զ������ķ�ʽ��չ���ռ䡣(����û��ʹ�õ�)<br>������һ����չ��ʽ��ÿ����չ��ͬ�Ĵ�С�����Ϊ��extent management local uniform size 256K�����У�256k�Ǹ���ʵ���������õġ�(����û��ʹ�õ�)<br>�ռ��Ѿ������ã�����ʹ����������ѯ�ļ�λ��</p>
+<p>select file_name from dba_data_files where tablespace_name = ‘TEST1’;</p>
+<p>(2)�����û�</p>
+<p>create user shu identified by spsp201314 default tablespace test1 temporary</p>
+<p>shuΪ�û���<br>spsp201314Ϊ�û�����<br>default tablespace��Ĭ�ϱ��ռ䣬�������ó����洴���ı��ռ�<br>temporary tablespace����ʱ���ռ�<br>quote�����û��ڱ��ռ���ռ�õĿռ��С�������ָ��Ĭ�ϱ��ռ䣬Oracle�ὫSYSTEM���ռ�ָ��Ϊ�û���Ĭ�ϱ��ռ䣻���û����quota�Ӿ䣬�û����ض����ռ�����Ϊ0���û������ڸñ��ռ��ϴ������ݶ���(����û��ʹ��)<br>�����û��󣬵��û�����Ŀռ䲻��ʱ��������չ�û��Ŀռ䣺alter user shu quota 20m on test1;���û��Ŀռ���չΪ20m<br>���û�ָ���������ռ䣬���ҿ�ʹ�ô�С�����ƣ�alter user userName quota unlimited on tablespace1 quota unlimited on tablespace2;<br>�޸��û����룺alter user testUser identified by 123456;���û�����������Ϊ123456��</p>
+<p>��ʱ�û��ᴦ������״̬�������û���alter user testUser account unlock;</p>
+<p>Ϊ�û�����Ȩ��,��ʼ�������û�û���κ�Ȩ�ޣ�����ִ���κ����ݿ��������˱���Ϊ�û�����Ȩ�޻��߽�ɫ����������ĳ����ɫ���û���ӵ�иý�ɫ���߱���Ȩ�ޣ������õ���ϵͳԤ�����ɫ��CONNECT��RESOURCE��DBA��EXP_FULL_DATABASE��IMP_FULL_DATABASE�����У�CONNECT��RESOURCE��DBA��Ҫ�������ݿ���������ݿ����Ա��Ҫ��������������ɫ��һ������ݿ⿪����Ա����Ҫ������CONNECT��RESOURCE��ɫ���ɡ�EXP_FULL_DATABASE��IMP_FULL_DATABASE��ɫ�ֱ����ڲ������ݿ⵼����������صĲ�����Ϊ�û������ɫ��</p>
+<p>create tablespace test1 datafile ‘test1file.dbf’ size 10m; create temporary tablespace temptest1 tempfile ‘temptest1.dbf’ size 10m;</p>
+<p>test1�Ǳ��ռ������ test1file.dbfΪ�´����ı��ռ������ļ� size 10m ��ʾ���ռ�Ĵ�С extent management local autoallocate�����õ����ռ��С����ʱ�����Զ������ķ�ʽ��չ���ռ䡣(����û��ʹ�õ�) ������һ����չ��ʽ��ÿ����չ��ͬ�Ĵ�С�����Ϊ��extent management local uniform size 256K�����У�256k�Ǹ���ʵ���������õġ�(����û��ʹ�õ�) �ռ��Ѿ������ã�����ʹ����������ѯ�ļ�λ��</p>
+<p>select file_name from dba_data_files where tablespace_name = ‘TEST1’;</p>
+<p>(2)�����û�</p>
+<p>create user shu identified by spsp201314 default tablespace test1 temporary</p>
+<p>shuΪ�û��� spsp201314Ϊ�û����� default tablespace��Ĭ�ϱ��ռ䣬�������ó����洴���ı��ռ� temporary tablespace����ʱ���ռ� quote�����û��ڱ��ռ���ռ�õĿռ��С�������ָ��Ĭ�ϱ��ռ䣬Oracle�ὫSYSTEM���ռ�ָ��Ϊ�û���Ĭ�ϱ��ռ䣻���û����quota�Ӿ䣬�û����ض����ռ�����Ϊ0���û������ڸñ��ռ��ϴ������ݶ���(����û��ʹ��) �����û��󣬵��û�����Ŀռ䲻��ʱ��������չ�û��Ŀռ䣺alter user shu quota 20m on test1;���û��Ŀռ���չΪ20m ���û�ָ���������ռ䣬���ҿ�ʹ�ô�С�����ƣ�alter user userName quota unlimited on tablespace1 quota unlimited on tablespace2; �޸��û����룺alter user testUser identified by 123456;���û�����������Ϊ123456��</p>
+<p>��ʱ�û��ᴦ������״̬�������û���alter user testUser account unlock;</p>
+<p>Ϊ�û�����Ȩ��,��ʼ�������û�û���κ�Ȩ�ޣ�����ִ���κ����ݿ��������˱���Ϊ�û�����Ȩ�޻��߽�ɫ����������ĳ����ɫ���û���ӵ�иý�ɫ���߱���Ȩ�ޣ������õ���ϵͳԤ�����ɫ��CONNECT��RESOURCE��DBA��EXP_FULL_DATABASE��IMP_FULL_DATABASE�����У�CONNECT��RESOURCE��DBA��Ҫ�������ݿ���������ݿ����Ա��Ҫ��������������ɫ��һ������ݿ⿪����Ա����Ҫ������CONNECT��RESOURCE��ɫ���ɡ�EXP_FULL_DATABASE��IMP_FULL_DATABASE��ɫ�ֱ����ڲ������ݿ⵼����������صĲ�����Ϊ�û������ɫ��</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/05/21/oracle/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-TankWar" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -540,7 +644,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
     
     	<section class="tools-section tools-section-me" q-show="aboutme">
   	  	
-  	  		<div class="aboutme-wrap" id="js-aboutme">很惭愧&lt;br&gt;&lt;br&gt;只做了一点微小的工作&lt;br&gt;谢谢大家</div>
+  	  		<div class="aboutme-wrap" id="js-aboutme">总要变强&lt;br&gt;&lt;br&gt;一个记录学习过程的博客&lt;br&gt;谢谢大家</div>
   	  	
     	</section>
     
