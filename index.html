@@ -152,6 +152,79 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-大数" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/05/23/%E5%A4%A7%E6%95%B0/">大数</a>
+    </h1>
+  
+
+        
+        <a href="/2020/05/23/%E5%A4%A7%E6%95%B0/" class="archive-article-date">
+  	<time datetime="2020-05-23T08:14:36.723Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-23</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>title:大数数据类型</p>
+<h1 id="java中的特殊数据类型–大数"><a href="#java中的特殊数据类型–大数" class="headerlink" title="java中的特殊数据类型–大数"></a>java中的特殊数据类型–大数</h1><h2 id="大数中有两个很有用的类：BigInteger和BigDecimal，可以满足任何精度的整数或者浮点数的运算"><a href="#大数中有两个很有用的类：BigInteger和BigDecimal，可以满足任何精度的整数或者浮点数的运算" class="headerlink" title="大数中有两个很有用的类：BigInteger和BigDecimal，可以满足任何精度的整数或者浮点数的运算"></a>大数中有两个很有用的类：BigInteger和BigDecimal，可以满足任何精度的整数或者浮点数的运算</h2><h3 id="相信c-选手一定经历过手撕高精度算法的痛苦过程，下面让我们走进大数数据类型"><a href="#相信c-选手一定经历过手撕高精度算法的痛苦过程，下面让我们走进大数数据类型" class="headerlink" title="相信c++选手一定经历过手撕高精度算法的痛苦过程，下面让我们走进大数数据类型"></a>相信c++选手一定经历过手撕高精度算法的痛苦过程，下面让我们走进大数数据类型</h3><h4 id="一、声明大数类型的手段："><a href="#一、声明大数类型的手段：" class="headerlink" title="一、声明大数类型的手段："></a>一、声明大数类型的手段：</h4><p>1.使用静态的valueof方法，可以将普通的数值转换为大数：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">BigInteger a &#x3D; BigInteger.valueOf(100);</span><br></pre></td></tr></table></figure>
+<p>2.对于更大的数，可以使用一个带字符串参数的构造器</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">BigInteger b &#x3D; new BigInteger(&quot;1215757212121248788787&quot;)&#x2F;&#x2F;任意长度</span><br><span class="line">String s &#x3D; &quot;121545752121224&quot;;</span><br><span class="line">BigInteger c &#x3D; new BigInteger(&quot;s&quot;);</span><br></pre></td></tr></table></figure>
+<p>3.从键盘中读入大数类型  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Scanner sc &#x3D; new Scanner(System.in);</span><br><span class="line">BigInteger a &#x3D; sc.nextBigInteger();</span><br></pre></td></tr></table></figure>
+
+<h4 id="二、大数的处理不能用-，-等运算符处理。需要调用大数类的方法处理"><a href="#二、大数的处理不能用-，-等运算符处理。需要调用大数类的方法处理" class="headerlink" title="二、大数的处理不能用+，-等运算符处理。需要调用大数类的方法处理"></a>二、大数的处理不能用+，-等运算符处理。需要调用大数类的方法处理</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">BigInteger c &#x3D; a.add(b); &#x2F;&#x2F;加</span><br><span class="line">BigInteger d &#x3D; a.mulitipy(b);&#x2F;&#x2F;乘 </span><br><span class="line">BigInteger e &#x3D; a.subtract(b);&#x2F;&#x2F;减</span><br><span class="line">BigInteger f &#x3D; a.divide(b);&#x2F;&#x2F;除</span><br></pre></td></tr></table></figure>
+<h4 id="三、其他常用的方法"><a href="#三、其他常用的方法" class="headerlink" title="三、其他常用的方法"></a>三、其他常用的方法</h4><p>compareTo(BigInteger other);//相等返回0，如果this&gt;other，返回负数，否则正数<br>equals(BigInteger other);//相等true，否则false<br>a.mod(b)//求余数即a%b<br>a.gcd(b)//求最大公约数<br>a.max(b)//求最大值<br>a.min(b)//求最小值<br>a.pow(b)//求a^b的大数<br>a.toString().length();//求大数长度</p>
+<h4 id="四、用大数处理阶乘，求m的阶乘"><a href="#四、用大数处理阶乘，求m的阶乘" class="headerlink" title="四、用大数处理阶乘，求m的阶乘"></a>四、用大数处理阶乘，求m的阶乘</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">import java.util.*;</span><br><span class="line">import java.math.BigInteger;</span><br><span class="line">import java.util.Scanner;</span><br><span class="line">public class Main&#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        Scanner input &#x3D; new Scanner(System.in);</span><br><span class="line">        BigInteger []f &#x3D; new BigInteger[5000];</span><br><span class="line">        f[0] &#x3D; f[1] &#x3D; BigInteger.ONE;</span><br><span class="line">        for(int i&#x3D;2;i&lt;&#x3D;10000;i++)</span><br><span class="line">        &#123;</span><br><span class="line">            f[i] &#x3D; f[i-1].multiply(BigInteger.valueOf(i));</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        while(input.hasNext()) &#123;</span><br><span class="line">            int m &#x3D; input.nextInt();</span><br><span class="line">            System.out.println(f[m]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/05/23/%E5%A4%A7%E6%95%B0/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-浅谈equals和==" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -269,74 +342,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2020/05/19/TankWar/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-我的第一篇博客" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/05/15/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/">我的第一篇博客</a>
-    </h1>
-  
-
-        
-        <a href="/2020/05/15/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/" class="archive-article-date">
-  	<time datetime="2020-05-15T10:23:56.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-15</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>##第一章</p>
-<p>内容</p>
-<hr>
-<p>##第二章</p>
-<p>内容</p>
-<hr>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/05/15/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/">展开全文 >></a>
         </p>
       
 
