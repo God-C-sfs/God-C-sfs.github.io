@@ -16,7 +16,7 @@
 <meta property="og:description" content="关于深入分析“&#x3D;&#x3D;” 和 equals（）。总的来说：一、对于&#x3D;&#x3D;，比较数值是否相等&amp;emsp;&amp;emsp;当比较对象为基本数据类型时，那么将比较其数值是否相等。&amp;emsp;&amp;emsp;当比较对象为引用数据类型时，那么比较的是引用所指向的对象的地址值。二、对于equals（），需要注意的是，equals方法并不能用于对基本数据类型的比较，其继承于object类，比较的是是否为同一个对象。&amp;emsp">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-05-22T12:04:10.860Z">
-<meta property="article:modified_time" content="2020-05-22T12:10:25.788Z">
+<meta property="article:modified_time" content="2020-05-23T13:36:49.568Z">
 <meta property="article:author" content="BingJie Chai">
 <meta name="twitter:card" content="summary">
   
@@ -175,6 +175,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h1 id="关于深入分析“-”-和-equals（）。"><a href="#关于深入分析“-”-和-equals（）。" class="headerlink" title="关于深入分析“==” 和 equals（）。"></a>关于深入分析“==” 和 equals（）。</h1><h2 id="总的来说："><a href="#总的来说：" class="headerlink" title="总的来说："></a>总的来说：</h2><p>一、对于==，比较数值是否相等<br>&emsp;&emsp;当比较对象为基本数据类型时，那么将比较其数值是否相等。<br><br>&emsp;&emsp;当比较对象为引用数据类型时，那么比较的是引用所指向的对象的地址值。<br><br>二、对于equals（），需要注意的是，equals方法并不能用于对基本数据类型的比较，其继承于object类，比较的是是否为同一个对象。<br><br>&emsp;&emsp;如果没有对equals方法进行重写，则比较的是引用类型的变量所指向的对象的地址。<br><br>&emsp;&emsp;如果对equals方法进行重写，将比较对象的内容，例如String类，Data类实现了对equals方法的重写。<br>&emsp;&emsp;<em>所以当equals方法不重写时，关于对引用数据类型的判断是看似没有区别的</em></p>
+<a id="more"></a>
 <h2 id="下面分析一下“equals”"><a href="#下面分析一下“equals”" class="headerlink" title="下面分析一下“equals”"></a>下面分析一下“equals”</h2><p>&emsp;&emsp;下面我们看一下object类中的equals方法  </p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">public boolean equals(Object anObject) &#123;</span><br><span class="line">       if (this &#x3D;&#x3D; anObject) &#123;</span><br><span class="line">           return true;</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
 <p>&emsp;&emsp;我们不难发现，在object类中直接用==判断两个引用的地址是否相同，不会判断引动所指对象的内容跟<br>&emsp;&emsp;而在String类中，重写了equals方法 ，可以对字符串的内容进行判断 </p>
