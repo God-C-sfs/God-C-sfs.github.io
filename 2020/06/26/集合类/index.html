@@ -6,15 +6,21 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2020 | God-C-sfs</title>
+  <title>集合类 | God-C-sfs</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="God-C-sfs">
-<meta property="og:url" content="http://yoursite.com/archives/2020/index.html">
+  <meta name="description" content="集合类&amp;emsp;以下是下面将要写的主要内容">
+<meta property="og:type" content="article">
+<meta property="og:title" content="集合类">
+<meta property="og:url" content="http://yoursite.com/2020/06/26/%E9%9B%86%E5%90%88%E7%B1%BB/index.html">
 <meta property="og:site_name" content="God-C-sfs">
+<meta property="og:description" content="集合类&amp;emsp;以下是下面将要写的主要内容">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://gitee.com/bingjie__chai/PicOfHexo/raw/master/pic_hexo/%E9%9B%86%E5%90%88%E7%B1%BB.png">
+<meta property="article:published_time" content="2020-06-26T14:03:38.445Z">
+<meta property="article:modified_time" content="2020-06-26T14:33:38.346Z">
 <meta property="article:author" content="BingJie Chai">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://gitee.com/bingjie__chai/PicOfHexo/raw/master/pic_hexo/%E9%9B%86%E5%90%88%E7%B1%BB.png">
   
     <link rel="alternative" href="/atom.xml" title="God-C-sfs" type="application/atom+xml">
   
@@ -150,157 +156,204 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-集合类" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      集合类
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/06/26/%E9%9B%86%E5%90%88%E7%B1%BB/" class="archive-article-date">
+
+        
+        <a href="/2020/06/26/%E9%9B%86%E5%90%88%E7%B1%BB/" class="archive-article-date">
   	<time datetime="2020-06-26T14:03:38.445Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-26</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/06/26/%E9%9B%86%E5%90%88%E7%B1%BB/">集合类</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="集合类"><a href="#集合类" class="headerlink" title="集合类"></a>集合类</h1><h3 id="emsp-以下是下面将要写的主要内容"><a href="#emsp-以下是下面将要写的主要内容" class="headerlink" title="&emsp;以下是下面将要写的主要内容"></a>&emsp;以下是下面将要写的主要内容</h3><p><img src="https://gitee.com/bingjie__chai/PicOfHexo/raw/master/pic_hexo/%E9%9B%86%E5%90%88%E7%B1%BB.png" alt="图片描述"></p>
+<a id="more"></a>
+<h2 id="List接口："><a href="#List接口：" class="headerlink" title="List接口："></a>List接口：</h2><p>&emsp;首先list接口实现了collection接口，List接口下有ArrayList，Vector，LinkedList三个实现类，其中Vector过于老旧所以此处不在讲述，主要介绍ArrayList和LinkedList，其中List是有序的，可重复的，保存序即为添加的顺序</p>
+<h4 id="ArrayList：非线性安全，底层利用数组储存，删改效率较低，get效率高"><a href="#ArrayList：非线性安全，底层利用数组储存，删改效率较低，get效率高" class="headerlink" title="ArrayList：非线性安全，底层利用数组储存，删改效率较低，get效率高"></a>ArrayList：非线性安全，底层利用数组储存，删改效率较低，get效率高</h4><p>1.首先关于自动扩容，在造ArrayList对象时，有空参构造器和自定义大小的构造器，若空参构造器则默认大小为10个，当不够用时会自动扩容，扩容步骤：创建一个新的数组，newArray = old + old&gt;&gt;2，故新数组大小为老数组的1.5倍，同时将老数组的数据复制到新数组中完成扩容</p>
+<p>2.我们要注意一个细节，List和Collection中都定义的有remove（）方法，其中collection传入的参数是Object o，即删除的是匹配内容，List中传入的是索引，即删除的是索引位置的内容，注意参数的传入</p>
+<p>3.其中我们要注意，当你想要存储自定义类型时，要注意remove（）和contains（）方法，涉及到内容的比较所以我们要在自定义类中重写equals方法，便于比较方法的使用。</p>
+<h4 id="LinkedList：非线性安全，底层双向链表储存，所以get方法遍历效率较低，同时实现了Queue接口，可以创建用于创建队列"><a href="#LinkedList：非线性安全，底层双向链表储存，所以get方法遍历效率较低，同时实现了Queue接口，可以创建用于创建队列" class="headerlink" title="LinkedList：非线性安全，底层双向链表储存，所以get方法遍历效率较低，同时实现了Queue接口，可以创建用于创建队列"></a>LinkedList：非线性安全，底层双向链表储存，所以get方法遍历效率较低，同时实现了Queue接口，可以创建用于创建队列</h4><p>由于Linked List和ArrayList都遵从List实现标准，所以代码形式与ArrayList完全相同，其中区别在于：链表储存不需要频繁的进行新数组的空间开辟，但是在根据索引获取数据时，数组储存复杂度o（1），链表o（n）。</p>
+<h2 id="Set接口："><a href="#Set接口：" class="headerlink" title="Set接口："></a>Set接口：</h2><p>&emsp; Set集合可以看作数学定义中的集合，储存内容无序，不可重复</p>
+<h4 id="HashSet：非线性安全，基于散列存放的集合"><a href="#HashSet：非线性安全，基于散列存放的集合" class="headerlink" title="HashSet：非线性安全，基于散列存放的集合"></a>HashSet：非线性安全，基于散列存放的集合</h4><p>1.在添加自定义类时，为了排除重复，我们要重写HashCode（）和equals（）方法，先对判定目标的哈希值进行对比，然后equals对比，都相同时，则为同一对象。</p>
+<p>2.HashSet存在一个问题在于无序处理，为了解决这一问题，提供了LinkedHashSet子类，实现基于链表的数据保存，但注意存放的过程仍然是无序的，但遍历是根据添加顺序，增加顺序就是集合的保存顺序，并且不会重复</p>
+<h4 id="TreeSet-是基于自平衡的排序二叉树，也就是红黑树"><a href="#TreeSet-是基于自平衡的排序二叉树，也就是红黑树" class="headerlink" title="TreeSet:是基于自平衡的排序二叉树，也就是红黑树"></a>TreeSet:是基于自平衡的排序二叉树，也就是红黑树</h4><p>1.首先TreeSet再进行数据保存时，保存的数据默认是按照从小到大的顺序排列</p>
+<p>2.所以再进行有序数据的存储时，依据的是Comparable接口实现排序，并且也是依靠Comparable接口中的CompareTo方法判别重复元素</p>
+<p>3.当存储类型是自定义类时：</p>
+<p>3.1在自定义类中实现Comparable接口，并重写CompareTo方法</p>
+<p>3.2在造TreeSet对象构造器中加Comparator比较器</p>
+<h2 id="Collection集合的输出"><a href="#Collection集合的输出" class="headerlink" title="Collection集合的输出"></a>Collection集合的输出</h2><p>1.Collection接口中提供的有toArray（）方法，可以通过遍历数组，或者在toString输出</p>
+<p>2.利用Iterator接口实现遍历输出：</p>
+<p>其中常用的三个方法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">public boolean hasNext();</span><br><span class="line">public E next();&#x2F;&#x2F;初始为第一个元素的上一个位置，执行步骤，1.向下移一位。2.返回当前所指的数据</span><br><span class="line">public default void remove();</span><br><span class="line">&#x2F;&#x2F;我们再遍历的过程中经常以这种格式遍历</span><br><span class="line">Set&lt;String&gt; all &#x3D; new HashSet();</span><br><span class="line">Iterator ite &#x3D; all.iterator();</span><br><span class="line">while(ite.hasNext)&#123;</span><br><span class="line">	String str &#x3D; ite.next();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-        <div class="article-info info-on-right">
-          
-          
+<p>3.foreach输出</p>
+<h1 id="接下来时Map集合："><a href="#接下来时Map集合：" class="headerlink" title="接下来时Map集合："></a>接下来时Map集合：</h1><p>首先对于map集合的理解：它是一种键值对的存储方式key-value–&gt;entry，构成的entry用set集合存储起来，其中key是Set存储，不可重复，value是List型可重复</p>
+<p>主要利用HashMap和TreeMap存储，还有HashTable和LinkedHashMap不在详细介绍，LinkedHashMap和HashMap的区别同LinkedList，不在过多解释</p>
+<h3 id="HashMap：散列方式进行存储"><a href="#HashMap：散列方式进行存储" class="headerlink" title="HashMap：散列方式进行存储"></a>HashMap：散列方式进行存储</h3><p>1.其中对于put（）方法注意细节：当设置的key不存在时，直接保存，并返回null，当存在时，则会替换换来的value，同时返回覆盖前的value</p>
+<p>2.当添加自定义类时，同样需要重写equal（）方法。</p>
+<h3 id="TreeMap：底部红黑树存储，所以是有序存储"><a href="#TreeMap：底部红黑树存储，所以是有序存储" class="headerlink" title="TreeMap：底部红黑树存储，所以是有序存储"></a>TreeMap：底部红黑树存储，所以是有序存储</h3><p>1.和TreeSet的异同：在添加自定义类时，都需要调用Comparable和Comparator实现排序和去重，但TreeMap只能根据key来排序，不能通过value</p>
+<h3 id="关于map集合的输出"><a href="#关于map集合的输出" class="headerlink" title="关于map集合的输出"></a>关于map集合的输出</h3><p>1.利用Entry&lt;&gt;内部接口，先转换为Set集合</p>
+<p>1.1：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">for(Map.Entry&lt;Byte, Integer&gt; entry : map.entrySet()) &#123;</span><br><span class="line">			entry.getKey();</span><br><span class="line">			entry.getValue();</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
 
+<p>1.2:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Iterator&lt;Map.Entry&lt;T,T&gt;&gt; iter &#x3D; entry.iterator();</span><br><span class="line">while(iter.hasNext)&#123;</span><br><span class="line">	Map.Entry&lt;T,T&gt; map &#x3D; iter.next();</span><br><span class="line">	entry.getKey();</span><br><span class="line">	entry.getValue();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/06/26/%E9%9B%86%E5%90%88%E7%B1%BB/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/05/23/%E5%A4%A7%E6%95%B0/" class="archive-article-date">
-  	<time datetime="2020-05-23T08:14:36.723Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-23</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2020/05/23/%E5%A4%A7%E6%95%B0/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">大数</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/05/23/%E5%A4%A7%E6%95%B0/">大数</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/05/22/%E6%B5%85%E8%B0%88equals%E5%92%8C==/" class="archive-article-date">
-  	<time datetime="2020-05-22T12:04:10.860Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-22</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/05/22/%E6%B5%85%E8%B0%88equals%E5%92%8C==/">浅谈equals和==</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/05/19/TankWar/" class="archive-article-date">
-  	<time datetime="2020-05-19T07:45:51.435Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-19</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/05/19/TankWar/">TankWar</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/05/15/hello-world/" class="archive-article-date">
-  	<time datetime="2020-05-15T10:17:53.775Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-15</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/05/15/hello-world/">Hello World</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
 
 
           </div>
@@ -327,8 +380,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
