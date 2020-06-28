@@ -6,13 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2020 | God-C-sfs</title>
+  <title>最小栈问题 | God-C-sfs</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="God-C-sfs">
-<meta property="og:url" content="http://yoursite.com/archives/2020/index.html">
+  <meta name="description" content="最小栈的问题首先明确定义：什么是最小栈？就是栈中有一个getMin（）方法可以常数复杂度的获取栈中的最小值，所以暴力遍历栈获取最小值是十分不明智的，所以我们会采用一个辅助栈，来帮助我们获取最小值。通常有两种方案，和主栈同步，和主栈不同步。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="最小栈问题">
+<meta property="og:url" content="http://yoursite.com/2020/06/28/%E6%9C%80%E5%B0%8F%E6%A0%88%E9%97%AE%E9%A2%98/index.html">
 <meta property="og:site_name" content="God-C-sfs">
+<meta property="og:description" content="最小栈的问题首先明确定义：什么是最小栈？就是栈中有一个getMin（）方法可以常数复杂度的获取栈中的最小值，所以暴力遍历栈获取最小值是十分不明智的，所以我们会采用一个辅助栈，来帮助我们获取最小值。通常有两种方案，和主栈同步，和主栈不同步。">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-06-28T13:52:13.436Z">
+<meta property="article:modified_time" content="2020-06-28T14:25:01.127Z">
 <meta property="article:author" content="BingJie Chai">
 <meta name="twitter:card" content="summary">
   
@@ -150,292 +154,170 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-最小栈问题" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/06/28/%E5%8D%95%E5%90%91%E6%A0%88%E9%97%AE%E9%A2%98/" class="archive-article-date">
-  	<time datetime="2020-06-28T14:28:22.548Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-28</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/06/28/%E5%8D%95%E5%90%91%E6%A0%88%E9%97%AE%E9%A2%98/">单向栈问题</a>
+    <h1 class="article-title" itemprop="name">
+      最小栈问题
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/06/28/HTML%E8%AF%AD%E4%B9%89%E6%A0%87%E7%AD%BE/" class="archive-article-date">
-  	<time datetime="2020-06-28T14:23:26.746Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-28</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/06/28/HTML%E8%AF%AD%E4%B9%89%E6%A0%87%E7%AD%BE/">HTML语义标签</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/06/28/%E6%9C%80%E5%B0%8F%E6%A0%88%E9%97%AE%E9%A2%98/" class="archive-article-date">
+        
+        <a href="/2020/06/28/%E6%9C%80%E5%B0%8F%E6%A0%88%E9%97%AE%E9%A2%98/" class="archive-article-date">
   	<time datetime="2020-06-28T13:52:13.436Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-28</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/06/28/%E6%9C%80%E5%B0%8F%E6%A0%88%E9%97%AE%E9%A2%98/">最小栈问题</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="最小栈的问题"><a href="#最小栈的问题" class="headerlink" title="最小栈的问题"></a>最小栈的问题</h1><p>首先明确定义：什么是最小栈？就是栈中有一个getMin（）方法可以常数复杂度的获取栈中的最小值，所以暴力遍历栈获取最小值是十分不明智的，所以我们会采用一个辅助栈，来帮助我们获取最小值。通常有两种方案，和主栈同步，和主栈不同步。  </p>
+<hr>
+<a id="more"></a>
+<h3 id="和主栈同步：就是指主栈和辅助栈一定会增加元素"><a href="#和主栈同步：就是指主栈和辅助栈一定会增加元素" class="headerlink" title="和主栈同步：就是指主栈和辅助栈一定会增加元素"></a>和主栈同步：就是指主栈和辅助栈一定会增加元素</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line">import java.util.Stack;</span><br><span class="line"></span><br><span class="line">public class MinStack &#123;</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; 数据栈</span><br><span class="line">    private Stack&lt;Integer&gt; data;</span><br><span class="line">    &#x2F;&#x2F; 辅助栈</span><br><span class="line">    private Stack&lt;Integer&gt; helper;</span><br><span class="line"></span><br><span class="line">    &#x2F;**</span><br><span class="line">     * initialize your data structure here.</span><br><span class="line">     *&#x2F;</span><br><span class="line">    public MinStack() &#123;</span><br><span class="line">        data &#x3D; new Stack&lt;&gt;();</span><br><span class="line">        helper &#x3D; new Stack&lt;&gt;();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; 思路 1：数据栈和辅助栈在任何时候都同步</span><br><span class="line"></span><br><span class="line">    public void push(int x) &#123;</span><br><span class="line">        &#x2F;&#x2F; 数据栈和辅助栈一定会增加元素</span><br><span class="line">        data.add(x);</span><br><span class="line">        if (helper.isEmpty() || helper.peek() &gt;&#x3D; x) &#123;</span><br><span class="line">            helper.add(x);</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            helper.add(helper.peek());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void pop() &#123;</span><br><span class="line">        &#x2F;&#x2F; 两个栈都得 pop</span><br><span class="line">        if (!data.isEmpty()) &#123;</span><br><span class="line">            helper.pop();</span><br><span class="line">            data.pop();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public int top() &#123;</span><br><span class="line">        if(!data.isEmpty())&#123;</span><br><span class="line">            return data.peek();</span><br><span class="line">        &#125;</span><br><span class="line">        throw new RuntimeException(&quot;栈中元素为空，此操作非法&quot;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public int getMin() &#123;</span><br><span class="line">        if(!helper.isEmpty())&#123;</span><br><span class="line">            return helper.peek();</span><br><span class="line">        &#125;</span><br><span class="line">        throw new RuntimeException(&quot;栈中元素为空，此操作非法&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="和主栈不同步：在辅助栈中我们只会增加比辅助栈顶小于或等于的数，并且弹出时也有要求。"><a href="#和主栈不同步：在辅助栈中我们只会增加比辅助栈顶小于或等于的数，并且弹出时也有要求。" class="headerlink" title="和主栈不同步：在辅助栈中我们只会增加比辅助栈顶小于或等于的数，并且弹出时也有要求。"></a>和主栈不同步：在辅助栈中我们只会增加比辅助栈顶小于或等于的数，并且弹出时也有要求。</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;前提都是在栈不为空时操作的</span><br><span class="line">class MinStack &#123;</span><br><span class="line">	Stack&lt;Integer&gt; data;</span><br><span class="line">	Stack&lt;Integer&gt; min;</span><br><span class="line">    &#x2F;** initialize your data structure here. *&#x2F;</span><br><span class="line">    public MinStack() &#123;</span><br><span class="line">        data &#x3D; new Stack&lt;&gt;();</span><br><span class="line">        min &#x3D; new Stack&lt;&gt;();</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    public void push(int x) &#123;</span><br><span class="line">    	data.add(x);</span><br><span class="line">    	if(min.isEmpty()||x&lt;&#x3D;min.peek()) &#123;</span><br><span class="line">    		min.add(x);</span><br><span class="line">    	&#125;</span><br><span class="line">    &#125;</span><br><span class="line">    &#x2F;&#x2F;当我们弹出主栈元素时，要判断主栈元素是不是当前最小值，如果是，要把辅助栈也弹出</span><br><span class="line">    public void pop() &#123;</span><br><span class="line">    	int x &#x3D; data.pop();</span><br><span class="line">    	if(min.peek().equals(x)) &#123;</span><br><span class="line">    		min.pop();</span><br><span class="line">    	&#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    public int top() &#123;</span><br><span class="line">    	return data.peek();</span><br><span class="line">    &#125;</span><br><span class="line">    &#x2F;&#x2F;辅助栈顶就是最小值</span><br><span class="line">    public int getMin() &#123;</span><br><span class="line">    	return min.peek();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-        <div class="article-info info-on-right">
-          
-          
 
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/06/28/%E6%9C%80%E5%B0%8F%E6%A0%88%E9%97%AE%E9%A2%98/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/06/28/%E6%9C%89%E6%95%88%E7%9A%84%E6%8B%AC%E5%8F%B7/" class="archive-article-date">
-  	<time datetime="2020-06-28T13:51:23.755Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-28</time>
-</a>
+<nav id="article-nav">
+  
+    <a href="/2020/06/28/HTML%E8%AF%AD%E4%B9%89%E6%A0%87%E7%AD%BE/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          HTML语义标签
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/06/28/%E6%9C%89%E6%95%88%E7%9A%84%E6%8B%AC%E5%8F%B7/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">有效的括号</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/06/28/%E6%9C%89%E6%95%88%E7%9A%84%E6%8B%AC%E5%8F%B7/">有效的括号</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/06/27/BFS%E8%A7%A3%E9%A2%98%E6%A8%A1%E6%9D%BF/" class="archive-article-date">
-  	<time datetime="2020-06-27T03:34:24.423Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-27</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/06/27/BFS%E8%A7%A3%E9%A2%98%E6%A8%A1%E6%9D%BF/">BFS解题模板</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/06/26/%E9%9B%86%E5%90%88%E7%B1%BB/" class="archive-article-date">
-  	<time datetime="2020-06-26T14:03:38.445Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-26</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/06/26/%E9%9B%86%E5%90%88%E7%B1%BB/">集合类</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/05/23/%E5%A4%A7%E6%95%B0/" class="archive-article-date">
-  	<time datetime="2020-05-23T08:14:36.723Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-23</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/05/23/%E5%A4%A7%E6%95%B0/">大数</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/05/22/%E6%B5%85%E8%B0%88equals%E5%92%8C==/" class="archive-article-date">
-  	<time datetime="2020-05-22T12:04:10.860Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-22</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/05/22/%E6%B5%85%E8%B0%88equals%E5%92%8C==/">浅谈equals和==</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/05/19/TankWar/" class="archive-article-date">
-  	<time datetime="2020-05-19T07:45:51.435Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-19</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/05/19/TankWar/">TankWar</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/05/15/hello-world/" class="archive-article-date">
-  	<time datetime="2020-05-15T10:17:53.775Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-15</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/05/15/hello-world/">Hello World</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
 
 
           </div>
@@ -462,8 +344,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

@@ -6,13 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2020 | God-C-sfs</title>
+  <title>BFS解题模板 | God-C-sfs</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="God-C-sfs">
-<meta property="og:url" content="http://yoursite.com/archives/2020/index.html">
+  <meta name="description" content="BFS解题模板首先明确BFS的核心思想，就是将问题抽象成一个图，从一个点开始向四周扩散，所以我们会使用QUeue这种核心数据结构，BFS常用于寻找最短路径问题，相比于DFS时间复杂度更低，因为DFS总要走到底然后才能得出这条路有多长，然后在进行对比，当然BFS也有弊端，空间复杂度很高，当我们要寻找的目标在最深处时，那么我们将会遍历到所有的节点，空间的消耗是比较大的。   所以接下来的代码是一个比较">
+<meta property="og:type" content="article">
+<meta property="og:title" content="BFS解题模板">
+<meta property="og:url" content="http://yoursite.com/2020/06/27/BFS%E8%A7%A3%E9%A2%98%E6%A8%A1%E6%9D%BF/index.html">
 <meta property="og:site_name" content="God-C-sfs">
+<meta property="og:description" content="BFS解题模板首先明确BFS的核心思想，就是将问题抽象成一个图，从一个点开始向四周扩散，所以我们会使用QUeue这种核心数据结构，BFS常用于寻找最短路径问题，相比于DFS时间复杂度更低，因为DFS总要走到底然后才能得出这条路有多长，然后在进行对比，当然BFS也有弊端，空间复杂度很高，当我们要寻找的目标在最深处时，那么我们将会遍历到所有的节点，空间的消耗是比较大的。   所以接下来的代码是一个比较">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-06-27T03:34:24.423Z">
+<meta property="article:modified_time" content="2020-06-28T14:30:41.678Z">
 <meta property="article:author" content="BingJie Chai">
 <meta name="twitter:card" content="summary">
   
@@ -150,292 +154,175 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-BFS解题模板" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/06/28/%E5%8D%95%E5%90%91%E6%A0%88%E9%97%AE%E9%A2%98/" class="archive-article-date">
-  	<time datetime="2020-06-28T14:28:22.548Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-28</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/06/28/%E5%8D%95%E5%90%91%E6%A0%88%E9%97%AE%E9%A2%98/">单向栈问题</a>
+    <h1 class="article-title" itemprop="name">
+      BFS解题模板
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/06/28/HTML%E8%AF%AD%E4%B9%89%E6%A0%87%E7%AD%BE/" class="archive-article-date">
-  	<time datetime="2020-06-28T14:23:26.746Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-28</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/06/28/HTML%E8%AF%AD%E4%B9%89%E6%A0%87%E7%AD%BE/">HTML语义标签</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/06/28/%E6%9C%80%E5%B0%8F%E6%A0%88%E9%97%AE%E9%A2%98/" class="archive-article-date">
-  	<time datetime="2020-06-28T13:52:13.436Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-28</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/06/28/%E6%9C%80%E5%B0%8F%E6%A0%88%E9%97%AE%E9%A2%98/">最小栈问题</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/06/28/%E6%9C%89%E6%95%88%E7%9A%84%E6%8B%AC%E5%8F%B7/" class="archive-article-date">
-  	<time datetime="2020-06-28T13:51:23.755Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-28</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/06/28/%E6%9C%89%E6%95%88%E7%9A%84%E6%8B%AC%E5%8F%B7/">有效的括号</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/06/27/BFS%E8%A7%A3%E9%A2%98%E6%A8%A1%E6%9D%BF/" class="archive-article-date">
+        
+        <a href="/2020/06/27/BFS%E8%A7%A3%E9%A2%98%E6%A8%A1%E6%9D%BF/" class="archive-article-date">
   	<time datetime="2020-06-27T03:34:24.423Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-27</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/06/27/BFS%E8%A7%A3%E9%A2%98%E6%A8%A1%E6%9D%BF/">BFS解题模板</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="BFS解题模板"><a href="#BFS解题模板" class="headerlink" title="BFS解题模板"></a>BFS解题模板</h1><p>首先明确BFS的核心思想，就是将问题抽象成一个图，从一个点开始向四周扩散，所以我们会使用QUeue这种核心数据结构，BFS常用于寻找最短路径问题，相比于DFS时间复杂度更低，因为DFS总要走到底然后才能得出这条路有多长，然后在进行对比，当然BFS也有弊端，空间复杂度很高，当我们要寻找的目标在最深处时，那么我们将会遍历到所有的节点，空间的消耗是比较大的。  </p>
+<h2 id="所以接下来的代码是一个比较标准的解题模板，细心品味"><a href="#所以接下来的代码是一个比较标准的解题模板，细心品味" class="headerlink" title="所以接下来的代码是一个比较标准的解题模板，细心品味"></a>所以接下来的代码是一个比较标准的解题模板，细心品味</h2><a id="more"></a>
 
-        <div class="article-info info-on-right">
-          
-          
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 计算从起点 start 到终点 target 的最近距离</span><br><span class="line">int BFS(Node start, Node target) &#123;</span><br><span class="line">    Queue&lt;Node&gt; q; &#x2F;&#x2F; 核心数据结构</span><br><span class="line">    Set&lt;Node&gt; visited; &#x2F;&#x2F; 避免走回头路</span><br><span class="line">    </span><br><span class="line">    q.offer(start); &#x2F;&#x2F; 将起点加入队列</span><br><span class="line">    visited.add(start);</span><br><span class="line">    int step &#x3D; 0; &#x2F;&#x2F; 记录扩散的步数</span><br><span class="line"></span><br><span class="line">    while (q not empty) &#123;</span><br><span class="line">        int sz &#x3D; q.size();</span><br><span class="line">        &#x2F;* 将当前队列中的所有节点向四周扩散 *&#x2F;</span><br><span class="line">        for (int i &#x3D; 0; i &lt; sz; i++) &#123;</span><br><span class="line">            Node cur &#x3D; q.poll();</span><br><span class="line">            &#x2F;* 划重点：这里判断是否到达终点 *&#x2F;</span><br><span class="line">            &#x2F;* 外加一些判断条件*&#x2F;</span><br><span class="line">            if (cur is target)</span><br><span class="line">                return step;</span><br><span class="line">            &#x2F;* 将 cur 的相邻节点加入队列 *&#x2F;</span><br><span class="line">            for (Node x : cur.adj())</span><br><span class="line">                if (x not in visited) &#123;</span><br><span class="line">                    q.offer(x);</span><br><span class="line">                    visited.add(x);</span><br><span class="line">                &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        &#x2F;* 划重点：更新步数在这里 *&#x2F;</span><br><span class="line">        step++;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">作者：labuladong</span><br><span class="line">链接：https:&#x2F;&#x2F;leetcode-cn.com&#x2F;problems&#x2F;open-the-lock&#x2F;solution&#x2F;wo-xie-liao-yi-tao-bfs-suan-fa-kuang-jia-jian-dao-&#x2F;</span><br><span class="line">来源：力扣（LeetCode)  </span><br><span class="line">其中visited不是必须的，向二叉树这种没有回头路的结构就不需要visited数组</span><br></pre></td></tr></table></figure>
+<h3 id="下面用一个leetCode的例题来找出解题思路："><a href="#下面用一个leetCode的例题来找出解题思路：" class="headerlink" title="下面用一个leetCode的例题来找出解题思路："></a>下面用一个leetCode的例题来找出解题思路：</h3><p>你有一个带有四个圆形拨轮的转盘锁。每个拨轮都有10个数字： ‘0’, ‘1’, ‘2’, ‘3’, ‘4’, ‘5’, ‘6’, ‘7’, ‘8’, ‘9’ 。每个拨轮可以自由旋转：例如把 ‘9’ 变为  ‘0’，’0’ 变为 ‘9’ 。每次旋转都只能旋转一个拨轮的一位数字。<br>锁的初始数字为 ‘0000’ ，一个代表四个拨轮的数字的字符串。<br>列表 deadends 包含了一组死亡数字，一旦拨轮的数字和列表里的任何一个元素相同，这个锁将会被永久锁定，无法再被旋转。<br>字符串 target 代表可以解锁的数字，你需要给出最小的旋转次数，如果无论如何不能解锁，返回 -1。  </p>
+<h4 id="解题思路："><a href="#解题思路：" class="headerlink" title="解题思路："></a>解题思路：</h4><p>其实这是关于解密码的问题，当我们旋转一次每个位置可以向上向下两种方案，所以可以看作每个节点都有8个相邻节点，穷举出所有的组合方式，在使用BFS搜索方式可以找出最短路径。<br>下面的方法是实现向上和向下两种旋转方案：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line">	 * 向上旋转一次得到的密码</span><br><span class="line">	 * @param str 传入的当前密码</span><br><span class="line">	 * @param index 要旋转的位置0~3</span><br><span class="line">	 * @return</span><br><span class="line">	 *&#x2F;</span><br><span class="line">	public static String upRotate(String str,int index) &#123;</span><br><span class="line">		char [] ch &#x3D; str.toCharArray();</span><br><span class="line">		if(ch[index] &#x3D;&#x3D; &#39;9&#39;) &#123;</span><br><span class="line">			ch[index] &#x3D; &#39;0&#39;;</span><br><span class="line">		&#125;else &#123;</span><br><span class="line">			ch[index]++;</span><br><span class="line">		&#125;</span><br><span class="line">		return new String(ch);</span><br><span class="line">	&#125;</span><br><span class="line">	public static String downRotate(String str,int index) &#123;</span><br><span class="line">		char [] ch &#x3D; str.toCharArray();</span><br><span class="line">		if(ch[index] &#x3D;&#x3D; &#39;0&#39;) &#123;</span><br><span class="line">			ch[index] &#x3D; &#39;9&#39;;</span><br><span class="line">		&#125;else &#123;</span><br><span class="line">			ch[index]--;</span><br><span class="line">		&#125;</span><br><span class="line">		return new String(ch);</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+<p>接下来实现主方法，我们可以将deads和visited放入到Set集合中，这样我们可以方便判断包含关系，并且它们的特性也刚好是不重复的</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">public int openLock(String[] deadends, String target) &#123;</span><br><span class="line">		Queue&lt;String&gt; queue &#x3D; new LinkedList&lt;&gt;();</span><br><span class="line">		Set&lt;String&gt; deads &#x3D; new HashSet&lt;&gt;();</span><br><span class="line">		for(String str : deadends)</span><br><span class="line">			deads.add(str);</span><br><span class="line">		Set&lt;String&gt; visited &#x3D; new HashSet&lt;&gt;();</span><br><span class="line">		queue.add(&quot;0000&quot;);&#x2F;&#x2F;把初始根节点加进去</span><br><span class="line">		int step &#x3D; 0;</span><br><span class="line">		</span><br><span class="line">		while(queue.size()!&#x3D;0) &#123;</span><br><span class="line">			int size &#x3D; queue.size();</span><br><span class="line">			for(int i&#x3D;0;i&lt;size;i++) &#123;</span><br><span class="line">				String str &#x3D; queue.remove();</span><br><span class="line">				if(deads.contains(str))</span><br><span class="line">					continue;&#x2F;&#x2F;包含死亡密码则跳过当前组合</span><br><span class="line">				if(target.equals(str)) &#123;</span><br><span class="line">					return step;&#x2F;&#x2F;结束条</span><br><span class="line">				&#125;</span><br><span class="line">				for(int j &#x3D; 0;j&lt;4;j++) &#123;</span><br><span class="line">					if(!visited.contains(upRotate(str, j))) &#123;</span><br><span class="line">						queue.add(upRotate(str, j));</span><br><span class="line">						visited.add(upRotate(str, j));</span><br><span class="line">					&#125;</span><br><span class="line">					if(!visited.contains(downRotate(str, j))) &#123;</span><br><span class="line">						queue.add(downRotate(str, j));</span><br><span class="line">						visited.add(downRotate(str, j));</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			step++;</span><br><span class="line">		&#125;</span><br><span class="line">		return -1;&#x2F;&#x2F;遍历完了还是没有找到target则返回-1；</span><br></pre></td></tr></table></figure>
+<h4 id="在对比以下标准模板我们不难发现只是添加了一些对细节的要求，但接下来会介绍更高效的一种方法，双向BFS，这种解题方法我们有一个前提，就是必须要知道我们要寻找的终点，然后从两端开始向BFS，直到有交集时结束，例如本体target就是终点，所以我们可以采取这种方法来解题"><a href="#在对比以下标准模板我们不难发现只是添加了一些对细节的要求，但接下来会介绍更高效的一种方法，双向BFS，这种解题方法我们有一个前提，就是必须要知道我们要寻找的终点，然后从两端开始向BFS，直到有交集时结束，例如本体target就是终点，所以我们可以采取这种方法来解题" class="headerlink" title="在对比以下标准模板我们不难发现只是添加了一些对细节的要求，但接下来会介绍更高效的一种方法，双向BFS，这种解题方法我们有一个前提，就是必须要知道我们要寻找的终点，然后从两端开始向BFS，直到有交集时结束，例如本体target就是终点，所以我们可以采取这种方法来解题"></a>在对比以下标准模板我们不难发现只是添加了一些对细节的要求，但接下来会介绍更高效的一种方法，双向BFS，这种解题方法我们有一个前提，就是必须要知道我们要寻找的终点，然后从两端开始向BFS，直到有交集时结束，例如本体target就是终点，所以我们可以采取这种方法来解题</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">int openLock(String[] deadends, String target) &#123;</span><br><span class="line">    Set&lt;String&gt; deads &#x3D; new HashSet&lt;&gt;();</span><br><span class="line">    for (String s : deadends) deads.add(s);</span><br><span class="line">    &#x2F;&#x2F; 用集合不用队列，可以快速判断元素是否存在</span><br><span class="line">    Set&lt;String&gt; q1 &#x3D; new HashSet&lt;&gt;();</span><br><span class="line">    Set&lt;String&gt; q2 &#x3D; new HashSet&lt;&gt;();</span><br><span class="line">    Set&lt;String&gt; visited &#x3D; new HashSet&lt;&gt;();</span><br><span class="line">    </span><br><span class="line">    int step &#x3D; 0;</span><br><span class="line">    q1.add(&quot;0000&quot;);</span><br><span class="line">    q2.add(target);</span><br><span class="line">    </span><br><span class="line">    while (!q1.isEmpty() &amp;&amp; !q2.isEmpty()) &#123;</span><br><span class="line">        &#x2F;&#x2F; 哈希集合在遍历的过程中不能修改，用 temp 存储扩散结果</span><br><span class="line">        Set&lt;String&gt; temp &#x3D; new HashSet&lt;&gt;();</span><br><span class="line"></span><br><span class="line">        &#x2F;* 将 q1 中的所有节点向周围扩散 *&#x2F;</span><br><span class="line">        for (String cur : q1) &#123;</span><br><span class="line">            &#x2F;* 判断是否到达终点 *&#x2F;</span><br><span class="line">            if (deads.contains(cur))</span><br><span class="line">                continue;</span><br><span class="line">            if (q2.contains(cur))</span><br><span class="line">                return step;</span><br><span class="line">            visited.add(cur);</span><br><span class="line"></span><br><span class="line">            &#x2F;* 将一个节点的未遍历相邻节点加入集合 *&#x2F;</span><br><span class="line">            for (int j &#x3D; 0; j &lt; 4; j++) &#123;</span><br><span class="line">                String up &#x3D; plusOne(cur, j);</span><br><span class="line">                if (!visited.contains(up))</span><br><span class="line">                    temp.add(up);</span><br><span class="line">                String down &#x3D; minusOne(cur, j);</span><br><span class="line">                if (!visited.contains(down))</span><br><span class="line">                    temp.add(down);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        &#x2F;* 在这里增加步数 *&#x2F;</span><br><span class="line">        step++;</span><br><span class="line">        &#x2F;&#x2F; temp 相当于 q1</span><br><span class="line">        &#x2F;&#x2F; 这里交换 q1 q2，下一轮 while 就是扩散 q2</span><br><span class="line">        q1 &#x3D; q2;</span><br><span class="line">        q2 &#x3D; temp;</span><br><span class="line">    &#125;</span><br><span class="line">    return -1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>作者：labuladong<br>链接：<a href="https://leetcode-cn.com/problems/open-the-lock/solution/wo-xie-liao-yi-tao-bfs-suan-fa-kuang-jia-jian-dao-/" target="_blank" rel="noopener">https://leetcode-cn.com/problems/open-the-lock/solution/wo-xie-liao-yi-tao-bfs-suan-fa-kuang-jia-jian-dao-/</a><br>来源：力扣（LeetCode) </p>
 
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/06/27/BFS%E8%A7%A3%E9%A2%98%E6%A8%A1%E6%9D%BF/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/06/26/%E9%9B%86%E5%90%88%E7%B1%BB/" class="archive-article-date">
-  	<time datetime="2020-06-26T14:03:38.445Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-26</time>
-</a>
+<nav id="article-nav">
+  
+    <a href="/2020/06/28/%E6%9C%89%E6%95%88%E7%9A%84%E6%8B%AC%E5%8F%B7/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          有效的括号
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/06/26/%E9%9B%86%E5%90%88%E7%B1%BB/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">集合类</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/06/26/%E9%9B%86%E5%90%88%E7%B1%BB/">集合类</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/05/23/%E5%A4%A7%E6%95%B0/" class="archive-article-date">
-  	<time datetime="2020-05-23T08:14:36.723Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-23</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/05/23/%E5%A4%A7%E6%95%B0/">大数</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/05/22/%E6%B5%85%E8%B0%88equals%E5%92%8C==/" class="archive-article-date">
-  	<time datetime="2020-05-22T12:04:10.860Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-22</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/05/22/%E6%B5%85%E8%B0%88equals%E5%92%8C==/">浅谈equals和==</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/05/19/TankWar/" class="archive-article-date">
-  	<time datetime="2020-05-19T07:45:51.435Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-19</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/05/19/TankWar/">TankWar</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/05/15/hello-world/" class="archive-article-date">
-  	<time datetime="2020-05-15T10:17:53.775Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-15</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/05/15/hello-world/">Hello World</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
 
 
           </div>
@@ -462,8 +349,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
