@@ -6,17 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>单向栈问题 | God-C-sfs</title>
+  <title>CSS定位问题 | God-C-sfs</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="单调栈问题首先什么是单调栈？并不是栈中的元素是单调的**而是指出栈的序列是单调的，所以分为单增栈和单减栈。单增栈的实现思路：当栈为空，或者加入的元素大于栈顶元素时，将栈中比当前小的数据一次弹出，当加入数据小于栈定元素时，则直接进栈。单减栈相反在此就不再叙述，接下来是单调栈的模板：">
+  <meta name="description" content="CSS定位问题：定位是更加高级的布局手段，可以将元素摆放在页面的任何位置，我们通常使用position来设置定位。可选值有：">
 <meta property="og:type" content="article">
-<meta property="og:title" content="单向栈问题">
-<meta property="og:url" content="http://yoursite.com/2020/06/28/%E5%8D%95%E5%90%91%E6%A0%88%E9%97%AE%E9%A2%98/index.html">
+<meta property="og:title" content="CSS定位问题">
+<meta property="og:url" content="http://yoursite.com/2020/07/01/CSS%E5%AE%9A%E4%BD%8D%E9%97%AE%E9%A2%98/index.html">
 <meta property="og:site_name" content="God-C-sfs">
-<meta property="og:description" content="单调栈问题首先什么是单调栈？并不是栈中的元素是单调的**而是指出栈的序列是单调的，所以分为单增栈和单减栈。单增栈的实现思路：当栈为空，或者加入的元素大于栈顶元素时，将栈中比当前小的数据一次弹出，当加入数据小于栈定元素时，则直接进栈。单减栈相反在此就不再叙述，接下来是单调栈的模板：">
+<meta property="og:description" content="CSS定位问题：定位是更加高级的布局手段，可以将元素摆放在页面的任何位置，我们通常使用position来设置定位。可选值有：">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2020-06-28T14:28:22.548Z">
-<meta property="article:modified_time" content="2020-06-28T14:28:04.423Z">
+<meta property="article:published_time" content="2020-07-01T14:55:51.453Z">
+<meta property="article:modified_time" content="2020-07-01T15:10:48.023Z">
 <meta property="article:author" content="BingJie Chai">
 <meta name="twitter:card" content="summary">
   
@@ -154,46 +154,35 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-单向栈问题" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-CSS定位问题" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      单向栈问题
+      CSS定位问题
     </h1>
   
 
         
-        <a href="/2020/06/28/%E5%8D%95%E5%90%91%E6%A0%88%E9%97%AE%E9%A2%98/" class="archive-article-date">
-  	<time datetime="2020-06-28T14:28:22.548Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-28</time>
+        <a href="/2020/07/01/CSS%E5%AE%9A%E4%BD%8D%E9%97%AE%E9%A2%98/" class="archive-article-date">
+  	<time datetime="2020-07-01T14:55:51.453Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-01</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="单调栈问题"><a href="#单调栈问题" class="headerlink" title="单调栈问题"></a>单调栈问题</h1><p>首先什么是单调栈<strong>？</strong>并不是栈中的元素是单调的<strong>**而是指出栈的序列是单调的</strong>，所以分为单增栈和单减栈。<br>单增栈的实现思路：当栈为空，或者加入的元素大于栈顶元素时，将栈中比当前小的数据一次弹出，当加入数据小于栈定元素时，则直接进栈。<br>单减栈相反在此就不再叙述，接下来是单调栈的模板：  </p>
+        <h1 id="CSS定位问题："><a href="#CSS定位问题：" class="headerlink" title="CSS定位问题："></a>CSS定位问题：</h1><p>定位是更加高级的布局手段，可以将元素摆放在页面的任何位置，我们通常使用position来设置定位。<br>可选值有：</p>
 <a id="more"></a>
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">stack&lt;int&gt; st;</span><br><span class="line">&#x2F;&#x2F;此处一般需要给数组最后添加结束标志符，具体下面例题会有详细讲解</span><br><span class="line">for (遍历这个数组)</span><br><span class="line">&#123;</span><br><span class="line">	while(stack.isempty || 这个数&gt;stack.peek())&#123;</span><br><span class="line">	    栈顶元素更新</span><br><span class="line">	    更新结果</span><br><span class="line">	&#125;</span><br><span class="line">	加入栈中</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>我们可以发现单调栈在解决<br>比当前元素更大的下一个元素<br>比当前元素更大的前一个元素<br>比当前元素更小的下一个元素<br>比当前元素更小的前一个元素<br>时有显著的优势，接下来我们来举几个例题：详解  </p>
-<h3 id="leetCodeT739每日温度："><a href="#leetCodeT739每日温度：" class="headerlink" title="leetCodeT739每日温度："></a>leetCodeT739每日温度：</h3><hr>
-<p>思路分析：其实我们分析可得，就是要找到比当前气温高的日期（下标），如果我们暴力求解时间复杂度会比较高，我们采用单调栈的方法，注意我们是将气温对应的下标压入栈中，而不是气温，具体代码如下：  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">public static int[] dailysTemperature(int [] T) &#123;</span><br><span class="line">		Stack&lt;Integer&gt; temp &#x3D; new Stack&lt;&gt;();</span><br><span class="line">		int res[] &#x3D; new int[T.length];&#x2F;&#x2F;用于存储答案</span><br><span class="line">		for(int i&#x3D;0;i&lt;T.length;i++) &#123;</span><br><span class="line">		&#x2F;&#x2F;比较的是气温，存入的是下标的差值</span><br><span class="line">			while(!temp.empty() &amp;&amp; T[i] &gt; T[temp.peek()]) &#123;</span><br><span class="line">				int index &#x3D; temp.pop();</span><br><span class="line">				res[index] &#x3D; i - index;</span><br><span class="line">			&#125;</span><br><span class="line">			temp.push(i);</span><br><span class="line">		&#125;</span><br><span class="line">		return res;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="leetCodeT496下一个更大元素："><a href="#leetCodeT496下一个更大元素：" class="headerlink" title="leetCodeT496下一个更大元素："></a>leetCodeT496下一个更大元素：</h3><p>给定两个没有重复元素的数组nums1 和nums2，其中nums1是nums2的子集。找nums1中每个元素在nums2中的下一个比其大的值。<br>nums1中数字x的下一个更大元素是指x在nums2中对应位置的右边的第一个比x大的元素。如果不存在，对应位置输出 -1 。</p>
-<p>示例:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">输入: nums1 &#x3D; [4,1,2], nums2 &#x3D; [1,3,4,2].</span><br><span class="line">输出: [-1,3,-1]</span><br><span class="line">解释:</span><br><span class="line">    对于num1中的数字4，你无法在第二个数组中找到下一个更大的数字，因此输出 -1。</span><br><span class="line">    对于num1中的数字1，第二个数组中数字1右边的下一个较大数字是 3。</span><br><span class="line">    对于num1中的数字2，第二个数组中没有下一个更大的数字，因此输出 -1。</span><br></pre></td></tr></table></figure>
-
-
-<hr>
-<p>思路分析：其实我们不难发现，这也是一个寻找下一个更大数的题目，所以我们仍然使用单调栈，此题我们可以将nums2看作单调栈，用哈希表存储nums1，当我们找到nums【i】的下一个更大数时，我们看看nums1中有没有对应的数，有的话就找到对应的答案，这样复杂夫o（n）遍历nums2数组：<br>注意此题，我们要存储的是值，而不是值对应的下标</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    public int[] nextGreaterElement(int[] nums1, int[] nums2) &#123;</span><br><span class="line">        Stack&lt;Integer&gt; stack &#x3D; new Stack&lt;&gt;();</span><br><span class="line">		int res[] &#x3D; new int[nums1.length];</span><br><span class="line">		Map&lt;Integer,Integer&gt; map &#x3D; new HashMap&lt;&gt;();</span><br><span class="line">		for(int i&#x3D;0;i&lt;nums1.length;i++) &#123;</span><br><span class="line">			map.put(nums1[i], i);&#x2F;利用值找到对应的下标</span><br><span class="line">			res[i] &#x3D; -1;&#x2F;&#x2F;初始化res，没有找到就是-1</span><br><span class="line">		&#125;</span><br><span class="line">		for(int i&#x3D;0;i&lt;nums2.length;i++) &#123;</span><br><span class="line">			while(!stack.empty()&amp;&amp;nums2[i]&gt;stack.peek()) &#123;</span><br><span class="line">				int x &#x3D; stack.pop();</span><br><span class="line">				if(map.containsKey(x)) &#123;</span><br><span class="line">					res[map.get(x)] &#x3D; nums2[i];</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			stack.push(nums2[i]);</span><br><span class="line">		&#125;</span><br><span class="line">		return res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">position：static&#x2F;&#x2F;默认值，没有开启定位</span><br><span class="line">position：relative&#x2F;&#x2F;开启相对定位</span><br><span class="line">position：absolute&#x2F;&#x2F;开启绝对路径</span><br><span class="line">position：fixed&#x2F;&#x2F;固定定位</span><br><span class="line">position：sticky&#x2F;&#x2F;粘滞定位</span><br></pre></td></tr></table></figure>
+<h3 id="相对定位特点："><a href="#相对定位特点：" class="headerlink" title="相对定位特点："></a>相对定位特点：</h3><p>1.元素开启相对定位以后，如果不设置偏移量是不会发生任何变化的，其中偏移量（offset）：当元素开启了定位以后，可以通过偏移量来设置元素位置，包括top，left，right，bottom四个属性来设置位置<br>2.当开启相对定位以后并没有完全脱离文档流，可以看作肉身依旧占据原来的位置，只是灵魂出窍可以自由设置位置<br>3.所以相对定位的参照是参照与元素在文档流中的位置即原来的位置<br>4.相对定位会提升元素的层级，但不会造成布局的改变，可能发生覆盖  </p>
+<h3 id="绝对定位特点："><a href="#绝对定位特点：" class="headerlink" title="绝对定位特点："></a>绝对定位特点：</h3><p>1.开启后：元素会从文档流中脱离<br>2.会改变元素的性质，行内元素会变成块元素，宽高被内容撑开<br>3.会提升层次<br>4.偏移量参照物：根据包含快定位，其中包含块指当前元素最近的祖先块元素。那么绝对定位的包含块就是离他最近的开启了定位的祖先元素，如果所有祖先元素都没有开启定位，直接参照根元素</p>
+<h3 id="固定定位特点："><a href="#固定定位特点：" class="headerlink" title="固定定位特点："></a>固定定位特点：</h3><p>固定定位是一种特殊的绝对定位，大部分特点和绝对定位一样，唯一不同：固定定位永远参照浏览器的视口进行定位，不会根据滚动条移动而移动  </p>
+<h3 id="粘滞定位："><a href="#粘滞定位：" class="headerlink" title="粘滞定位："></a>粘滞定位：</h3><p>粘滞定位是一种特殊的相对定位，唯一不同：通过设置top，right，left，bottom等偏移量后，当滚动条滑到相应位置之后就固定不在移动  </p>
+<h3 id="绝对定位元素的特点："><a href="#绝对定位元素的特点：" class="headerlink" title="绝对定位元素的特点："></a>绝对定位元素的特点：</h3><p>水平布局中，原先要求七元素等式，现在变成九元素，添加left和rigth九个元素之和为包含快的内容区宽度，left和right默认值为auto<br>如果没有设为auto的值，自动调整right<br>如果有，调整auto属性<br>同理属性方向也必须满足对应九元素等式  </p>
+<h3 id="元素的层级："><a href="#元素的层级：" class="headerlink" title="元素的层级："></a>元素的层级：</h3><p>对于开启定位的元素，通过z-sizing属性指定层级，参数为整数，值越大，越靠上<br>层级相同，则显示代码中靠下的元素快<br>祖先元素的层级再高，也不会盖住后代元素</p>
 
       
 
@@ -273,7 +262,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/06/28/%E5%8D%95%E5%90%91%E6%A0%88%E9%97%AE%E9%A2%98/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/07/01/CSS%E5%AE%9A%E4%BD%8D%E9%97%AE%E9%A2%98/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -287,18 +276,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2020/07/01/CSS%E5%AE%9A%E4%BD%8D%E9%97%AE%E9%A2%98/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2020/07/01/CSS/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          CSS定位问题
+          CSS
         
       </div>
     </a>
   
   
-    <a href="/2020/06/28/HTML%E8%AF%AD%E4%B9%89%E6%A0%87%E7%AD%BE/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">HTML语义标签</div>
+    <a href="/2020/06/28/%E5%8D%95%E5%90%91%E6%A0%88%E9%97%AE%E9%A2%98/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">单向栈问题</div>
       <i class="icon-circle-right"></i>
     </a>
   

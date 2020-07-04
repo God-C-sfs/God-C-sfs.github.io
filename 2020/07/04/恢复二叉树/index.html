@@ -6,19 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>单向栈问题 | God-C-sfs</title>
+  <title>恢复二叉树 | God-C-sfs</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="单调栈问题首先什么是单调栈？并不是栈中的元素是单调的**而是指出栈的序列是单调的，所以分为单增栈和单减栈。单增栈的实现思路：当栈为空，或者加入的元素大于栈顶元素时，将栈中比当前小的数据一次弹出，当加入数据小于栈定元素时，则直接进栈。单减栈相反在此就不再叙述，接下来是单调栈的模板：">
+  <meta name="description" content="恢复二叉树如题所示，我们解决的问题是根据二叉树的遍历组合来还原这个二叉树，这个过程其实是复杂的，我们需要根据三种遍历方式的不同特性来确定这个二叉树，由于前序+后序遍历无法确定一颗唯一的二叉树，所以我们将着重介绍两种：前序+中序和后序+中序来还原二叉树.  接下来我将详细介绍后序+中序还原二叉树的过程12345678910例如，给出中序遍历 inorder &#x3D; [9,3,15,20,7]后">
 <meta property="og:type" content="article">
-<meta property="og:title" content="单向栈问题">
-<meta property="og:url" content="http://yoursite.com/2020/06/28/%E5%8D%95%E5%90%91%E6%A0%88%E9%97%AE%E9%A2%98/index.html">
+<meta property="og:title" content="恢复二叉树">
+<meta property="og:url" content="http://yoursite.com/2020/07/04/%E6%81%A2%E5%A4%8D%E4%BA%8C%E5%8F%89%E6%A0%91/index.html">
 <meta property="og:site_name" content="God-C-sfs">
-<meta property="og:description" content="单调栈问题首先什么是单调栈？并不是栈中的元素是单调的**而是指出栈的序列是单调的，所以分为单增栈和单减栈。单增栈的实现思路：当栈为空，或者加入的元素大于栈顶元素时，将栈中比当前小的数据一次弹出，当加入数据小于栈定元素时，则直接进栈。单减栈相反在此就不再叙述，接下来是单调栈的模板：">
+<meta property="og:description" content="恢复二叉树如题所示，我们解决的问题是根据二叉树的遍历组合来还原这个二叉树，这个过程其实是复杂的，我们需要根据三种遍历方式的不同特性来确定这个二叉树，由于前序+后序遍历无法确定一颗唯一的二叉树，所以我们将着重介绍两种：前序+中序和后序+中序来还原二叉树.  接下来我将详细介绍后序+中序还原二叉树的过程12345678910例如，给出中序遍历 inorder &#x3D; [9,3,15,20,7]后">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2020-06-28T14:28:22.548Z">
-<meta property="article:modified_time" content="2020-06-28T14:28:04.423Z">
+<meta property="og:image" content="https://gitee.com/bingjie__chai/PicOfHexo/raw/master/pic_hexo/%E8%BF%98%E5%8E%9F%E4%BA%8C%E5%8F%89%E6%A0%911.png">
+<meta property="og:image" content="https://gitee.com/bingjie__chai/PicOfHexo/raw/master/pic_hexo/%E8%BF%98%E5%8E%9F%E4%BA%8C%E5%8F%89%E6%A0%912.png">
+<meta property="article:published_time" content="2020-07-04T02:13:42.913Z">
+<meta property="article:modified_time" content="2020-07-04T03:13:38.203Z">
 <meta property="article:author" content="BingJie Chai">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://gitee.com/bingjie__chai/PicOfHexo/raw/master/pic_hexo/%E8%BF%98%E5%8E%9F%E4%BA%8C%E5%8F%89%E6%A0%911.png">
   
     <link rel="alternative" href="/atom.xml" title="God-C-sfs" type="application/atom+xml">
   
@@ -154,43 +157,39 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-单向栈问题" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-恢复二叉树" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      单向栈问题
+      恢复二叉树
     </h1>
   
 
         
-        <a href="/2020/06/28/%E5%8D%95%E5%90%91%E6%A0%88%E9%97%AE%E9%A2%98/" class="archive-article-date">
-  	<time datetime="2020-06-28T14:28:22.548Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-28</time>
+        <a href="/2020/07/04/%E6%81%A2%E5%A4%8D%E4%BA%8C%E5%8F%89%E6%A0%91/" class="archive-article-date">
+  	<time datetime="2020-07-04T02:13:42.913Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-04</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="单调栈问题"><a href="#单调栈问题" class="headerlink" title="单调栈问题"></a>单调栈问题</h1><p>首先什么是单调栈<strong>？</strong>并不是栈中的元素是单调的<strong>**而是指出栈的序列是单调的</strong>，所以分为单增栈和单减栈。<br>单增栈的实现思路：当栈为空，或者加入的元素大于栈顶元素时，将栈中比当前小的数据一次弹出，当加入数据小于栈定元素时，则直接进栈。<br>单减栈相反在此就不再叙述，接下来是单调栈的模板：  </p>
-<a id="more"></a>
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">stack&lt;int&gt; st;</span><br><span class="line">&#x2F;&#x2F;此处一般需要给数组最后添加结束标志符，具体下面例题会有详细讲解</span><br><span class="line">for (遍历这个数组)</span><br><span class="line">&#123;</span><br><span class="line">	while(stack.isempty || 这个数&gt;stack.peek())&#123;</span><br><span class="line">	    栈顶元素更新</span><br><span class="line">	    更新结果</span><br><span class="line">	&#125;</span><br><span class="line">	加入栈中</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>我们可以发现单调栈在解决<br>比当前元素更大的下一个元素<br>比当前元素更大的前一个元素<br>比当前元素更小的下一个元素<br>比当前元素更小的前一个元素<br>时有显著的优势，接下来我们来举几个例题：详解  </p>
-<h3 id="leetCodeT739每日温度："><a href="#leetCodeT739每日温度：" class="headerlink" title="leetCodeT739每日温度："></a>leetCodeT739每日温度：</h3><hr>
-<p>思路分析：其实我们分析可得，就是要找到比当前气温高的日期（下标），如果我们暴力求解时间复杂度会比较高，我们采用单调栈的方法，注意我们是将气温对应的下标压入栈中，而不是气温，具体代码如下：  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">public static int[] dailysTemperature(int [] T) &#123;</span><br><span class="line">		Stack&lt;Integer&gt; temp &#x3D; new Stack&lt;&gt;();</span><br><span class="line">		int res[] &#x3D; new int[T.length];&#x2F;&#x2F;用于存储答案</span><br><span class="line">		for(int i&#x3D;0;i&lt;T.length;i++) &#123;</span><br><span class="line">		&#x2F;&#x2F;比较的是气温，存入的是下标的差值</span><br><span class="line">			while(!temp.empty() &amp;&amp; T[i] &gt; T[temp.peek()]) &#123;</span><br><span class="line">				int index &#x3D; temp.pop();</span><br><span class="line">				res[index] &#x3D; i - index;</span><br><span class="line">			&#125;</span><br><span class="line">			temp.push(i);</span><br><span class="line">		&#125;</span><br><span class="line">		return res;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="leetCodeT496下一个更大元素："><a href="#leetCodeT496下一个更大元素：" class="headerlink" title="leetCodeT496下一个更大元素："></a>leetCodeT496下一个更大元素：</h3><p>给定两个没有重复元素的数组nums1 和nums2，其中nums1是nums2的子集。找nums1中每个元素在nums2中的下一个比其大的值。<br>nums1中数字x的下一个更大元素是指x在nums2中对应位置的右边的第一个比x大的元素。如果不存在，对应位置输出 -1 。</p>
-<p>示例:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">输入: nums1 &#x3D; [4,1,2], nums2 &#x3D; [1,3,4,2].</span><br><span class="line">输出: [-1,3,-1]</span><br><span class="line">解释:</span><br><span class="line">    对于num1中的数字4，你无法在第二个数组中找到下一个更大的数字，因此输出 -1。</span><br><span class="line">    对于num1中的数字1，第二个数组中数字1右边的下一个较大数字是 3。</span><br><span class="line">    对于num1中的数字2，第二个数组中没有下一个更大的数字，因此输出 -1。</span><br></pre></td></tr></table></figure>
-
+        <h1 id="恢复二叉树"><a href="#恢复二叉树" class="headerlink" title="恢复二叉树"></a>恢复二叉树</h1><p>如题所示，我们解决的问题是根据二叉树的遍历组合来还原这个二叉树，这个过程其实是复杂的，我们需要根据三种遍历方式的不同特性来确定这个二叉树，由于前序+后序遍历无法确定一颗唯一的二叉树，所以我们将着重介绍两种：前序+中序和后序+中序来还原二叉树.</p>
+<hr>
+<h3 id="接下来我将详细介绍后序-中序还原二叉树的过程"><a href="#接下来我将详细介绍后序-中序还原二叉树的过程" class="headerlink" title="接下来我将详细介绍后序+中序还原二叉树的过程"></a>接下来我将详细介绍后序+中序还原二叉树的过程</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">例如，给出</span><br><span class="line">中序遍历 inorder &#x3D; [9,3,15,20,7]</span><br><span class="line">后序遍历 postorder &#x3D; [9,15,7,20,3]</span><br><span class="line">返回如下的二叉树：</span><br><span class="line"></span><br><span class="line">    3</span><br><span class="line">   &#x2F; \</span><br><span class="line">  9  20</span><br><span class="line">    &#x2F;  \</span><br><span class="line">   15   7</span><br></pre></td></tr></table></figure>
 
 <hr>
-<p>思路分析：其实我们不难发现，这也是一个寻找下一个更大数的题目，所以我们仍然使用单调栈，此题我们可以将nums2看作单调栈，用哈希表存储nums1，当我们找到nums【i】的下一个更大数时，我们看看nums1中有没有对应的数，有的话就找到对应的答案，这样复杂夫o（n）遍历nums2数组：<br>注意此题，我们要存储的是值，而不是值对应的下标</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    public int[] nextGreaterElement(int[] nums1, int[] nums2) &#123;</span><br><span class="line">        Stack&lt;Integer&gt; stack &#x3D; new Stack&lt;&gt;();</span><br><span class="line">		int res[] &#x3D; new int[nums1.length];</span><br><span class="line">		Map&lt;Integer,Integer&gt; map &#x3D; new HashMap&lt;&gt;();</span><br><span class="line">		for(int i&#x3D;0;i&lt;nums1.length;i++) &#123;</span><br><span class="line">			map.put(nums1[i], i);&#x2F;利用值找到对应的下标</span><br><span class="line">			res[i] &#x3D; -1;&#x2F;&#x2F;初始化res，没有找到就是-1</span><br><span class="line">		&#125;</span><br><span class="line">		for(int i&#x3D;0;i&lt;nums2.length;i++) &#123;</span><br><span class="line">			while(!stack.empty()&amp;&amp;nums2[i]&gt;stack.peek()) &#123;</span><br><span class="line">				int x &#x3D; stack.pop();</span><br><span class="line">				if(map.containsKey(x)) &#123;</span><br><span class="line">					res[map.get(x)] &#x3D; nums2[i];</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			stack.push(nums2[i]);</span><br><span class="line">		&#125;</span><br><span class="line">		return res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>首先我们根据后序遍历的特点可知，最后一个元素就是数的根节点，根据中序遍历可知，根节点的左侧是左子树，右侧是右子树：<br><img src="https://gitee.com/bingjie__chai/PicOfHexo/raw/master/pic_hexo/%E8%BF%98%E5%8E%9F%E4%BA%8C%E5%8F%89%E6%A0%911.png" alt=""><br/><br>接下来解释一下下面会使用到的一些变量：  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">int InStart  &#x2F;&#x2F;接下来递归时我们使用到的中序遍历的左边界</span><br><span class="line">int InEnd    &#x2F;&#x2F;中序便利的右边界</span><br><span class="line">int PostStart &#x2F;&#x2F;后序遍历的左边界</span><br><span class="line">int PostEnd  &#x2F;&#x2F;后序遍历的有边界</span><br></pre></td></tr></table></figure>
+<p>接下来最重要的是边界的计算：<br><img src="https://gitee.com/bingjie__chai/PicOfHexo/raw/master/pic_hexo/%E8%BF%98%E5%8E%9F%E4%BA%8C%E5%8F%89%E6%A0%912.png" alt=""><br>1.左子树的中序数组左边界：Instart，有边界是rootIndex-1<br>2.左子树的后序数组左边界：PostStart，右边界：PostStart+（rootIndex-1-Instart+1）-1<br>3.右子树的中序数组左边界：rootIndex+1，右边界InEnd<br>4.右子树的中序数组左边界：：PostStart+rootIndex-Instart，右边界：PostEnd-1<br>所以接下来代码实现：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">public class InAndPost &#123;</span><br><span class="line">	int[] postArr;</span><br><span class="line">	Map&lt;Integer,Integer&gt; map &#x3D; new HashMap&lt;&gt;();&#x2F;&#x2F;利用hash表快速找到根节点在中序数组中的位置</span><br><span class="line">	public static void main(String[] args) &#123;</span><br><span class="line">		&#x2F;&#x2F; TODO 自动生成的方法存根</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line">	public TreeNode buildTree(int[] inorder, int[] postorder) &#123;</span><br><span class="line">		postArr &#x3D; postorder;</span><br><span class="line">		for(int i&#x3D;0;i&lt;inorder.length;i++) &#123;</span><br><span class="line">			map.put(inorder[i], i);</span><br><span class="line">		&#125;</span><br><span class="line">		return buildTrees(0, inorder.length-1, 0, postArr.length-1);</span><br><span class="line">    &#125;</span><br><span class="line">	public TreeNode buildTrees(int InStart,int InEnd,int PostStart,int PostEnd) &#123;</span><br><span class="line">		if(InStart&gt;InEnd||PostStart&gt;PostEnd) &#123;</span><br><span class="line">			return null;</span><br><span class="line">		&#125;</span><br><span class="line">		int root &#x3D; postArr[PostEnd];</span><br><span class="line">		int rootIndex &#x3D; map.get(root);</span><br><span class="line">		TreeNode node &#x3D; new TreeNode(root);</span><br><span class="line">		node.left &#x3D; buildTrees(InStart, rootIndex-1, PostStart, PostStart+rootIndex-InStart-1);</span><br><span class="line">		node.right &#x3D; buildTrees(rootIndex+1, InEnd, PostStart+rootIndex-InStart, PostEnd-1);</span><br><span class="line">		return node;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
+<hr>
+<h2 id="接下来是前序-中序"><a href="#接下来是前序-中序" class="headerlink" title="接下来是前序+中序:"></a>接下来是前序+中序:</h2><p>其实大部分和前者的思路一致，最主要是边界的求法不同<br>中序遍历中，我们知道左子树：[inorder_start,index-1], 右子树：[index+1, inorder_end]<br>在前序遍历中，左子树起始位置为pre_start+1,左子树一共有(index-1 - inorder_start)个，因此左子树：[pre_start+1, pre_start+1 + (index-1 - inorder_start)]<br>右子树起始位置为左子树终止位置+1，终止位置为pre_end，因此右子树：[ pre_start+1 + (index-1 - inorder_start) + 1, pre_end]</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    int[] postArr;</span><br><span class="line">    Map&lt;Integer,Integer&gt; map &#x3D; new HashMap&lt;&gt;();</span><br><span class="line">    public TreeNode buildTree(int[] inorder, int[] postorder) &#123;</span><br><span class="line">        postArr &#x3D; postorder;</span><br><span class="line">		for(int i&#x3D;0;i&lt;inorder.length;i++) &#123;</span><br><span class="line">			map.put(inorder[i], i);</span><br><span class="line">		&#125;</span><br><span class="line">		return buildTrees(0, inorder.length-1, 0, postArr.length-1);</span><br><span class="line">    &#125;</span><br><span class="line">    public TreeNode buildTrees(int InStart,int InEnd,int PostStart,int PostEnd) &#123;</span><br><span class="line">		if(InStart&gt;InEnd||PostStart&gt;PostEnd) &#123;</span><br><span class="line">			return null;</span><br><span class="line">		&#125;</span><br><span class="line">		int root &#x3D; postArr[PostEnd];</span><br><span class="line">		int rootIndex &#x3D; map.get(root);</span><br><span class="line">		TreeNode node &#x3D; new TreeNode(root);</span><br><span class="line">		node.left &#x3D; buildTrees(InStart, rootIndex-1, PostStart, PostStart+rootIndex-InStart-1);</span><br><span class="line">		node.right &#x3D; buildTrees(rootIndex+1, InEnd, PostStart+rootIndex-InStart, PostEnd-1);</span><br><span class="line">		return node;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
 
@@ -273,7 +272,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/06/28/%E5%8D%95%E5%90%91%E6%A0%88%E9%97%AE%E9%A2%98/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/07/04/%E6%81%A2%E5%A4%8D%E4%BA%8C%E5%8F%89%E6%A0%91/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -287,18 +286,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2020/07/01/CSS%E5%AE%9A%E4%BD%8D%E9%97%AE%E9%A2%98/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          CSS定位问题
-        
-      </div>
-    </a>
   
-  
-    <a href="/2020/06/28/HTML%E8%AF%AD%E4%B9%89%E6%A0%87%E7%AD%BE/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">HTML语义标签</div>
+    <a href="/2020/07/01/%E7%9B%AE%E6%A0%87%E5%92%8C/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">目标和</div>
       <i class="icon-circle-right"></i>
     </a>
   

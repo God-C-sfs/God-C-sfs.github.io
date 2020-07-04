@@ -6,17 +6,13 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>单向栈问题 | God-C-sfs</title>
+  <title>Archives | God-C-sfs</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="单调栈问题首先什么是单调栈？并不是栈中的元素是单调的**而是指出栈的序列是单调的，所以分为单增栈和单减栈。单增栈的实现思路：当栈为空，或者加入的元素大于栈顶元素时，将栈中比当前小的数据一次弹出，当加入数据小于栈定元素时，则直接进栈。单减栈相反在此就不再叙述，接下来是单调栈的模板：">
-<meta property="og:type" content="article">
-<meta property="og:title" content="单向栈问题">
-<meta property="og:url" content="http://yoursite.com/2020/06/28/%E5%8D%95%E5%90%91%E6%A0%88%E9%97%AE%E9%A2%98/index.html">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="God-C-sfs">
+<meta property="og:url" content="http://yoursite.com/archives/page/2/index.html">
 <meta property="og:site_name" content="God-C-sfs">
-<meta property="og:description" content="单调栈问题首先什么是单调栈？并不是栈中的元素是单调的**而是指出栈的序列是单调的，所以分为单增栈和单减栈。单增栈的实现思路：当栈为空，或者加入的元素大于栈顶元素时，将栈中比当前小的数据一次弹出，当加入数据小于栈定元素时，则直接进栈。单减栈相反在此就不再叙述，接下来是单调栈的模板：">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2020-06-28T14:28:22.548Z">
-<meta property="article:modified_time" content="2020-06-28T14:28:04.423Z">
 <meta property="article:author" content="BingJie Chai">
 <meta name="twitter:card" content="summary">
   
@@ -154,183 +150,160 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-单向栈问题" class="article article-type-post " itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+            
   
-    <h1 class="article-title" itemprop="name">
-      单向栈问题
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2020" class="archive-year">2020</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2020/06/26/%E9%9B%86%E5%90%88%E7%B1%BB/" class="archive-article-date">
+  	<time datetime="2020-06-26T14:03:38.445Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-26</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2020/06/26/%E9%9B%86%E5%90%88%E7%B1%BB/">集合类</a>
     </h1>
   
 
-        
-        <a href="/2020/06/28/%E5%8D%95%E5%90%91%E6%A0%88%E9%97%AE%E9%A2%98/" class="archive-article-date">
-  	<time datetime="2020-06-28T14:28:22.548Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-28</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="单调栈问题"><a href="#单调栈问题" class="headerlink" title="单调栈问题"></a>单调栈问题</h1><p>首先什么是单调栈<strong>？</strong>并不是栈中的元素是单调的<strong>**而是指出栈的序列是单调的</strong>，所以分为单增栈和单减栈。<br>单增栈的实现思路：当栈为空，或者加入的元素大于栈顶元素时，将栈中比当前小的数据一次弹出，当加入数据小于栈定元素时，则直接进栈。<br>单减栈相反在此就不再叙述，接下来是单调栈的模板：  </p>
-<a id="more"></a>
+        <div class="article-info info-on-right">
+          
+          
 
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">stack&lt;int&gt; st;</span><br><span class="line">&#x2F;&#x2F;此处一般需要给数组最后添加结束标志符，具体下面例题会有详细讲解</span><br><span class="line">for (遍历这个数组)</span><br><span class="line">&#123;</span><br><span class="line">	while(stack.isempty || 这个数&gt;stack.peek())&#123;</span><br><span class="line">	    栈顶元素更新</span><br><span class="line">	    更新结果</span><br><span class="line">	&#125;</span><br><span class="line">	加入栈中</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>我们可以发现单调栈在解决<br>比当前元素更大的下一个元素<br>比当前元素更大的前一个元素<br>比当前元素更小的下一个元素<br>比当前元素更小的前一个元素<br>时有显著的优势，接下来我们来举几个例题：详解  </p>
-<h3 id="leetCodeT739每日温度："><a href="#leetCodeT739每日温度：" class="headerlink" title="leetCodeT739每日温度："></a>leetCodeT739每日温度：</h3><hr>
-<p>思路分析：其实我们分析可得，就是要找到比当前气温高的日期（下标），如果我们暴力求解时间复杂度会比较高，我们采用单调栈的方法，注意我们是将气温对应的下标压入栈中，而不是气温，具体代码如下：  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">public static int[] dailysTemperature(int [] T) &#123;</span><br><span class="line">		Stack&lt;Integer&gt; temp &#x3D; new Stack&lt;&gt;();</span><br><span class="line">		int res[] &#x3D; new int[T.length];&#x2F;&#x2F;用于存储答案</span><br><span class="line">		for(int i&#x3D;0;i&lt;T.length;i++) &#123;</span><br><span class="line">		&#x2F;&#x2F;比较的是气温，存入的是下标的差值</span><br><span class="line">			while(!temp.empty() &amp;&amp; T[i] &gt; T[temp.peek()]) &#123;</span><br><span class="line">				int index &#x3D; temp.pop();</span><br><span class="line">				res[index] &#x3D; i - index;</span><br><span class="line">			&#125;</span><br><span class="line">			temp.push(i);</span><br><span class="line">		&#125;</span><br><span class="line">		return res;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="leetCodeT496下一个更大元素："><a href="#leetCodeT496下一个更大元素：" class="headerlink" title="leetCodeT496下一个更大元素："></a>leetCodeT496下一个更大元素：</h3><p>给定两个没有重复元素的数组nums1 和nums2，其中nums1是nums2的子集。找nums1中每个元素在nums2中的下一个比其大的值。<br>nums1中数字x的下一个更大元素是指x在nums2中对应位置的右边的第一个比x大的元素。如果不存在，对应位置输出 -1 。</p>
-<p>示例:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">输入: nums1 &#x3D; [4,1,2], nums2 &#x3D; [1,3,4,2].</span><br><span class="line">输出: [-1,3,-1]</span><br><span class="line">解释:</span><br><span class="line">    对于num1中的数字4，你无法在第二个数组中找到下一个更大的数字，因此输出 -1。</span><br><span class="line">    对于num1中的数字1，第二个数组中数字1右边的下一个较大数字是 3。</span><br><span class="line">    对于num1中的数字2，第二个数组中没有下一个更大的数字，因此输出 -1。</span><br></pre></td></tr></table></figure>
-
-
-<hr>
-<p>思路分析：其实我们不难发现，这也是一个寻找下一个更大数的题目，所以我们仍然使用单调栈，此题我们可以将nums2看作单调栈，用哈希表存储nums1，当我们找到nums【i】的下一个更大数时，我们看看nums1中有没有对应的数，有的话就找到对应的答案，这样复杂夫o（n）遍历nums2数组：<br>注意此题，我们要存储的是值，而不是值对应的下标</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    public int[] nextGreaterElement(int[] nums1, int[] nums2) &#123;</span><br><span class="line">        Stack&lt;Integer&gt; stack &#x3D; new Stack&lt;&gt;();</span><br><span class="line">		int res[] &#x3D; new int[nums1.length];</span><br><span class="line">		Map&lt;Integer,Integer&gt; map &#x3D; new HashMap&lt;&gt;();</span><br><span class="line">		for(int i&#x3D;0;i&lt;nums1.length;i++) &#123;</span><br><span class="line">			map.put(nums1[i], i);&#x2F;利用值找到对应的下标</span><br><span class="line">			res[i] &#x3D; -1;&#x2F;&#x2F;初始化res，没有找到就是-1</span><br><span class="line">		&#125;</span><br><span class="line">		for(int i&#x3D;0;i&lt;nums2.length;i++) &#123;</span><br><span class="line">			while(!stack.empty()&amp;&amp;nums2[i]&gt;stack.peek()) &#123;</span><br><span class="line">				int x &#x3D; stack.pop();</span><br><span class="line">				if(map.containsKey(x)) &#123;</span><br><span class="line">					res[map.get(x)] &#x3D; nums2[i];</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			stack.push(nums2[i]);</span><br><span class="line">		&#125;</span><br><span class="line">		return res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-      
-
-      
-        <div class="page-reward">
-          <a href="javascript:;" class="page-reward-btn tooltip-top">
-            <div class="tooltip tooltip-east">
-            <span class="tooltip-item">
-              赏
-            </span>
-            <span class="tooltip-content">
-              <span class="tooltip-text">
-                <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
-                  <div class="reward-box">
-                    
-                    
-                  </div>
-                </span>
-              </span>
-            </span>
-          </div>
-          </a>
         </div>
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-
-      
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
-        </div>
-      </div>
-    </span>
-  </div>
-</div>
-
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/06/28/%E5%8D%95%E5%90%91%E6%A0%88%E9%97%AE%E9%A2%98/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
-      
-      <div class="clearfix"></div>
-    </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
   
-<nav id="article-nav">
-  
-    <a href="/2020/07/01/CSS%E5%AE%9A%E4%BD%8D%E9%97%AE%E9%A2%98/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          CSS定位问题
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2020/06/28/HTML%E8%AF%AD%E4%B9%89%E6%A0%87%E7%AD%BE/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">HTML语义标签</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
+    
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2020/05/23/%E5%A4%A7%E6%95%B0/" class="archive-article-date">
+  	<time datetime="2020-05-23T08:14:36.723Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-23</time>
+</a>
         </div>
-        
-        
-    </div>
-</aside>
-
-
-
+    	 
   
-  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2020/05/23/%E5%A4%A7%E6%95%B0/">大数</a>
+    </h1>
   
 
+        <div class="article-info info-on-right">
+          
+          
+
+        </div>
+        <div class="clearfix"></div>
+    </header>
+  </div>
+</article>
+  
+    
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2020/05/22/%E6%B5%85%E8%B0%88equals%E5%92%8C==/" class="archive-article-date">
+  	<time datetime="2020-05-22T12:04:10.860Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-22</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2020/05/22/%E6%B5%85%E8%B0%88equals%E5%92%8C==/">浅谈equals和==</a>
+    </h1>
   
 
+        <div class="article-info info-on-right">
+          
+          
+
+        </div>
+        <div class="clearfix"></div>
+    </header>
+  </div>
+</article>
+  
+    
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2020/05/19/TankWar/" class="archive-article-date">
+  	<time datetime="2020-05-19T07:45:51.435Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-19</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2020/05/19/TankWar/">TankWar</a>
+    </h1>
   
 
+        <div class="article-info info-on-right">
+          
+          
+
+        </div>
+        <div class="clearfix"></div>
+    </header>
+  </div>
+</article>
+  
+    
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2020/05/15/hello-world/" class="archive-article-date">
+  	<time datetime="2020-05-15T10:17:53.775Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-15</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2020/05/15/hello-world/">Hello World</a>
+    </h1>
+  
+
+        <div class="article-info info-on-right">
+          
+          
+
+        </div>
+        <div class="clearfix"></div>
+    </header>
+  </div>
+</article>
+  
+  
+    </div></section>
+  
+
+    
+    <nav id="page-nav">
+      <a class="extend prev" rel="prev" href="/archives/">&amp;laquo; Prev</a><a class="page-number" href="/archives/">1</a><span class="page-number current">2</span>
+    </nav>
   
 
 
@@ -358,8 +331,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: true,
-		isArchive: false,
+		isPost: false,
+		isArchive: true,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

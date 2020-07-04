@@ -6,17 +6,13 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>单向栈问题 | God-C-sfs</title>
+  <title>God-C-sfs</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="单调栈问题首先什么是单调栈？并不是栈中的元素是单调的**而是指出栈的序列是单调的，所以分为单增栈和单减栈。单增栈的实现思路：当栈为空，或者加入的元素大于栈顶元素时，将栈中比当前小的数据一次弹出，当加入数据小于栈定元素时，则直接进栈。单减栈相反在此就不再叙述，接下来是单调栈的模板：">
-<meta property="og:type" content="article">
-<meta property="og:title" content="单向栈问题">
-<meta property="og:url" content="http://yoursite.com/2020/06/28/%E5%8D%95%E5%90%91%E6%A0%88%E9%97%AE%E9%A2%98/index.html">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="God-C-sfs">
+<meta property="og:url" content="http://yoursite.com/page/2/index.html">
 <meta property="og:site_name" content="God-C-sfs">
-<meta property="og:description" content="单调栈问题首先什么是单调栈？并不是栈中的元素是单调的**而是指出栈的序列是单调的，所以分为单增栈和单减栈。单增栈的实现思路：当栈为空，或者加入的元素大于栈顶元素时，将栈中比当前小的数据一次弹出，当加入数据小于栈定元素时，则直接进栈。单减栈相反在此就不再叙述，接下来是单调栈的模板：">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2020-06-28T14:28:22.548Z">
-<meta property="article:modified_time" content="2020-06-28T14:28:04.423Z">
 <meta property="article:author" content="BingJie Chai">
 <meta name="twitter:card" content="summary">
   
@@ -154,70 +150,34 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-单向栈问题" class="article article-type-post " itemscope itemprop="blogPost">
+            
+  
+    <article id="post-集合类" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 class="article-title" itemprop="name">
-      单向栈问题
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/06/26/%E9%9B%86%E5%90%88%E7%B1%BB/">集合类</a>
     </h1>
   
 
         
-        <a href="/2020/06/28/%E5%8D%95%E5%90%91%E6%A0%88%E9%97%AE%E9%A2%98/" class="archive-article-date">
-  	<time datetime="2020-06-28T14:28:22.548Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-28</time>
+        <a href="/2020/06/26/%E9%9B%86%E5%90%88%E7%B1%BB/" class="archive-article-date">
+  	<time datetime="2020-06-26T14:03:38.445Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-26</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="单调栈问题"><a href="#单调栈问题" class="headerlink" title="单调栈问题"></a>单调栈问题</h1><p>首先什么是单调栈<strong>？</strong>并不是栈中的元素是单调的<strong>**而是指出栈的序列是单调的</strong>，所以分为单增栈和单减栈。<br>单增栈的实现思路：当栈为空，或者加入的元素大于栈顶元素时，将栈中比当前小的数据一次弹出，当加入数据小于栈定元素时，则直接进栈。<br>单减栈相反在此就不再叙述，接下来是单调栈的模板：  </p>
-<a id="more"></a>
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">stack&lt;int&gt; st;</span><br><span class="line">&#x2F;&#x2F;此处一般需要给数组最后添加结束标志符，具体下面例题会有详细讲解</span><br><span class="line">for (遍历这个数组)</span><br><span class="line">&#123;</span><br><span class="line">	while(stack.isempty || 这个数&gt;stack.peek())&#123;</span><br><span class="line">	    栈顶元素更新</span><br><span class="line">	    更新结果</span><br><span class="line">	&#125;</span><br><span class="line">	加入栈中</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>我们可以发现单调栈在解决<br>比当前元素更大的下一个元素<br>比当前元素更大的前一个元素<br>比当前元素更小的下一个元素<br>比当前元素更小的前一个元素<br>时有显著的优势，接下来我们来举几个例题：详解  </p>
-<h3 id="leetCodeT739每日温度："><a href="#leetCodeT739每日温度：" class="headerlink" title="leetCodeT739每日温度："></a>leetCodeT739每日温度：</h3><hr>
-<p>思路分析：其实我们分析可得，就是要找到比当前气温高的日期（下标），如果我们暴力求解时间复杂度会比较高，我们采用单调栈的方法，注意我们是将气温对应的下标压入栈中，而不是气温，具体代码如下：  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">public static int[] dailysTemperature(int [] T) &#123;</span><br><span class="line">		Stack&lt;Integer&gt; temp &#x3D; new Stack&lt;&gt;();</span><br><span class="line">		int res[] &#x3D; new int[T.length];&#x2F;&#x2F;用于存储答案</span><br><span class="line">		for(int i&#x3D;0;i&lt;T.length;i++) &#123;</span><br><span class="line">		&#x2F;&#x2F;比较的是气温，存入的是下标的差值</span><br><span class="line">			while(!temp.empty() &amp;&amp; T[i] &gt; T[temp.peek()]) &#123;</span><br><span class="line">				int index &#x3D; temp.pop();</span><br><span class="line">				res[index] &#x3D; i - index;</span><br><span class="line">			&#125;</span><br><span class="line">			temp.push(i);</span><br><span class="line">		&#125;</span><br><span class="line">		return res;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="leetCodeT496下一个更大元素："><a href="#leetCodeT496下一个更大元素：" class="headerlink" title="leetCodeT496下一个更大元素："></a>leetCodeT496下一个更大元素：</h3><p>给定两个没有重复元素的数组nums1 和nums2，其中nums1是nums2的子集。找nums1中每个元素在nums2中的下一个比其大的值。<br>nums1中数字x的下一个更大元素是指x在nums2中对应位置的右边的第一个比x大的元素。如果不存在，对应位置输出 -1 。</p>
-<p>示例:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">输入: nums1 &#x3D; [4,1,2], nums2 &#x3D; [1,3,4,2].</span><br><span class="line">输出: [-1,3,-1]</span><br><span class="line">解释:</span><br><span class="line">    对于num1中的数字4，你无法在第二个数组中找到下一个更大的数字，因此输出 -1。</span><br><span class="line">    对于num1中的数字1，第二个数组中数字1右边的下一个较大数字是 3。</span><br><span class="line">    对于num1中的数字2，第二个数组中没有下一个更大的数字，因此输出 -1。</span><br></pre></td></tr></table></figure>
-
-
-<hr>
-<p>思路分析：其实我们不难发现，这也是一个寻找下一个更大数的题目，所以我们仍然使用单调栈，此题我们可以将nums2看作单调栈，用哈希表存储nums1，当我们找到nums【i】的下一个更大数时，我们看看nums1中有没有对应的数，有的话就找到对应的答案，这样复杂夫o（n）遍历nums2数组：<br>注意此题，我们要存储的是值，而不是值对应的下标</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    public int[] nextGreaterElement(int[] nums1, int[] nums2) &#123;</span><br><span class="line">        Stack&lt;Integer&gt; stack &#x3D; new Stack&lt;&gt;();</span><br><span class="line">		int res[] &#x3D; new int[nums1.length];</span><br><span class="line">		Map&lt;Integer,Integer&gt; map &#x3D; new HashMap&lt;&gt;();</span><br><span class="line">		for(int i&#x3D;0;i&lt;nums1.length;i++) &#123;</span><br><span class="line">			map.put(nums1[i], i);&#x2F;利用值找到对应的下标</span><br><span class="line">			res[i] &#x3D; -1;&#x2F;&#x2F;初始化res，没有找到就是-1</span><br><span class="line">		&#125;</span><br><span class="line">		for(int i&#x3D;0;i&lt;nums2.length;i++) &#123;</span><br><span class="line">			while(!stack.empty()&amp;&amp;nums2[i]&gt;stack.peek()) &#123;</span><br><span class="line">				int x &#x3D; stack.pop();</span><br><span class="line">				if(map.containsKey(x)) &#123;</span><br><span class="line">					res[map.get(x)] &#x3D; nums2[i];</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			stack.push(nums2[i]);</span><br><span class="line">		&#125;</span><br><span class="line">		return res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-
-
+        <h1 id="集合类"><a href="#集合类" class="headerlink" title="集合类"></a>集合类</h1><h3 id="emsp-以下是下面将要写的主要内容"><a href="#emsp-以下是下面将要写的主要内容" class="headerlink" title="&emsp;以下是下面将要写的主要内容"></a>&emsp;以下是下面将要写的主要内容</h3><p><img src="https://gitee.com/bingjie__chai/PicOfHexo/raw/master/pic_hexo/%E9%9B%86%E5%90%88%E7%B1%BB.png" alt="图片描述"></p>
+        
+          <a class="article-more-a" href="/2020/06/26/%E9%9B%86%E5%90%88%E7%B1%BB/#more">more >></a>
+        
       
 
-      
-        <div class="page-reward">
-          <a href="javascript:;" class="page-reward-btn tooltip-top">
-            <div class="tooltip tooltip-east">
-            <span class="tooltip-item">
-              赏
-            </span>
-            <span class="tooltip-content">
-              <span class="tooltip-text">
-                <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
-                  <div class="reward-box">
-                    
-                    
-                  </div>
-                </span>
-              </span>
-            </span>
-          </div>
-          </a>
-        </div>
       
     </div>
     <div class="article-info article-info-index">
@@ -226,84 +186,16 @@
       
 
       
-
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/06/26/%E9%9B%86%E5%90%88%E7%B1%BB/">展开全文 >></a>
+        </p>
       
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
-        </div>
-      </div>
-    </span>
-  </div>
-</div>
 
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/06/28/%E5%8D%95%E5%90%91%E6%A0%88%E9%97%AE%E9%A2%98/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
-
-  
-<nav id="article-nav">
-  
-    <a href="/2020/07/01/CSS%E5%AE%9A%E4%BD%8D%E9%97%AE%E9%A2%98/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          CSS定位问题
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2020/06/28/HTML%E8%AF%AD%E4%B9%89%E6%A0%87%E7%AD%BE/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">HTML语义标签</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -323,14 +215,293 @@
 
 
 
-  
-  
-  
 
   
-
+    <article id="post-大数" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/05/23/%E5%A4%A7%E6%95%B0/">大数</a>
+    </h1>
   
 
+        
+        <a href="/2020/05/23/%E5%A4%A7%E6%95%B0/" class="archive-article-date">
+  	<time datetime="2020-05-23T08:14:36.723Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-23</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <hr>
+<p>title:大数数据类型<br>tags:Java基础</p>
+<hr>
+<h1 id="java中的特殊数据类型–大数"><a href="#java中的特殊数据类型–大数" class="headerlink" title="java中的特殊数据类型–大数"></a>java中的特殊数据类型–大数</h1><h2 id="大数中有两个很有用的类：BigInteger和BigDecimal，可以满足任何精度的整数或者浮点数的运算"><a href="#大数中有两个很有用的类：BigInteger和BigDecimal，可以满足任何精度的整数或者浮点数的运算" class="headerlink" title="大数中有两个很有用的类：BigInteger和BigDecimal，可以满足任何精度的整数或者浮点数的运算"></a>大数中有两个很有用的类：BigInteger和BigDecimal，可以满足任何精度的整数或者浮点数的运算</h2><h3 id="相信c-选手一定经历过手撕高精度算法的痛苦过程，下面让我们走进大数数据类型"><a href="#相信c-选手一定经历过手撕高精度算法的痛苦过程，下面让我们走进大数数据类型" class="headerlink" title="相信c++选手一定经历过手撕高精度算法的痛苦过程，下面让我们走进大数数据类型"></a>相信c++选手一定经历过手撕高精度算法的痛苦过程，下面让我们走进大数数据类型</h3>
+        
+          <a class="article-more-a" href="/2020/05/23/%E5%A4%A7%E6%95%B0/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/05/23/%E5%A4%A7%E6%95%B0/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-浅谈equals和==" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/05/22/%E6%B5%85%E8%B0%88equals%E5%92%8C==/">浅谈equals和==</a>
+    </h1>
+  
+
+        
+        <a href="/2020/05/22/%E6%B5%85%E8%B0%88equals%E5%92%8C==/" class="archive-article-date">
+  	<time datetime="2020-05-22T12:04:10.860Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-22</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="关于深入分析“-”-和-equals（）。"><a href="#关于深入分析“-”-和-equals（）。" class="headerlink" title="关于深入分析“==” 和 equals（）。"></a>关于深入分析“==” 和 equals（）。</h1><h2 id="总的来说："><a href="#总的来说：" class="headerlink" title="总的来说："></a>总的来说：</h2><p>一、对于==，比较数值是否相等<br>&emsp;&emsp;当比较对象为基本数据类型时，那么将比较其数值是否相等。<br><br>&emsp;&emsp;当比较对象为引用数据类型时，那么比较的是引用所指向的对象的地址值。<br><br>二、对于equals（），需要注意的是，equals方法并不能用于对基本数据类型的比较，其继承于object类，比较的是是否为同一个对象。<br><br>&emsp;&emsp;如果没有对equals方法进行重写，则比较的是引用类型的变量所指向的对象的地址。<br><br>&emsp;&emsp;如果对equals方法进行重写，将比较对象的内容，例如String类，Data类实现了对equals方法的重写。<br>&emsp;&emsp;<em>所以当equals方法不重写时，关于对引用数据类型的判断是看似没有区别的</em></p>
+        
+          <a class="article-more-a" href="/2020/05/22/%E6%B5%85%E8%B0%88equals%E5%92%8C==/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/05/22/%E6%B5%85%E8%B0%88equals%E5%92%8C==/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-TankWar" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/05/19/TankWar/">TankWar</a>
+    </h1>
+  
+
+        
+        <a href="/2020/05/19/TankWar/" class="archive-article-date">
+  	<time datetime="2020-05-19T07:45:51.435Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-19</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>title：TankWar的实现过程</p>
+<h1 id="TankWar"><a href="#TankWar" class="headerlink" title="TankWar"></a>TankWar</h1><h2 id="day1"><a href="#day1" class="headerlink" title="day1"></a>day1</h2><p>1.关于窗口的实现:创建frame子类，继承于frame<br>2.可创建常量类，项目中尽量不要出现数字，使用常量类来代替数字，常量类中变量通常都声明为public static final 类型，全部大写，在其他类中调用时，需要import导入，通过.*调用所有的静态变量<br>3.初始化窗口initframe<br>首先要设置可见，然后可设置窗口名称，大小，位置，背景颜色（关于颜色类的调用都在Color类中调用），其中关于窗口的关闭还需参考6<br>4.通过建立线程绘画窗口：<br>首先创建updata类方法，负责所有的绘画工作，同时不能主动调用，只有通过repaint（）方法回调</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">switch</span> (game_state)&#123;<span class="comment">//通过不同的state状态来绘画出不同的内容，同时game_state</span></span><br><span class="line">    <span class="keyword">case</span> State_Menu:<span class="comment">//的初始值为0，即运行时会自动调用drawMenu画出菜单</span></span><br><span class="line">        drawMenu(g);</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> State_Help:</span><br><span class="line">        drawHelp(g);</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> State_About:</span><br><span class="line">        drawAbout(g);</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> State_Run:</span><br><span class="line">        drawRun(g);</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> State_Over:</span><br><span class="line">        drawOver(g);</span><br><span class="line">        <span class="keyword">break</span>;</span><br></pre></td></tr></table></figure>
+<p>以下是drawMenu方法的内容，具体解析一下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">g.setColor(Color.WHITE);</span><br><span class="line"><span class="keyword">final</span> <span class="keyword">int</span> x=(Frame_Width-<span class="number">70</span>)/<span class="number">2</span>;<span class="comment">//确定菜单栏的位置</span></span><br><span class="line"><span class="keyword">final</span> <span class="keyword">int</span> y=Frame_Y+<span class="number">100</span>;</span><br><span class="line"><span class="keyword">final</span> <span class="keyword">int</span> DIS = <span class="number">50</span>;<span class="comment">//菜单栏的间隙</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; MENUS.length; i++) &#123;<span class="comment">//(MENUS[i]中存放的是五个菜单选择</span></span><br><span class="line">    <span class="keyword">if</span>(MenuIndex==i)&#123;<span class="comment">//设置选中的项目为红色//MenuIndex模拟选择菜单过程，颜色不同确定选择状态</span></span><br><span class="line">            g.setColor(Color.RED);       <span class="comment">//下面还需要具体监听键盘，通过</span></span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        g.setColor(Color.WHITE);</span><br><span class="line">    &#125;</span><br><span class="line">    g.drawString(MENUS[i],x,y+DIS*i);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>5.此时调用Runnable接口重写run（）类，在run方法中统一调用repaint绘画，GAME_INTERVAL通过此常量确定帧数，来绘画动态画面</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">while</span>(<span class="keyword">true</span>)&#123;</span><br><span class="line">        repaint();</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            Thread.sleep(GAME_INTERVAL);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>6.重点监听事件的分析过程，包括窗口监听和键盘监听</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">EventListener</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="comment">//设置可退出的窗口</span></span><br><span class="line">    addWindowListener(<span class="keyword">new</span> WindowAdapter() &#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">windowClosing</span><span class="params">(WindowEvent e)</span> </span>&#123;</span><br><span class="line">            System.exit(<span class="number">0</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="comment">//添加键盘监听事件</span></span><br><span class="line">    addKeyListener(<span class="keyword">new</span> KeyAdapter() &#123;</span><br><span class="line">        <span class="comment">//按键被按下时返回的方法</span></span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">keyPressed</span><span class="params">(KeyEvent e)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">int</span> keyCode = e.getKeyCode();<span class="comment">//记录按下的按键</span></span><br><span class="line">            <span class="keyword">switch</span> (game_state)&#123;</span><br><span class="line">                <span class="keyword">case</span> State_Menu:</span><br><span class="line">                    keyPressEventMenu(keyCode);</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                <span class="keyword">case</span> State_Help:</span><br><span class="line">                    keyPressEventHelp(keyCode);</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                <span class="keyword">case</span> State_About:</span><br><span class="line">                    keyPressEventAbout(keyCode);</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                <span class="keyword">case</span> State_Run:</span><br><span class="line">                    keyPressEventRun(keyCode);</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                <span class="keyword">case</span> State_Over:</span><br><span class="line">                    keyPressEventOver(keyCode);</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">keyPressEventOver</span><span class="params">(<span class="keyword">int</span> keyCode)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">keyPressEventRun</span><span class="params">(<span class="keyword">int</span> keyCode)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">switch</span> (keyCode) &#123;</span><br><span class="line">                    <span class="keyword">case</span> KeyEvent.VK_UP:</span><br><span class="line">                    <span class="keyword">case</span> KeyEvent.VK_W:</span><br><span class="line">                       myTank.setDir(Tank.DIR_UP);</span><br><span class="line">                       myTank.setState(Tank.STATE_MOVE);</span><br><span class="line">                        <span class="keyword">break</span>;</span><br><span class="line">                    <span class="keyword">case</span> KeyEvent.VK_DOWN:</span><br><span class="line">                    <span class="keyword">case</span> KeyEvent.VK_S:</span><br><span class="line">                        myTank.setDir(Tank.DIR_DOWN);</span><br><span class="line">                        myTank.setState(Tank.STATE_MOVE);</span><br><span class="line">                        <span class="keyword">break</span>;</span><br><span class="line">                    <span class="keyword">case</span> KeyEvent.VK_LEFT:</span><br><span class="line">                    <span class="keyword">case</span> KeyEvent.VK_A:</span><br><span class="line">                        myTank.setDir(Tank.DIR_LEFT);</span><br><span class="line">                        myTank.setState(Tank.STATE_MOVE);</span><br><span class="line">                        <span class="keyword">break</span>;</span><br><span class="line">                    <span class="keyword">case</span> KeyEvent.VK_RIGHT:</span><br><span class="line">                    <span class="keyword">case</span> KeyEvent.VK_D:</span><br><span class="line">                        myTank.setDir(Tank.DIR_RIGHT);</span><br><span class="line">                        myTank.setState(Tank.STATE_MOVE);</span><br><span class="line">                        <span class="keyword">break</span>;</span><br><span class="line">                <span class="keyword">case</span> KeyEvent.VK_SPACE:</span><br><span class="line">                        myTank.fire();</span><br><span class="line">                        <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">keyPressEventAbout</span><span class="params">(<span class="keyword">int</span> keyCode)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">keyPressEventHelp</span><span class="params">(<span class="keyword">int</span> keyCode)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="comment">/**</span></span><br><span class="line"><span class="comment">         * 菜单状态下按键的处理</span></span><br><span class="line"><span class="comment">         * <span class="doctag">@param</span> keyCode</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">keyPressEventMenu</span><span class="params">(<span class="keyword">int</span> keyCode)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">switch</span> (keyCode)&#123;</span><br><span class="line">                <span class="keyword">case</span> KeyEvent.VK_UP:</span><br><span class="line">                 <span class="keyword">case</span> KeyEvent.VK_W:</span><br><span class="line">                    MenuIndex--;</span><br><span class="line">                    <span class="keyword">if</span>(MenuIndex&lt;<span class="number">0</span>)&#123;</span><br><span class="line">                        MenuIndex=MENUS.length-<span class="number">1</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                <span class="keyword">case</span> KeyEvent.VK_DOWN:</span><br><span class="line">                   <span class="keyword">case</span>  KeyEvent.VK_S:</span><br><span class="line">                    MenuIndex++;</span><br><span class="line">                    <span class="keyword">if</span>(MenuIndex&gt;MENUS.length-<span class="number">1</span>)</span><br><span class="line">                        MenuIndex=<span class="number">0</span>;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                <span class="keyword">case</span> KeyEvent.VK_ENTER:<span class="comment">//当按下回车键选择内容时的操作</span></span><br><span class="line">                    newGame();</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//按键被松开时返回的方法</span></span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">keyReleased</span><span class="params">(KeyEvent e)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">int</span> keyCode = e.getKeyCode();<span class="comment">//记录按下的按键</span></span><br><span class="line">            <span class="keyword">if</span>(game_state ==State_Run)&#123;</span><br><span class="line">                KeyReleasedEventRun( keyCode);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/05/19/TankWar/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-hello-world" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/05/15/hello-world/">Hello World</a>
+    </h1>
+  
+
+        
+        <a href="/2020/05/15/hello-world/" class="archive-article-date">
+  	<time datetime="2020-05-15T10:17:53.775Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-15</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/05/15/hello-world/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+  
+    <nav id="page-nav">
+      <a class="extend prev" rel="prev" href="/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+    </nav>
   
 
 
@@ -357,8 +528,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: false,
-		isPost: true,
+		isHome: true,
+		isPost: false,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
