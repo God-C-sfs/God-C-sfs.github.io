@@ -17,7 +17,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://gitee.com/bingjie__chai/PicOfHexo/raw/master/pic_hexo/%E9%9B%86%E5%90%88%E7%B1%BB.png">
 <meta property="article:published_time" content="2020-06-26T14:03:38.445Z">
-<meta property="article:modified_time" content="2020-06-26T14:33:38.346Z">
+<meta property="article:modified_time" content="2020-07-06T12:19:54.984Z">
 <meta property="article:author" content="BingJie Chai">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://gitee.com/bingjie__chai/PicOfHexo/raw/master/pic_hexo/%E9%9B%86%E5%90%88%E7%B1%BB.png">
@@ -62,6 +62,8 @@
 				<li><a href="/">主页</a></li>
 	        
 				<li><a href="/tags/%E9%9A%8F%E7%AC%94/">随笔</a></li>
+	        
+				<li><a href="/categories">categories</a></li>
 	        
 			</ul>
 		</nav>
@@ -119,6 +121,8 @@
 			
 				
 			
+				
+			
 			
 			
 			<nav class="header-nav">
@@ -136,12 +140,14 @@
 			</nav>
 
 			<nav class="header-menu js-header-menu">
-				<ul style="width: 50%">
+				<ul style="width: 70%">
 				
 				
-					<li style="width: 50%"><a href="/">主页</a></li>
+					<li style="width: 33.333333333333336%"><a href="/">主页</a></li>
 		        
-					<li style="width: 50%"><a href="/tags/%E9%9A%8F%E7%AC%94/">随笔</a></li>
+					<li style="width: 33.333333333333336%"><a href="/tags/%E9%9A%8F%E7%AC%94/">随笔</a></li>
+		        
+					<li style="width: 33.333333333333336%"><a href="/categories">categories</a></li>
 		        
 				</ul>
 			</nav>
@@ -176,7 +182,9 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="集合类"><a href="#集合类" class="headerlink" title="集合类"></a>集合类</h1><h3 id="emsp-以下是下面将要写的主要内容"><a href="#emsp-以下是下面将要写的主要内容" class="headerlink" title="&emsp;以下是下面将要写的主要内容"></a>&emsp;以下是下面将要写的主要内容</h3><p><img src="https://gitee.com/bingjie__chai/PicOfHexo/raw/master/pic_hexo/%E9%9B%86%E5%90%88%E7%B1%BB.png" alt="图片描述"></p>
+
+	
+		<h1 id="集合类"><a href="#集合类" class="headerlink" title="集合类"></a>集合类</h1><h3 id="emsp-以下是下面将要写的主要内容"><a href="#emsp-以下是下面将要写的主要内容" class="headerlink" title="&emsp;以下是下面将要写的主要内容"></a>&emsp;以下是下面将要写的主要内容</h3><p><img src="https://gitee.com/bingjie__chai/PicOfHexo/raw/master/pic_hexo/%E9%9B%86%E5%90%88%E7%B1%BB.png" alt="图片描述"></p>
 <a id="more"></a>
 <h2 id="List接口："><a href="#List接口：" class="headerlink" title="List接口："></a>List接口：</h2><p>&emsp;首先list接口实现了collection接口，List接口下有ArrayList，Vector，LinkedList三个实现类，其中Vector过于老旧所以此处不在讲述，主要介绍ArrayList和LinkedList，其中List是有序的，可重复的，保存序即为添加的顺序</p>
 <h4 id="ArrayList：非线性安全，底层利用数组储存，删改效率较低，get效率高"><a href="#ArrayList：非线性安全，底层利用数组储存，删改效率较低，get效率高" class="headerlink" title="ArrayList：非线性安全，底层利用数组储存，删改效率较低，get效率高"></a>ArrayList：非线性安全，底层利用数组储存，删改效率较低，get效率高</h4><p>1.首先关于自动扩容，在造ArrayList对象时，有空参构造器和自定义大小的构造器，若空参构造器则默认大小为10个，当不够用时会自动扩容，扩容步骤：创建一个新的数组，newArray = old + old&gt;&gt;2，故新数组大小为老数组的1.5倍，同时将老数组的数据复制到新数组中完成扩容</p>
@@ -226,35 +234,24 @@
 
 
 
-      
+	
 
-      
-        <div class="page-reward">
-          <a href="javascript:;" class="page-reward-btn tooltip-top">
-            <div class="tooltip tooltip-east">
-            <span class="tooltip-item">
-              赏
-            </span>
-            <span class="tooltip-content">
-              <span class="tooltip-text">
-                <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
-                  <div class="reward-box">
-                    
-                    
-                  </div>
-                </span>
-              </span>
-            </span>
-          </div>
-          </a>
-        </div>
-      
     </div>
     <div class="article-info article-info-index">
       
       
       
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Java基础//" class="article-tag-list-link color2">Java基础</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
 
       
 
@@ -459,6 +456,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
             <input type="checkbox" q-on="click:toggleTag(e)" q-attr="checked:showTags">
           </label>
           <ul class="article-tag-list" q-show="showTags">
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Java基础</a>
+              </li>
             
             <div class="clearfix"></div>
           </ul>

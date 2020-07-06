@@ -16,7 +16,7 @@
 <meta property="og:description" content="leetCodeT20有效的括号：给定一个只包括 ‘(‘，’)’，’{‘，’}’，’[‘，’]’的字符串，判断字符串是否有效。 有效字符串需满足： 左括号必须用相同类型的右括号闭合。左括号必须以正确的顺序闭合。注意空字符串可被认为是有效字符串。">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-06-28T13:51:23.755Z">
-<meta property="article:modified_time" content="2020-06-28T14:24:46.472Z">
+<meta property="article:modified_time" content="2020-07-06T12:14:47.250Z">
 <meta property="article:author" content="BingJie Chai">
 <meta name="twitter:card" content="summary">
   
@@ -60,6 +60,8 @@
 				<li><a href="/">主页</a></li>
 	        
 				<li><a href="/tags/%E9%9A%8F%E7%AC%94/">随笔</a></li>
+	        
+				<li><a href="/categories">categories</a></li>
 	        
 			</ul>
 		</nav>
@@ -117,6 +119,8 @@
 			
 				
 			
+				
+			
 			
 			
 			<nav class="header-nav">
@@ -134,12 +138,14 @@
 			</nav>
 
 			<nav class="header-menu js-header-menu">
-				<ul style="width: 50%">
+				<ul style="width: 70%">
 				
 				
-					<li style="width: 50%"><a href="/">主页</a></li>
+					<li style="width: 33.333333333333336%"><a href="/">主页</a></li>
 		        
-					<li style="width: 50%"><a href="/tags/%E9%9A%8F%E7%AC%94/">随笔</a></li>
+					<li style="width: 33.333333333333336%"><a href="/tags/%E9%9A%8F%E7%AC%94/">随笔</a></li>
+		        
+					<li style="width: 33.333333333333336%"><a href="/categories">categories</a></li>
 		        
 				</ul>
 			</nav>
@@ -174,7 +180,9 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="leetCodeT20有效的括号："><a href="#leetCodeT20有效的括号：" class="headerlink" title="leetCodeT20有效的括号："></a>leetCodeT20有效的括号：</h1><p>给定一个只包括 ‘(‘，’)’，’{‘，’}’，’[‘，’]’的字符串，判断字符串是否有效。</p>
+
+	
+		<h1 id="leetCodeT20有效的括号："><a href="#leetCodeT20有效的括号：" class="headerlink" title="leetCodeT20有效的括号："></a>leetCodeT20有效的括号：</h1><p>给定一个只包括 ‘(‘，’)’，’{‘，’}’，’[‘，’]’的字符串，判断字符串是否有效。</p>
 <p>有效字符串需满足：</p>
 <p>左括号必须用相同类型的右括号闭合。<br>左括号必须以正确的顺序闭合。<br>注意空字符串可被认为是有效字符串。</p>
 <hr>
@@ -182,35 +190,24 @@
 <p>思路：对于像这样一串字符串：{[()]}，其实我们是从最内层向外开始拆解，当我们遇到左括号时就压入一个右括号，当遇到右括号时就弹出，这样我们判断最后栈是否为空，如果为空，则有效。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">Stack&lt;Character&gt; stack &#x3D; new Stack&lt;&gt;();</span><br><span class="line">		if(s.length() &#x3D;&#x3D; 0) &#123;</span><br><span class="line">			return true;</span><br><span class="line">		&#125;&#x2F;&#x2F;空字符串默认有效</span><br><span class="line">		char [] ch &#x3D; s.toCharArray();</span><br><span class="line">		for(char c : ch ) &#123;</span><br><span class="line">			if(c &#x3D;&#x3D; &#39;(&#39;) &#123;</span><br><span class="line">				stack.push(&#39;)&#39;);</span><br><span class="line">			&#125;else if(c &#x3D;&#x3D; &#39;&#123;&#39;) &#123;</span><br><span class="line">				stack.push(&#39;&#125;&#39;);</span><br><span class="line">			&#125;else if(c &#x3D;&#x3D; &#39;[&#39;) &#123;</span><br><span class="line">				stack.push(&#39;]&#39;);</span><br><span class="line">			&#125;else if(stack.empty() || c!&#x3D;stack.pop()) &#123;</span><br><span class="line">				return false;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	return stack.empty();</span><br></pre></td></tr></table></figure>
 
-      
+	
 
-      
-        <div class="page-reward">
-          <a href="javascript:;" class="page-reward-btn tooltip-top">
-            <div class="tooltip tooltip-east">
-            <span class="tooltip-item">
-              赏
-            </span>
-            <span class="tooltip-content">
-              <span class="tooltip-text">
-                <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
-                  <div class="reward-box">
-                    
-                    
-                  </div>
-                </span>
-              </span>
-            </span>
-          </div>
-          </a>
-        </div>
-      
     </div>
     <div class="article-info article-info-index">
       
       
       
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/数据结构与算法//" class="article-tag-list-link color3">数据结构与算法</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
 
       
 
@@ -415,6 +412,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
             <input type="checkbox" q-on="click:toggleTag(e)" q-attr="checked:showTags">
           </label>
           <ul class="article-tag-list" q-show="showTags">
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Java基础</a>
+              </li>
             
             <div class="clearfix"></div>
           </ul>

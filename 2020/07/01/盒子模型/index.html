@@ -17,7 +17,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://gitee.com/bingjie__chai/PicOfHexo/raw/master/pic_hexo/border.png">
 <meta property="article:published_time" content="2020-07-01T14:56:26.838Z">
-<meta property="article:modified_time" content="2020-07-04T03:20:53.579Z">
+<meta property="article:modified_time" content="2020-07-06T12:17:07.559Z">
 <meta property="article:author" content="BingJie Chai">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://gitee.com/bingjie__chai/PicOfHexo/raw/master/pic_hexo/border.png">
@@ -62,6 +62,8 @@
 				<li><a href="/">主页</a></li>
 	        
 				<li><a href="/tags/%E9%9A%8F%E7%AC%94/">随笔</a></li>
+	        
+				<li><a href="/categories">categories</a></li>
 	        
 			</ul>
 		</nav>
@@ -119,6 +121,8 @@
 			
 				
 			
+				
+			
 			
 			
 			<nav class="header-nav">
@@ -136,12 +140,14 @@
 			</nav>
 
 			<nav class="header-menu js-header-menu">
-				<ul style="width: 50%">
+				<ul style="width: 70%">
 				
 				
-					<li style="width: 50%"><a href="/">主页</a></li>
+					<li style="width: 33.333333333333336%"><a href="/">主页</a></li>
 		        
-					<li style="width: 50%"><a href="/tags/%E9%9A%8F%E7%AC%94/">随笔</a></li>
+					<li style="width: 33.333333333333336%"><a href="/tags/%E9%9A%8F%E7%AC%94/">随笔</a></li>
+		        
+					<li style="width: 33.333333333333336%"><a href="/categories">categories</a></li>
 		        
 				</ul>
 			</nav>
@@ -176,7 +182,9 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="盒子模型"><a href="#盒子模型" class="headerlink" title="盒子模型:"></a>盒子模型:</h1><h2 id="基本组成部分"><a href="#基本组成部分" class="headerlink" title="基本组成部分"></a>基本组成部分</h2><hr>
+
+	
+		<h1 id="盒子模型"><a href="#盒子模型" class="headerlink" title="盒子模型:"></a>盒子模型:</h1><h2 id="基本组成部分"><a href="#基本组成部分" class="headerlink" title="基本组成部分"></a>基本组成部分</h2><hr>
 <h2 id=""><a href="#" class="headerlink" title=""></a><img src="https://gitee.com/bingjie__chai/PicOfHexo/raw/master/pic_hexo/border.png" alt=""></h2><h2 id="水平布局："><a href="#水平布局：" class="headerlink" title="水平布局："></a>水平布局：</h2><p>元素在其父元素中水平位置由以下几个属性共同决定，从外到内依次为：margin-left,border-left,padding-left,width,padding-right,border-right,margin-right,且其综合必须等于父元素的内容区的宽度.<br>当不满足时浏览器会自动帮我们填充，填充规则如下：<br>1.当七个中没有auto情况下，自动调整margin-right来使等式满足<br>2.七个值中，width，margin-left，margin-right三个值可设为auto<br>2.1当某一个值为auto时，则自动调整这个auto的值<br>2.2如果宽度和一个外边距设为auto，宽度会调整为最大，设置的auto外边距会自动为0<br>2.3如果三个为auto，外边距都是0<br>2.4两个边距为auto，宽度固定，则元素居中处理  </p>
 <h2 id="垂直布局："><a href="#垂直布局：" class="headerlink" title="垂直布局："></a>垂直布局：</h2><p>垂直布局相对较为简单，默认情况下父元素的高度由内容决定。<br>我们注意一种特殊情况：当子元素在父元素中排列，如果子元素的大小超过了父元素则会造成溢出的情况，我们要在父元素中定义overflow属性来处理溢出的部分。  </p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">overflow:visiable&#x2F;&#x2F;默认值，超出部分不做处理</span><br><span class="line">overflow:hidden&#x2F;&#x2F;裁剪，超出的部分会直接被裁减</span><br><span class="line">overflow:scroll&#x2F;&#x2F;生成下右两侧滚动条，不管是否需要</span><br><span class="line">overflow:hidden&#x2F;&#x2F;根据需要生成滚动条</span><br></pre></td></tr></table></figure>
@@ -196,35 +204,24 @@
 
 
 
-      
+	
 
-      
-        <div class="page-reward">
-          <a href="javascript:;" class="page-reward-btn tooltip-top">
-            <div class="tooltip tooltip-east">
-            <span class="tooltip-item">
-              赏
-            </span>
-            <span class="tooltip-content">
-              <span class="tooltip-text">
-                <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
-                  <div class="reward-box">
-                    
-                    
-                  </div>
-                </span>
-              </span>
-            </span>
-          </div>
-          </a>
-        </div>
-      
     </div>
     <div class="article-info article-info-index">
       
       
       
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Web//" class="article-tag-list-link color4">Web</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
 
       
 
@@ -429,6 +426,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
             <input type="checkbox" q-on="click:toggleTag(e)" q-attr="checked:showTags">
           </label>
           <ul class="article-tag-list" q-show="showTags">
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Java基础</a>
+              </li>
             
             <div class="clearfix"></div>
           </ul>

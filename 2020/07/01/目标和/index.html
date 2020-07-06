@@ -16,7 +16,7 @@
 <meta property="og:description" content="目标和LeetCodeT494此题可以用dfs和dp两种方案解决，此处先给出dfs的解法给定一个非负整数数组，a1, a2, …, an, 和一个目标数，S。现在你有两个符号+和-。对于数组中的任意一个整数，你都可以从+或-中选择一个符号添加在前面。 返回可以使最终数组和为目标数 S 的所有添加符号的方法数。 示例： 12345678910解释：-1+1+1+1+1 &#x3D; 3+1-1+1+">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-07-01T14:57:14.252Z">
-<meta property="article:modified_time" content="2020-07-01T15:21:24.103Z">
+<meta property="article:modified_time" content="2020-07-06T12:14:26.909Z">
 <meta property="article:author" content="BingJie Chai">
 <meta name="twitter:card" content="summary">
   
@@ -60,6 +60,8 @@
 				<li><a href="/">主页</a></li>
 	        
 				<li><a href="/tags/%E9%9A%8F%E7%AC%94/">随笔</a></li>
+	        
+				<li><a href="/categories">categories</a></li>
 	        
 			</ul>
 		</nav>
@@ -117,6 +119,8 @@
 			
 				
 			
+				
+			
 			
 			
 			<nav class="header-nav">
@@ -134,12 +138,14 @@
 			</nav>
 
 			<nav class="header-menu js-header-menu">
-				<ul style="width: 50%">
+				<ul style="width: 70%">
 				
 				
-					<li style="width: 50%"><a href="/">主页</a></li>
+					<li style="width: 33.333333333333336%"><a href="/">主页</a></li>
 		        
-					<li style="width: 50%"><a href="/tags/%E9%9A%8F%E7%AC%94/">随笔</a></li>
+					<li style="width: 33.333333333333336%"><a href="/tags/%E9%9A%8F%E7%AC%94/">随笔</a></li>
+		        
+					<li style="width: 33.333333333333336%"><a href="/categories">categories</a></li>
 		        
 				</ul>
 			</nav>
@@ -174,7 +180,9 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="目标和LeetCodeT494"><a href="#目标和LeetCodeT494" class="headerlink" title="目标和LeetCodeT494"></a>目标和LeetCodeT494</h1><p>此题可以用dfs和dp两种方案解决，此处先给出dfs的解法<br>给定一个非负整数数组，a1, a2, …, an, 和一个目标数，S。现在你有两个符号+和-。对于数组中的任意一个整数，你都可以从+或-中选择一个符号添加在前面。</p>
+
+	
+		<h1 id="目标和LeetCodeT494"><a href="#目标和LeetCodeT494" class="headerlink" title="目标和LeetCodeT494"></a>目标和LeetCodeT494</h1><p>此题可以用dfs和dp两种方案解决，此处先给出dfs的解法<br>给定一个非负整数数组，a1, a2, …, an, 和一个目标数，S。现在你有两个符号+和-。对于数组中的任意一个整数，你都可以从+或-中选择一个符号添加在前面。</p>
 <p>返回可以使最终数组和为目标数 S 的所有添加符号的方法数。</p>
 <p>示例：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">解释：</span><br><span class="line"></span><br><span class="line">-1+1+1+1+1 &#x3D; 3</span><br><span class="line">+1-1+1+1+1 &#x3D; 3</span><br><span class="line">+1+1-1+1+1 &#x3D; 3</span><br><span class="line">+1+1+1-1+1 &#x3D; 3</span><br><span class="line">+1+1+1+1-1 &#x3D; 3</span><br><span class="line"></span><br><span class="line">一共有5种方法让最终目标和为3。</span><br></pre></td></tr></table></figure>
@@ -184,35 +192,24 @@
 <p>解题思路：以题目可知，我们将起点设为nums[0]，sum设为0，我们遍历令sum+nums[i]和sum-num[i]两种方案来实现添加符号，简单的暴力求解代码：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    int count;</span><br><span class="line">    public int findTargetSumWays(int[] nums, int S) &#123;</span><br><span class="line">        dfs(nums, 0, 0, S);</span><br><span class="line">		return count;</span><br><span class="line">    &#125;</span><br><span class="line">    public void dfs(int nums[],int i,int sum,int target) &#123;</span><br><span class="line">		if( i &#x3D;&#x3D; nums.length ) &#123;</span><br><span class="line">			if(sum &#x3D;&#x3D; target) &#123;</span><br><span class="line">				count++; </span><br><span class="line">			&#125;</span><br><span class="line">			return;</span><br><span class="line">		&#125;else &#123;</span><br><span class="line">			dfs(nums, i+1, sum+nums[i], target);</span><br><span class="line">			dfs(nums, i+1, sum-nums[i], target);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-      
+	
 
-      
-        <div class="page-reward">
-          <a href="javascript:;" class="page-reward-btn tooltip-top">
-            <div class="tooltip tooltip-east">
-            <span class="tooltip-item">
-              赏
-            </span>
-            <span class="tooltip-content">
-              <span class="tooltip-text">
-                <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
-                  <div class="reward-box">
-                    
-                    
-                  </div>
-                </span>
-              </span>
-            </span>
-          </div>
-          </a>
-        </div>
-      
     </div>
     <div class="article-info article-info-index">
       
       
       
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/数据结构与算法//" class="article-tag-list-link color3">数据结构与算法</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
 
       
 
@@ -417,6 +414,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
             <input type="checkbox" q-on="click:toggleTag(e)" q-attr="checked:showTags">
           </label>
           <ul class="article-tag-list" q-show="showTags">
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Java基础</a>
+              </li>
             
             <div class="clearfix"></div>
           </ul>

@@ -16,7 +16,7 @@
 <meta property="og:description" content="CSS定位问题：定位是更加高级的布局手段，可以将元素摆放在页面的任何位置，我们通常使用position来设置定位。可选值有：">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-07-01T14:55:51.453Z">
-<meta property="article:modified_time" content="2020-07-01T15:10:48.023Z">
+<meta property="article:modified_time" content="2020-07-06T12:16:29.421Z">
 <meta property="article:author" content="BingJie Chai">
 <meta name="twitter:card" content="summary">
   
@@ -60,6 +60,8 @@
 				<li><a href="/">主页</a></li>
 	        
 				<li><a href="/tags/%E9%9A%8F%E7%AC%94/">随笔</a></li>
+	        
+				<li><a href="/categories">categories</a></li>
 	        
 			</ul>
 		</nav>
@@ -117,6 +119,8 @@
 			
 				
 			
+				
+			
 			
 			
 			<nav class="header-nav">
@@ -134,12 +138,14 @@
 			</nav>
 
 			<nav class="header-menu js-header-menu">
-				<ul style="width: 50%">
+				<ul style="width: 70%">
 				
 				
-					<li style="width: 50%"><a href="/">主页</a></li>
+					<li style="width: 33.333333333333336%"><a href="/">主页</a></li>
 		        
-					<li style="width: 50%"><a href="/tags/%E9%9A%8F%E7%AC%94/">随笔</a></li>
+					<li style="width: 33.333333333333336%"><a href="/tags/%E9%9A%8F%E7%AC%94/">随笔</a></li>
+		        
+					<li style="width: 33.333333333333336%"><a href="/categories">categories</a></li>
 		        
 				</ul>
 			</nav>
@@ -174,7 +180,9 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="CSS定位问题："><a href="#CSS定位问题：" class="headerlink" title="CSS定位问题："></a>CSS定位问题：</h1><p>定位是更加高级的布局手段，可以将元素摆放在页面的任何位置，我们通常使用position来设置定位。<br>可选值有：</p>
+
+	
+		<h1 id="CSS定位问题："><a href="#CSS定位问题：" class="headerlink" title="CSS定位问题："></a>CSS定位问题：</h1><p>定位是更加高级的布局手段，可以将元素摆放在页面的任何位置，我们通常使用position来设置定位。<br>可选值有：</p>
 <a id="more"></a>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">position：static&#x2F;&#x2F;默认值，没有开启定位</span><br><span class="line">position：relative&#x2F;&#x2F;开启相对定位</span><br><span class="line">position：absolute&#x2F;&#x2F;开启绝对路径</span><br><span class="line">position：fixed&#x2F;&#x2F;固定定位</span><br><span class="line">position：sticky&#x2F;&#x2F;粘滞定位</span><br></pre></td></tr></table></figure>
 <h3 id="相对定位特点："><a href="#相对定位特点：" class="headerlink" title="相对定位特点："></a>相对定位特点：</h3><p>1.元素开启相对定位以后，如果不设置偏移量是不会发生任何变化的，其中偏移量（offset）：当元素开启了定位以后，可以通过偏移量来设置元素位置，包括top，left，right，bottom四个属性来设置位置<br>2.当开启相对定位以后并没有完全脱离文档流，可以看作肉身依旧占据原来的位置，只是灵魂出窍可以自由设置位置<br>3.所以相对定位的参照是参照与元素在文档流中的位置即原来的位置<br>4.相对定位会提升元素的层级，但不会造成布局的改变，可能发生覆盖  </p>
@@ -184,35 +192,24 @@
 <h3 id="绝对定位元素的特点："><a href="#绝对定位元素的特点：" class="headerlink" title="绝对定位元素的特点："></a>绝对定位元素的特点：</h3><p>水平布局中，原先要求七元素等式，现在变成九元素，添加left和rigth九个元素之和为包含快的内容区宽度，left和right默认值为auto<br>如果没有设为auto的值，自动调整right<br>如果有，调整auto属性<br>同理属性方向也必须满足对应九元素等式  </p>
 <h3 id="元素的层级："><a href="#元素的层级：" class="headerlink" title="元素的层级："></a>元素的层级：</h3><p>对于开启定位的元素，通过z-sizing属性指定层级，参数为整数，值越大，越靠上<br>层级相同，则显示代码中靠下的元素快<br>祖先元素的层级再高，也不会盖住后代元素</p>
 
-      
+	
 
-      
-        <div class="page-reward">
-          <a href="javascript:;" class="page-reward-btn tooltip-top">
-            <div class="tooltip tooltip-east">
-            <span class="tooltip-item">
-              赏
-            </span>
-            <span class="tooltip-content">
-              <span class="tooltip-text">
-                <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
-                  <div class="reward-box">
-                    
-                    
-                  </div>
-                </span>
-              </span>
-            </span>
-          </div>
-          </a>
-        </div>
-      
     </div>
     <div class="article-info article-info-index">
       
       
       
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Web//" class="article-tag-list-link color4">Web</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
 
       
 
@@ -287,7 +284,7 @@
   
   
     <a href="/2020/06/28/%E5%8D%95%E5%90%91%E6%A0%88%E9%97%AE%E9%A2%98/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">单向栈问题</div>
+      <div class="article-nav-title">单调栈问题</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -417,6 +414,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
             <input type="checkbox" q-on="click:toggleTag(e)" q-attr="checked:showTags">
           </label>
           <ul class="article-tag-list" q-show="showTags">
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Java基础</a>
+              </li>
             
             <div class="clearfix"></div>
           </ul>

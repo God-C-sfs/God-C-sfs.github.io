@@ -57,6 +57,8 @@
 	        
 				<li><a href="/tags/%E9%9A%8F%E7%AC%94/">随笔</a></li>
 	        
+				<li><a href="/categories">categories</a></li>
+	        
 			</ul>
 		</nav>
 		<nav class="header-smart-menu">
@@ -113,6 +115,8 @@
 			
 				
 			
+				
+			
 			
 			
 			<nav class="header-nav">
@@ -130,12 +134,14 @@
 			</nav>
 
 			<nav class="header-menu js-header-menu">
-				<ul style="width: 50%">
+				<ul style="width: 70%">
 				
 				
-					<li style="width: 50%"><a href="/">主页</a></li>
+					<li style="width: 33.333333333333336%"><a href="/">主页</a></li>
 		        
-					<li style="width: 50%"><a href="/tags/%E9%9A%8F%E7%AC%94/">随笔</a></li>
+					<li style="width: 33.333333333333336%"><a href="/tags/%E9%9A%8F%E7%AC%94/">随笔</a></li>
+		        
+					<li style="width: 33.333333333333336%"><a href="/categories">categories</a></li>
 		        
 				</ul>
 			</nav>
@@ -172,7 +178,9 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="恢复二叉树"><a href="#恢复二叉树" class="headerlink" title="恢复二叉树"></a>恢复二叉树</h1><p>如题所示，我们解决的问题是根据二叉树的遍历组合来还原这个二叉树，这个过程其实是复杂的，我们需要根据三种遍历方式的不同特性来确定这个二叉树，由于前序+后序遍历无法确定一颗唯一的二叉树，所以我们将着重介绍两种：前序+中序和后序+中序来还原二叉树.</p>
+
+	
+		<h1 id="恢复二叉树"><a href="#恢复二叉树" class="headerlink" title="恢复二叉树"></a>恢复二叉树</h1><p>如题所示，我们解决的问题是根据二叉树的遍历组合来还原这个二叉树，这个过程其实是复杂的，我们需要根据三种遍历方式的不同特性来确定这个二叉树，由于前序+后序遍历无法确定一颗唯一的二叉树，所以我们将着重介绍两种：前序+中序和后序+中序来还原二叉树.</p>
 <hr>
 <h3 id="接下来我将详细介绍后序-中序还原二叉树的过程"><a href="#接下来我将详细介绍后序-中序还原二叉树的过程" class="headerlink" title="接下来我将详细介绍后序+中序还原二叉树的过程"></a>接下来我将详细介绍后序+中序还原二叉树的过程</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">例如，给出</span><br><span class="line">中序遍历 inorder &#x3D; [9,3,15,20,7]</span><br><span class="line">后序遍历 postorder &#x3D; [9,15,7,20,3]</span><br><span class="line">返回如下的二叉树：</span><br><span class="line"></span><br><span class="line">    3</span><br><span class="line">   &#x2F; \</span><br><span class="line">  9  20</span><br><span class="line">    &#x2F;  \</span><br><span class="line">   15   7</span><br></pre></td></tr></table></figure>
 
@@ -189,14 +197,24 @@
 
 
 
-      
+	
 
-      
     </div>
     <div class="article-info article-info-index">
       
       
       
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/数据结构与算法//" class="article-tag-list-link color3">数据结构与算法</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
 
       
         <p class="article-more-link">
@@ -250,7 +268,9 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="目标和LeetCodeT494"><a href="#目标和LeetCodeT494" class="headerlink" title="目标和LeetCodeT494"></a>目标和LeetCodeT494</h1><p>此题可以用dfs和dp两种方案解决，此处先给出dfs的解法<br>给定一个非负整数数组，a1, a2, …, an, 和一个目标数，S。现在你有两个符号+和-。对于数组中的任意一个整数，你都可以从+或-中选择一个符号添加在前面。</p>
+
+	
+		<h1 id="目标和LeetCodeT494"><a href="#目标和LeetCodeT494" class="headerlink" title="目标和LeetCodeT494"></a>目标和LeetCodeT494</h1><p>此题可以用dfs和dp两种方案解决，此处先给出dfs的解法<br>给定一个非负整数数组，a1, a2, …, an, 和一个目标数，S。现在你有两个符号+和-。对于数组中的任意一个整数，你都可以从+或-中选择一个符号添加在前面。</p>
 <p>返回可以使最终数组和为目标数 S 的所有添加符号的方法数。</p>
 <p>示例：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">解释：</span><br><span class="line"></span><br><span class="line">-1+1+1+1+1 &#x3D; 3</span><br><span class="line">+1-1+1+1+1 &#x3D; 3</span><br><span class="line">+1+1-1+1+1 &#x3D; 3</span><br><span class="line">+1+1+1-1+1 &#x3D; 3</span><br><span class="line">+1+1+1+1-1 &#x3D; 3</span><br><span class="line"></span><br><span class="line">一共有5种方法让最终目标和为3。</span><br></pre></td></tr></table></figure>
@@ -260,14 +280,24 @@
 <p>解题思路：以题目可知，我们将起点设为nums[0]，sum设为0，我们遍历令sum+nums[i]和sum-num[i]两种方案来实现添加符号，简单的暴力求解代码：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    int count;</span><br><span class="line">    public int findTargetSumWays(int[] nums, int S) &#123;</span><br><span class="line">        dfs(nums, 0, 0, S);</span><br><span class="line">		return count;</span><br><span class="line">    &#125;</span><br><span class="line">    public void dfs(int nums[],int i,int sum,int target) &#123;</span><br><span class="line">		if( i &#x3D;&#x3D; nums.length ) &#123;</span><br><span class="line">			if(sum &#x3D;&#x3D; target) &#123;</span><br><span class="line">				count++; </span><br><span class="line">			&#125;</span><br><span class="line">			return;</span><br><span class="line">		&#125;else &#123;</span><br><span class="line">			dfs(nums, i+1, sum+nums[i], target);</span><br><span class="line">			dfs(nums, i+1, sum-nums[i], target);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-      
+	
 
-      
     </div>
     <div class="article-info article-info-index">
       
       
       
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/数据结构与算法//" class="article-tag-list-link color3">数据结构与算法</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
 
       
         <p class="article-more-link">
@@ -321,7 +351,9 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="盒子模型"><a href="#盒子模型" class="headerlink" title="盒子模型:"></a>盒子模型:</h1><h2 id="基本组成部分"><a href="#基本组成部分" class="headerlink" title="基本组成部分"></a>基本组成部分</h2><hr>
+
+	
+		<h1 id="盒子模型"><a href="#盒子模型" class="headerlink" title="盒子模型:"></a>盒子模型:</h1><h2 id="基本组成部分"><a href="#基本组成部分" class="headerlink" title="基本组成部分"></a>基本组成部分</h2><hr>
 <h2 id=""><a href="#" class="headerlink" title=""></a><img src="https://gitee.com/bingjie__chai/PicOfHexo/raw/master/pic_hexo/border.png" alt=""></h2><h2 id="水平布局："><a href="#水平布局：" class="headerlink" title="水平布局："></a>水平布局：</h2><p>元素在其父元素中水平位置由以下几个属性共同决定，从外到内依次为：margin-left,border-left,padding-left,width,padding-right,border-right,margin-right,且其综合必须等于父元素的内容区的宽度.<br>当不满足时浏览器会自动帮我们填充，填充规则如下：<br>1.当七个中没有auto情况下，自动调整margin-right来使等式满足<br>2.七个值中，width，margin-left，margin-right三个值可设为auto<br>2.1当某一个值为auto时，则自动调整这个auto的值<br>2.2如果宽度和一个外边距设为auto，宽度会调整为最大，设置的auto外边距会自动为0<br>2.3如果三个为auto，外边距都是0<br>2.4两个边距为auto，宽度固定，则元素居中处理  </p>
 <h2 id="垂直布局："><a href="#垂直布局：" class="headerlink" title="垂直布局："></a>垂直布局：</h2><p>垂直布局相对较为简单，默认情况下父元素的高度由内容决定。<br>我们注意一种特殊情况：当子元素在父元素中排列，如果子元素的大小超过了父元素则会造成溢出的情况，我们要在父元素中定义overflow属性来处理溢出的部分。  </p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">overflow:visiable&#x2F;&#x2F;默认值，超出部分不做处理</span><br><span class="line">overflow:hidden&#x2F;&#x2F;裁剪，超出的部分会直接被裁减</span><br><span class="line">overflow:scroll&#x2F;&#x2F;生成下右两侧滚动条，不管是否需要</span><br><span class="line">overflow:hidden&#x2F;&#x2F;根据需要生成滚动条</span><br></pre></td></tr></table></figure>
@@ -341,14 +373,24 @@
 
 
 
-      
+	
 
-      
     </div>
     <div class="article-info article-info-index">
       
       
       
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Web//" class="article-tag-list-link color4">Web</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
 
       
         <p class="article-more-link">
@@ -402,18 +444,26 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="CSS的基本简介"><a href="#CSS的基本简介" class="headerlink" title="CSS的基本简介"></a>CSS的基本简介</h1><p><strong>友情提醒：其中只是简单介绍以一些标签或者格式语法，详情参考w3c文档</strong></p>
-        
-          <a class="article-more-a" href="/2020/07/01/CSS/#more">more >></a>
-        
-      
 
-      
+			<h1 id="CSS的基本简介"><a href="#CSS的基本简介" class="headerlink" title="CSS的基本简介"></a>CSS的基本简介</h1><p><strong>友情提醒：其中只是简单介绍以一些标签或者格式语法，详情参考w3c文档</strong></p>
+	
+
     </div>
     <div class="article-info article-info-index">
       
       
       
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Web//" class="article-tag-list-link color4">Web</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
 
       
         <p class="article-more-link">
@@ -467,18 +517,26 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="CSS定位问题："><a href="#CSS定位问题：" class="headerlink" title="CSS定位问题："></a>CSS定位问题：</h1><p>定位是更加高级的布局手段，可以将元素摆放在页面的任何位置，我们通常使用position来设置定位。<br>可选值有：</p>
-        
-          <a class="article-more-a" href="/2020/07/01/CSS%E5%AE%9A%E4%BD%8D%E9%97%AE%E9%A2%98/#more">more >></a>
-        
-      
 
-      
+			<h1 id="CSS定位问题："><a href="#CSS定位问题：" class="headerlink" title="CSS定位问题："></a>CSS定位问题：</h1><p>定位是更加高级的布局手段，可以将元素摆放在页面的任何位置，我们通常使用position来设置定位。<br>可选值有：</p>
+	
+
     </div>
     <div class="article-info article-info-index">
       
       
       
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Web//" class="article-tag-list-link color4">Web</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
 
       
         <p class="article-more-link">
@@ -519,7 +577,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/06/28/%E5%8D%95%E5%90%91%E6%A0%88%E9%97%AE%E9%A2%98/">单向栈问题</a>
+      <a class="article-title" href="/2020/06/28/%E5%8D%95%E5%90%91%E6%A0%88%E9%97%AE%E9%A2%98/">单调栈问题</a>
     </h1>
   
 
@@ -532,18 +590,26 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="单调栈问题"><a href="#单调栈问题" class="headerlink" title="单调栈问题"></a>单调栈问题</h1><p>首先什么是单调栈<strong>？</strong>并不是栈中的元素是单调的<strong>**而是指出栈的序列是单调的</strong>，所以分为单增栈和单减栈。<br>单增栈的实现思路：当栈为空，或者加入的元素大于栈顶元素时，将栈中比当前小的数据一次弹出，当加入数据小于栈定元素时，则直接进栈。<br>单减栈相反在此就不再叙述，接下来是单调栈的模板：  </p>
-        
-          <a class="article-more-a" href="/2020/06/28/%E5%8D%95%E5%90%91%E6%A0%88%E9%97%AE%E9%A2%98/#more">more >></a>
-        
-      
 
-      
+			<h1 id="单调栈问题"><a href="#单调栈问题" class="headerlink" title="单调栈问题"></a>单调栈问题</h1><p>首先什么是单调栈<strong>？</strong>并不是栈中的元素是单调的<strong>**而是指出栈的序列是单调的</strong>，所以分为单增栈和单减栈。<br>单增栈的实现思路：当栈为空，或者加入的元素大于栈顶元素时，将栈中比当前小的数据一次弹出，当加入数据小于栈定元素时，则直接进栈。<br>单减栈相反在此就不再叙述，接下来是单调栈的模板：  </p>
+	
+
     </div>
     <div class="article-info article-info-index">
       
       
       
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/数据结构与算法//" class="article-tag-list-link color3">数据结构与算法</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
 
       
         <p class="article-more-link">
@@ -597,18 +663,26 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="HTMl语义标签"><a href="#HTMl语义标签" class="headerlink" title="HTMl语义标签"></a>HTMl语义标签</h1><h2 id="实体的语法"><a href="#实体的语法" class="headerlink" title="实体的语法"></a>实体的语法</h2><p>再说标签之前有一个重要的定义：实体的语法，当我们想要在body主题中输入&lt;左尖括号或者&gt;右尖括号时会使浏览器解析无法分辨是标签符号还是数学符号，同理当有多个空格时，默认合并成一个空格此时我们就需要实体语法。  以下列举几个常用的实体符号</p>
-        
-          <a class="article-more-a" href="/2020/06/28/HTML%E8%AF%AD%E4%B9%89%E6%A0%87%E7%AD%BE/#more">more >></a>
-        
-      
 
-      
+			<h1 id="HTMl语义标签"><a href="#HTMl语义标签" class="headerlink" title="HTMl语义标签"></a>HTMl语义标签</h1><h2 id="实体的语法"><a href="#实体的语法" class="headerlink" title="实体的语法"></a>实体的语法</h2><p>再说标签之前有一个重要的定义：实体的语法，当我们想要在body主题中输入&lt;左尖括号或者&gt;右尖括号时会使浏览器解析无法分辨是标签符号还是数学符号，同理当有多个空格时，默认合并成一个空格此时我们就需要实体语法。  以下列举几个常用的实体符号</p>
+	
+
     </div>
     <div class="article-info article-info-index">
       
       
       
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Web//" class="article-tag-list-link color4">Web</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
 
       
         <p class="article-more-link">
@@ -662,19 +736,27 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="最小栈的问题"><a href="#最小栈的问题" class="headerlink" title="最小栈的问题"></a>最小栈的问题</h1><p>首先明确定义：什么是最小栈？就是栈中有一个getMin（）方法可以常数复杂度的获取栈中的最小值，所以暴力遍历栈获取最小值是十分不明智的，所以我们会采用一个辅助栈，来帮助我们获取最小值。通常有两种方案，和主栈同步，和主栈不同步。  </p>
-<hr>
-        
-          <a class="article-more-a" href="/2020/06/28/%E6%9C%80%E5%B0%8F%E6%A0%88%E9%97%AE%E9%A2%98/#more">more >></a>
-        
-      
 
-      
+			<h1 id="最小栈的问题"><a href="#最小栈的问题" class="headerlink" title="最小栈的问题"></a>最小栈的问题</h1><p>首先明确定义：什么是最小栈？就是栈中有一个getMin（）方法可以常数复杂度的获取栈中的最小值，所以暴力遍历栈获取最小值是十分不明智的，所以我们会采用一个辅助栈，来帮助我们获取最小值。通常有两种方案，和主栈同步，和主栈不同步。  </p>
+<hr>
+	
+
     </div>
     <div class="article-info article-info-index">
       
       
       
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/数据结构与算法//" class="article-tag-list-link color3">数据结构与算法</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
 
       
         <p class="article-more-link">
@@ -728,21 +810,29 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="leetCodeT20有效的括号："><a href="#leetCodeT20有效的括号：" class="headerlink" title="leetCodeT20有效的括号："></a>leetCodeT20有效的括号：</h1><p>给定一个只包括 ‘(‘，’)’，’{‘，’}’，’[‘，’]’的字符串，判断字符串是否有效。</p>
+
+			<h1 id="leetCodeT20有效的括号："><a href="#leetCodeT20有效的括号：" class="headerlink" title="leetCodeT20有效的括号："></a>leetCodeT20有效的括号：</h1><p>给定一个只包括 ‘(‘，’)’，’{‘，’}’，’[‘，’]’的字符串，判断字符串是否有效。</p>
 <p>有效字符串需满足：</p>
 <p>左括号必须用相同类型的右括号闭合。<br>左括号必须以正确的顺序闭合。<br>注意空字符串可被认为是有效字符串。</p>
 <hr>
-        
-          <a class="article-more-a" href="/2020/06/28/%E6%9C%89%E6%95%88%E7%9A%84%E6%8B%AC%E5%8F%B7/#more">more >></a>
-        
-      
+	
 
-      
     </div>
     <div class="article-info article-info-index">
       
       
       
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/数据结构与算法//" class="article-tag-list-link color3">数据结构与算法</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
 
       
         <p class="article-more-link">
@@ -796,19 +886,27 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="BFS解题模板"><a href="#BFS解题模板" class="headerlink" title="BFS解题模板"></a>BFS解题模板</h1><p>首先明确BFS的核心思想，就是将问题抽象成一个图，从一个点开始向四周扩散，所以我们会使用QUeue这种核心数据结构，BFS常用于寻找最短路径问题，相比于DFS时间复杂度更低，因为DFS总要走到底然后才能得出这条路有多长，然后在进行对比，当然BFS也有弊端，空间复杂度很高，当我们要寻找的目标在最深处时，那么我们将会遍历到所有的节点，空间的消耗是比较大的。  </p>
-<h2 id="所以接下来的代码是一个比较标准的解题模板，细心品味"><a href="#所以接下来的代码是一个比较标准的解题模板，细心品味" class="headerlink" title="所以接下来的代码是一个比较标准的解题模板，细心品味"></a>所以接下来的代码是一个比较标准的解题模板，细心品味</h2>
-        
-          <a class="article-more-a" href="/2020/06/27/BFS%E8%A7%A3%E9%A2%98%E6%A8%A1%E6%9D%BF/#more">more >></a>
-        
-      
 
-      
+			<h1 id="BFS解题模板"><a href="#BFS解题模板" class="headerlink" title="BFS解题模板"></a>BFS解题模板</h1><p>首先明确BFS的核心思想，就是将问题抽象成一个图，从一个点开始向四周扩散，所以我们会使用QUeue这种核心数据结构，BFS常用于寻找最短路径问题，相比于DFS时间复杂度更低，因为DFS总要走到底然后才能得出这条路有多长，然后在进行对比，当然BFS也有弊端，空间复杂度很高，当我们要寻找的目标在最深处时，那么我们将会遍历到所有的节点，空间的消耗是比较大的。  </p>
+<h2 id="所以接下来的代码是一个比较标准的解题模板，细心品味"><a href="#所以接下来的代码是一个比较标准的解题模板，细心品味" class="headerlink" title="所以接下来的代码是一个比较标准的解题模板，细心品味"></a>所以接下来的代码是一个比较标准的解题模板，细心品味</h2>
+	
+
     </div>
     <div class="article-info article-info-index">
       
       
       
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/数据结构与算法//" class="article-tag-list-link color3">数据结构与算法</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
 
       
         <p class="article-more-link">
@@ -943,6 +1041,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
             <input type="checkbox" q-on="click:toggleTag(e)" q-attr="checked:showTags">
           </label>
           <ul class="article-tag-list" q-show="showTags">
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Java基础</a>
+              </li>
             
             <div class="clearfix"></div>
           </ul>

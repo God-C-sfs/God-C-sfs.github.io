@@ -16,7 +16,7 @@
 <meta property="og:description" content="BFS解题模板首先明确BFS的核心思想，就是将问题抽象成一个图，从一个点开始向四周扩散，所以我们会使用QUeue这种核心数据结构，BFS常用于寻找最短路径问题，相比于DFS时间复杂度更低，因为DFS总要走到底然后才能得出这条路有多长，然后在进行对比，当然BFS也有弊端，空间复杂度很高，当我们要寻找的目标在最深处时，那么我们将会遍历到所有的节点，空间的消耗是比较大的。   所以接下来的代码是一个比较">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-06-27T03:34:24.423Z">
-<meta property="article:modified_time" content="2020-06-28T14:30:41.678Z">
+<meta property="article:modified_time" content="2020-07-06T12:12:22.513Z">
 <meta property="article:author" content="BingJie Chai">
 <meta name="twitter:card" content="summary">
   
@@ -60,6 +60,8 @@
 				<li><a href="/">主页</a></li>
 	        
 				<li><a href="/tags/%E9%9A%8F%E7%AC%94/">随笔</a></li>
+	        
+				<li><a href="/categories">categories</a></li>
 	        
 			</ul>
 		</nav>
@@ -117,6 +119,8 @@
 			
 				
 			
+				
+			
 			
 			
 			<nav class="header-nav">
@@ -134,12 +138,14 @@
 			</nav>
 
 			<nav class="header-menu js-header-menu">
-				<ul style="width: 50%">
+				<ul style="width: 70%">
 				
 				
-					<li style="width: 50%"><a href="/">主页</a></li>
+					<li style="width: 33.333333333333336%"><a href="/">主页</a></li>
 		        
-					<li style="width: 50%"><a href="/tags/%E9%9A%8F%E7%AC%94/">随笔</a></li>
+					<li style="width: 33.333333333333336%"><a href="/tags/%E9%9A%8F%E7%AC%94/">随笔</a></li>
+		        
+					<li style="width: 33.333333333333336%"><a href="/categories">categories</a></li>
 		        
 				</ul>
 			</nav>
@@ -174,7 +180,9 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="BFS解题模板"><a href="#BFS解题模板" class="headerlink" title="BFS解题模板"></a>BFS解题模板</h1><p>首先明确BFS的核心思想，就是将问题抽象成一个图，从一个点开始向四周扩散，所以我们会使用QUeue这种核心数据结构，BFS常用于寻找最短路径问题，相比于DFS时间复杂度更低，因为DFS总要走到底然后才能得出这条路有多长，然后在进行对比，当然BFS也有弊端，空间复杂度很高，当我们要寻找的目标在最深处时，那么我们将会遍历到所有的节点，空间的消耗是比较大的。  </p>
+
+	
+		<h1 id="BFS解题模板"><a href="#BFS解题模板" class="headerlink" title="BFS解题模板"></a>BFS解题模板</h1><p>首先明确BFS的核心思想，就是将问题抽象成一个图，从一个点开始向四周扩散，所以我们会使用QUeue这种核心数据结构，BFS常用于寻找最短路径问题，相比于DFS时间复杂度更低，因为DFS总要走到底然后才能得出这条路有多长，然后在进行对比，当然BFS也有弊端，空间复杂度很高，当我们要寻找的目标在最深处时，那么我们将会遍历到所有的节点，空间的消耗是比较大的。  </p>
 <h2 id="所以接下来的代码是一个比较标准的解题模板，细心品味"><a href="#所以接下来的代码是一个比较标准的解题模板，细心品味" class="headerlink" title="所以接下来的代码是一个比较标准的解题模板，细心品味"></a>所以接下来的代码是一个比较标准的解题模板，细心品味</h2><a id="more"></a>
 
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 计算从起点 start 到终点 target 的最近距离</span><br><span class="line">int BFS(Node start, Node target) &#123;</span><br><span class="line">    Queue&lt;Node&gt; q; &#x2F;&#x2F; 核心数据结构</span><br><span class="line">    Set&lt;Node&gt; visited; &#x2F;&#x2F; 避免走回头路</span><br><span class="line">    </span><br><span class="line">    q.offer(start); &#x2F;&#x2F; 将起点加入队列</span><br><span class="line">    visited.add(start);</span><br><span class="line">    int step &#x3D; 0; &#x2F;&#x2F; 记录扩散的步数</span><br><span class="line"></span><br><span class="line">    while (q not empty) &#123;</span><br><span class="line">        int sz &#x3D; q.size();</span><br><span class="line">        &#x2F;* 将当前队列中的所有节点向四周扩散 *&#x2F;</span><br><span class="line">        for (int i &#x3D; 0; i &lt; sz; i++) &#123;</span><br><span class="line">            Node cur &#x3D; q.poll();</span><br><span class="line">            &#x2F;* 划重点：这里判断是否到达终点 *&#x2F;</span><br><span class="line">            &#x2F;* 外加一些判断条件*&#x2F;</span><br><span class="line">            if (cur is target)</span><br><span class="line">                return step;</span><br><span class="line">            &#x2F;* 将 cur 的相邻节点加入队列 *&#x2F;</span><br><span class="line">            for (Node x : cur.adj())</span><br><span class="line">                if (x not in visited) &#123;</span><br><span class="line">                    q.offer(x);</span><br><span class="line">                    visited.add(x);</span><br><span class="line">                &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        &#x2F;* 划重点：更新步数在这里 *&#x2F;</span><br><span class="line">        step++;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">作者：labuladong</span><br><span class="line">链接：https:&#x2F;&#x2F;leetcode-cn.com&#x2F;problems&#x2F;open-the-lock&#x2F;solution&#x2F;wo-xie-liao-yi-tao-bfs-suan-fa-kuang-jia-jian-dao-&#x2F;</span><br><span class="line">来源：力扣（LeetCode)  </span><br><span class="line">其中visited不是必须的，向二叉树这种没有回头路的结构就不需要visited数组</span><br></pre></td></tr></table></figure>
@@ -186,35 +194,24 @@
 <h4 id="在对比以下标准模板我们不难发现只是添加了一些对细节的要求，但接下来会介绍更高效的一种方法，双向BFS，这种解题方法我们有一个前提，就是必须要知道我们要寻找的终点，然后从两端开始向BFS，直到有交集时结束，例如本体target就是终点，所以我们可以采取这种方法来解题"><a href="#在对比以下标准模板我们不难发现只是添加了一些对细节的要求，但接下来会介绍更高效的一种方法，双向BFS，这种解题方法我们有一个前提，就是必须要知道我们要寻找的终点，然后从两端开始向BFS，直到有交集时结束，例如本体target就是终点，所以我们可以采取这种方法来解题" class="headerlink" title="在对比以下标准模板我们不难发现只是添加了一些对细节的要求，但接下来会介绍更高效的一种方法，双向BFS，这种解题方法我们有一个前提，就是必须要知道我们要寻找的终点，然后从两端开始向BFS，直到有交集时结束，例如本体target就是终点，所以我们可以采取这种方法来解题"></a>在对比以下标准模板我们不难发现只是添加了一些对细节的要求，但接下来会介绍更高效的一种方法，双向BFS，这种解题方法我们有一个前提，就是必须要知道我们要寻找的终点，然后从两端开始向BFS，直到有交集时结束，例如本体target就是终点，所以我们可以采取这种方法来解题</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">int openLock(String[] deadends, String target) &#123;</span><br><span class="line">    Set&lt;String&gt; deads &#x3D; new HashSet&lt;&gt;();</span><br><span class="line">    for (String s : deadends) deads.add(s);</span><br><span class="line">    &#x2F;&#x2F; 用集合不用队列，可以快速判断元素是否存在</span><br><span class="line">    Set&lt;String&gt; q1 &#x3D; new HashSet&lt;&gt;();</span><br><span class="line">    Set&lt;String&gt; q2 &#x3D; new HashSet&lt;&gt;();</span><br><span class="line">    Set&lt;String&gt; visited &#x3D; new HashSet&lt;&gt;();</span><br><span class="line">    </span><br><span class="line">    int step &#x3D; 0;</span><br><span class="line">    q1.add(&quot;0000&quot;);</span><br><span class="line">    q2.add(target);</span><br><span class="line">    </span><br><span class="line">    while (!q1.isEmpty() &amp;&amp; !q2.isEmpty()) &#123;</span><br><span class="line">        &#x2F;&#x2F; 哈希集合在遍历的过程中不能修改，用 temp 存储扩散结果</span><br><span class="line">        Set&lt;String&gt; temp &#x3D; new HashSet&lt;&gt;();</span><br><span class="line"></span><br><span class="line">        &#x2F;* 将 q1 中的所有节点向周围扩散 *&#x2F;</span><br><span class="line">        for (String cur : q1) &#123;</span><br><span class="line">            &#x2F;* 判断是否到达终点 *&#x2F;</span><br><span class="line">            if (deads.contains(cur))</span><br><span class="line">                continue;</span><br><span class="line">            if (q2.contains(cur))</span><br><span class="line">                return step;</span><br><span class="line">            visited.add(cur);</span><br><span class="line"></span><br><span class="line">            &#x2F;* 将一个节点的未遍历相邻节点加入集合 *&#x2F;</span><br><span class="line">            for (int j &#x3D; 0; j &lt; 4; j++) &#123;</span><br><span class="line">                String up &#x3D; plusOne(cur, j);</span><br><span class="line">                if (!visited.contains(up))</span><br><span class="line">                    temp.add(up);</span><br><span class="line">                String down &#x3D; minusOne(cur, j);</span><br><span class="line">                if (!visited.contains(down))</span><br><span class="line">                    temp.add(down);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        &#x2F;* 在这里增加步数 *&#x2F;</span><br><span class="line">        step++;</span><br><span class="line">        &#x2F;&#x2F; temp 相当于 q1</span><br><span class="line">        &#x2F;&#x2F; 这里交换 q1 q2，下一轮 while 就是扩散 q2</span><br><span class="line">        q1 &#x3D; q2;</span><br><span class="line">        q2 &#x3D; temp;</span><br><span class="line">    &#125;</span><br><span class="line">    return -1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>作者：labuladong<br>链接：<a href="https://leetcode-cn.com/problems/open-the-lock/solution/wo-xie-liao-yi-tao-bfs-suan-fa-kuang-jia-jian-dao-/" target="_blank" rel="noopener">https://leetcode-cn.com/problems/open-the-lock/solution/wo-xie-liao-yi-tao-bfs-suan-fa-kuang-jia-jian-dao-/</a><br>来源：力扣（LeetCode) </p>
 
-      
+	
 
-      
-        <div class="page-reward">
-          <a href="javascript:;" class="page-reward-btn tooltip-top">
-            <div class="tooltip tooltip-east">
-            <span class="tooltip-item">
-              赏
-            </span>
-            <span class="tooltip-content">
-              <span class="tooltip-text">
-                <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
-                  <div class="reward-box">
-                    
-                    
-                  </div>
-                </span>
-              </span>
-            </span>
-          </div>
-          </a>
-        </div>
-      
     </div>
     <div class="article-info article-info-index">
       
       
       
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/数据结构与算法//" class="article-tag-list-link color3">数据结构与算法</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
 
       
 
@@ -419,6 +416,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
             <input type="checkbox" q-on="click:toggleTag(e)" q-attr="checked:showTags">
           </label>
           <ul class="article-tag-list" q-show="showTags">
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Java基础</a>
+              </li>
             
             <div class="clearfix"></div>
           </ul>
