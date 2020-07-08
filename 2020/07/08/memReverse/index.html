@@ -6,15 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>文章分类 | God-C-sfs</title>
+  <title>memReverse | God-C-sfs</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="文章分类">
-<meta property="og:url" content="http://yoursite.com/categories/index.html">
+  <meta name="description" content="记忆化搜索：下面用两个比较简单的例子来对记忆化搜索有一个初步了解：例一：Fibonacci数列的记忆化递归过程 1234567891011121314151617class Solution &amp;#123;    HashMap&lt;Integer, Integer&gt; cache &#x3D; new HashMap&lt;Integer, Integer&gt;();    public">
+<meta property="og:type" content="article">
+<meta property="og:title" content="memReverse">
+<meta property="og:url" content="http://yoursite.com/2020/07/08/memReverse/index.html">
 <meta property="og:site_name" content="God-C-sfs">
+<meta property="og:description" content="记忆化搜索：下面用两个比较简单的例子来对记忆化搜索有一个初步了解：例一：Fibonacci数列的记忆化递归过程 1234567891011121314151617class Solution &amp;#123;    HashMap&lt;Integer, Integer&gt; cache &#x3D; new HashMap&lt;Integer, Integer&gt;();    public">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2020-07-06T11:23:18.000Z">
-<meta property="article:modified_time" content="2020-07-06T11:31:22.175Z">
+<meta property="article:published_time" content="2020-07-08T14:27:32.005Z">
+<meta property="article:modified_time" content="2020-07-08T14:08:56.446Z">
 <meta property="article:author" content="BingJie Chai">
 <meta name="twitter:card" content="summary">
   
@@ -158,20 +160,20 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="categories-" class="article article-type-categories " itemscope itemprop="blogPost">
+            <article id="post-memReverse" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      文章分类
+      memReverse
     </h1>
   
 
         
-        <a href="/categories/index.html" class="archive-article-date">
-  	<time datetime="2020-07-06T11:23:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-06</time>
+        <a href="/2020/07/08/memReverse/" class="archive-article-date">
+  	<time datetime="2020-07-08T14:27:32.005Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-08</time>
 </a>
         
       </header>
@@ -179,17 +181,13 @@
     <div class="article-entry" itemprop="articleBody">
       
 
-<div class="category-all-page">
-	<div class="category-all-title">
-	counter.categories
-	</div>
 	
-	<div class="category-all">
-	<ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Java%E5%9F%BA%E7%A1%80/">Java基础</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Web/">Web</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">数据结构与算法</a><span class="category-list-count">14</span></li></ul>
-	</div>
-	
-</div>
+		<h1 id="记忆化搜索："><a href="#记忆化搜索：" class="headerlink" title="记忆化搜索："></a>记忆化搜索：</h1><p>下面用两个比较简单的例子来对记忆化搜索有一个初步了解：<br>例一：Fibonacci数列的记忆化递归过程</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    HashMap&lt;Integer, Integer&gt; cache &#x3D; new HashMap&lt;Integer, Integer&gt;();</span><br><span class="line">    public int fib(int N) &#123;</span><br><span class="line">        if(cache.containsKey(N))&#123;</span><br><span class="line">            return cache.get(N);</span><br><span class="line">        &#125;</span><br><span class="line">        int res &#x3D; 0;</span><br><span class="line">        if(N&lt;2)&#123;</span><br><span class="line">            res &#x3D; N;</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">            res &#x3D; fib(N-1)+fib(N-2);</span><br><span class="line">        &#125;</span><br><span class="line">        cache.put(N,res);</span><br><span class="line">        return res;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>爬楼梯的记忆化递归过程</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    HashMap&lt;Integer, Integer&gt; cache &#x3D; new HashMap&lt;Integer, Integer&gt;();</span><br><span class="line">    public int climbStairs(int n) &#123;</span><br><span class="line">        if(cache.containsKey(n))&#123;</span><br><span class="line">            return cache.get(n);</span><br><span class="line">        &#125;</span><br><span class="line">        int res;</span><br><span class="line">        if(n&lt;&#x3D;2)&#123;</span><br><span class="line">            res &#x3D; n;</span><br><span class="line">        &#125;</span><br><span class="line">        else&#123;</span><br><span class="line">           res &#x3D;  climbStairs(n-1)+climbStairs(n-2);</span><br><span class="line">    &#125;</span><br><span class="line">        cache.put(n,res);</span><br><span class="line">        return res;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
+	
 
     </div>
     <div class="article-info article-info-index">
@@ -245,7 +243,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/categories/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/07/08/memReverse/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -257,6 +255,16 @@
 </article>
 
   
+<nav id="article-nav">
+  
+  
+    <a href="/2020/07/08/%E7%AC%ACk%E4%B8%AA%E8%AF%AD%E6%B3%95%E7%AC%A6%E5%8F%B7/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">第k个语法符号</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -275,6 +283,16 @@
 </aside>
 
 
+
+  
+  
+  
+
+  
+
+  
+
+  
 
 
           </div>
@@ -299,7 +317,7 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,

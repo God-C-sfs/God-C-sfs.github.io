@@ -158,6 +158,474 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-目标和" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/07/01/%E7%9B%AE%E6%A0%87%E5%92%8C/">目标和</a>
+    </h1>
+  
+
+        
+        <a href="/2020/07/01/%E7%9B%AE%E6%A0%87%E5%92%8C/" class="archive-article-date">
+  	<time datetime="2020-07-01T14:57:14.252Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-01</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+
+	
+		<h1 id="目标和LeetCodeT494"><a href="#目标和LeetCodeT494" class="headerlink" title="目标和LeetCodeT494"></a>目标和LeetCodeT494</h1><p>此题可以用dfs和dp两种方案解决，此处先给出dfs的解法<br>给定一个非负整数数组，a1, a2, …, an, 和一个目标数，S。现在你有两个符号+和-。对于数组中的任意一个整数，你都可以从+或-中选择一个符号添加在前面。</p>
+<p>返回可以使最终数组和为目标数 S 的所有添加符号的方法数。</p>
+<p>示例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">解释：</span><br><span class="line"></span><br><span class="line">-1+1+1+1+1 &#x3D; 3</span><br><span class="line">+1-1+1+1+1 &#x3D; 3</span><br><span class="line">+1+1-1+1+1 &#x3D; 3</span><br><span class="line">+1+1+1-1+1 &#x3D; 3</span><br><span class="line">+1+1+1+1-1 &#x3D; 3</span><br><span class="line"></span><br><span class="line">一共有5种方法让最终目标和为3。</span><br></pre></td></tr></table></figure>
+
+
+<hr>
+<p>解题思路：以题目可知，我们将起点设为nums[0]，sum设为0，我们遍历令sum+nums[i]和sum-num[i]两种方案来实现添加符号，简单的暴力求解代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    int count;</span><br><span class="line">    public int findTargetSumWays(int[] nums, int S) &#123;</span><br><span class="line">        dfs(nums, 0, 0, S);</span><br><span class="line">		return count;</span><br><span class="line">    &#125;</span><br><span class="line">    public void dfs(int nums[],int i,int sum,int target) &#123;</span><br><span class="line">		if( i &#x3D;&#x3D; nums.length ) &#123;</span><br><span class="line">			if(sum &#x3D;&#x3D; target) &#123;</span><br><span class="line">				count++; </span><br><span class="line">			&#125;</span><br><span class="line">			return;</span><br><span class="line">		&#125;else &#123;</span><br><span class="line">			dfs(nums, i+1, sum+nums[i], target);</span><br><span class="line">			dfs(nums, i+1, sum-nums[i], target);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+	
+
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/数据结构与算法//" class="article-tag-list-link color3">数据结构与算法</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/07/01/%E7%9B%AE%E6%A0%87%E5%92%8C/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-盒子模型" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/07/01/%E7%9B%92%E5%AD%90%E6%A8%A1%E5%9E%8B/">盒子模型</a>
+    </h1>
+  
+
+        
+        <a href="/2020/07/01/%E7%9B%92%E5%AD%90%E6%A8%A1%E5%9E%8B/" class="archive-article-date">
+  	<time datetime="2020-07-01T14:56:26.838Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-01</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+
+	
+		<h1 id="盒子模型"><a href="#盒子模型" class="headerlink" title="盒子模型:"></a>盒子模型:</h1><h2 id="基本组成部分"><a href="#基本组成部分" class="headerlink" title="基本组成部分"></a>基本组成部分</h2><hr>
+<h2 id=""><a href="#" class="headerlink" title=""></a><img src="https://gitee.com/bingjie__chai/PicOfHexo/raw/master/pic_hexo/border.png" alt=""></h2><h2 id="水平布局："><a href="#水平布局：" class="headerlink" title="水平布局："></a>水平布局：</h2><p>元素在其父元素中水平位置由以下几个属性共同决定，从外到内依次为：margin-left,border-left,padding-left,width,padding-right,border-right,margin-right,且其综合必须等于父元素的内容区的宽度.<br>当不满足时浏览器会自动帮我们填充，填充规则如下：<br>1.当七个中没有auto情况下，自动调整margin-right来使等式满足<br>2.七个值中，width，margin-left，margin-right三个值可设为auto<br>2.1当某一个值为auto时，则自动调整这个auto的值<br>2.2如果宽度和一个外边距设为auto，宽度会调整为最大，设置的auto外边距会自动为0<br>2.3如果三个为auto，外边距都是0<br>2.4两个边距为auto，宽度固定，则元素居中处理  </p>
+<h2 id="垂直布局："><a href="#垂直布局：" class="headerlink" title="垂直布局："></a>垂直布局：</h2><p>垂直布局相对较为简单，默认情况下父元素的高度由内容决定。<br>我们注意一种特殊情况：当子元素在父元素中排列，如果子元素的大小超过了父元素则会造成溢出的情况，我们要在父元素中定义overflow属性来处理溢出的部分。  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">overflow:visiable&#x2F;&#x2F;默认值，超出部分不做处理</span><br><span class="line">overflow:hidden&#x2F;&#x2F;裁剪，超出的部分会直接被裁减</span><br><span class="line">overflow:scroll&#x2F;&#x2F;生成下右两侧滚动条，不管是否需要</span><br><span class="line">overflow:hidden&#x2F;&#x2F;根据需要生成滚动条</span><br></pre></td></tr></table></figure>
+<h2 id="垂直方向外边距的重叠："><a href="#垂直方向外边距的重叠：" class="headerlink" title="垂直方向外边距的重叠："></a>垂直方向外边距的重叠：</h2><p>兄弟元素间相邻垂直外边距会取两者的较大值，不会进行叠加。<br>父子元素之间，相邻垂直外边距子元素会传递给父元素（上外边距），当你想要子元素与父元素之间设置外边距时，若两条边重合则会同步移动，解决：通过在相邻外边距设置边框，使其分开  </p>
+<h2 id="水平方向外边距的重叠："><a href="#水平方向外边距的重叠：" class="headerlink" title="水平方向外边距的重叠："></a>水平方向外边距的重叠：</h2><p>此时，水平方向的外边距将会相加，不会取最大值，不会造成外边距的重叠 </p>
+<h2 id="行内元素的盒子模型："><a href="#行内元素的盒子模型：" class="headerlink" title="行内元素的盒子模型："></a>行内元素的盒子模型：</h2><p>1.首先行内元素时不支持设置高度和宽度的，默认时内容决定，无法修改。<br>2.行内元素是可以设置边框边距的，有可能会发生重叠，但不会影响垂直方向上的布局<br>3.当我们需要对行内元素设置宽高时我们可以设置display属性，将行内元素转换为块元素</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">display : inline&#x2F;&#x2F;行内元素</span><br><span class="line">display : block&#x2F;&#x2F; 块元素</span><br><span class="line">display : inline-block&#x2F;&#x2F;即可以设置宽高，也不会独占一行</span><br><span class="line">display : none&#x2F;&#x2F;不再显示</span><br></pre></td></tr></table></figure>
+<h2 id="盒子的大小："><a href="#盒子的大小：" class="headerlink" title="盒子的大小："></a>盒子的大小：</h2><p>默认情况下，盒子的可见框是有内容区，内边距，边框共同决定的<br>我们通过设置box-sizing来改变，可选值有content-box和border-box</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">box-sizing : content-box&#x2F;&#x2F;此时width和height来设置内容区的大小，边框边距会增大盒子大小</span><br><span class="line">box-sizing : border-box&#x2F;&#x2F;此时宽高来设置整个盒子的大小，width和height为内容区和内边距边框的总大小</span><br></pre></td></tr></table></figure>
+<h2 id="轮廓和圆角："><a href="#轮廓和圆角：" class="headerlink" title="轮廓和圆角："></a>轮廓和圆角：</h2><p>1.outline用来设置元素的轮廓线，用法和border一样，不同的是，轮廓线不会影响布局，可能造成重叠<br>2.阴影：box-shadow设置阴影效果，默认在元素正下方，不可见，通过设置偏移量来设置偏移效果，格式为box-shadow:xxx xxx xxx xxx 水平偏移量，竖直偏移量，模糊效果，颜色<br>3.圆角：border-radius:border-top-left-radius,同理类推，可得到四个角的圆角，可以设置曲率半径，当border-radius设置为50%，图形会变成圆形  </p>
+<h2 id="浮动："><a href="#浮动：" class="headerlink" title="浮动："></a>浮动：</h2><p>通过浮动可以使一个元素向其父元素的左侧或右侧移动，可以用来设置水平布局<br>设置float属性：none，默认值不一定，left向左移动，right向右移动。<br><strong>设置float后的元素脱离文档流：</strong><br>1.块元素不会再独占一行<br>2.块元素高度和宽度默认为内容的大小，文档流中，宽度默认为父元素的大小，高度默认为内容大小<br>3.行内元素脱离之后就会变成浮动的块元素<br>其中在设置float属性后，在移动过程中，同为float属性的元素移动时不会发生覆盖，将会形成对齐效果</p>
+<h2 id="高度塌陷问题："><a href="#高度塌陷问题：" class="headerlink" title="高度塌陷问题："></a>高度塌陷问题：</h2><p>在布局中父元素的高度默认是被子元素撑开的，当子元素浮动后，其完全脱离文档流，子元素从文档流中脱离将会无法撑起父元素的高度导致父元素高度丢失，丢失后以下元素会自动上移造成页面的混乱，这就叫做高度塌陷的问题。<br>解决的方案通常有两种，第一将父元素高度定死，但这种做法会造成元素大小无法根据内容变化，可能有大部分留白或者溢出的现象，所以通常不提倡这种做法，那么另一种解决方案设置BFC <br/><strong>那么什么是BFC？</strong><br>BFC块级格式化区域环境：开启后该元素会变成一个独立的布局区域。<br>1.开启后BFC的元素不会被浮动元素覆盖<br>2.开启后BFC的元素和父元素外边距不会重叠（可用来解决上面的垂直方向外边距重叠问题）<br>3.开启后BFC的元素可以包含浮动的子元素（用来解决高度塌陷问题）<br><strong>BFC开启的方法：</strong><br>1.将元素设为浮动<br>2.将元素设为行内块元素<br>3.设置overflow将默认值改掉  </p>
+<h2 id="clear属性："><a href="#clear属性：" class="headerlink" title="clear属性："></a>clear属性：</h2><p>如果我们不希望某个元素因为其他元素浮动而改变位置，可以通过clear属性来清除浮动元素对当前元素的影响。可选值：left，right，both  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">clear：left&#x2F;&#x2F;清楚左侧浮动元素对当前元素的影响</span><br><span class="line">clear：right&#x2F;&#x2F;清楚右侧浮动元素对当前元素的影响</span><br><span class="line">clear：both&#x2F;&#x2F;清楚两侧中影响最大的那个</span><br></pre></td></tr></table></figure>
+<h2 id="用after伪类解决高度塌陷问题："><a href="#用after伪类解决高度塌陷问题：" class="headerlink" title="用after伪类解决高度塌陷问题："></a>用after伪类解决高度塌陷问题：</h2><p>为了解决同时解决高度塌陷和外边距重叠问题，我们有一个模板,clearfix为要修改的类名</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">.clearfix::before,</span><br><span class="line">.clearfix::after&#123;</span><br><span class="line">    content:&#39;&#39;;</span><br><span class="line">    display:table;</span><br><span class="line">    clear:both</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+	
+
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Web//" class="article-tag-list-link color4">Web</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/07/01/%E7%9B%92%E5%AD%90%E6%A8%A1%E5%9E%8B/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-CSS" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/07/01/CSS/">CSS</a>
+    </h1>
+  
+
+        
+        <a href="/2020/07/01/CSS/" class="archive-article-date">
+  	<time datetime="2020-07-01T14:56:26.837Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-01</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+
+			<h1 id="CSS的基本简介"><a href="#CSS的基本简介" class="headerlink" title="CSS的基本简介"></a>CSS的基本简介</h1><p><strong>友情提醒：其中只是简单介绍以一些标签或者格式语法，详情参考w3c文档</strong></p>
+	
+
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Web//" class="article-tag-list-link color4">Web</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/07/01/CSS/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-CSS定位问题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/07/01/CSS%E5%AE%9A%E4%BD%8D%E9%97%AE%E9%A2%98/">CSS定位问题</a>
+    </h1>
+  
+
+        
+        <a href="/2020/07/01/CSS%E5%AE%9A%E4%BD%8D%E9%97%AE%E9%A2%98/" class="archive-article-date">
+  	<time datetime="2020-07-01T14:55:51.453Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-01</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+
+			<h1 id="CSS定位问题："><a href="#CSS定位问题：" class="headerlink" title="CSS定位问题："></a>CSS定位问题：</h1><p>定位是更加高级的布局手段，可以将元素摆放在页面的任何位置，我们通常使用position来设置定位。<br>可选值有：</p>
+	
+
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Web//" class="article-tag-list-link color4">Web</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/07/01/CSS%E5%AE%9A%E4%BD%8D%E9%97%AE%E9%A2%98/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-单向栈问题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/06/28/%E5%8D%95%E5%90%91%E6%A0%88%E9%97%AE%E9%A2%98/">单调栈问题</a>
+    </h1>
+  
+
+        
+        <a href="/2020/06/28/%E5%8D%95%E5%90%91%E6%A0%88%E9%97%AE%E9%A2%98/" class="archive-article-date">
+  	<time datetime="2020-06-28T14:28:22.548Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-28</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+
+			<h1 id="单调栈问题"><a href="#单调栈问题" class="headerlink" title="单调栈问题"></a>单调栈问题</h1><p>首先什么是单调栈<strong>？</strong>并不是栈中的元素是单调的<strong>**而是指出栈的序列是单调的</strong>，所以分为单增栈和单减栈。<br>单增栈的实现思路：当栈为空，或者加入的元素大于栈顶元素时，将栈中比当前小的数据一次弹出，当加入数据小于栈定元素时，则直接进栈。<br>单减栈相反在此就不再叙述，接下来是单调栈的模板：  </p>
+	
+
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/数据结构与算法//" class="article-tag-list-link color3">数据结构与算法</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/06/28/%E5%8D%95%E5%90%91%E6%A0%88%E9%97%AE%E9%A2%98/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-HTML语义标签" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/06/28/HTML%E8%AF%AD%E4%B9%89%E6%A0%87%E7%AD%BE/">HTML语义标签</a>
+    </h1>
+  
+
+        
+        <a href="/2020/06/28/HTML%E8%AF%AD%E4%B9%89%E6%A0%87%E7%AD%BE/" class="archive-article-date">
+  	<time datetime="2020-06-28T14:23:26.746Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-28</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+
+			<h1 id="HTMl语义标签"><a href="#HTMl语义标签" class="headerlink" title="HTMl语义标签"></a>HTMl语义标签</h1><h2 id="实体的语法"><a href="#实体的语法" class="headerlink" title="实体的语法"></a>实体的语法</h2><p>再说标签之前有一个重要的定义：实体的语法，当我们想要在body主题中输入&lt;左尖括号或者&gt;右尖括号时会使浏览器解析无法分辨是标签符号还是数学符号，同理当有多个空格时，默认合并成一个空格此时我们就需要实体语法。  以下列举几个常用的实体符号</p>
+	
+
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Web//" class="article-tag-list-link color4">Web</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/06/28/HTML%E8%AF%AD%E4%B9%89%E6%A0%87%E7%AD%BE/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-最小栈问题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -455,316 +923,9 @@
 
 
   
-    <article id="post-大数" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/05/23/%E5%A4%A7%E6%95%B0/">大数</a>
-    </h1>
-  
-
-        
-        <a href="/2020/05/23/%E5%A4%A7%E6%95%B0/" class="archive-article-date">
-  	<time datetime="2020-05-23T08:14:36.723Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-23</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-
-			<h1 id="java中的特殊数据类型–大数"><a href="#java中的特殊数据类型–大数" class="headerlink" title="java中的特殊数据类型–大数"></a>java中的特殊数据类型–大数</h1><h2 id="大数中有两个很有用的类：BigInteger和BigDecimal，可以满足任何精度的整数或者浮点数的运算"><a href="#大数中有两个很有用的类：BigInteger和BigDecimal，可以满足任何精度的整数或者浮点数的运算" class="headerlink" title="大数中有两个很有用的类：BigInteger和BigDecimal，可以满足任何精度的整数或者浮点数的运算"></a>大数中有两个很有用的类：BigInteger和BigDecimal，可以满足任何精度的整数或者浮点数的运算</h2><h3 id="相信c-选手一定经历过手撕高精度算法的痛苦过程，下面让我们走进大数数据类型"><a href="#相信c-选手一定经历过手撕高精度算法的痛苦过程，下面让我们走进大数数据类型" class="headerlink" title="相信c++选手一定经历过手撕高精度算法的痛苦过程，下面让我们走进大数数据类型"></a>相信c++选手一定经历过手撕高精度算法的痛苦过程，下面让我们走进大数数据类型</h3>
-	
-
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Java基础</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Java基础//" class="article-tag-list-link color2">Java基础</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/05/23/%E5%A4%A7%E6%95%B0/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-浅谈equals和==" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/05/22/%E6%B5%85%E8%B0%88equals%E5%92%8C==/">浅谈equals和==</a>
-    </h1>
-  
-
-        
-        <a href="/2020/05/22/%E6%B5%85%E8%B0%88equals%E5%92%8C==/" class="archive-article-date">
-  	<time datetime="2020-05-22T12:04:10.860Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-22</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-
-			<h1 id="关于深入分析“-”-和-equals（）。"><a href="#关于深入分析“-”-和-equals（）。" class="headerlink" title="关于深入分析“==” 和 equals（）。"></a>关于深入分析“==” 和 equals（）。</h1><h2 id="总的来说："><a href="#总的来说：" class="headerlink" title="总的来说："></a>总的来说：</h2><p>一、对于==，比较数值是否相等<br>&emsp;&emsp;当比较对象为基本数据类型时，那么将比较其数值是否相等。<br><br>&emsp;&emsp;当比较对象为引用数据类型时，那么比较的是引用所指向的对象的地址值。<br><br>二、对于equals（），需要注意的是，equals方法并不能用于对基本数据类型的比较，其继承于object类，比较的是是否为同一个对象。<br><br>&emsp;&emsp;如果没有对equals方法进行重写，则比较的是引用类型的变量所指向的对象的地址。<br><br>&emsp;&emsp;如果对equals方法进行重写，将比较对象的内容，例如String类，Data类实现了对equals方法的重写。<br>&emsp;&emsp;<em>所以当equals方法不重写时，关于对引用数据类型的判断是看似没有区别的</em></p>
-	
-
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Java基础//" class="article-tag-list-link color2">Java基础</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/05/22/%E6%B5%85%E8%B0%88equals%E5%92%8C==/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-TankWar" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/05/19/TankWar/">TankWar</a>
-    </h1>
-  
-
-        
-        <a href="/2020/05/19/TankWar/" class="archive-article-date">
-  	<time datetime="2020-05-19T07:45:51.435Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-19</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-
-	
-		<p>title：TankWar的实现过程</p>
-<h1 id="TankWar"><a href="#TankWar" class="headerlink" title="TankWar"></a>TankWar</h1><h2 id="day1"><a href="#day1" class="headerlink" title="day1"></a>day1</h2><p>1.关于窗口的实现:创建frame子类，继承于frame<br>2.可创建常量类，项目中尽量不要出现数字，使用常量类来代替数字，常量类中变量通常都声明为public static final 类型，全部大写，在其他类中调用时，需要import导入，通过.*调用所有的静态变量<br>3.初始化窗口initframe<br>首先要设置可见，然后可设置窗口名称，大小，位置，背景颜色（关于颜色类的调用都在Color类中调用），其中关于窗口的关闭还需参考6<br>4.通过建立线程绘画窗口：<br>首先创建updata类方法，负责所有的绘画工作，同时不能主动调用，只有通过repaint（）方法回调</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">switch</span> (game_state)&#123;<span class="comment">//通过不同的state状态来绘画出不同的内容，同时game_state</span></span><br><span class="line">    <span class="keyword">case</span> State_Menu:<span class="comment">//的初始值为0，即运行时会自动调用drawMenu画出菜单</span></span><br><span class="line">        drawMenu(g);</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> State_Help:</span><br><span class="line">        drawHelp(g);</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> State_About:</span><br><span class="line">        drawAbout(g);</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> State_Run:</span><br><span class="line">        drawRun(g);</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> State_Over:</span><br><span class="line">        drawOver(g);</span><br><span class="line">        <span class="keyword">break</span>;</span><br></pre></td></tr></table></figure>
-<p>以下是drawMenu方法的内容，具体解析一下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">g.setColor(Color.WHITE);</span><br><span class="line"><span class="keyword">final</span> <span class="keyword">int</span> x=(Frame_Width-<span class="number">70</span>)/<span class="number">2</span>;<span class="comment">//确定菜单栏的位置</span></span><br><span class="line"><span class="keyword">final</span> <span class="keyword">int</span> y=Frame_Y+<span class="number">100</span>;</span><br><span class="line"><span class="keyword">final</span> <span class="keyword">int</span> DIS = <span class="number">50</span>;<span class="comment">//菜单栏的间隙</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; MENUS.length; i++) &#123;<span class="comment">//(MENUS[i]中存放的是五个菜单选择</span></span><br><span class="line">    <span class="keyword">if</span>(MenuIndex==i)&#123;<span class="comment">//设置选中的项目为红色//MenuIndex模拟选择菜单过程，颜色不同确定选择状态</span></span><br><span class="line">            g.setColor(Color.RED);       <span class="comment">//下面还需要具体监听键盘，通过</span></span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        g.setColor(Color.WHITE);</span><br><span class="line">    &#125;</span><br><span class="line">    g.drawString(MENUS[i],x,y+DIS*i);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>5.此时调用Runnable接口重写run（）类，在run方法中统一调用repaint绘画，GAME_INTERVAL通过此常量确定帧数，来绘画动态画面</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">while</span>(<span class="keyword">true</span>)&#123;</span><br><span class="line">        repaint();</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            Thread.sleep(GAME_INTERVAL);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>6.重点监听事件的分析过程，包括窗口监听和键盘监听</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">EventListener</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="comment">//设置可退出的窗口</span></span><br><span class="line">    addWindowListener(<span class="keyword">new</span> WindowAdapter() &#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">windowClosing</span><span class="params">(WindowEvent e)</span> </span>&#123;</span><br><span class="line">            System.exit(<span class="number">0</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="comment">//添加键盘监听事件</span></span><br><span class="line">    addKeyListener(<span class="keyword">new</span> KeyAdapter() &#123;</span><br><span class="line">        <span class="comment">//按键被按下时返回的方法</span></span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">keyPressed</span><span class="params">(KeyEvent e)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">int</span> keyCode = e.getKeyCode();<span class="comment">//记录按下的按键</span></span><br><span class="line">            <span class="keyword">switch</span> (game_state)&#123;</span><br><span class="line">                <span class="keyword">case</span> State_Menu:</span><br><span class="line">                    keyPressEventMenu(keyCode);</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                <span class="keyword">case</span> State_Help:</span><br><span class="line">                    keyPressEventHelp(keyCode);</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                <span class="keyword">case</span> State_About:</span><br><span class="line">                    keyPressEventAbout(keyCode);</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                <span class="keyword">case</span> State_Run:</span><br><span class="line">                    keyPressEventRun(keyCode);</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                <span class="keyword">case</span> State_Over:</span><br><span class="line">                    keyPressEventOver(keyCode);</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">keyPressEventOver</span><span class="params">(<span class="keyword">int</span> keyCode)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">keyPressEventRun</span><span class="params">(<span class="keyword">int</span> keyCode)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">switch</span> (keyCode) &#123;</span><br><span class="line">                    <span class="keyword">case</span> KeyEvent.VK_UP:</span><br><span class="line">                    <span class="keyword">case</span> KeyEvent.VK_W:</span><br><span class="line">                       myTank.setDir(Tank.DIR_UP);</span><br><span class="line">                       myTank.setState(Tank.STATE_MOVE);</span><br><span class="line">                        <span class="keyword">break</span>;</span><br><span class="line">                    <span class="keyword">case</span> KeyEvent.VK_DOWN:</span><br><span class="line">                    <span class="keyword">case</span> KeyEvent.VK_S:</span><br><span class="line">                        myTank.setDir(Tank.DIR_DOWN);</span><br><span class="line">                        myTank.setState(Tank.STATE_MOVE);</span><br><span class="line">                        <span class="keyword">break</span>;</span><br><span class="line">                    <span class="keyword">case</span> KeyEvent.VK_LEFT:</span><br><span class="line">                    <span class="keyword">case</span> KeyEvent.VK_A:</span><br><span class="line">                        myTank.setDir(Tank.DIR_LEFT);</span><br><span class="line">                        myTank.setState(Tank.STATE_MOVE);</span><br><span class="line">                        <span class="keyword">break</span>;</span><br><span class="line">                    <span class="keyword">case</span> KeyEvent.VK_RIGHT:</span><br><span class="line">                    <span class="keyword">case</span> KeyEvent.VK_D:</span><br><span class="line">                        myTank.setDir(Tank.DIR_RIGHT);</span><br><span class="line">                        myTank.setState(Tank.STATE_MOVE);</span><br><span class="line">                        <span class="keyword">break</span>;</span><br><span class="line">                <span class="keyword">case</span> KeyEvent.VK_SPACE:</span><br><span class="line">                        myTank.fire();</span><br><span class="line">                        <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">keyPressEventAbout</span><span class="params">(<span class="keyword">int</span> keyCode)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">keyPressEventHelp</span><span class="params">(<span class="keyword">int</span> keyCode)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="comment">/**</span></span><br><span class="line"><span class="comment">         * 菜单状态下按键的处理</span></span><br><span class="line"><span class="comment">         * <span class="doctag">@param</span> keyCode</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">keyPressEventMenu</span><span class="params">(<span class="keyword">int</span> keyCode)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">switch</span> (keyCode)&#123;</span><br><span class="line">                <span class="keyword">case</span> KeyEvent.VK_UP:</span><br><span class="line">                 <span class="keyword">case</span> KeyEvent.VK_W:</span><br><span class="line">                    MenuIndex--;</span><br><span class="line">                    <span class="keyword">if</span>(MenuIndex&lt;<span class="number">0</span>)&#123;</span><br><span class="line">                        MenuIndex=MENUS.length-<span class="number">1</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                <span class="keyword">case</span> KeyEvent.VK_DOWN:</span><br><span class="line">                   <span class="keyword">case</span>  KeyEvent.VK_S:</span><br><span class="line">                    MenuIndex++;</span><br><span class="line">                    <span class="keyword">if</span>(MenuIndex&gt;MENUS.length-<span class="number">1</span>)</span><br><span class="line">                        MenuIndex=<span class="number">0</span>;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                <span class="keyword">case</span> KeyEvent.VK_ENTER:<span class="comment">//当按下回车键选择内容时的操作</span></span><br><span class="line">                    newGame();</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//按键被松开时返回的方法</span></span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">keyReleased</span><span class="params">(KeyEvent e)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">int</span> keyCode = e.getKeyCode();<span class="comment">//记录按下的按键</span></span><br><span class="line">            <span class="keyword">if</span>(game_state ==State_Run)&#123;</span><br><span class="line">                KeyReleasedEventRun( keyCode);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-	
-
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/05/19/TankWar/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-hello-world" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/05/15/hello-world/">Hello World</a>
-    </h1>
-  
-
-        
-        <a href="/2020/05/15/hello-world/" class="archive-article-date">
-  	<time datetime="2020-05-15T10:17:53.775Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-15</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-
-	
-		<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-	
-
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/05/15/hello-world/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+      <a class="extend prev" rel="prev" href="/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">Next &amp;raquo;</a>
     </nav>
   
 

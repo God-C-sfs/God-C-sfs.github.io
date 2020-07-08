@@ -158,6 +158,460 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-memReverse" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/07/08/memReverse/">memReverse</a>
+    </h1>
+  
+
+        
+        <a href="/2020/07/08/memReverse/" class="archive-article-date">
+  	<time datetime="2020-07-08T14:27:32.005Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-08</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+
+	
+		<h1 id="记忆化搜索："><a href="#记忆化搜索：" class="headerlink" title="记忆化搜索："></a>记忆化搜索：</h1><p>下面用两个比较简单的例子来对记忆化搜索有一个初步了解：<br>例一：Fibonacci数列的记忆化递归过程</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    HashMap&lt;Integer, Integer&gt; cache &#x3D; new HashMap&lt;Integer, Integer&gt;();</span><br><span class="line">    public int fib(int N) &#123;</span><br><span class="line">        if(cache.containsKey(N))&#123;</span><br><span class="line">            return cache.get(N);</span><br><span class="line">        &#125;</span><br><span class="line">        int res &#x3D; 0;</span><br><span class="line">        if(N&lt;2)&#123;</span><br><span class="line">            res &#x3D; N;</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">            res &#x3D; fib(N-1)+fib(N-2);</span><br><span class="line">        &#125;</span><br><span class="line">        cache.put(N,res);</span><br><span class="line">        return res;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>爬楼梯的记忆化递归过程</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    HashMap&lt;Integer, Integer&gt; cache &#x3D; new HashMap&lt;Integer, Integer&gt;();</span><br><span class="line">    public int climbStairs(int n) &#123;</span><br><span class="line">        if(cache.containsKey(n))&#123;</span><br><span class="line">            return cache.get(n);</span><br><span class="line">        &#125;</span><br><span class="line">        int res;</span><br><span class="line">        if(n&lt;&#x3D;2)&#123;</span><br><span class="line">            res &#x3D; n;</span><br><span class="line">        &#125;</span><br><span class="line">        else&#123;</span><br><span class="line">           res &#x3D;  climbStairs(n-1)+climbStairs(n-2);</span><br><span class="line">    &#125;</span><br><span class="line">        cache.put(n,res);</span><br><span class="line">        return res;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+	
+
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/07/08/memReverse/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-第k个语法符号" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/07/08/%E7%AC%ACk%E4%B8%AA%E8%AF%AD%E6%B3%95%E7%AC%A6%E5%8F%B7/">第k个语法符号</a>
+    </h1>
+  
+
+        
+        <a href="/2020/07/08/%E7%AC%ACk%E4%B8%AA%E8%AF%AD%E6%B3%95%E7%AC%A6%E5%8F%B7/" class="archive-article-date">
+  	<time datetime="2020-07-08T14:27:32.003Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-08</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+
+	
+		<h1 id="第k个语法符号"><a href="#第k个语法符号" class="headerlink" title="第k个语法符号"></a>第k个语法符号</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">在第一行我们写上一个 0。接下来的每一行，将前一行中的0替换为01，1替换为10。</span><br><span class="line">给定行数N和序数 K，返回第 N 行中第 K个字符。（K从1开始）</span><br><span class="line">例子:</span><br><span class="line">输入: N &#x3D; 1, K &#x3D; 1</span><br><span class="line">输出: 0</span><br><span class="line">输入: N &#x3D; 2, K &#x3D; 1</span><br><span class="line">输出: 0</span><br><span class="line">输入: N &#x3D; 2, K &#x3D; 2</span><br><span class="line">输出: 1</span><br><span class="line">输入: N &#x3D; 4, K &#x3D; 5</span><br><span class="line">输出: 1</span><br><span class="line">解释:</span><br><span class="line">第一行: 0</span><br><span class="line">第二行: 01</span><br><span class="line">第三行: 0110</span><br><span class="line">第四行: 01101001</span><br><span class="line">注意：</span><br><span class="line">N的范围[1, 30].</span><br><span class="line">K的范围[1, 2^(N-1)].</span><br></pre></td></tr></table></figure>
+<p>跟快速幂的思路很像，看代码应该就能理解</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    public int kthGrammar(int N, int K) &#123;</span><br><span class="line">        if(N &#x3D;&#x3D; 1) &#123;</span><br><span class="line">			return 0;</span><br><span class="line">		&#125;</span><br><span class="line">		int res &#x3D; kthGrammar(N-1, (K+1)&#x2F;2);</span><br><span class="line">		if(res &#x3D;&#x3D; 0) &#123;</span><br><span class="line">			return (K%2&#x3D;&#x3D;0)?1:0;</span><br><span class="line">		&#125;</span><br><span class="line">		else &#123;</span><br><span class="line">			return (K%2&#x3D;&#x3D;0)?0:1;</span><br><span class="line">		&#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+	
+
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/数据结构与算法//" class="article-tag-list-link color3">数据结构与算法</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/07/08/%E7%AC%ACk%E4%B8%AA%E8%AF%AD%E6%B3%95%E7%AC%A6%E5%8F%B7/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-合并有序链表" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/07/08/%E5%90%88%E5%B9%B6%E6%9C%89%E5%BA%8F%E9%93%BE%E8%A1%A8/">合并有序链表</a>
+    </h1>
+  
+
+        
+        <a href="/2020/07/08/%E5%90%88%E5%B9%B6%E6%9C%89%E5%BA%8F%E9%93%BE%E8%A1%A8/" class="archive-article-date">
+  	<time datetime="2020-07-08T14:27:32.001Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-08</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+
+	
+		<h1 id="合并两个有序链表，使其成为一个新的有序链表"><a href="#合并两个有序链表，使其成为一个新的有序链表" class="headerlink" title="合并两个有序链表，使其成为一个新的有序链表"></a>合并两个有序链表，使其成为一个新的有序链表</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">将两个升序链表合并为一个新的 升序 链表并返回。新链表是通过拼接给定的两个链表的所有节点组成的。</span><br><span class="line">示例：</span><br><span class="line">输入：1-&gt;2-&gt;4, 1-&gt;3-&gt;4</span><br><span class="line">输出：1-&gt;1-&gt;2-&gt;3-&gt;4-&gt;4</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    public ListNode mergeTwoLists(ListNode l1, ListNode l2) &#123;</span><br><span class="line">        ListNode newHead &#x3D; new ListNode();</span><br><span class="line">        ListNode temp &#x3D; newHead;</span><br><span class="line">        while(l1!&#x3D;null&amp;&amp;l2!&#x3D;null) &#123;</span><br><span class="line">        	if(l1.val&lt;&#x3D;l2.val) &#123;</span><br><span class="line">        		temp.next &#x3D; l1;</span><br><span class="line">        		l1 &#x3D; l1.next;</span><br><span class="line">        	&#125;else if(l1.val &gt; l2.val) &#123;</span><br><span class="line">        		temp.next &#x3D; l2;</span><br><span class="line">        		l2 &#x3D; l2.next;</span><br><span class="line">        	&#125;</span><br><span class="line">        	temp &#x3D; temp.next;</span><br><span class="line">        &#125;</span><br><span class="line">        &#x2F;&#x2F;接下来有一个链表已经遍历到结尾，另一条可能还没有结束</span><br><span class="line">        temp.next &#x3D; (l1&#x3D;&#x3D;null?l2:l1);</span><br><span class="line">        return newHead.next;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+	
+
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/数据结构与算法//" class="article-tag-list-link color3">数据结构与算法</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/07/08/%E5%90%88%E5%B9%B6%E6%9C%89%E5%BA%8F%E9%93%BE%E8%A1%A8/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-pow快速幂" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/07/08/pow%E5%BF%AB%E9%80%9F%E5%B9%82/">快速幂</a>
+    </h1>
+  
+
+        
+        <a href="/2020/07/08/pow%E5%BF%AB%E9%80%9F%E5%B9%82/" class="archive-article-date">
+  	<time datetime="2020-07-08T14:27:31.999Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-08</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+
+	
+		<h1 id="pow-x-y-快速幂的实现形式"><a href="#pow-x-y-快速幂的实现形式" class="headerlink" title="pow(x,y)快速幂的实现形式"></a>pow(x,y)快速幂的实现形式</h1><p>如果我们使用常规的想法去累成得到无疑时间复杂度很高，我们再进行对问题的分析，加入我们相求x^n的值，那我们只要知道x^1/2的值，继续递归知道我们知道x^1的值，那么我们在返回栈结果我们就可以的到我们想要的结果时间复杂度从n降到logn<br><strong>解题细节：</strong><br>首先y可能为负值，那么我们预处理一下，当y小于零时，令y=-y，x=1/x<br>其次我们要讨论n的奇偶性，当n为偶数时，那么x^n = half * half，当n为奇数时,那么x^n = half * half * x;其中half表示x^n的一半<br>代码实现：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    public double myPow(double x, int n) &#123;</span><br><span class="line">        if(n&lt;0) &#123;</span><br><span class="line">			n &#x3D; -n;</span><br><span class="line">			x &#x3D; 1&#x2F;x;</span><br><span class="line">		&#125;</span><br><span class="line">		return fastPow(x, n);</span><br><span class="line">    &#125;</span><br><span class="line">    public double fastPow(double x,int n) &#123;</span><br><span class="line">		if( n &#x3D;&#x3D; 0) &#123;</span><br><span class="line">			return 1.0;</span><br><span class="line">		&#125;</span><br><span class="line">		double half &#x3D; fastPow(x,n&#x2F;2);</span><br><span class="line">		if(n%2 &#x3D;&#x3D; 0) &#123;</span><br><span class="line">			return half*half;</span><br><span class="line">		&#125;else &#123;</span><br><span class="line">			return half*half*x;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+	
+
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/数据结构与算法//" class="article-tag-list-link color3">数据结构与算法</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/07/08/pow%E5%BF%AB%E9%80%9F%E5%B9%82/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-reverseString" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/07/08/reverseString/">反转字符串</a>
+    </h1>
+  
+
+        
+        <a href="/2020/07/08/reverseString/" class="archive-article-date">
+  	<time datetime="2020-07-08T14:27:31.995Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-08</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+
+	
+		<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">编写一个函数，其作用是将输入的字符串反转过来。输入字符串以字符数组 char[] 的形式给出。</span><br><span class="line">不要给另外的数组分配额外的空间，你必须原地修改输入数组、使用 O(1) 的额外空间解决这一问题。</span><br><span class="line">你可以假设数组中的所有字符都是 ASCII 码表中的可打印字符。</span><br><span class="line">示例 1：</span><br><span class="line">输入：[&quot;h&quot;,&quot;e&quot;,&quot;l&quot;,&quot;l&quot;,&quot;o&quot;]</span><br><span class="line">输出：[&quot;o&quot;,&quot;l&quot;,&quot;l&quot;,&quot;e&quot;,&quot;h&quot;]</span><br><span class="line">例 2：</span><br><span class="line">输入：[&quot;H&quot;,&quot;a&quot;,&quot;n&quot;,&quot;n&quot;,&quot;a&quot;,&quot;h&quot;]</span><br><span class="line">输出：[&quot;h&quot;,&quot;a&quot;,&quot;n&quot;,&quot;n&quot;,&quot;a&quot;,&quot;H&quot;]</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    public void reverseString(char[] s) &#123;</span><br><span class="line">        RS(s, 0,s.length-1 );</span><br><span class="line">    &#125;</span><br><span class="line">    public void RS(char[]s,int left,int right) &#123;</span><br><span class="line">		if(left&gt;&#x3D;right) &#123;</span><br><span class="line">			return;</span><br><span class="line">		&#125;</span><br><span class="line">		char temp &#x3D; s[left];</span><br><span class="line">		s[left++] &#x3D; s[right];</span><br><span class="line">		s[right--] &#x3D; temp;</span><br><span class="line">		RS(s, left, right);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+	
+
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/数据结构与算法//" class="article-tag-list-link color3">数据结构与算法</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/07/08/reverseString/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-二叉树最近公共祖先节点" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/07/08/%E4%BA%8C%E5%8F%89%E6%A0%91%E6%9C%80%E8%BF%91%E5%85%AC%E5%85%B1%E7%A5%96%E5%85%88%E8%8A%82%E7%82%B9/">二叉树最近公共祖先</a>
+    </h1>
+  
+
+        
+        <a href="/2020/07/08/%E4%BA%8C%E5%8F%89%E6%A0%91%E6%9C%80%E8%BF%91%E5%85%AC%E5%85%B1%E7%A5%96%E5%85%88%E8%8A%82%E7%82%B9/" class="archive-article-date">
+  	<time datetime="2020-07-08T13:51:55.165Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-08</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+
+	
+		<h1 id="二叉树最近公共祖先"><a href="#二叉树最近公共祖先" class="headerlink" title="二叉树最近公共祖先"></a>二叉树最近公共祖先</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">给定一个二叉树, 找到该树中两个指定节点的最近公共祖先。</span><br><span class="line">百度百科中最近公共祖先的定义为：“对于有根树 T 的两个结点 p、q，最近公共祖先表示为一个结点 x，满足 x 是 p、q 的祖先且 x 的深度尽可能大（一个节点也可以是它自己的祖先）。”</span><br><span class="line">例如，给定如下二叉树:root &#x3D;[3,5,1,6,2,0,8,null,null,7,4]</span><br><span class="line">示例 1:</span><br><span class="line">输入: root &#x3D; [3,5,1,6,2,0,8,null,null,7,4], p &#x3D; 5, q &#x3D; 1</span><br><span class="line">输出: 3</span><br><span class="line">解释: 节点 5 和节点 1 的最近公共祖先是节点 3。</span><br><span class="line">示例2:</span><br><span class="line">输入: root &#x3D; [3,5,1,6,2,0,8,null,null,7,4], p &#x3D; 5, q &#x3D; 4</span><br><span class="line">输出: 5</span><br><span class="line">解释: 节点 5 和节点 4 的最近公共祖先是节点 5。因为根据定义最近公共祖先节点可以为节点本身。</span><br><span class="line">说明:</span><br><span class="line">所有节点的值都是唯一的。</span><br><span class="line">p、q 为不同节点且均存在于给定的二叉树中。</span><br></pre></td></tr></table></figure>
+<p>解题思路：<br>通过上述对公共祖先的解释，其实我们可以发现对于一个节点而言，如果这个点是p，q的最近公共祖先节点，我们大致可以分成三种情况：<br>1.p，q在root的子树中，那么p，q一定在root的右侧<br>2.p为root，且q在p的子树中<br>3.q为root，且p在q的子树中<br>我们通过后序遍历，从最深处向上遍历<br><strong>递归解析</strong>：<br>1.首先结束条件：如果越过了p，q就返回null，如果root等于p，q那就返回p，q<br>2.递推工作：开启递归左子节点，返回值为left，开启递归右子节点，返回值为right<br>3.根据left和right的返回情况我们可以分成以下几点<br>·当left和right同时为空，说明p，q不在root的子树中，直接返回null<br>·当left和right同时不为空时，说明p，q在root的异侧，那么root就是p，q的最近公共祖先节点，所以返回root<br>·当left为空，right不为空时，说明此时，pq都不在root的左子树中，则直接返回root，此时可能有两种情况：p，q有一个在right中，那么我们返回的right指向p或q；p，q都在right中那么我们返回的就是最近公共父节点<br>·当right为空，left不为空时同上<br>我们通过图解来更好的理解这个含义<br><strong>例一：找到7和8的最近公共祖先节点</strong><br><img src="https://gitee.com/bingjie__chai/PicOfHexo/raw/master/pic_hexo/Snipaste_2020-07-08_21-39-20.png" alt=""><br>例二：找到2和4的最近公共祖先节点<br><img src="https://gitee.com/bingjie__chai/PicOfHexo/raw/master/pic_hexo/Snipaste_2020-07-08_21-46-46.png" alt=""><br>具体的代码实现：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">public static TreeNode1 lowestCommonAncestor(TreeNode1 root, TreeNode1 p, TreeNode1 q) &#123;</span><br><span class="line">	      if(root &#x3D;&#x3D; null||root &#x3D;&#x3D; p || root &#x3D;&#x3D;q) &#123;</span><br><span class="line">	    	  return root;</span><br><span class="line">	      &#125;</span><br><span class="line">	      TreeNode1 left &#x3D; lowestCommonAncestor(root.left, p, q);</span><br><span class="line">	      TreeNode1 right &#x3D; lowestCommonAncestor(root.right, p, q);</span><br><span class="line">	      if(left &#x3D;&#x3D; null &amp;&amp; right &#x3D;&#x3D; null) return null;</span><br><span class="line">	        if(left &#x3D;&#x3D; null) return right; </span><br><span class="line">	        if(right &#x3D;&#x3D; null) return left; </span><br><span class="line">	        return root; &#x2F;&#x2F;当左右都不为空时</span><br><span class="line">	  &#125;</span><br></pre></td></tr></table></figure>
+
+	
+
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/数据结构与算法//" class="article-tag-list-link color3">数据结构与算法</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/07/08/%E4%BA%8C%E5%8F%89%E6%A0%91%E6%9C%80%E8%BF%91%E5%85%AC%E5%85%B1%E7%A5%96%E5%85%88%E8%8A%82%E7%82%B9/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-对称树" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -485,477 +939,9 @@
 
 
   
-    <article id="post-目标和" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/07/01/%E7%9B%AE%E6%A0%87%E5%92%8C/">目标和</a>
-    </h1>
-  
-
-        
-        <a href="/2020/07/01/%E7%9B%AE%E6%A0%87%E5%92%8C/" class="archive-article-date">
-  	<time datetime="2020-07-01T14:57:14.252Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-01</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-
-	
-		<h1 id="目标和LeetCodeT494"><a href="#目标和LeetCodeT494" class="headerlink" title="目标和LeetCodeT494"></a>目标和LeetCodeT494</h1><p>此题可以用dfs和dp两种方案解决，此处先给出dfs的解法<br>给定一个非负整数数组，a1, a2, …, an, 和一个目标数，S。现在你有两个符号+和-。对于数组中的任意一个整数，你都可以从+或-中选择一个符号添加在前面。</p>
-<p>返回可以使最终数组和为目标数 S 的所有添加符号的方法数。</p>
-<p>示例：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">解释：</span><br><span class="line"></span><br><span class="line">-1+1+1+1+1 &#x3D; 3</span><br><span class="line">+1-1+1+1+1 &#x3D; 3</span><br><span class="line">+1+1-1+1+1 &#x3D; 3</span><br><span class="line">+1+1+1-1+1 &#x3D; 3</span><br><span class="line">+1+1+1+1-1 &#x3D; 3</span><br><span class="line"></span><br><span class="line">一共有5种方法让最终目标和为3。</span><br></pre></td></tr></table></figure>
-
-
-<hr>
-<p>解题思路：以题目可知，我们将起点设为nums[0]，sum设为0，我们遍历令sum+nums[i]和sum-num[i]两种方案来实现添加符号，简单的暴力求解代码：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    int count;</span><br><span class="line">    public int findTargetSumWays(int[] nums, int S) &#123;</span><br><span class="line">        dfs(nums, 0, 0, S);</span><br><span class="line">		return count;</span><br><span class="line">    &#125;</span><br><span class="line">    public void dfs(int nums[],int i,int sum,int target) &#123;</span><br><span class="line">		if( i &#x3D;&#x3D; nums.length ) &#123;</span><br><span class="line">			if(sum &#x3D;&#x3D; target) &#123;</span><br><span class="line">				count++; </span><br><span class="line">			&#125;</span><br><span class="line">			return;</span><br><span class="line">		&#125;else &#123;</span><br><span class="line">			dfs(nums, i+1, sum+nums[i], target);</span><br><span class="line">			dfs(nums, i+1, sum-nums[i], target);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-	
-
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/数据结构与算法//" class="article-tag-list-link color3">数据结构与算法</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/07/01/%E7%9B%AE%E6%A0%87%E5%92%8C/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-盒子模型" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/07/01/%E7%9B%92%E5%AD%90%E6%A8%A1%E5%9E%8B/">盒子模型</a>
-    </h1>
-  
-
-        
-        <a href="/2020/07/01/%E7%9B%92%E5%AD%90%E6%A8%A1%E5%9E%8B/" class="archive-article-date">
-  	<time datetime="2020-07-01T14:56:26.838Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-01</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-
-	
-		<h1 id="盒子模型"><a href="#盒子模型" class="headerlink" title="盒子模型:"></a>盒子模型:</h1><h2 id="基本组成部分"><a href="#基本组成部分" class="headerlink" title="基本组成部分"></a>基本组成部分</h2><hr>
-<h2 id=""><a href="#" class="headerlink" title=""></a><img src="https://gitee.com/bingjie__chai/PicOfHexo/raw/master/pic_hexo/border.png" alt=""></h2><h2 id="水平布局："><a href="#水平布局：" class="headerlink" title="水平布局："></a>水平布局：</h2><p>元素在其父元素中水平位置由以下几个属性共同决定，从外到内依次为：margin-left,border-left,padding-left,width,padding-right,border-right,margin-right,且其综合必须等于父元素的内容区的宽度.<br>当不满足时浏览器会自动帮我们填充，填充规则如下：<br>1.当七个中没有auto情况下，自动调整margin-right来使等式满足<br>2.七个值中，width，margin-left，margin-right三个值可设为auto<br>2.1当某一个值为auto时，则自动调整这个auto的值<br>2.2如果宽度和一个外边距设为auto，宽度会调整为最大，设置的auto外边距会自动为0<br>2.3如果三个为auto，外边距都是0<br>2.4两个边距为auto，宽度固定，则元素居中处理  </p>
-<h2 id="垂直布局："><a href="#垂直布局：" class="headerlink" title="垂直布局："></a>垂直布局：</h2><p>垂直布局相对较为简单，默认情况下父元素的高度由内容决定。<br>我们注意一种特殊情况：当子元素在父元素中排列，如果子元素的大小超过了父元素则会造成溢出的情况，我们要在父元素中定义overflow属性来处理溢出的部分。  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">overflow:visiable&#x2F;&#x2F;默认值，超出部分不做处理</span><br><span class="line">overflow:hidden&#x2F;&#x2F;裁剪，超出的部分会直接被裁减</span><br><span class="line">overflow:scroll&#x2F;&#x2F;生成下右两侧滚动条，不管是否需要</span><br><span class="line">overflow:hidden&#x2F;&#x2F;根据需要生成滚动条</span><br></pre></td></tr></table></figure>
-<h2 id="垂直方向外边距的重叠："><a href="#垂直方向外边距的重叠：" class="headerlink" title="垂直方向外边距的重叠："></a>垂直方向外边距的重叠：</h2><p>兄弟元素间相邻垂直外边距会取两者的较大值，不会进行叠加。<br>父子元素之间，相邻垂直外边距子元素会传递给父元素（上外边距），当你想要子元素与父元素之间设置外边距时，若两条边重合则会同步移动，解决：通过在相邻外边距设置边框，使其分开  </p>
-<h2 id="水平方向外边距的重叠："><a href="#水平方向外边距的重叠：" class="headerlink" title="水平方向外边距的重叠："></a>水平方向外边距的重叠：</h2><p>此时，水平方向的外边距将会相加，不会取最大值，不会造成外边距的重叠 </p>
-<h2 id="行内元素的盒子模型："><a href="#行内元素的盒子模型：" class="headerlink" title="行内元素的盒子模型："></a>行内元素的盒子模型：</h2><p>1.首先行内元素时不支持设置高度和宽度的，默认时内容决定，无法修改。<br>2.行内元素是可以设置边框边距的，有可能会发生重叠，但不会影响垂直方向上的布局<br>3.当我们需要对行内元素设置宽高时我们可以设置display属性，将行内元素转换为块元素</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">display : inline&#x2F;&#x2F;行内元素</span><br><span class="line">display : block&#x2F;&#x2F; 块元素</span><br><span class="line">display : inline-block&#x2F;&#x2F;即可以设置宽高，也不会独占一行</span><br><span class="line">display : none&#x2F;&#x2F;不再显示</span><br></pre></td></tr></table></figure>
-<h2 id="盒子的大小："><a href="#盒子的大小：" class="headerlink" title="盒子的大小："></a>盒子的大小：</h2><p>默认情况下，盒子的可见框是有内容区，内边距，边框共同决定的<br>我们通过设置box-sizing来改变，可选值有content-box和border-box</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">box-sizing : content-box&#x2F;&#x2F;此时width和height来设置内容区的大小，边框边距会增大盒子大小</span><br><span class="line">box-sizing : border-box&#x2F;&#x2F;此时宽高来设置整个盒子的大小，width和height为内容区和内边距边框的总大小</span><br></pre></td></tr></table></figure>
-<h2 id="轮廓和圆角："><a href="#轮廓和圆角：" class="headerlink" title="轮廓和圆角："></a>轮廓和圆角：</h2><p>1.outline用来设置元素的轮廓线，用法和border一样，不同的是，轮廓线不会影响布局，可能造成重叠<br>2.阴影：box-shadow设置阴影效果，默认在元素正下方，不可见，通过设置偏移量来设置偏移效果，格式为box-shadow:xxx xxx xxx xxx 水平偏移量，竖直偏移量，模糊效果，颜色<br>3.圆角：border-radius:border-top-left-radius,同理类推，可得到四个角的圆角，可以设置曲率半径，当border-radius设置为50%，图形会变成圆形  </p>
-<h2 id="浮动："><a href="#浮动：" class="headerlink" title="浮动："></a>浮动：</h2><p>通过浮动可以使一个元素向其父元素的左侧或右侧移动，可以用来设置水平布局<br>设置float属性：none，默认值不一定，left向左移动，right向右移动。<br><strong>设置float后的元素脱离文档流：</strong><br>1.块元素不会再独占一行<br>2.块元素高度和宽度默认为内容的大小，文档流中，宽度默认为父元素的大小，高度默认为内容大小<br>3.行内元素脱离之后就会变成浮动的块元素<br>其中在设置float属性后，在移动过程中，同为float属性的元素移动时不会发生覆盖，将会形成对齐效果</p>
-<h2 id="高度塌陷问题："><a href="#高度塌陷问题：" class="headerlink" title="高度塌陷问题："></a>高度塌陷问题：</h2><p>在布局中父元素的高度默认是被子元素撑开的，当子元素浮动后，其完全脱离文档流，子元素从文档流中脱离将会无法撑起父元素的高度导致父元素高度丢失，丢失后以下元素会自动上移造成页面的混乱，这就叫做高度塌陷的问题。<br>解决的方案通常有两种，第一将父元素高度定死，但这种做法会造成元素大小无法根据内容变化，可能有大部分留白或者溢出的现象，所以通常不提倡这种做法，那么另一种解决方案设置BFC <br/><strong>那么什么是BFC？</strong><br>BFC块级格式化区域环境：开启后该元素会变成一个独立的布局区域。<br>1.开启后BFC的元素不会被浮动元素覆盖<br>2.开启后BFC的元素和父元素外边距不会重叠（可用来解决上面的垂直方向外边距重叠问题）<br>3.开启后BFC的元素可以包含浮动的子元素（用来解决高度塌陷问题）<br><strong>BFC开启的方法：</strong><br>1.将元素设为浮动<br>2.将元素设为行内块元素<br>3.设置overflow将默认值改掉  </p>
-<h2 id="clear属性："><a href="#clear属性：" class="headerlink" title="clear属性："></a>clear属性：</h2><p>如果我们不希望某个元素因为其他元素浮动而改变位置，可以通过clear属性来清除浮动元素对当前元素的影响。可选值：left，right，both  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">clear：left&#x2F;&#x2F;清楚左侧浮动元素对当前元素的影响</span><br><span class="line">clear：right&#x2F;&#x2F;清楚右侧浮动元素对当前元素的影响</span><br><span class="line">clear：both&#x2F;&#x2F;清楚两侧中影响最大的那个</span><br></pre></td></tr></table></figure>
-<h2 id="用after伪类解决高度塌陷问题："><a href="#用after伪类解决高度塌陷问题：" class="headerlink" title="用after伪类解决高度塌陷问题："></a>用after伪类解决高度塌陷问题：</h2><p>为了解决同时解决高度塌陷和外边距重叠问题，我们有一个模板,clearfix为要修改的类名</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">.clearfix::before,</span><br><span class="line">.clearfix::after&#123;</span><br><span class="line">    content:&#39;&#39;;</span><br><span class="line">    display:table;</span><br><span class="line">    clear:both</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-	
-
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Web//" class="article-tag-list-link color4">Web</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/07/01/%E7%9B%92%E5%AD%90%E6%A8%A1%E5%9E%8B/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-CSS" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/07/01/CSS/">CSS</a>
-    </h1>
-  
-
-        
-        <a href="/2020/07/01/CSS/" class="archive-article-date">
-  	<time datetime="2020-07-01T14:56:26.837Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-01</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-
-			<h1 id="CSS的基本简介"><a href="#CSS的基本简介" class="headerlink" title="CSS的基本简介"></a>CSS的基本简介</h1><p><strong>友情提醒：其中只是简单介绍以一些标签或者格式语法，详情参考w3c文档</strong></p>
-	
-
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Web//" class="article-tag-list-link color4">Web</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/07/01/CSS/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-CSS定位问题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/07/01/CSS%E5%AE%9A%E4%BD%8D%E9%97%AE%E9%A2%98/">CSS定位问题</a>
-    </h1>
-  
-
-        
-        <a href="/2020/07/01/CSS%E5%AE%9A%E4%BD%8D%E9%97%AE%E9%A2%98/" class="archive-article-date">
-  	<time datetime="2020-07-01T14:55:51.453Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-01</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-
-			<h1 id="CSS定位问题："><a href="#CSS定位问题：" class="headerlink" title="CSS定位问题："></a>CSS定位问题：</h1><p>定位是更加高级的布局手段，可以将元素摆放在页面的任何位置，我们通常使用position来设置定位。<br>可选值有：</p>
-	
-
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Web//" class="article-tag-list-link color4">Web</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/07/01/CSS%E5%AE%9A%E4%BD%8D%E9%97%AE%E9%A2%98/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-单向栈问题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/06/28/%E5%8D%95%E5%90%91%E6%A0%88%E9%97%AE%E9%A2%98/">单调栈问题</a>
-    </h1>
-  
-
-        
-        <a href="/2020/06/28/%E5%8D%95%E5%90%91%E6%A0%88%E9%97%AE%E9%A2%98/" class="archive-article-date">
-  	<time datetime="2020-06-28T14:28:22.548Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-28</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-
-			<h1 id="单调栈问题"><a href="#单调栈问题" class="headerlink" title="单调栈问题"></a>单调栈问题</h1><p>首先什么是单调栈<strong>？</strong>并不是栈中的元素是单调的<strong>**而是指出栈的序列是单调的</strong>，所以分为单增栈和单减栈。<br>单增栈的实现思路：当栈为空，或者加入的元素大于栈顶元素时，将栈中比当前小的数据一次弹出，当加入数据小于栈定元素时，则直接进栈。<br>单减栈相反在此就不再叙述，接下来是单调栈的模板：  </p>
-	
-
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/数据结构与算法//" class="article-tag-list-link color3">数据结构与算法</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/06/28/%E5%8D%95%E5%90%91%E6%A0%88%E9%97%AE%E9%A2%98/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-HTML语义标签" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/06/28/HTML%E8%AF%AD%E4%B9%89%E6%A0%87%E7%AD%BE/">HTML语义标签</a>
-    </h1>
-  
-
-        
-        <a href="/2020/06/28/HTML%E8%AF%AD%E4%B9%89%E6%A0%87%E7%AD%BE/" class="archive-article-date">
-  	<time datetime="2020-06-28T14:23:26.746Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-28</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-
-			<h1 id="HTMl语义标签"><a href="#HTMl语义标签" class="headerlink" title="HTMl语义标签"></a>HTMl语义标签</h1><h2 id="实体的语法"><a href="#实体的语法" class="headerlink" title="实体的语法"></a>实体的语法</h2><p>再说标签之前有一个重要的定义：实体的语法，当我们想要在body主题中输入&lt;左尖括号或者&gt;右尖括号时会使浏览器解析无法分辨是标签符号还是数学符号，同理当有多个空格时，默认合并成一个空格此时我们就需要实体语法。  以下列举几个常用的实体符号</p>
-	
-
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Web//" class="article-tag-list-link color4">Web</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/06/28/HTML%E8%AF%AD%E4%B9%89%E6%A0%87%E7%AD%BE/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
     </nav>
   
 
