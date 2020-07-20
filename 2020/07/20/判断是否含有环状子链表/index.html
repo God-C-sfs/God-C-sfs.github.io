@@ -6,13 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>God-C-sfs</title>
+  <title>判断是否含有环状子链表 | God-C-sfs</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="God-C-sfs">
-<meta property="og:url" content="http://yoursite.com/index.html">
+  <meta name="description" content="本文将提供两种解法：哈希表和双指针(快慢指针)1.哈希表解法:我们将已经遍历过的节点加入到Set集合中，然后判断如果遍历的当前节点在集合中已存在，那么就是有环状结构，如果没有，将一直遍历到链表尾部，需要用额外的空间来辅助:   123456789101112public boolean hasCycle(ListNode head) &amp;#123;    Set&lt;ListNode&gt; no">
+<meta property="og:type" content="article">
+<meta property="og:title" content="判断是否含有环状子链表">
+<meta property="og:url" content="http://yoursite.com/2020/07/20/%E5%88%A4%E6%96%AD%E6%98%AF%E5%90%A6%E5%90%AB%E6%9C%89%E7%8E%AF%E7%8A%B6%E5%AD%90%E9%93%BE%E8%A1%A8/index.html">
 <meta property="og:site_name" content="God-C-sfs">
+<meta property="og:description" content="本文将提供两种解法：哈希表和双指针(快慢指针)1.哈希表解法:我们将已经遍历过的节点加入到Set集合中，然后判断如果遍历的当前节点在集合中已存在，那么就是有环状结构，如果没有，将一直遍历到链表尾部，需要用额外的空间来辅助:   123456789101112public boolean hasCycle(ListNode head) &amp;#123;    Set&lt;ListNode&gt; no">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-07-20T13:14:18.138Z">
+<meta property="article:modified_time" content="2020-07-20T12:46:21.135Z">
 <meta property="article:author" content="BingJie Chai">
 <meta name="twitter:card" content="summary">
   
@@ -156,16 +160,14 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-判断是否含有环状子链表" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-判断是否含有环状子链表" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/07/20/%E5%88%A4%E6%96%AD%E6%98%AF%E5%90%A6%E5%90%AB%E6%9C%89%E7%8E%AF%E7%8A%B6%E5%AD%90%E9%93%BE%E8%A1%A8/">判断是否含有环状子链表</a>
+    <h1 class="article-title" itemprop="name">
+      判断是否含有环状子链表
     </h1>
   
 
@@ -206,16 +208,75 @@
 
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/07/20/%E5%88%A4%E6%96%AD%E6%98%AF%E5%90%A6%E5%90%AB%E6%9C%89%E7%8E%AF%E7%8A%B6%E5%AD%90%E9%93%BE%E8%A1%A8/">展开全文 >></a>
-        </p>
-      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/07/20/%E5%88%A4%E6%96%AD%E6%98%AF%E5%90%A6%E5%90%AB%E6%9C%89%E7%8E%AF%E7%8A%B6%E5%AD%90%E9%93%BE%E8%A1%A8/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2020/07/20/%E6%89%BE%E5%88%B0%E7%8E%AF%E7%8A%B6%E5%AD%90%E9%93%BE%E8%A1%A8%E7%9A%84%E5%85%A5%E5%8F%A3/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">找到环状子链表的入口</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -235,695 +296,14 @@
 
 
 
-
-  
-    <article id="post-找到环状子链表的入口" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/07/20/%E6%89%BE%E5%88%B0%E7%8E%AF%E7%8A%B6%E5%AD%90%E9%93%BE%E8%A1%A8%E7%9A%84%E5%85%A5%E5%8F%A3/">找到环状子链表的入口</a>
-    </h1>
-  
-
-        
-        <a href="/2020/07/20/%E6%89%BE%E5%88%B0%E7%8E%AF%E7%8A%B6%E5%AD%90%E9%93%BE%E8%A1%A8%E7%9A%84%E5%85%A5%E5%8F%A3/" class="archive-article-date">
-  	<time datetime="2020-07-20T13:14:18.134Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-20</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-
-	
-		<p>整体思路：<br>我们通过构造两次相遇来解决这个问题，首先我们要用双指针fast和slow来辅助解题，我们将两个指针的初始位置都指向头节点，然后fast一次走两步，slow一次走一步，这里分为两种情况:<br><strong>第一种情况</strong>:fast直接到达了链表的尾部，那么是不含有环状结构的，直接return fasle<br><strong>第二种情况</strong>:根据运动员的例子我们可以得知如果含有环状结构那么fast和slow是一定会相遇的，这里我们来分析以下fast和slow走过的路程，首先fast走的路程一定是slow的2倍，所以f = 2s①，然后fast比slow多走了n圈，所以f=s+nb②，联立①和②我们可以得出f=2nb,s=nb，这是第一次相遇时，f和s走的总路程。<br><strong>根据第二种情况继续分析</strong>：此时我们记录总共走的步数为k，那么指针走到环状链表的入口时，k=a+nb,a为head到入口的距离，而此时s走的总路程是nb,所以如果我们s继续走a步就可以使s到达入口处，但我们不知道a的值<br/><br><strong>为了求a我们构造第二次相遇</strong>:所以此时我们令fast指向head，两者一同以相同速度走，那么fast走a步到了入口，s同样到了入口，所以当fast和slow相遇时，就是入口</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">public class Solution &#123;</span><br><span class="line">   	public ListNode detectCycle(ListNode head) &#123;</span><br><span class="line">		if(head &#x3D;&#x3D; null||head.next &#x3D;&#x3D; null) &#123;</span><br><span class="line">			return null;</span><br><span class="line">		&#125;</span><br><span class="line">		ListNode slow &#x3D; head;</span><br><span class="line">		ListNode fast &#x3D; head;</span><br><span class="line">		&#x2F;&#x2F;构建第一次相遇</span><br><span class="line">		while(true) &#123;</span><br><span class="line">			if(fast&#x3D;&#x3D;null||fast.next&#x3D;&#x3D;null) &#123;</span><br><span class="line">				return null;</span><br><span class="line">			&#125;</span><br><span class="line">			slow &#x3D; slow.next;</span><br><span class="line">			fast &#x3D; fast.next.next;</span><br><span class="line">			if(fast &#x3D;&#x3D; slow) &#123;</span><br><span class="line">				break;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		&#x2F;&#x2F;构建第二次相遇</span><br><span class="line">		fast &#x3D; head;</span><br><span class="line">		while(slow!&#x3D;fast) &#123;</span><br><span class="line">			slow &#x3D; slow.next;</span><br><span class="line">			fast &#x3D; fast.next;</span><br><span class="line">		&#125;</span><br><span class="line">		return slow;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-	
-
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/数据结构与算法//" class="article-tag-list-link color3">数据结构与算法</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/07/20/%E6%89%BE%E5%88%B0%E7%8E%AF%E7%8A%B6%E5%AD%90%E9%93%BE%E8%A1%A8%E7%9A%84%E5%85%A5%E5%8F%A3/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-寻找相交链表的交点" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/07/20/%E5%AF%BB%E6%89%BE%E7%9B%B8%E4%BA%A4%E9%93%BE%E8%A1%A8%E7%9A%84%E4%BA%A4%E7%82%B9/">寻找相交链表的交点</a>
-    </h1>
-  
-
-        
-        <a href="/2020/07/20/%E5%AF%BB%E6%89%BE%E7%9B%B8%E4%BA%A4%E9%93%BE%E8%A1%A8%E7%9A%84%E4%BA%A4%E7%82%B9/" class="archive-article-date">
-  	<time datetime="2020-07-20T13:14:18.133Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-20</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-
-	
-		<p>思路:<br>我们利用fa和fb两个指针来辅助解决，两指针遍历链表，当一者到达尾部，那么根据两指针的差值我们可以找到交点<br>此处我们换一种思路来求的插值，拼接链表<br><img src="https://gitee.com/bingjie__chai/PicOfHexo/raw/master/pic_hexo/%E9%93%BE%E8%A1%A8%E4%BA%A4%E7%82%B9.png" alt=""></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">public class Solution &#123;</span><br><span class="line">    public ListNode getIntersectionNode(ListNode headA, ListNode headB) &#123;</span><br><span class="line">        ListNode ha &#x3D; headA, hb &#x3D; headB;</span><br><span class="line">        while (ha !&#x3D; hb) &#123;</span><br><span class="line">            ha &#x3D; ha !&#x3D; null ? ha.next : headB;</span><br><span class="line">            hb &#x3D; hb !&#x3D; null ? hb.next : headA;</span><br><span class="line">        &#125;</span><br><span class="line">        return ha;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-	
-
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/数据结构与算法//" class="article-tag-list-link color3">数据结构与算法</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/07/20/%E5%AF%BB%E6%89%BE%E7%9B%B8%E4%BA%A4%E9%93%BE%E8%A1%A8%E7%9A%84%E4%BA%A4%E7%82%B9/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-反转字符串里的单词" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/07/20/%E5%8F%8D%E8%BD%AC%E5%AD%97%E7%AC%A6%E4%B8%B2%E9%87%8C%E7%9A%84%E5%8D%95%E8%AF%8D/">反转字符串里的单词</a>
-    </h1>
-  
-
-        
-        <a href="/2020/07/20/%E5%8F%8D%E8%BD%AC%E5%AD%97%E7%AC%A6%E4%B8%B2%E9%87%8C%E7%9A%84%E5%8D%95%E8%AF%8D/" class="archive-article-date">
-  	<time datetime="2020-07-20T13:14:02.686Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-20</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-
-	
-		<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">给定一个字符串，逐个翻转字符串中的每个单词。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">示例 1：</span><br><span class="line"></span><br><span class="line">输入: &quot;the sky is blue&quot;</span><br><span class="line">输出:&quot;blue is sky the&quot;</span><br><span class="line">示例 2：</span><br><span class="line"></span><br><span class="line">输入: &quot; hello world! &quot;</span><br><span class="line">输出:&quot;world! hello&quot;</span><br><span class="line">解释: 输入字符串可以在前面或者后面包含多余的空格，但是反转后的字符不能包括。</span><br><span class="line">示例 3：</span><br><span class="line"></span><br><span class="line">输入: &quot;a good  example&quot;</span><br><span class="line">输出:&quot;example good a&quot;</span><br><span class="line">解释: 如果两个单词间有多余的空格，将反转后单词间的空格减少到只含一个。</span><br><span class="line">说明：</span><br><span class="line">无空格字符构成一个单词。</span><br><span class="line">输入字符串可以在前面或者后面包含多余的空格，但是反转后的字符不能包括。</span><br><span class="line">如果两个单词间有多余的空格，将反转后单词间的空格减少到只含一个。</span><br></pre></td></tr></table></figure>
-<p>思路:利用双指针的想法，我们可以从后往前截取单词然后加入到StringBuffer中，当我们取出来是就是倒叙，类似于栈的运用<br>然后利用i，j双指针，根据ij来确定截取单词的位置 </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    public String reverseWords(String s) &#123;</span><br><span class="line">        if(s.length() &#x3D;&#x3D; 0) &#123;</span><br><span class="line">			return &quot;&quot;;</span><br><span class="line">		&#125;</span><br><span class="line">		s &#x3D; s.trim();</span><br><span class="line">		StringBuffer res &#x3D; new StringBuffer();</span><br><span class="line">		int  j &#x3D; s.length()-1;</span><br><span class="line">		int i &#x3D; j;</span><br><span class="line">		while(i&gt;&#x3D;0) &#123;</span><br><span class="line">			while(i&gt;&#x3D;0&amp;&amp;s.charAt(i)!&#x3D;&#39; &#39;) &#123;</span><br><span class="line">				i--;</span><br><span class="line">			&#125;</span><br><span class="line">			res.append(s.substring(i+1, j+1)+&quot; &quot;);</span><br><span class="line">			while(i&gt;&#x3D;0&amp;&amp;s.charAt(i)&#x3D;&#x3D;&#39; &#39;) i--;&#x2F;&#x2F;去除单词间的空格</span><br><span class="line">			j &#x3D; i;</span><br><span class="line">			</span><br><span class="line">		&#125;</span><br><span class="line">		return res.toString().trim();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-	
-
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/数据结构与算法//" class="article-tag-list-link color3">数据结构与算法</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/07/20/%E5%8F%8D%E8%BD%AC%E5%AD%97%E7%AC%A6%E4%B8%B2%E9%87%8C%E7%9A%84%E5%8D%95%E8%AF%8D/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-mergeRange" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/07/17/mergeRange/">合并区间</a>
-    </h1>
-  
-
-        
-        <a href="/2020/07/17/mergeRange/" class="archive-article-date">
-  	<time datetime="2020-07-17T14:13:31.846Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-17</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-
-	
-		<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">给出一个区间的集合，请合并所有重叠的区间。</span><br><span class="line"></span><br><span class="line">示例 1:</span><br><span class="line"></span><br><span class="line">输入: [[1,3],[2,6],[8,10],[15,18]]</span><br><span class="line">输出: [[1,6],[8,10],[15,18]]</span><br><span class="line">解释: 区间 [1,3] 和 [2,6] 重叠, 将它们合并为 [1,6].</span><br><span class="line">示例 2:</span><br><span class="line"></span><br><span class="line">输入: [[1,4],[4,5]]</span><br><span class="line">输出: [[1,5]]</span><br><span class="line">解释: 区间 [1,4] 和 [4,5] 可被视为重叠区间。</span><br></pre></td></tr></table></figure>
-<p>解题思路：如果我们按照区间的左端点排序，那么在排完序的列表中，可以合并的区间一定是连续的，然后判断如果左端点在最后一个区间右端点之前，那么这两个区间可以合并，右端点取两个的最大值，反之，两者不可合并，那么直接将这个区间加入到res数组中  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">   public int[][] merge(int[][] intervals) &#123;</span><br><span class="line">		Arrays.sort(intervals,(a,b) -&gt; a[0]-b[0]);</span><br><span class="line">		int [][] res &#x3D; new int[intervals.length][2];</span><br><span class="line">		int index &#x3D; -1;&#x2F;&#x2F;index表示res中区间个数</span><br><span class="line">		for(int[]a:intervals) &#123;</span><br><span class="line">		&#x2F;&#x2F;index&#x3D;&#x3D;-1表示此时res数组为空，a[0]表示当前区间的左端点，res[index][1]是最后一个区间的右端点</span><br><span class="line">			if(index&#x3D;&#x3D;-1||a[0]&gt;res[index][1]) &#123;</span><br><span class="line">				res[++index] &#x3D; a;</span><br><span class="line">			&#125;else &#123;</span><br><span class="line">				res[index][1] &#x3D; Math.max(a[1], res[index][1]);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		return Arrays.copyOf(res, index+1);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>其中涉及到了拉姆达表达式：目的在于简化代码，作用和传入一个compara一样，lamda表达式的语法：（参数1，参数1）-&gt;要执行的语法,这里就是一个比较器的简化写法<br>还有在返回处，由于我们并不知道最终的区间有几个，而我们的res在new出来时是为了确保数组容量足够容纳length，所以不能直接返回res，然后index从0开始，故区间的个数是index+1个，所以我们copyOf的长度是index+1个</p>
-
-	
-
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/数据结构与算法//" class="article-tag-list-link color3">数据结构与算法</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/07/17/mergeRange/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-RotateMartix" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/07/17/RotateMartix/">旋转矩阵</a>
-    </h1>
-  
-
-        
-        <a href="/2020/07/17/RotateMartix/" class="archive-article-date">
-  	<time datetime="2020-07-17T14:13:31.843Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-17</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-
-	
-		<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">给你一幅由 N × N 矩阵表示的图像，其中每个像素的大小为 4 字节。请你设计一种算法，将图像旋转 90 度。</span><br><span class="line"></span><br><span class="line">不占用额外内存空间能否做到？</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">示例 1:</span><br><span class="line"></span><br><span class="line">给定 matrix &#x3D; </span><br><span class="line">[</span><br><span class="line">  [1,2,3],</span><br><span class="line">  [4,5,6],</span><br><span class="line">  [7,8,9]</span><br><span class="line">],</span><br><span class="line"></span><br><span class="line">原地旋转输入矩阵，使其变为:</span><br><span class="line">[</span><br><span class="line">  [7,4,1],</span><br><span class="line">  [8,5,2],</span><br><span class="line">  [9,6,3]</span><br><span class="line">]</span><br><span class="line">示例 2:</span><br><span class="line"></span><br><span class="line">给定 matrix &#x3D;</span><br><span class="line">[</span><br><span class="line">  [ 5, 1, 9,11],</span><br><span class="line">  [ 2, 4, 8,10],</span><br><span class="line">  [13, 3, 6, 7],</span><br><span class="line">  [15,14,12,16]</span><br><span class="line">], </span><br><span class="line"></span><br><span class="line">原地旋转输入矩阵，使其变为:</span><br><span class="line">[</span><br><span class="line">  [15,13, 2, 5],</span><br><span class="line">  [14, 3, 4, 1],</span><br><span class="line">  [12, 6, 8, 9],</span><br><span class="line">  [16, 7,10,11]</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
-<p>解法一：采用辅助数组<br>思路：我们通过观察可以发现第i行第j列的元素旋转90°后，旋转到倒数第i列第j行的元素，所以代码如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    public  void rotate(int[][] matrix) &#123;</span><br><span class="line">		int len &#x3D; matrix.length;</span><br><span class="line">		int [][]help &#x3D; new int[len][len];</span><br><span class="line">		for(int i&#x3D;0;i&lt;len;i++) &#123;</span><br><span class="line">			for(int j&#x3D;0;j&lt;len;j++) &#123;</span><br><span class="line">			&#x2F;&#x2F;len-i-1表示倒数第i列</span><br><span class="line">				help[j][len-i-1] &#x3D; matrix[i][j];</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		for(int i&#x3D;0;i&lt;len;i++)&#123;</span><br><span class="line">			for(int j&#x3D;0;j&lt;len;j++) &#123;</span><br><span class="line">				matrix[i][j] &#x3D; help[i][j];</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>解法二：不采用多余的辅助空间，原地旋转<br>思路：我们可以发现，先以对角线旋转，然后按照每一行的中心进行左右旋转，可以发现整个数组旋转了90°  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    public static void rotate(int[][] matrix) &#123;</span><br><span class="line">		int rx &#x3D; matrix.length;</span><br><span class="line">		int cx &#x3D; matrix[0].length;</span><br><span class="line">		for(int i&#x3D;0;i&lt;rx;i++) &#123;</span><br><span class="line">			for(int j&#x3D;0;j&lt;i;j++) &#123;</span><br><span class="line">				int temp &#x3D; matrix[i][j];</span><br><span class="line">				matrix[i][j] &#x3D; matrix[j][i];</span><br><span class="line">				matrix[j][i] &#x3D; temp;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		int mid &#x3D; rx&gt;&gt;1;</span><br><span class="line">		for(int i &#x3D; 0;i&lt;rx;i++) &#123;</span><br><span class="line">			for(int j&#x3D;0;j&lt;mid;j++) &#123;</span><br><span class="line">				int temp &#x3D; matrix[i][j];</span><br><span class="line">				matrix[i][j] &#x3D; matrix[i][rx-j-1];</span><br><span class="line">				matrix[i][rx-j-1] &#x3D; temp;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-	
-
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/数据结构与算法//" class="article-tag-list-link color3">数据结构与算法</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/07/17/RotateMartix/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-javascript基础" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/07/16/javascript%E5%9F%BA%E7%A1%80/">javascript基础</a>
-    </h1>
-  
-
-        
-        <a href="/2020/07/16/javascript%E5%9F%BA%E7%A1%80/" class="archive-article-date">
-  	<time datetime="2020-07-16T13:08:05.487Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-16</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-
-	
-		<h3 id="js中的输入输出"><a href="#js中的输入输出" class="headerlink" title="js中的输入输出"></a>js中的输入输出</h3><p>1.控制浏览器弹出一个警告框:alert();<br>2.在HTML文档中中输入一个内容:document.write();<br>3.使用innerHTML将文本输入到HTML元素;<br>4.使用console.log()输入到控制台</p>
-
-	
-
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Web//" class="article-tag-list-link color4">Web</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/07/16/javascript%E5%9F%BA%E7%A1%80/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-平移与过渡" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/07/09/%E5%B9%B3%E7%A7%BB%E4%B8%8E%E8%BF%87%E6%B8%A1/">平移与过渡</a>
-    </h1>
-  
-
-        
-        <a href="/2020/07/09/%E5%B9%B3%E7%A7%BB%E4%B8%8E%E8%BF%87%E6%B8%A1/" class="archive-article-date">
-  	<time datetime="2020-07-09T06:43:19.977Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-09</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-
-	
-		<h1 id="平移与过度"><a href="#平移与过度" class="headerlink" title="平移与过度"></a>平移与过度</h1><p><strong><em>变形平移</em></strong><br>属性transform:变形不会影响布局<br><strong>平移</strong>:translate:三个可选值:translate(X),translate(Y),translate(Z),在平移元素中百分比是相对自身的宽高<br>所以我们可以利用这个特性实现元素居中，在前面当我们开启绝对定位后，设置top:50%,left:50%后并未完全居中，往前我们使用margin平移元素宽度的一半，这里我们还可以使用transform:translate(-50%,-50%)，来实现居中<br><strong>旋转</strong>:rotate:同上三个方向可选值，此处的x，y，z方向是左手坐标系，同时我们牢记一点，垂直图片的方向就是z轴<br><strong>缩放</strong>：scaleX(),scaleY()，参数可以填常数1，2……表示放大为多少倍，缩小就填-1，-2……<br><strong><em>过渡属性transition</em></strong><br>·transition-property:指定要过渡的元素，多个属性用，隔开，如果所有元素都要过渡，使用all关键字，颜色也是可以过渡的属性<br>·transition-duration:过渡时间，即完成这个过渡效果使用的时间，可以使用秒或毫秒做单位<br>·transtion-timing-function:过渡的时序函数，可选值有</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ease:默认值，先加速后减速</span><br><span class="line">liner:匀速</span><br><span class="line">ease-in:加速</span><br><span class="line">ease-in-out:先加速后减速</span><br><span class="line">step(n):分步执行</span><br></pre></td></tr></table></figure>
-<p>·transition-delay:添加延时时间<br><strong><em>动画效果:设置关键帧</em></strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">@keyframes+名字&#123;</span><br><span class="line">    from&#123;</span><br><span class="line">        开始位置</span><br><span class="line">    &#125;</span><br><span class="line">    to&#123;</span><br><span class="line">        结束位置</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>设置完成后在元素中添加:animation-name:+上述名字<br>animation-duration:执行时间<br>animation-delay:延时<br>animation-timing-function:同上<br>animation-iteration-count:执行次数</p>
-
-	
-
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Web//" class="article-tag-list-link color4">Web</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/07/09/%E5%B9%B3%E7%A7%BB%E4%B8%8E%E8%BF%87%E6%B8%A1/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-弹性容器" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/07/09/%E5%BC%B9%E6%80%A7%E5%AE%B9%E5%99%A8/">弹性容器</a>
-    </h1>
-  
-
-        
-        <a href="/2020/07/09/%E5%BC%B9%E6%80%A7%E5%AE%B9%E5%99%A8/" class="archive-article-date">
-  	<time datetime="2020-07-09T06:19:07.385Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-09</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-
-	
-		<h1 id="弹性容器"><a href="#弹性容器" class="headerlink" title="弹性容器"></a>弹性容器</h1><p>弹性盒(flex)是css中的又一种布局手段，flex可使元素具有弹性，让元素可以随页面的改变而该改变<br>-<strong>弹性容器</strong>要使用弹性盒，必须先将元素设置为弹性容器，我们通过display:flex来设置成弹性容器<br><strong>1.flex-direction：用于指定容器中弹性元素的排列方式</strong><br>·row-默认值，弹性盒中的弹性元素从左向右排列；<br>·row-revere-从右向左排列；<br>·column-纵向从上向下排列；<br>·column·revere-纵向从下向上排列；<br>·主轴-弹性元素的排列方向成为主轴；<br>·侧轴-与主轴垂直的方向为侧轴；<br><strong>2.flex-wrap:设置弹性元素是否自动换行</strong><br>·nowrap-默认值，不换行；<br>·wrap-沿辅轴方向自动换行；<br>·wrap-reverse-沿辅轴反方向换行；<br><strong>3.flex-flow：wrap direction简写属性</strong><br><strong>4.justify-content：如何分布主轴上的空白空间</strong><br>·flex-start-沿主轴起边排列<br>·flex-end-沿终边排列<br>·center-元素居中排列<br>·space-around-空白分布在元素两侧<br>·space-evently-分布到一侧<br>·space-between-均匀分布到中间<br><strong>5.align-items：如何分布辅轴上的空白空间</strong><br>几乎同水平方向的特点，不在此赘述<br>-<strong>弹性元素</strong>:弹性容器的子元素是弹性元素，一个元素可以同时是弹性容器和弹性元素<br>1.flex-grow：指定弹性元素的伸展系数，当父元素有多余空间时，子元素如何伸展，根据子元素设置的比例来分配多余空间<br>2.flex-shrink：指定压缩系数，当没有指定压缩系数的时候，如果弹性元素大小大于弹性容器，会使弹性元素平均分配弹性空间<br>3.flex的简写属性：增长，缩减，基础，三者顺序不能改变</p>
-
-	
-
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Web//" class="article-tag-list-link color4">Web</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/07/09/%E5%BC%B9%E6%80%A7%E5%AE%B9%E5%99%A8/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-memReverse" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/07/08/memReverse/">memReverse</a>
-    </h1>
-  
-
-        
-        <a href="/2020/07/08/memReverse/" class="archive-article-date">
-  	<time datetime="2020-07-08T14:27:32.005Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-08</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-
-	
-		<h1 id="记忆化搜索："><a href="#记忆化搜索：" class="headerlink" title="记忆化搜索："></a>记忆化搜索：</h1><p>下面用两个比较简单的例子来对记忆化搜索有一个初步了解：<br>例一：Fibonacci数列的记忆化递归过程</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    HashMap&lt;Integer, Integer&gt; cache &#x3D; new HashMap&lt;Integer, Integer&gt;();</span><br><span class="line">    public int fib(int N) &#123;</span><br><span class="line">        if(cache.containsKey(N))&#123;</span><br><span class="line">            return cache.get(N);</span><br><span class="line">        &#125;</span><br><span class="line">        int res &#x3D; 0;</span><br><span class="line">        if(N&lt;2)&#123;</span><br><span class="line">            res &#x3D; N;</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">            res &#x3D; fib(N-1)+fib(N-2);</span><br><span class="line">        &#125;</span><br><span class="line">        cache.put(N,res);</span><br><span class="line">        return res;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>爬楼梯的记忆化递归过程</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    HashMap&lt;Integer, Integer&gt; cache &#x3D; new HashMap&lt;Integer, Integer&gt;();</span><br><span class="line">    public int climbStairs(int n) &#123;</span><br><span class="line">        if(cache.containsKey(n))&#123;</span><br><span class="line">            return cache.get(n);</span><br><span class="line">        &#125;</span><br><span class="line">        int res;</span><br><span class="line">        if(n&lt;&#x3D;2)&#123;</span><br><span class="line">            res &#x3D; n;</span><br><span class="line">        &#125;</span><br><span class="line">        else&#123;</span><br><span class="line">           res &#x3D;  climbStairs(n-1)+climbStairs(n-2);</span><br><span class="line">    &#125;</span><br><span class="line">        cache.put(n,res);</span><br><span class="line">        return res;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-	
-
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/07/08/memReverse/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
   
   
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
-    </nav>
+  
+
+  
+
+  
+
   
 
 
@@ -948,8 +328,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
