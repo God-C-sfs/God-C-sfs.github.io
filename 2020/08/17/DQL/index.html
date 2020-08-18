@@ -6,15 +6,21 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2020 | God-C-sfs</title>
+  <title>DQL语言 | God-C-sfs</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="God-C-sfs">
-<meta property="og:url" content="http://yoursite.com/archives/2020/page/3/index.html">
+  <meta name="description" content="DQL:全称DataQueryLanguage，数据查询语言，查询语句，凡是select语句都是DQL基础查询:   123show databases;&#x2F;&#x2F;展示所有库use 库名;&#x2F;&#x2F;切换库show tables;&#x2F;&#x2F;展示库中所有表单 1.去重关键字:字段前+distinct2.起别名:AS + 别名，通常AS也可以省略3.“+”的作用">
+<meta property="og:type" content="article">
+<meta property="og:title" content="DQL语言">
+<meta property="og:url" content="http://yoursite.com/2020/08/17/DQL/index.html">
 <meta property="og:site_name" content="God-C-sfs">
+<meta property="og:description" content="DQL:全称DataQueryLanguage，数据查询语言，查询语句，凡是select语句都是DQL基础查询:   123show databases;&#x2F;&#x2F;展示所有库use 库名;&#x2F;&#x2F;切换库show tables;&#x2F;&#x2F;展示库中所有表单 1.去重关键字:字段前+distinct2.起别名:AS + 别名，通常AS也可以省略3.“+”的作用">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://gitee.com/bingjie__chai/PicOfHexo/raw/master/pic_hexo/Snipaste_2020-07-22_22-37-50.png">
+<meta property="article:published_time" content="2020-08-17T12:38:30.771Z">
+<meta property="article:modified_time" content="2020-08-17T12:06:37.010Z">
 <meta property="article:author" content="BingJie Chai">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://gitee.com/bingjie__chai/PicOfHexo/raw/master/pic_hexo/Snipaste_2020-07-22_22-37-50.png">
   
     <link rel="alternative" href="/atom.xml" title="God-C-sfs" type="application/atom+xml">
   
@@ -156,405 +162,159 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-DQL" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      DQL语言
+    </h1>
+  
+
+        
+        <a href="/2020/08/17/DQL/" class="archive-article-date">
+  	<time datetime="2020-08-17T12:38:30.771Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-17</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+
+	
+		<p><strong>DQL:全称DataQueryLanguage，数据查询语言，查询语句，凡是select语句都是DQL</strong><br><strong>基础查询:</strong>  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">show databases;&#x2F;&#x2F;展示所有库</span><br><span class="line">use 库名;&#x2F;&#x2F;切换库</span><br><span class="line">show tables;&#x2F;&#x2F;展示库中所有表单</span><br></pre></td></tr></table></figure>
+<p>1.去重关键字:字段前+distinct<br>2.起别名:AS + 别名，通常AS也可以省略<br>3.“+”的作用:<br>·两个数都为数值型，则进行加法运算<br>·只要一方为字符型，试图将字符型转换成数值型，若转换成功，则继续进行加法运算，若转换失败，则将字符型数值变为0<br>·只要一方为null，那么结果就是null<br>4.DESC:关键字+表名 显示表的结构<br>5.IFNULL函数用于判断是否为null，ifnull(字段,0)若字段为null，则转换为0<br>6.concat函数用于拼接字符串<br><strong>条件查询:</strong><br>一、语法:select 查询列表 from 表名 where 筛选条件<br>二、分类:<br>1.按条件运算符筛选:&gt;,&lt;,=,&lt;&gt;不等号,&gt;=,&lt;=<br>2.按逻辑运算符筛选:&amp;&amp;,||,!,and,or,not<br>3.模糊查询:<br>like:一般搭配通配符使用，可以判断字符型或数值型<br>通配符：%表示任意多个字符，可以是0个，_表示任意单个字符<br>between and(包括临界值),in,is null,is not null<br><strong>排序查询:</strong><br>一、语法：select 查询列表 from 表 where 筛选条件 order by 排序列表【asc|desc】<br>二、特点：<br>1.asc升序，如果不写默认升序，desc降序<br>2.排序列表支持单个字符按，多个字段，函数，表达式，别名，当有多个排序方式时，先按前者，若按前者有相同则按后一个排序<br>3.order by的位置一般放在查询语句的最后(除limit语句之外)<br><strong>常见函数:</strong>  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">1.字符函数</span><br><span class="line">concat:连接</span><br><span class="line">substr:截取字串，索引从1开始</span><br><span class="line">upper:变大写</span><br><span class="line">lower:变小写</span><br><span class="line">replace:替代</span><br><span class="line">length:获取长度</span><br><span class="line">trim:去除前后空格</span><br><span class="line">lpad:左填充</span><br><span class="line">rpad:右填充</span><br><span class="line">instr:获取字串第一次出现的索引</span><br><span class="line">2.数学函数</span><br><span class="line">ceil:向上取整</span><br><span class="line">round:四舍五入</span><br><span class="line">mod:取模</span><br><span class="line">floor:向下取整</span><br><span class="line">truncate:截断</span><br><span class="line">rand:获取随机数，[0-1)之间</span><br><span class="line">3.日期函数</span><br><span class="line">now:返回当前日期+时间</span><br><span class="line">year:返回年</span><br><span class="line">month:返回月</span><br><span class="line">day:返回日</span><br><span class="line">date_format:将字符串转换为日期</span><br><span class="line">curdate:当前日期</span><br><span class="line">str_to_data:将日期转换为字符串</span><br><span class="line">curtime:当前时间</span><br><span class="line">hour:返回时</span><br><span class="line">minute:返回分</span><br><span class="line">second:返回秒</span><br><span class="line">datediff:返回两个日期相差的天数</span><br></pre></td></tr></table></figure>
+<p><strong>分组查询:</strong><br>一、语法:<br>select 分组函数，分组后的字段<br>【where筛选条件】<br>group by 分组的字段<br>【having 分组后的是筛选】<br>【order by 排序列表】<br>二、特点<br><img src="https://gitee.com/bingjie__chai/PicOfHexo/raw/master/pic_hexo/Snipaste_2020-07-22_22-37-50.png" alt=""><br><strong>连接查询:</strong>(这里讲的是SQL99语法)<br>一、内连接<br>1.语法:<br>select 查询列表<br>from 表1 别名<br>【inner】join 表2 别名 on 连接条件<br>where 筛选条件<br>group by 分组列表<br>having 分组后的筛选<br>order by 排序列表<br>limit 语句<br>2.特点<br>·表的顺序可以调换<br>·内连接结果=多表的交集<br>·n表连接至少需要n-1个连接条件<br>二、外连接<br>1.语法：<br>select 查询列表<br>from 表1 别名<br>left|right|full join 表2 别名 on 连接条件<br>where 筛选条件<br>group by 分组列表<br>having 分组后的筛选<br>order by 排序列表<br>limit 语句<br>2.特点:<br>·查询的结果=主表中所有的行，如果从表和它匹配的将显示匹配行，如果从表没有匹配的则显示null<br>·left join 左边的是主表，right join右边的是主表<br>·一般用于查询除了交集部分的剩余的不匹配的行<br><strong>子查询:</strong></br>一、含义：嵌套在其他语句内部的select语句称为子查询或内查询，外面的语句可以是insert，update，delete，select等，一般select作为外面语句较多<br>二、分类<br>1.按出现的位置<br>·select后面:仅仅支持标量子查询<br>·from后面：表子查询<br>·where或having后面：标量子查询，列子查询，行子查询<br>·exists：标量子查询，列子查询，行子查询，表子查询<br>2.按结果集的行列<br>·标量子查询（单行子查询）：结果集为一行一列<br>·列子查询（多行子查询）：结果集为多行一列<br>·行子查询：结果集为多行多列<br>·表子查询：结果集为多行多列<br><strong>分页查询：</strong><br>一、应用场景：当要查询的条目数太多，一页显示不全<br>二、语法：<br>select 查询列表<br>from 表<br>limit 【offset，】size；<br>·注意：offset代表的是起始的条目索引，默认从0开始，size代表显示的条目数<br>·公式：假如要显示的页数为page，每一页的条目数为size<br>select 查询列表<br>from 表<br>limit （page-1）<em>size，size<br>*</em>查询总结：**<br>select 查询列表<br>from 表1 别名<br>连接类型 join 表2<br>on 连接条件<br>where 筛选<br>group by 分组列表<br>having 筛选<br>order by 排序列表<br>limit 起始条目索引，条目数</p>
+
+	
+
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/07/08/reverseString/" class="archive-article-date">
-  	<time datetime="2020-07-08T14:27:31.995Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-08</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/07/08/reverseString/">反转字符串</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
+      
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/数据结构与算法//" class="article-tag-list-link color3">数据结构与算法</a>
+        			<a href="/categories/mysql数据库//" class="article-tag-list-link color4">mysql数据库</a>
         		</li>
       		
 		</ul>
 	</div>
 
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/08/17/DQL/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/07/08/%E4%BA%8C%E5%8F%89%E6%A0%91%E6%9C%80%E8%BF%91%E5%85%AC%E5%85%B1%E7%A5%96%E5%85%88%E8%8A%82%E7%82%B9/" class="archive-article-date">
-  	<time datetime="2020-07-08T13:51:55.165Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-08</time>
-</a>
+<nav id="article-nav">
+  
+    <a href="/2020/08/17/%E5%B9%B3%E8%A1%A1%E4%BA%8C%E5%8F%89%E6%A0%91/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          相同的树
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/08/17/DML/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">DML语言</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/07/08/%E4%BA%8C%E5%8F%89%E6%A0%91%E6%9C%80%E8%BF%91%E5%85%AC%E5%85%B1%E7%A5%96%E5%85%88%E8%8A%82%E7%82%B9/">二叉树最近公共祖先</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/数据结构与算法//" class="article-tag-list-link color3">数据结构与算法</a>
-        		</li>
-      		
-		</ul>
-	</div>
+        
+        
+    </div>
+</aside>
 
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/07/06/%E5%AF%B9%E7%A7%B0%E6%A0%91/" class="archive-article-date">
-  	<time datetime="2020-07-06T14:21:48.894Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-06</time>
-</a>
-        </div>
-    	 
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/07/06/%E5%AF%B9%E7%A7%B0%E6%A0%91/">对称树</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/数据结构与算法//" class="article-tag-list-link color3">数据结构与算法</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/07/06/%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E6%9C%80%E5%A4%A7%E6%B7%B1%E5%BA%A6/" class="archive-article-date">
-  	<time datetime="2020-07-06T14:21:20.642Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-06</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/07/06/%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E6%9C%80%E5%A4%A7%E6%B7%B1%E5%BA%A6/">二叉树的最大深度</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/数据结构与算法//" class="article-tag-list-link color3">数据结构与算法</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/07/06/%E8%B7%AF%E5%BE%84%E6%80%BB%E5%92%8C/" class="archive-article-date">
-  	<time datetime="2020-07-06T14:20:07.631Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-06</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/07/06/%E8%B7%AF%E5%BE%84%E6%80%BB%E5%92%8C/">路径总和</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/数据结构与算法//" class="article-tag-list-link color3">数据结构与算法</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/07/04/%E6%81%A2%E5%A4%8D%E4%BA%8C%E5%8F%89%E6%A0%91/" class="archive-article-date">
-  	<time datetime="2020-07-04T02:13:42.913Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-04</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/07/04/%E6%81%A2%E5%A4%8D%E4%BA%8C%E5%8F%89%E6%A0%91/">恢复二叉树</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/数据结构与算法//" class="article-tag-list-link color3">数据结构与算法</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/07/01/%E7%9B%AE%E6%A0%87%E5%92%8C/" class="archive-article-date">
-  	<time datetime="2020-07-01T14:57:14.252Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-01</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/07/01/%E7%9B%AE%E6%A0%87%E5%92%8C/">目标和</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/数据结构与算法//" class="article-tag-list-link color3">数据结构与算法</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/07/01/%E7%9B%92%E5%AD%90%E6%A8%A1%E5%9E%8B/" class="archive-article-date">
-  	<time datetime="2020-07-01T14:56:26.838Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-01</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/07/01/%E7%9B%92%E5%AD%90%E6%A8%A1%E5%9E%8B/">盒子模型</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Web//" class="article-tag-list-link color4">Web</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/07/01/CSS/" class="archive-article-date">
-  	<time datetime="2020-07-01T14:56:26.837Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-01</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/07/01/CSS/">CSS</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Web//" class="article-tag-list-link color4">Web</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/07/01/CSS%E5%AE%9A%E4%BD%8D%E9%97%AE%E9%A2%98/" class="archive-article-date">
-  	<time datetime="2020-07-01T14:55:51.453Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-01</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/07/01/CSS%E5%AE%9A%E4%BD%8D%E9%97%AE%E9%A2%98/">CSS定位问题</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Web//" class="article-tag-list-link color4">Web</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/2020/page/2/">&amp;laquo; Prev</a><a class="page-number" href="/archives/2020/">1</a><a class="page-number" href="/archives/2020/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/archives/2020/page/4/">4</a><a class="extend next" rel="next" href="/archives/2020/page/4/">Next &amp;raquo;</a>
-    </nav>
   
 
 
@@ -580,8 +340,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

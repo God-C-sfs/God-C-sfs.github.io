@@ -6,13 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2020 | God-C-sfs</title>
+  <title>DDL语言 | God-C-sfs</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="God-C-sfs">
-<meta property="og:url" content="http://yoursite.com/archives/2020/page/3/index.html">
+  <meta name="description" content="DDL语句用于对数据库，表的管理库的管理：一、创建库create database if not exists 库名二、修改库alter database 库名三、删除库drop database if exists 库名表的管理：一、创建表create table if not exists 表名（字段名 字段类型【约束】，字段名 字段类型【约束】，字段名 字段类型【约束】，….）二、修改表1.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="DDL语言">
+<meta property="og:url" content="http://yoursite.com/2020/08/18/DDL/index.html">
 <meta property="og:site_name" content="God-C-sfs">
+<meta property="og:description" content="DDL语句用于对数据库，表的管理库的管理：一、创建库create database if not exists 库名二、修改库alter database 库名三、删除库drop database if exists 库名表的管理：一、创建表create table if not exists 表名（字段名 字段类型【约束】，字段名 字段类型【约束】，字段名 字段类型【约束】，….）二、修改表1.">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-08-18T12:42:46.146Z">
+<meta property="article:modified_time" content="2020-08-18T12:40:25.399Z">
 <meta property="article:author" content="BingJie Chai">
 <meta name="twitter:card" content="summary">
   
@@ -156,405 +160,156 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-DDL" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      DDL语言
+    </h1>
+  
+
+        
+        <a href="/2020/08/18/DDL/" class="archive-article-date">
+  	<time datetime="2020-08-18T12:42:46.146Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-18</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+
+	
+		<p><strong>DDL语句用于对数据库，表的管理</strong><br><strong><em>库的管理：</em></strong><br><strong>一、创建库</strong><br>create database if not exists 库名<br><strong>二、修改库</strong><br>alter database 库名<br><strong>三、删除库</strong><br>drop database if exists 库名<br><strong><em>表的管理：</em></strong><br><strong>一、创建表</strong><br>create table if not exists 表名（<br>字段名 字段类型【约束】，<br>字段名 字段类型【约束】，<br>字段名 字段类型【约束】，….<br>）<br><strong>二、修改表</strong><br>1.添加列<br>alter table 表名 add column 列名 类型<br>2.修改列的类型或约束<br>alter table 表名 modify column 列名 新类型【新约束】<br>3.修改列名<br>alter table 表名 change column 旧列名 新列名 类型<br>4.删除列<br>alter table 表名 drop column 列名<br>5.修改表名<br>alter table 表名 rename 新表名<br><strong>三、删除表</strong><br>drop table if exists 表名<br><strong>四、复制表</strong><br>1.赋值表的结构<br>crate table 表名 like 旧表<br>2.赋值表的结构+数据<br>create table 表名<br>select 查询列表 from 旧表 where 筛选条件<br><strong><em>数据类型</em></strong><br><strong>一、数值型</strong><br><strong>1.整型</strong><br>tinyint 1子节<br>smallint 2子节<br>mediumint 3子节<br>int/integer 4子节<br>bigint 8子节<br>特点：<br>1.都可以设置无符号和有符号，默认有符号，通过unsigined设置无符号<br>2.如果超出了范围，会报out or range异常，会停留在临界值<br><strong>2.浮点型</strong><br>定点数：decimal（M，D）<br>浮点数：<br>float（M，D） 4子节<br>double（M，D）8子节<br>特点：<br>1.M代表整数部分+小数部分的个数，D代表小数位数<br>2.如果超出了范围，会报out or range异常，会停留在临界值<br>3.M和D都可以省略，但对于定点数，M默认为10，D默认为0<br>4.如果精度要求高，则有限考虑使用定点数<br><strong>3.字符型</strong><br>char：固定长度的字符，写法为char（M），最大长度不能超过M，其中M可以省略，默认为1<br>varchar：可变长度的字符，写法为varchar（M），最大长度不能超过M，M不能省略<br><strong>4.日期型</strong><br>year年<br>date日期<br>time时间<br>datetime日期+时间 8个子节<br><strong><em>常见的约束</em></strong><br>一种限制，用于限制表中的数据，为了保证表中的数据的准确性和可靠性<br><strong>一、常见的约束</strong><br>NOT NULL：非空，该字段的值必填<br>UNIQUE：唯一，该字段的值不可重复<br>DEFAULT：默认，该字段的值不用手动插入有默认值<br>PRIMARY KEY：主键，该字段的值不可重复并且非空 unique+notnull<br>FOREIGN KEY：外键，该字段的值引用了另外的表的字段<br><strong>主键和唯一</strong><br>1.区别：<br>①.一个表至多有一个主键，但可以有多个唯一<br>②.主键不允许为空，唯一可以为空<br>2.相同点：<br>都具有唯一性<br>都支持组合键，但不推荐<br><strong>外键</strong><br>1.用于限制两个表的关系，从表的字段引用了主表的某字段值<br>2.外键列和主表的被引用列要求类型一致<br>3.主表的被引用列要求是一个key<br>4.插入数据，先插入主表，删除数据，先删除从表<br><strong>二、创建表时添加约束</strong><br>create table 表名（<br>字段名 字段类型  not null，<br>字段名 字段类型  primary key，<br>字段名 字段类型  unique，<br>constraint 约束名 foreign key（字段名） references 主表（被引用列）</p>
+<p>）<br><strong>三、修改表时添加或删除约束</strong><br>1.非空<br>添加非空<br>alter table 表名 modify column 字段名 字段类型 not null<br>删除非空<br>alter table 表名 modify column 字段名 字段类型<br>2.默认<br>添加默认<br>alter table 表名 modify column 字段名 字段类型 default 值<br>删除默认<br>alter table 表名 modify column 字段名 字段类型<br>3.主键<br>添加主键<br>alter table 表名 add primary key（字段名）<br>删除主键<br>alter table 表名 drop primary key<br>4.唯一<br>添加唯一<br>alter table 表名 add unique（字段名）<br>删除唯一<br>alter table 表名 drop index 索引名<br>四、自增长列<br>特点：<br>1.不用手动插入值，可以自动提供序列值，默认从1开始，步长为1<br>添加AUTO_INCREMENT<br>如果要更改起始值：手动插入值<br>如果要更改步长：set AUTO_INCREMENT = 值<br>2.一个表至多有一个自增长列<br>3.子增长列只支持数值型<br>4.子增长列必须为一个key</p>
+
+	
+
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/07/08/reverseString/" class="archive-article-date">
-  	<time datetime="2020-07-08T14:27:31.995Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-08</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/07/08/reverseString/">反转字符串</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
+      
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/数据结构与算法//" class="article-tag-list-link color3">数据结构与算法</a>
+        			<a href="/categories/mysql数据库//" class="article-tag-list-link color4">mysql数据库</a>
         		</li>
       		
 		</ul>
 	</div>
 
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/08/18/DDL/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/07/08/%E4%BA%8C%E5%8F%89%E6%A0%91%E6%9C%80%E8%BF%91%E5%85%AC%E5%85%B1%E7%A5%96%E5%85%88%E8%8A%82%E7%82%B9/" class="archive-article-date">
-  	<time datetime="2020-07-08T13:51:55.165Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-08</time>
-</a>
+<nav id="article-nav">
+  
+    <a href="/2020/08/18/%E6%9C%89%E5%BA%8F%E9%93%BE%E8%A1%A8%E8%BD%AC%E6%8D%A2%E4%B8%BAAVL%E6%A0%91/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          转换AVL树
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/08/17/%E5%B9%B3%E8%A1%A1%E4%BA%8C%E5%8F%89%E6%A0%91/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">相同的树</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/07/08/%E4%BA%8C%E5%8F%89%E6%A0%91%E6%9C%80%E8%BF%91%E5%85%AC%E5%85%B1%E7%A5%96%E5%85%88%E8%8A%82%E7%82%B9/">二叉树最近公共祖先</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/数据结构与算法//" class="article-tag-list-link color3">数据结构与算法</a>
-        		</li>
-      		
-		</ul>
-	</div>
+        
+        
+    </div>
+</aside>
 
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/07/06/%E5%AF%B9%E7%A7%B0%E6%A0%91/" class="archive-article-date">
-  	<time datetime="2020-07-06T14:21:48.894Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-06</time>
-</a>
-        </div>
-    	 
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/07/06/%E5%AF%B9%E7%A7%B0%E6%A0%91/">对称树</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/数据结构与算法//" class="article-tag-list-link color3">数据结构与算法</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/07/06/%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E6%9C%80%E5%A4%A7%E6%B7%B1%E5%BA%A6/" class="archive-article-date">
-  	<time datetime="2020-07-06T14:21:20.642Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-06</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/07/06/%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E6%9C%80%E5%A4%A7%E6%B7%B1%E5%BA%A6/">二叉树的最大深度</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/数据结构与算法//" class="article-tag-list-link color3">数据结构与算法</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/07/06/%E8%B7%AF%E5%BE%84%E6%80%BB%E5%92%8C/" class="archive-article-date">
-  	<time datetime="2020-07-06T14:20:07.631Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-06</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/07/06/%E8%B7%AF%E5%BE%84%E6%80%BB%E5%92%8C/">路径总和</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/数据结构与算法//" class="article-tag-list-link color3">数据结构与算法</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/07/04/%E6%81%A2%E5%A4%8D%E4%BA%8C%E5%8F%89%E6%A0%91/" class="archive-article-date">
-  	<time datetime="2020-07-04T02:13:42.913Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-04</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/07/04/%E6%81%A2%E5%A4%8D%E4%BA%8C%E5%8F%89%E6%A0%91/">恢复二叉树</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/数据结构与算法//" class="article-tag-list-link color3">数据结构与算法</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/07/01/%E7%9B%AE%E6%A0%87%E5%92%8C/" class="archive-article-date">
-  	<time datetime="2020-07-01T14:57:14.252Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-01</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/07/01/%E7%9B%AE%E6%A0%87%E5%92%8C/">目标和</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/数据结构与算法//" class="article-tag-list-link color3">数据结构与算法</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/07/01/%E7%9B%92%E5%AD%90%E6%A8%A1%E5%9E%8B/" class="archive-article-date">
-  	<time datetime="2020-07-01T14:56:26.838Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-01</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/07/01/%E7%9B%92%E5%AD%90%E6%A8%A1%E5%9E%8B/">盒子模型</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Web//" class="article-tag-list-link color4">Web</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/07/01/CSS/" class="archive-article-date">
-  	<time datetime="2020-07-01T14:56:26.837Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-01</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/07/01/CSS/">CSS</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Web//" class="article-tag-list-link color4">Web</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/07/01/CSS%E5%AE%9A%E4%BD%8D%E9%97%AE%E9%A2%98/" class="archive-article-date">
-  	<time datetime="2020-07-01T14:55:51.453Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-01</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/07/01/CSS%E5%AE%9A%E4%BD%8D%E9%97%AE%E9%A2%98/">CSS定位问题</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Web//" class="article-tag-list-link color4">Web</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/2020/page/2/">&amp;laquo; Prev</a><a class="page-number" href="/archives/2020/">1</a><a class="page-number" href="/archives/2020/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/archives/2020/page/4/">4</a><a class="extend next" rel="next" href="/archives/2020/page/4/">Next &amp;raquo;</a>
-    </nav>
   
 
 
@@ -580,8 +335,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
