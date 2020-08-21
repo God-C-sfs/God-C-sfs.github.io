@@ -158,6 +158,158 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-找到环状子链表的入口" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/07/20/%E6%89%BE%E5%88%B0%E7%8E%AF%E7%8A%B6%E5%AD%90%E9%93%BE%E8%A1%A8%E7%9A%84%E5%85%A5%E5%8F%A3/">找到环状子链表的入口</a>
+    </h1>
+  
+
+        
+        <a href="/2020/07/20/%E6%89%BE%E5%88%B0%E7%8E%AF%E7%8A%B6%E5%AD%90%E9%93%BE%E8%A1%A8%E7%9A%84%E5%85%A5%E5%8F%A3/" class="archive-article-date">
+  	<time datetime="2020-07-20T13:14:18.134Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-20</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+
+	
+		<p>整体思路：<br>我们通过构造两次相遇来解决这个问题，首先我们要用双指针fast和slow来辅助解题，我们将两个指针的初始位置都指向头节点，然后fast一次走两步，slow一次走一步，这里分为两种情况:<br><strong>第一种情况</strong>:fast直接到达了链表的尾部，那么是不含有环状结构的，直接return fasle<br><strong>第二种情况</strong>:根据运动员的例子我们可以得知如果含有环状结构那么fast和slow是一定会相遇的，这里我们来分析以下fast和slow走过的路程，首先fast走的路程一定是slow的2倍，所以f = 2s①，然后fast比slow多走了n圈，所以f=s+nb②，联立①和②我们可以得出f=2nb,s=nb，这是第一次相遇时，f和s走的总路程。<br><strong>根据第二种情况继续分析</strong>：此时我们记录总共走的步数为k，那么指针走到环状链表的入口时，k=a+nb,a为head到入口的距离，而此时s走的总路程是nb,所以如果我们s继续走a步就可以使s到达入口处，但我们不知道a的值<br/><br><strong>为了求a我们构造第二次相遇</strong>:所以此时我们令fast指向head，两者一同以相同速度走，那么fast走a步到了入口，s同样到了入口，所以当fast和slow相遇时，就是入口</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">public class Solution &#123;</span><br><span class="line">   	public ListNode detectCycle(ListNode head) &#123;</span><br><span class="line">		if(head &#x3D;&#x3D; null||head.next &#x3D;&#x3D; null) &#123;</span><br><span class="line">			return null;</span><br><span class="line">		&#125;</span><br><span class="line">		ListNode slow &#x3D; head;</span><br><span class="line">		ListNode fast &#x3D; head;</span><br><span class="line">		&#x2F;&#x2F;构建第一次相遇</span><br><span class="line">		while(true) &#123;</span><br><span class="line">			if(fast&#x3D;&#x3D;null||fast.next&#x3D;&#x3D;null) &#123;</span><br><span class="line">				return null;</span><br><span class="line">			&#125;</span><br><span class="line">			slow &#x3D; slow.next;</span><br><span class="line">			fast &#x3D; fast.next.next;</span><br><span class="line">			if(fast &#x3D;&#x3D; slow) &#123;</span><br><span class="line">				break;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		&#x2F;&#x2F;构建第二次相遇</span><br><span class="line">		fast &#x3D; head;</span><br><span class="line">		while(slow!&#x3D;fast) &#123;</span><br><span class="line">			slow &#x3D; slow.next;</span><br><span class="line">			fast &#x3D; fast.next;</span><br><span class="line">		&#125;</span><br><span class="line">		return slow;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+	
+
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/数据结构与算法//" class="article-tag-list-link color3">数据结构与算法</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/07/20/%E6%89%BE%E5%88%B0%E7%8E%AF%E7%8A%B6%E5%AD%90%E9%93%BE%E8%A1%A8%E7%9A%84%E5%85%A5%E5%8F%A3/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-寻找相交链表的交点" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/07/20/%E5%AF%BB%E6%89%BE%E7%9B%B8%E4%BA%A4%E9%93%BE%E8%A1%A8%E7%9A%84%E4%BA%A4%E7%82%B9/">寻找相交链表的交点</a>
+    </h1>
+  
+
+        
+        <a href="/2020/07/20/%E5%AF%BB%E6%89%BE%E7%9B%B8%E4%BA%A4%E9%93%BE%E8%A1%A8%E7%9A%84%E4%BA%A4%E7%82%B9/" class="archive-article-date">
+  	<time datetime="2020-07-20T13:14:18.133Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-20</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+
+	
+		<p>思路:<br>我们利用fa和fb两个指针来辅助解决，两指针遍历链表，当一者到达尾部，那么根据两指针的差值我们可以找到交点<br>此处我们换一种思路来求的插值，拼接链表<br><img src="https://gitee.com/bingjie__chai/PicOfHexo/raw/master/pic_hexo/%E9%93%BE%E8%A1%A8%E4%BA%A4%E7%82%B9.png" alt=""></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">public class Solution &#123;</span><br><span class="line">    public ListNode getIntersectionNode(ListNode headA, ListNode headB) &#123;</span><br><span class="line">        ListNode ha &#x3D; headA, hb &#x3D; headB;</span><br><span class="line">        while (ha !&#x3D; hb) &#123;</span><br><span class="line">            ha &#x3D; ha !&#x3D; null ? ha.next : headB;</span><br><span class="line">            hb &#x3D; hb !&#x3D; null ? hb.next : headA;</span><br><span class="line">        &#125;</span><br><span class="line">        return ha;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+	
+
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/数据结构与算法//" class="article-tag-list-link color3">数据结构与算法</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/07/20/%E5%AF%BB%E6%89%BE%E7%9B%B8%E4%BA%A4%E9%93%BE%E8%A1%A8%E7%9A%84%E4%BA%A4%E7%82%B9/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-反转字符串里的单词" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -767,163 +919,9 @@
 
 
   
-    <article id="post-合并有序链表" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/07/08/%E5%90%88%E5%B9%B6%E6%9C%89%E5%BA%8F%E9%93%BE%E8%A1%A8/">合并有序链表</a>
-    </h1>
-  
-
-        
-        <a href="/2020/07/08/%E5%90%88%E5%B9%B6%E6%9C%89%E5%BA%8F%E9%93%BE%E8%A1%A8/" class="archive-article-date">
-  	<time datetime="2020-07-08T14:27:32.001Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-08</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-
-	
-		<h1 id="合并两个有序链表，使其成为一个新的有序链表"><a href="#合并两个有序链表，使其成为一个新的有序链表" class="headerlink" title="合并两个有序链表，使其成为一个新的有序链表"></a>合并两个有序链表，使其成为一个新的有序链表</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">将两个升序链表合并为一个新的 升序 链表并返回。新链表是通过拼接给定的两个链表的所有节点组成的。</span><br><span class="line">示例：</span><br><span class="line">输入：1-&gt;2-&gt;4, 1-&gt;3-&gt;4</span><br><span class="line">输出：1-&gt;1-&gt;2-&gt;3-&gt;4-&gt;4</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    public ListNode mergeTwoLists(ListNode l1, ListNode l2) &#123;</span><br><span class="line">        ListNode newHead &#x3D; new ListNode();</span><br><span class="line">        ListNode temp &#x3D; newHead;</span><br><span class="line">        while(l1!&#x3D;null&amp;&amp;l2!&#x3D;null) &#123;</span><br><span class="line">        	if(l1.val&lt;&#x3D;l2.val) &#123;</span><br><span class="line">        		temp.next &#x3D; l1;</span><br><span class="line">        		l1 &#x3D; l1.next;</span><br><span class="line">        	&#125;else if(l1.val &gt; l2.val) &#123;</span><br><span class="line">        		temp.next &#x3D; l2;</span><br><span class="line">        		l2 &#x3D; l2.next;</span><br><span class="line">        	&#125;</span><br><span class="line">        	temp &#x3D; temp.next;</span><br><span class="line">        &#125;</span><br><span class="line">        &#x2F;&#x2F;接下来有一个链表已经遍历到结尾，另一条可能还没有结束</span><br><span class="line">        temp.next &#x3D; (l1&#x3D;&#x3D;null?l2:l1);</span><br><span class="line">        return newHead.next;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-	
-
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/数据结构与算法//" class="article-tag-list-link color3">数据结构与算法</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/07/08/%E5%90%88%E5%B9%B6%E6%9C%89%E5%BA%8F%E9%93%BE%E8%A1%A8/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-pow快速幂" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/07/08/pow%E5%BF%AB%E9%80%9F%E5%B9%82/">快速幂</a>
-    </h1>
-  
-
-        
-        <a href="/2020/07/08/pow%E5%BF%AB%E9%80%9F%E5%B9%82/" class="archive-article-date">
-  	<time datetime="2020-07-08T14:27:31.999Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-08</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-
-	
-		<h1 id="pow-x-y-快速幂的实现形式"><a href="#pow-x-y-快速幂的实现形式" class="headerlink" title="pow(x,y)快速幂的实现形式"></a>pow(x,y)快速幂的实现形式</h1><p>如果我们使用常规的想法去累成得到无疑时间复杂度很高，我们再进行对问题的分析，加入我们相求x^n的值，那我们只要知道x^1/2的值，继续递归知道我们知道x^1的值，那么我们在返回栈结果我们就可以的到我们想要的结果时间复杂度从n降到logn<br><strong>解题细节：</strong><br>首先y可能为负值，那么我们预处理一下，当y小于零时，令y=-y，x=1/x<br>其次我们要讨论n的奇偶性，当n为偶数时，那么x^n = half * half，当n为奇数时,那么x^n = half * half * x;其中half表示x^n的一半<br>代码实现：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    public double myPow(double x, int n) &#123;</span><br><span class="line">        if(n&lt;0) &#123;</span><br><span class="line">			n &#x3D; -n;</span><br><span class="line">			x &#x3D; 1&#x2F;x;</span><br><span class="line">		&#125;</span><br><span class="line">		return fastPow(x, n);</span><br><span class="line">    &#125;</span><br><span class="line">    public double fastPow(double x,int n) &#123;</span><br><span class="line">		if( n &#x3D;&#x3D; 0) &#123;</span><br><span class="line">			return 1.0;</span><br><span class="line">		&#125;</span><br><span class="line">		double half &#x3D; fastPow(x,n&#x2F;2);</span><br><span class="line">		if(n%2 &#x3D;&#x3D; 0) &#123;</span><br><span class="line">			return half*half;</span><br><span class="line">		&#125;else &#123;</span><br><span class="line">			return half*half*x;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-	
-
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/数据结构与算法//" class="article-tag-list-link color3">数据结构与算法</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/07/08/pow%E5%BF%AB%E9%80%9F%E5%B9%82/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/3/">Next &amp;raquo;</a>
+      <a class="extend prev" rel="prev" href="/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/3/">Next &amp;raquo;</a>
     </nav>
   
 
