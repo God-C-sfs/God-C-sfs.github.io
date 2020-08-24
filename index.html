@@ -158,6 +158,88 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-字符串的循环节" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/08/24/%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E5%BE%AA%E7%8E%AF%E8%8A%82/">字符串的循环节</a>
+    </h1>
+  
+
+        
+        <a href="/2020/08/24/%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E5%BE%AA%E7%8E%AF%E8%8A%82/" class="archive-article-date">
+  	<time datetime="2020-08-24T11:24:17.814Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-24</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+
+	
+		<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">给定一个非空的字符串，判断它是否可以由它的一个子串重复多次构成。给定的字符串只含有小写英文字母，并且长度不超过10000。</span><br><span class="line"></span><br><span class="line">示例 1:</span><br><span class="line"></span><br><span class="line">输入: &quot;abab&quot;</span><br><span class="line"></span><br><span class="line">输出: True</span><br><span class="line"></span><br><span class="line">解释: 可由子字符串 &quot;ab&quot; 重复两次构成。</span><br><span class="line">示例 2:</span><br><span class="line"></span><br><span class="line">输入: &quot;aba&quot;</span><br><span class="line"></span><br><span class="line">输出: False</span><br><span class="line">示例 3:</span><br><span class="line"></span><br><span class="line">输入: &quot;abcabcabcabc&quot;</span><br><span class="line"></span><br><span class="line">输出: True</span><br><span class="line"></span><br><span class="line">解释: 可由子字符串 &quot;abc&quot; 重复四次构成。 (或者子字符串 &quot;abcabc&quot; 重复两次构成。)</span><br></pre></td></tr></table></figure>
+<p><strong>思路分析：</strong><br><strong>一、暴力法</strong>：<br>经过分析我们不难发现<br>1.s的循环节一定是s字符串的前缀字符串<br>2.s的长度一定是循环节的n倍<br>3.最长循环节的长度不会超过总长的一半（可用于优化暴力法）  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">	public static boolean repeatedSubstringPattern(String s) &#123;</span><br><span class="line">		 int slen &#x3D; s.length();</span><br><span class="line">		 for(int i &#x3D; 0;i&lt;s.length()&#x2F;2;i++) &#123;</span><br><span class="line">			 String temp &#x3D; s.substring(0, i+1);</span><br><span class="line">			 int tlen &#x3D; temp.length();</span><br><span class="line">			 if(slen%tlen!&#x3D;0)</span><br><span class="line">				 continue;</span><br><span class="line">			 int j,k;</span><br><span class="line">			 for(j &#x3D; tlen,k &#x3D; 0;j&lt;slen;j++,k++) &#123;</span><br><span class="line">				 if(k&#x3D;&#x3D;tlen)</span><br><span class="line">					 k &#x3D; 0;</span><br><span class="line">				 if(s.charAt(j)!&#x3D;temp.charAt(k))</span><br><span class="line">					 break;</span><br><span class="line">			 &#125;</span><br><span class="line">			 if(j&#x3D;&#x3D;slen)</span><br><span class="line">				 return true;</span><br><span class="line">		 &#125;</span><br><span class="line">		 return false;</span><br><span class="line">		 </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>二、暴力法的优化</strong>：<br>其实我们并不需要取截取字符串，我们可以用双指针用来确定字符串的头尾  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">public static boolean repeatedSubstringPattern(String s) &#123;</span><br><span class="line">	        int n &#x3D; s.length();</span><br><span class="line">	        for (int i &#x3D; 1; i * 2 &lt;&#x3D; n; ++i) &#123;&#x2F;&#x2F;表示循环节的长度</span><br><span class="line">	            if (n % i &#x3D;&#x3D; 0) &#123;</span><br><span class="line">	                boolean match &#x3D; true;</span><br><span class="line">	                for (int j &#x3D; i; j &lt; n; ++j) &#123;</span><br><span class="line">	                    if (s.charAt(j) !&#x3D; s.charAt(j - i)) &#123;</span><br><span class="line">	                 &#x2F;&#x2F;第一次是第二个字串和第一个比，后面是第三个和第二个比，以此类推</span><br><span class="line">	                        match &#x3D; false;</span><br><span class="line">	                        break;</span><br><span class="line">	                    &#125;</span><br><span class="line">	                &#125;</span><br><span class="line">	                if (match) &#123;</span><br><span class="line">	                    return true;</span><br><span class="line">	                &#125;</span><br><span class="line">	            &#125;</span><br><span class="line">	        &#125;</span><br><span class="line">	        return false;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>三、构建双字符串的方法：两行代码搞定</strong><br><img src="https://gitee.com/bingjie__chai/PicOfHexo/raw/master/pic_hexo/20200824192137.png" alt=""></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">public static boolean repeatedSubstringPattern(String s) &#123;</span><br><span class="line">    return (s+s).indexOf(s,1) !&#x3D; s.length</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+	
+
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/数据结构与算法//" class="article-tag-list-link color3">数据结构与算法</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/08/24/%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E5%BE%AA%E7%8E%AF%E8%8A%82/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-二叉树的最小深度" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -845,85 +927,6 @@ public int height(TreeNode root) {
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2020/08/13/%E7%9B%B8%E5%90%8C%E7%9A%84%E6%A0%91/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-判断是否含有环状子链表" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/07/20/%E5%88%A4%E6%96%AD%E6%98%AF%E5%90%A6%E5%90%AB%E6%9C%89%E7%8E%AF%E7%8A%B6%E5%AD%90%E9%93%BE%E8%A1%A8/">判断是否含有环状子链表</a>
-    </h1>
-  
-
-        
-        <a href="/2020/07/20/%E5%88%A4%E6%96%AD%E6%98%AF%E5%90%A6%E5%90%AB%E6%9C%89%E7%8E%AF%E7%8A%B6%E5%AD%90%E9%93%BE%E8%A1%A8/" class="archive-article-date">
-  	<time datetime="2020-07-20T13:14:18.138Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-20</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-
-	
-		<p>本文将提供两种解法：哈希表和双指针(快慢指针)<br>1.哈希表解法:我们将已经遍历过的节点加入到Set集合中，然后判断如果遍历的当前节点在集合中已存在，那么就是有环状结构，如果没有，将一直遍历到链表尾部，需要用额外的空间来辅助:  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">public boolean hasCycle(ListNode head) &#123;</span><br><span class="line">    Set&lt;ListNode&gt; nodesSeen &#x3D; new HashSet&lt;&gt;();</span><br><span class="line">    while (head !&#x3D; null) &#123;</span><br><span class="line">        if (nodesSeen.contains(head)) &#123;</span><br><span class="line">            return true;</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            nodesSeen.add(head);</span><br><span class="line">        &#125;</span><br><span class="line">        head &#x3D; head.next;</span><br><span class="line">    &#125;</span><br><span class="line">    return false;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>2.利用双指针，利用fast和slow两个指针，可以想象成两个运动员在环形赛道上奔跑，fast在slow前方，那么总有一个时刻，fast会再次与slow相遇，我们就是采取这种想法  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">public class Solution &#123;</span><br><span class="line">    public boolean hasCycle(ListNode head) &#123;</span><br><span class="line">        if(head&#x3D;&#x3D;null||head.next&#x3D;&#x3D;null) &#123;</span><br><span class="line">			return false;</span><br><span class="line">		&#125;</span><br><span class="line">		ListNode slow &#x3D; head;</span><br><span class="line">		ListNode fast &#x3D; head.next;</span><br><span class="line">		while(slow!&#x3D;fast) &#123;</span><br><span class="line">		    &#x2F;&#x2F;如果fast能到达尾部，则不存在环，由于我们一次走两步，所以为了防止空指针，要判断两个位置</span><br><span class="line">			if(fast&#x3D;&#x3D;null||fast.next&#x3D;&#x3D;null) &#123;</span><br><span class="line">				return false;</span><br><span class="line">			&#125;</span><br><span class="line">			slow &#x3D; slow.next;</span><br><span class="line">			fast &#x3D; fast.next.next;</span><br><span class="line">		&#125;</span><br><span class="line">		return true;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-	
-
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/数据结构与算法//" class="article-tag-list-link color3">数据结构与算法</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/07/20/%E5%88%A4%E6%96%AD%E6%98%AF%E5%90%A6%E5%90%AB%E6%9C%89%E7%8E%AF%E7%8A%B6%E5%AD%90%E9%93%BE%E8%A1%A8/">展开全文 >></a>
         </p>
       
 
