@@ -8,15 +8,15 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>电话号码的字母组合 | God-C-sfs</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="title: 电话号码的字母组合categories: 数据结构与算法  123456789101112给定一个仅包含数字2-9的字符串，返回所有它能表示的字母组合。给出数字到字母的映射如下（与电话按键相同）。注意 1 不对应任何字母。示例:输入：&quot;23&quot;输出：[&quot;ad&quot;, &quot;ae&quot;, &quot;af&quot;, &quot;bd&amp;">
+  <meta name="description" content="123456789101112给定一个仅包含数字2-9的字符串，返回所有它能表示的字母组合。给出数字到字母的映射如下（与电话按键相同）。注意 1 不对应任何字母。示例:输入：&quot;23&quot;输出：[&quot;ad&quot;, &quot;ae&quot;, &quot;af&quot;, &quot;bd&quot;, &quot;be&quot;, &quot;bf&quot;,">
 <meta property="og:type" content="article">
 <meta property="og:title" content="电话号码的字母组合">
 <meta property="og:url" content="http://yoursite.com/2020/08/26/%E7%94%B5%E8%AF%9D%E5%8F%B7%E7%A0%81%E7%9A%84%E5%AD%97%E6%AF%8D%E7%BB%84%E5%90%88/index.html">
 <meta property="og:site_name" content="God-C-sfs">
-<meta property="og:description" content="title: 电话号码的字母组合categories: 数据结构与算法  123456789101112给定一个仅包含数字2-9的字符串，返回所有它能表示的字母组合。给出数字到字母的映射如下（与电话按键相同）。注意 1 不对应任何字母。示例:输入：&quot;23&quot;输出：[&quot;ad&quot;, &quot;ae&quot;, &quot;af&quot;, &quot;bd&amp;">
+<meta property="og:description" content="123456789101112给定一个仅包含数字2-9的字符串，返回所有它能表示的字母组合。给出数字到字母的映射如下（与电话按键相同）。注意 1 不对应任何字母。示例:输入：&quot;23&quot;输出：[&quot;ad&quot;, &quot;ae&quot;, &quot;af&quot;, &quot;bd&quot;, &quot;be&quot;, &quot;bf&quot;,">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-08-26T14:05:11.158Z">
-<meta property="article:modified_time" content="2020-08-26T14:04:08.505Z">
+<meta property="article:modified_time" content="2020-08-26T14:08:50.521Z">
 <meta property="article:author" content="蛙广志">
 <meta name="twitter:card" content="summary">
   
@@ -182,10 +182,7 @@
       
 
 	
-		<hr>
-<p>title: 电话号码的字母组合<br>categories: 数据结构与算法</p>
-<hr>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">给定一个仅包含数字2-9的字符串，返回所有它能表示的字母组合。</span><br><span class="line"></span><br><span class="line">给出数字到字母的映射如下（与电话按键相同）。注意 1 不对应任何字母。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">示例:</span><br><span class="line"></span><br><span class="line">输入：&quot;23&quot;</span><br><span class="line">输出：[&quot;ad&quot;, &quot;ae&quot;, &quot;af&quot;, &quot;bd&quot;, &quot;be&quot;, &quot;bf&quot;, &quot;cd&quot;, &quot;ce&quot;, &quot;cf&quot;].</span><br><span class="line">说明:</span><br><span class="line">尽管上面的答案是按字典序排列的，但是你可以任意选择答案输出的顺序。</span><br></pre></td></tr></table></figure>
+		<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">给定一个仅包含数字2-9的字符串，返回所有它能表示的字母组合。</span><br><span class="line"></span><br><span class="line">给出数字到字母的映射如下（与电话按键相同）。注意 1 不对应任何字母。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">示例:</span><br><span class="line"></span><br><span class="line">输入：&quot;23&quot;</span><br><span class="line">输出：[&quot;ad&quot;, &quot;ae&quot;, &quot;af&quot;, &quot;bd&quot;, &quot;be&quot;, &quot;bf&quot;, &quot;cd&quot;, &quot;ce&quot;, &quot;cf&quot;].</span><br><span class="line">说明:</span><br><span class="line">尽管上面的答案是按字典序排列的，但是你可以任意选择答案输出的顺序。</span><br></pre></td></tr></table></figure>
 <p><strong>主要思路:</strong><br>类似于这种回溯排列问题都有固定的模板，难点在于书写搜索范围，本题思路与递增子序列问题大同小异，我们用map存放数字映射的字母，具体代码如下：  </p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    List&lt;String&gt; res &#x3D; new ArrayList&lt;&gt;();</span><br><span class="line">	Map&lt;Integer,String&gt; map &#x3D; new HashMap&lt;&gt;();</span><br><span class="line">    public List&lt;String&gt; letterCombinations(String digits) &#123;</span><br><span class="line">        &#x2F;&#x2F;关于字符串的判断，统统用equals方法</span><br><span class="line">        if(digits.equals(&quot;&quot;))</span><br><span class="line">			return res;</span><br><span class="line">        map.put(2, &quot;abc&quot;);</span><br><span class="line">		map.put(3, &quot;def&quot;);</span><br><span class="line">		map.put(4, &quot;ghi&quot;);</span><br><span class="line">		map.put(5, &quot;jkl&quot;);</span><br><span class="line">		map.put(6, &quot;mno&quot;);</span><br><span class="line">		map.put(7, &quot;pqrs&quot;);</span><br><span class="line">		map.put(8, &quot;tuv&quot;);</span><br><span class="line">		map.put(9, &quot;wxyz&quot;);</span><br><span class="line">		StringBuffer path &#x3D; new StringBuffer();</span><br><span class="line">		dfs(digits, path, 0);</span><br><span class="line">		return res;</span><br><span class="line">    &#125;</span><br><span class="line">    public void dfs(String str,StringBuffer path, int i) &#123;&#x2F;&#x2F;i表示组成字符串的第i位</span><br><span class="line">        &#x2F;&#x2F;结束条件</span><br><span class="line">		if(i&#x3D;&#x3D;str.length()) &#123;</span><br><span class="line">			res.add(path.toString());</span><br><span class="line">			return;</span><br><span class="line">		&#125;</span><br><span class="line">		int index &#x3D; str.charAt(i)-&#39;0&#39;;</span><br><span class="line">		String string &#x3D; map.get(index);</span><br><span class="line">		&#x2F;&#x2F;遍历map对应的映射</span><br><span class="line">		for(int j &#x3D; 0;j&lt;string.length();j++) &#123;</span><br><span class="line">			path.append(string.charAt(j));</span><br><span class="line">			dfs(str, path, i+1);</span><br><span class="line">			path.deleteCharAt(i);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -197,6 +194,17 @@
       
       
       
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/数据结构与算法//" class="article-tag-list-link color3">数据结构与算法</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
 
       
 
