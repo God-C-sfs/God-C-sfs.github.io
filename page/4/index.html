@@ -158,6 +158,253 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-二叉树的最大深度" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/07/06/%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E6%9C%80%E5%A4%A7%E6%B7%B1%E5%BA%A6/">二叉树的最大深度</a>
+    </h1>
+  
+
+        
+        <a href="/2020/07/06/%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E6%9C%80%E5%A4%A7%E6%B7%B1%E5%BA%A6/" class="archive-article-date">
+  	<time datetime="2020-07-06T14:21:20.642Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-06</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+
+	
+		<h1 id="二叉树的最大深度"><a href="#二叉树的最大深度" class="headerlink" title="二叉树的最大深度"></a>二叉树的最大深度</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">给定一个二叉树，找出其最大深度。</span><br><span class="line"></span><br><span class="line">二叉树的深度为根节点到最远叶子节点的最长路径上的节点数。</span><br><span class="line"></span><br><span class="line">说明:叶子节点是指没有子节点的节点。</span><br><span class="line"></span><br><span class="line">示例：</span><br><span class="line">给定二叉树 [3,9,20,null,null,15,7]，</span><br><span class="line"></span><br><span class="line">    3</span><br><span class="line">   &#x2F; \</span><br><span class="line">  9  20</span><br><span class="line">    &#x2F;  \</span><br><span class="line">   15   7</span><br><span class="line">返回它的最大深度3</span><br></pre></td></tr></table></figure>
+<p><strong>我们解决这个问题可以有两种思路，从上往下的解决，和从下往上的解决，对应着前序和后序两种不同的思路</strong><br>1.从上往下解决问题：我们将问题宏观去看，就是找根节点左子树和右子树两者的最大高度，当我们向深处遍历一层，深度就+1，当左右两侧都到达最深处时返回两者最大值</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">private int answer;</span><br><span class="line">private void maximum_depth(TreeNode root, int depth) &#123;</span><br><span class="line">    if (root &#x3D;&#x3D; null) &#123;</span><br><span class="line">        return;</span><br><span class="line">    &#125;</span><br><span class="line">    if (root.left &#x3D;&#x3D; null &amp;&amp; root.right &#x3D;&#x3D; null) &#123;</span><br><span class="line">        answer &#x3D; Math.max(answer, depth);</span><br><span class="line">    &#125;</span><br><span class="line">    maximum_depth(root.left, depth + 1);</span><br><span class="line">    maximum_depth(root.right, depth + 1);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>2.从下往上解决问题：当我们找到最深处时，root==null，那么它的深度为0，这个时候我们可以得到其父节点的深度，然后逐层向上求出各个节点的深度</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">public static int postHeight(TreeNode root) &#123;</span><br><span class="line">		if(root &#x3D;&#x3D; null) &#123;</span><br><span class="line">			return 0;</span><br><span class="line">		&#125;</span><br><span class="line">		int left_h&#x3D;postHeight(root.left);</span><br><span class="line">		int right_h&#x3D;postHeight(root.right);</span><br><span class="line">		return Math.max(left_h, right_h)+1;</span><br><span class="line">		</span><br><span class="line">		&#x2F;&#x2F;或者精简版</span><br><span class="line">		return Math.max((root&#x3D;&#x3D;null?0:postHeight(root.left),(root&#x3D;&#x3D;null?0:postHeight(root.right))+1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+	
+
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/数据结构与算法//" class="article-tag-list-link color3">数据结构与算法</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/07/06/%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E6%9C%80%E5%A4%A7%E6%B7%B1%E5%BA%A6/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-路径总和" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/07/06/%E8%B7%AF%E5%BE%84%E6%80%BB%E5%92%8C/">路径总和</a>
+    </h1>
+  
+
+        
+        <a href="/2020/07/06/%E8%B7%AF%E5%BE%84%E6%80%BB%E5%92%8C/" class="archive-article-date">
+  	<time datetime="2020-07-06T14:20:07.631Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-06</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+
+	
+		<h1 id="路径总和"><a href="#路径总和" class="headerlink" title="路径总和"></a>路径总和</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">给定一个二叉树和一个目标和，判断该树中是否存在根节点到叶子节点的路径，这条路径上所有节点值相加等于目标和。</span><br><span class="line">&lt;!--more--&gt;</span><br><span class="line"></span><br><span class="line">说明: 叶子节点是指没有子节点的节点。</span><br><span class="line"></span><br><span class="line">示例: </span><br><span class="line">给定如下二叉树，以及目标和 sum &#x3D; 22，</span><br><span class="line"></span><br><span class="line">              5</span><br><span class="line">             &#x2F; \</span><br><span class="line">            4   8</span><br><span class="line">           &#x2F;   &#x2F; \</span><br><span class="line">          11  13  4</span><br><span class="line">         &#x2F;  \      \</span><br><span class="line">        7    2      1</span><br><span class="line">返回 true, 因为存在目标和为 22 的根节点到叶子节点的路径 5-&gt;4-&gt;11-&gt;2。</span><br></pre></td></tr></table></figure>
+<p>解题思路：我们将二叉树分为两个方向，遍历左子树和右子树看是否有路径为目标和，每当我们经过一个节点，就加上这个节点的值，当我们找到最后一个叶子节点时，我们判断是否sum为目标和</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    public boolean hasPathSum(TreeNode root, int sum) &#123;</span><br><span class="line">        return dfs(root,0,sum);</span><br><span class="line">    &#125;</span><br><span class="line">    public boolean dfs(TreeNode root,int sum,int target) &#123;</span><br><span class="line">		if(root &#x3D;&#x3D; null) &#123;</span><br><span class="line">			return false;</span><br><span class="line">		&#125;</span><br><span class="line">		sum +&#x3D; root.val;</span><br><span class="line">		if(root.left &#x3D;&#x3D; null &amp;&amp; root.right &#x3D;&#x3D;null) &#123;</span><br><span class="line">			return sum&#x3D;&#x3D;target;</span><br><span class="line">		&#125;</span><br><span class="line">		return dfs(root.left,sum,target)||dfs(root.right,sum,target);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+	
+
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/数据结构与算法//" class="article-tag-list-link color3">数据结构与算法</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/07/06/%E8%B7%AF%E5%BE%84%E6%80%BB%E5%92%8C/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-恢复二叉树" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/07/04/%E6%81%A2%E5%A4%8D%E4%BA%8C%E5%8F%89%E6%A0%91/">恢复二叉树</a>
+    </h1>
+  
+
+        
+        <a href="/2020/07/04/%E6%81%A2%E5%A4%8D%E4%BA%8C%E5%8F%89%E6%A0%91/" class="archive-article-date">
+  	<time datetime="2020-07-04T02:13:42.913Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-04</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+
+	
+		<h1 id="恢复二叉树"><a href="#恢复二叉树" class="headerlink" title="恢复二叉树"></a>恢复二叉树</h1><p>如题所示，我们解决的问题是根据二叉树的遍历组合来还原这个二叉树，这个过程其实是复杂的，我们需要根据三种遍历方式的不同特性来确定这个二叉树，由于前序+后序遍历无法确定一颗唯一的二叉树，所以我们将着重介绍两种：前序+中序和后序+中序来还原二叉树.</p>
+<hr>
+<h3 id="接下来我将详细介绍后序-中序还原二叉树的过程"><a href="#接下来我将详细介绍后序-中序还原二叉树的过程" class="headerlink" title="接下来我将详细介绍后序+中序还原二叉树的过程"></a>接下来我将详细介绍后序+中序还原二叉树的过程</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">例如，给出</span><br><span class="line">中序遍历 inorder &#x3D; [9,3,15,20,7]</span><br><span class="line">后序遍历 postorder &#x3D; [9,15,7,20,3]</span><br><span class="line">返回如下的二叉树：</span><br><span class="line"></span><br><span class="line">    3</span><br><span class="line">   &#x2F; \</span><br><span class="line">  9  20</span><br><span class="line">    &#x2F;  \</span><br><span class="line">   15   7</span><br></pre></td></tr></table></figure>
+
+<hr>
+<p>首先我们根据后序遍历的特点可知，最后一个元素就是数的根节点，根据中序遍历可知，根节点的左侧是左子树，右侧是右子树：<br><img src="https://gitee.com/bingjie__chai/PicOfHexo/raw/master/pic_hexo/%E8%BF%98%E5%8E%9F%E4%BA%8C%E5%8F%89%E6%A0%911.png" alt=""><br/><br>接下来解释一下下面会使用到的一些变量：  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">int InStart  &#x2F;&#x2F;接下来递归时我们使用到的中序遍历的左边界</span><br><span class="line">int InEnd    &#x2F;&#x2F;中序便利的右边界</span><br><span class="line">int PostStart &#x2F;&#x2F;后序遍历的左边界</span><br><span class="line">int PostEnd  &#x2F;&#x2F;后序遍历的有边界</span><br></pre></td></tr></table></figure>
+<p>接下来最重要的是边界的计算：<br><img src="https://gitee.com/bingjie__chai/PicOfHexo/raw/master/pic_hexo/%E8%BF%98%E5%8E%9F%E4%BA%8C%E5%8F%89%E6%A0%912.png" alt=""><br>1.左子树的中序数组左边界：Instart，有边界是rootIndex-1<br>2.左子树的后序数组左边界：PostStart，右边界：PostStart+（rootIndex-1-Instart+1）-1<br>3.右子树的中序数组左边界：rootIndex+1，右边界InEnd<br>4.右子树的中序数组左边界：：PostStart+rootIndex-Instart，右边界：PostEnd-1<br>所以接下来代码实现：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">public class InAndPost &#123;</span><br><span class="line">	int[] postArr;</span><br><span class="line">	Map&lt;Integer,Integer&gt; map &#x3D; new HashMap&lt;&gt;();&#x2F;&#x2F;利用hash表快速找到根节点在中序数组中的位置</span><br><span class="line">	public static void main(String[] args) &#123;</span><br><span class="line">		&#x2F;&#x2F; TODO 自动生成的方法存根</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line">	public TreeNode buildTree(int[] inorder, int[] postorder) &#123;</span><br><span class="line">		postArr &#x3D; postorder;</span><br><span class="line">		for(int i&#x3D;0;i&lt;inorder.length;i++) &#123;</span><br><span class="line">			map.put(inorder[i], i);</span><br><span class="line">		&#125;</span><br><span class="line">		return buildTrees(0, inorder.length-1, 0, postArr.length-1);</span><br><span class="line">    &#125;</span><br><span class="line">	public TreeNode buildTrees(int InStart,int InEnd,int PostStart,int PostEnd) &#123;</span><br><span class="line">		if(InStart&gt;InEnd||PostStart&gt;PostEnd) &#123;</span><br><span class="line">			return null;</span><br><span class="line">		&#125;</span><br><span class="line">		int root &#x3D; postArr[PostEnd];</span><br><span class="line">		int rootIndex &#x3D; map.get(root);</span><br><span class="line">		TreeNode node &#x3D; new TreeNode(root);</span><br><span class="line">		node.left &#x3D; buildTrees(InStart, rootIndex-1, PostStart, PostStart+rootIndex-InStart-1);</span><br><span class="line">		node.right &#x3D; buildTrees(rootIndex+1, InEnd, PostStart+rootIndex-InStart, PostEnd-1);</span><br><span class="line">		return node;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="接下来是前序-中序"><a href="#接下来是前序-中序" class="headerlink" title="接下来是前序+中序:"></a>接下来是前序+中序:</h2><p>其实大部分和前者的思路一致，最主要是边界的求法不同<br>中序遍历中，我们知道左子树：[inorder_start,index-1], 右子树：[index+1, inorder_end]<br>在前序遍历中，左子树起始位置为pre_start+1,左子树一共有(index-1 - inorder_start)个，因此左子树：[pre_start+1, pre_start+1 + (index-1 - inorder_start)]<br>右子树起始位置为左子树终止位置+1，终止位置为pre_end，因此右子树：[ pre_start+1 + (index-1 - inorder_start) + 1, pre_end]</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    int[] postArr;</span><br><span class="line">    Map&lt;Integer,Integer&gt; map &#x3D; new HashMap&lt;&gt;();</span><br><span class="line">    public TreeNode buildTree(int[] inorder, int[] postorder) &#123;</span><br><span class="line">        postArr &#x3D; postorder;</span><br><span class="line">		for(int i&#x3D;0;i&lt;inorder.length;i++) &#123;</span><br><span class="line">			map.put(inorder[i], i);</span><br><span class="line">		&#125;</span><br><span class="line">		return buildTrees(0, inorder.length-1, 0, postArr.length-1);</span><br><span class="line">    &#125;</span><br><span class="line">    public TreeNode buildTrees(int InStart,int InEnd,int PostStart,int PostEnd) &#123;</span><br><span class="line">		if(InStart&gt;InEnd||PostStart&gt;PostEnd) &#123;</span><br><span class="line">			return null;</span><br><span class="line">		&#125;</span><br><span class="line">		int root &#x3D; postArr[PostEnd];</span><br><span class="line">		int rootIndex &#x3D; map.get(root);</span><br><span class="line">		TreeNode node &#x3D; new TreeNode(root);</span><br><span class="line">		node.left &#x3D; buildTrees(InStart, rootIndex-1, PostStart, PostStart+rootIndex-InStart-1);</span><br><span class="line">		node.right &#x3D; buildTrees(rootIndex+1, InEnd, PostStart+rootIndex-InStart, PostEnd-1);</span><br><span class="line">		return node;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+	
+
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/数据结构与算法//" class="article-tag-list-link color3">数据结构与算法</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/07/04/%E6%81%A2%E5%A4%8D%E4%BA%8C%E5%8F%89%E6%A0%91/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-目标和" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -671,229 +918,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2020/06/28/%E6%9C%80%E5%B0%8F%E6%A0%88%E9%97%AE%E9%A2%98/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-有效的括号" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/06/28/%E6%9C%89%E6%95%88%E7%9A%84%E6%8B%AC%E5%8F%B7/">有效的括号</a>
-    </h1>
-  
-
-        
-        <a href="/2020/06/28/%E6%9C%89%E6%95%88%E7%9A%84%E6%8B%AC%E5%8F%B7/" class="archive-article-date">
-  	<time datetime="2020-06-28T13:51:23.755Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-28</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-
-			<h1 id="leetCodeT20有效的括号："><a href="#leetCodeT20有效的括号：" class="headerlink" title="leetCodeT20有效的括号："></a>leetCodeT20有效的括号：</h1><p>给定一个只包括 ‘(‘，’)’，’{‘，’}’，’[‘，’]’的字符串，判断字符串是否有效。</p>
-<p>有效字符串需满足：</p>
-<p>左括号必须用相同类型的右括号闭合。<br>左括号必须以正确的顺序闭合。<br>注意空字符串可被认为是有效字符串。</p>
-<hr>
-	
-
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/数据结构与算法//" class="article-tag-list-link color3">数据结构与算法</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/06/28/%E6%9C%89%E6%95%88%E7%9A%84%E6%8B%AC%E5%8F%B7/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-BFS解题模板" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/06/27/BFS%E8%A7%A3%E9%A2%98%E6%A8%A1%E6%9D%BF/">BFS解题模板</a>
-    </h1>
-  
-
-        
-        <a href="/2020/06/27/BFS%E8%A7%A3%E9%A2%98%E6%A8%A1%E6%9D%BF/" class="archive-article-date">
-  	<time datetime="2020-06-27T03:34:24.423Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-27</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-
-			<h1 id="BFS解题模板"><a href="#BFS解题模板" class="headerlink" title="BFS解题模板"></a>BFS解题模板</h1><p>首先明确BFS的核心思想，就是将问题抽象成一个图，从一个点开始向四周扩散，所以我们会使用QUeue这种核心数据结构，BFS常用于寻找最短路径问题，相比于DFS时间复杂度更低，因为DFS总要走到底然后才能得出这条路有多长，然后在进行对比，当然BFS也有弊端，空间复杂度很高，当我们要寻找的目标在最深处时，那么我们将会遍历到所有的节点，空间的消耗是比较大的。  </p>
-<h2 id="所以接下来的代码是一个比较标准的解题模板，细心品味"><a href="#所以接下来的代码是一个比较标准的解题模板，细心品味" class="headerlink" title="所以接下来的代码是一个比较标准的解题模板，细心品味"></a>所以接下来的代码是一个比较标准的解题模板，细心品味</h2>
-	
-
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/数据结构与算法//" class="article-tag-list-link color3">数据结构与算法</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/06/27/BFS%E8%A7%A3%E9%A2%98%E6%A8%A1%E6%9D%BF/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-集合类" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/06/26/%E9%9B%86%E5%90%88%E7%B1%BB/">集合类</a>
-    </h1>
-  
-
-        
-        <a href="/2020/06/26/%E9%9B%86%E5%90%88%E7%B1%BB/" class="archive-article-date">
-  	<time datetime="2020-06-26T14:03:38.445Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-26</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-
-			<h1 id="集合类"><a href="#集合类" class="headerlink" title="集合类"></a>集合类</h1><h3 id="emsp-以下是下面将要写的主要内容"><a href="#emsp-以下是下面将要写的主要内容" class="headerlink" title="&emsp;以下是下面将要写的主要内容"></a>&emsp;以下是下面将要写的主要内容</h3><p><img src="https://gitee.com/bingjie__chai/PicOfHexo/raw/master/pic_hexo/%E9%9B%86%E5%90%88%E7%B1%BB.png" alt="图片描述"></p>
-	
-
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Java基础//" class="article-tag-list-link color2">Java基础</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/06/26/%E9%9B%86%E5%90%88%E7%B1%BB/">展开全文 >></a>
         </p>
       
 
