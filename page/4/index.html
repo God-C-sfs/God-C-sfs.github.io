@@ -158,6 +158,86 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-对称树" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/07/06/%E5%AF%B9%E7%A7%B0%E6%A0%91/">对称树</a>
+    </h1>
+  
+
+        
+        <a href="/2020/07/06/%E5%AF%B9%E7%A7%B0%E6%A0%91/" class="archive-article-date">
+  	<time datetime="2020-07-06T14:21:48.894Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-06</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+
+	
+		<h1 id="对称树"><a href="#对称树" class="headerlink" title="对称树"></a>对称树</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">给定一个二叉树，检查它是否是镜像对称的。</span><br><span class="line"></span><br><span class="line">例如，二叉树[1,2,2,3,4,4,3] 是对称的。</span><br><span class="line">    1</span><br><span class="line">   &#x2F; \</span><br><span class="line">  2   2</span><br><span class="line"> &#x2F; \ &#x2F; \</span><br><span class="line">3  4 4  3</span><br><span class="line">但是下面这个[1,2,2,null,3,null,3] 则不是镜像对称的:</span><br><span class="line"></span><br><span class="line">    1</span><br><span class="line">   &#x2F; \</span><br><span class="line">  2   2</span><br><span class="line">   \   \</span><br><span class="line">   3    3</span><br></pre></td></tr></table></figure>
+
+<hr>
+<p>解题思路：<br>1.首先我们使用两个参数t1，t2来表示根节点的左右子树，我们宏观的去看待递归问题，我们找到要解决的问题单元：首先判断t1和t2节点的值是否相同，不相同直接返回false，如果相同接着判断：如果t1的左子树和t2的右子树相同，同时t1的右子树和t2的左子树相同那么我们就可以return true。<br>2.接着我们找到结束条件，如果t1和t2都是null，那肯定是对称的，如果一方是null另一方不是那么肯定不是对称的，那么我们就找到了结束条件<br><strong>接下来是代码实现</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">public static boolean isSymmetric(TreeNode root) &#123;</span><br><span class="line">	     return dfs(root,root);</span><br><span class="line">	&#125;</span><br><span class="line">	public static boolean dfs(TreeNode t1,TreeNode t2) &#123;</span><br><span class="line">		if(t1&#x3D;&#x3D;null&amp;&amp;t2&#x3D;&#x3D;null) &#123;</span><br><span class="line">			return true;</span><br><span class="line">		&#125;</span><br><span class="line">		if(t1&#x3D;&#x3D;null||t2&#x3D;&#x3D;null) &#123;</span><br><span class="line">			return false;</span><br><span class="line">		&#125;</span><br><span class="line">		boolean f1 &#x3D; dfs(t1.left,t2.right);</span><br><span class="line">		boolean f2 &#x3D; dfs(t1.right,t2.left);</span><br><span class="line">		return((t1.val&#x3D;&#x3D;t2.val)&amp;&amp;f1&amp;&amp;f2);	</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+
+
+	
+
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/数据结构与算法//" class="article-tag-list-link color3">数据结构与算法</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/07/06/%E5%AF%B9%E7%A7%B0%E6%A0%91/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-二叉树的最大深度" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -844,80 +924,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2020/06/28/HTML%E8%AF%AD%E4%B9%89%E6%A0%87%E7%AD%BE/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-最小栈问题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/06/28/%E6%9C%80%E5%B0%8F%E6%A0%88%E9%97%AE%E9%A2%98/">最小栈问题</a>
-    </h1>
-  
-
-        
-        <a href="/2020/06/28/%E6%9C%80%E5%B0%8F%E6%A0%88%E9%97%AE%E9%A2%98/" class="archive-article-date">
-  	<time datetime="2020-06-28T13:52:13.436Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-28</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-
-			<h1 id="最小栈的问题"><a href="#最小栈的问题" class="headerlink" title="最小栈的问题"></a>最小栈的问题</h1><p>首先明确定义：什么是最小栈？就是栈中有一个getMin（）方法可以常数复杂度的获取栈中的最小值，所以暴力遍历栈获取最小值是十分不明智的，所以我们会采用一个辅助栈，来帮助我们获取最小值。通常有两种方案，和主栈同步，和主栈不同步。  </p>
-<hr>
-	
-
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/数据结构与算法//" class="article-tag-list-link color3">数据结构与算法</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/06/28/%E6%9C%80%E5%B0%8F%E6%A0%88%E9%97%AE%E9%A2%98/">展开全文 >></a>
         </p>
       
 

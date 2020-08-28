@@ -158,6 +158,84 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-欧拉路径" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/08/28/%E6%AC%A7%E6%8B%89%E8%B7%AF%E5%BE%84/">欧拉路径</a>
+    </h1>
+  
+
+        
+        <a href="/2020/08/28/%E6%AC%A7%E6%8B%89%E8%B7%AF%E5%BE%84/" class="archive-article-date">
+  	<time datetime="2020-08-28T02:36:56.196Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-28</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+
+	
+		<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">给定一个机票的字符串二维数组 [from, to]，子数组中的两个成员分别表示飞机出发和降落的机场地点，对该行程进行重新规划排序。所有这些机票都属于一个从 JFK（肯尼迪国际机场）出发的先生，所以该行程必须从 JFK 开始。</span><br><span class="line"></span><br><span class="line">说明:</span><br><span class="line"></span><br><span class="line">如果存在多种有效的行程，你可以按字符自然排序返回最小的行程组合。例如，行程 [&quot;JFK&quot;, &quot;LGA&quot;] 与 [&quot;JFK&quot;, &quot;LGB&quot;] 相比就更小，排序更靠前</span><br><span class="line">所有的机场都用三个大写字母表示（机场代码）。</span><br><span class="line">假定所有机票至少存在一种合理的行程。</span><br><span class="line">示例 1:</span><br><span class="line"></span><br><span class="line">输入: [[&quot;MUC&quot;, &quot;LHR&quot;], [&quot;JFK&quot;, &quot;MUC&quot;], [&quot;SFO&quot;, &quot;SJC&quot;], [&quot;LHR&quot;, &quot;SFO&quot;]]</span><br><span class="line">输出: [&quot;JFK&quot;, &quot;MUC&quot;, &quot;LHR&quot;, &quot;SFO&quot;, &quot;SJC&quot;]</span><br><span class="line">示例 2:</span><br><span class="line"></span><br><span class="line">输入: [[&quot;JFK&quot;,&quot;SFO&quot;],[&quot;JFK&quot;,&quot;ATL&quot;],[&quot;SFO&quot;,&quot;ATL&quot;],[&quot;ATL&quot;,&quot;JFK&quot;],[&quot;ATL&quot;,&quot;SFO&quot;]]</span><br><span class="line">输出: [&quot;JFK&quot;,&quot;ATL&quot;,&quot;JFK&quot;,&quot;SFO&quot;,&quot;ATL&quot;,&quot;SFO&quot;]</span><br><span class="line">解释: 另一种有效的行程是[&quot;JFK&quot;,&quot;SFO&quot;,&quot;ATL&quot;,&quot;JFK&quot;,&quot;ATL&quot;,&quot;SFO&quot;]。但是它自然排序更大更靠后。</span><br><span class="line">通过次数23,014提交次数52,781</span><br></pre></td></tr></table></figure>
+<p>首先我们先明白一个概念，什么是欧拉图，什么是欧拉路径<br><strong>欧拉路径：</strong> 图M中一条路径能够经过图的每一条边，每一条边有且仅通过一次<br><strong>欧拉回路：</strong> 就是一条封闭的欧拉路径<br><strong>欧拉图：</strong> 含有欧拉回路的图<br><strong>有向图欧拉图：</strong><br>欧拉路径：有一个点出度比入度多1(起点)，有一个点入度比出度多1(终点)，其余点出度等于入度；<br>欧拉回路：每个顶点出度等于入度；<br><strong>无向图欧拉图：</strong><br>欧拉路径：有且仅有两个点的入度为1，分别是起点和终点；<br>欧拉回路：图中所有顶点的度数都是偶数，并且该图是连通图；<br><strong>主要思路：</strong><br>本体的题意表明至少存在一条欧拉路径，当存在多条欧拉路径时，我们输出字典序最小的哪一条路径，为了保证最终的结果是字典序最小的路径，我们贪心的去选择下一次目的地。<br>1.从题目中给定的“JFK”为起点开始遍历整张图<br>2.接下来我们dfs遍历这些节点的邻接节点，并且将已经遍历过的边给删除<br>3.当我们使一个节点没有邻接边时，说明此点已经进入死胡同，那么我们将其加入到结果集中<br>4.随着递归的出栈就能的到一道“JDK”为起点的欧拉路径<br><strong>所用的数据结构</strong><br>由于map中的key可能对应多个值，且这些值明显的具有字典序，那么我们使用优先队列，优先队列默认是小顶堆，poll出堆顶字典序最小的元素，很明显复合我们这个题目的要求<br><img src="https://gitee.com/bingjie__chai/PicOfHexo/raw/master/pic_hexo/Snipaste_2020-08-28_10-20-51.png" alt=""><br><strong>具体代码</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    Map&lt;String,PriorityQueue&lt;String&gt;&gt; map &#x3D; new HashMap&lt;&gt;();</span><br><span class="line">	List&lt;String&gt; res &#x3D; new ArrayList&lt;&gt;();</span><br><span class="line">    public List&lt;String&gt; findItinerary(List&lt;List&lt;String&gt;&gt; tickets) &#123;</span><br><span class="line">          for(List&lt;String&gt; ticket : tickets) &#123;</span><br><span class="line">			String start &#x3D; ticket.get(0);</span><br><span class="line">			String end &#x3D; ticket.get(1);</span><br><span class="line">			if (!map.containsKey(start)) &#123;</span><br><span class="line">                map.put(start, new PriorityQueue&lt;String&gt;());</span><br><span class="line">            &#125;</span><br><span class="line">			map.get(start).offer(end);</span><br><span class="line">		&#125;</span><br><span class="line">		dfs(&quot;JFK&quot;);</span><br><span class="line">		Collections.reverse(res);</span><br><span class="line">		return res;</span><br><span class="line">    &#125;</span><br><span class="line">    public void dfs(String cur) &#123;</span><br><span class="line">		while(map.containsKey(cur)&amp;&amp;map.get(cur).size()&gt;&#x3D;1) &#123;</span><br><span class="line">			String temp &#x3D; map.get(cur).poll();</span><br><span class="line">			dfs(temp);</span><br><span class="line">		&#125;</span><br><span class="line">		res.add(cur);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+	
+
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/数据结构与算法//" class="article-tag-list-link color3">数据结构与算法</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/08/28/%E6%AC%A7%E6%8B%89%E8%B7%AF%E5%BE%84/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-电话号码的字母组合" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -833,98 +911,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2020/08/18/DDL/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-平衡二叉树" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/08/17/%E5%B9%B3%E8%A1%A1%E4%BA%8C%E5%8F%89%E6%A0%91/">相同的树</a>
-    </h1>
-  
-
-        
-        <a href="/2020/08/17/%E5%B9%B3%E8%A1%A1%E4%BA%8C%E5%8F%89%E6%A0%91/" class="archive-article-date">
-  	<time datetime="2020-08-17T13:16:31.078Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-17</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-
-	
-		<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">给定一个二叉树，判断它是否是高度平衡的二叉树。</span><br><span class="line"></span><br><span class="line">本题中，一棵高度平衡二叉树定义为：</span><br><span class="line"></span><br><span class="line">一个二叉树每个节点的左右两个子树的高度差的绝对值不超过1。</span><br><span class="line"></span><br><span class="line">示例 1:</span><br><span class="line"></span><br><span class="line">给定二叉树 [3,9,20,null,null,15,7]</span><br><span class="line"></span><br><span class="line">    3</span><br><span class="line">   &#x2F; \</span><br><span class="line">  9  20</span><br><span class="line">    &#x2F;  \</span><br><span class="line">   15   7</span><br><span class="line">返回 true 。</span><br><span class="line"></span><br><span class="line">示例 2:</span><br><span class="line"></span><br><span class="line">给定二叉树 [1,2,2,3,3,null,null,4,4]</span><br><span class="line"></span><br><span class="line">       1</span><br><span class="line">      &#x2F; \</span><br><span class="line">     2   2</span><br><span class="line">    &#x2F; \</span><br><span class="line">   3   3</span><br><span class="line">  &#x2F; \</span><br><span class="line"> 4   4</span><br><span class="line">返回false </span><br><span class="line">&#96;&#96;&#96;  </span><br><span class="line">题目即判断一颗二叉树是否为平衡二叉树，有两种思路，从顶到底和从底到顶  </span><br><span class="line">**方式一：**  </span><br><span class="line">从顶到底，便于想到，从顶到底判断以每个节点为根节点的子树是否是平衡二叉树，但某些节点的深度会被重复计算导致时间复杂度很高</span><br></pre></td></tr></table></figure>
-<p>class Solution {<br>    public boolean isBalanced(TreeNode root) {<br>        if(root==null)<br>            return true;<br>        return (Math.abs(height(root.left)-height(root.right))&lt;=1&amp;&amp;isBalanced(root.left)&amp;&amp;isBalanced(root.right));<br>        //判断当前子树是否为平衡树，然后先序遍历判断当前子树的左子树，然后判断当前子树的右子树<br>    }<br>    public int height(TreeNode root) {<br>        if(root==null)<br>            return 0;<br>        return Math.max(root.left==null?0:height(root.left), root.right==null?0:height(root.right))+1;<br>    }<br>}</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">**方式二：**  </span><br><span class="line">从底到顶递归，这样每个节点的深度只会被调用一次，这种方法类似于后序遍历，先判断当前节点的左右子树是否是平衡树，在判断当前节点，如果一个子树是平衡树则返回它的高度，否则返回-1，如果一个树的任意子树不是平衡树，则树不是平衡树</span><br></pre></td></tr></table></figure>
-<pre><code>public boolean isBalanced(TreeNode root) {
-    return height(root) &gt;= 0;
-}
-
-public int height(TreeNode root) {
-    if (root == null) {
-        return 0;
-    }
-    int leftHeight = height(root.left);
-    int rightHeight = height(root.right);
-    if (leftHeight == -1 || rightHeight == -1 || Math.abs(leftHeight - rightHeight) &gt; 1) {
-        return -1;
-    } else {
-        return Math.max(leftHeight, rightHeight) + 1;
-    }
-}</code></pre><pre><code></code></pre>
-	
-
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/数据结构与算法//" class="article-tag-list-link color3">数据结构与算法</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/08/17/%E5%B9%B3%E8%A1%A1%E4%BA%8C%E5%8F%89%E6%A0%91/">展开全文 >></a>
         </p>
       
 
