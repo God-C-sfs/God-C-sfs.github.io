@@ -158,6 +158,83 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-有序链表转换为AVL树" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/08/18/%E6%9C%89%E5%BA%8F%E9%93%BE%E8%A1%A8%E8%BD%AC%E6%8D%A2%E4%B8%BAAVL%E6%A0%91/">转换AVL树</a>
+    </h1>
+  
+
+        
+        <a href="/2020/08/18/%E6%9C%89%E5%BA%8F%E9%93%BE%E8%A1%A8%E8%BD%AC%E6%8D%A2%E4%B8%BAAVL%E6%A0%91/" class="archive-article-date">
+  	<time datetime="2020-08-18T13:10:02.753Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-18</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+
+	
+		<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">给定一个单链表，其中的元素按升序排序，将其转换为高度平衡的二叉搜索树。</span><br><span class="line"></span><br><span class="line">本题中，一个高度平衡二叉树是指一个二叉树每个节点的左右两个子树的高度差的绝对值不超过 1。</span><br><span class="line"></span><br><span class="line">示例:</span><br><span class="line"></span><br><span class="line">给定的有序链表： [-10, -3, 0, 5, 9],</span><br><span class="line"></span><br><span class="line">一个可能的答案是：[0, -3, 9, -10, null, 5], 它可以表示下面这个高度平衡二叉搜索树：</span><br><span class="line"></span><br><span class="line">      0</span><br><span class="line">     &#x2F; \</span><br><span class="line">   -3   9</span><br><span class="line">   &#x2F;   &#x2F;</span><br><span class="line"> -10  5</span><br></pre></td></tr></table></figure>
+<p><strong>解题思路：</strong><br>1.题中我们得知，这是一个升序链表，所以我们不需要根据节点的value再来判断添加到左还是右节点<br>2.由于二叉搜索树要求左右子树高度差&lt;=1，所以我们取链表的中点作为根节点，如果链表个数为偶数，那么左边比右边少一个，如果链表个数为奇数，那么左右个数恰好相等<br>3.那么整棵树的root找到了，左子树的root其实就是左子树的中点，右子树同理，我们利用分治的思想，可以一直递归下去，直到左==右，则return null，我们返回已经排好的子节点<br>4.关于找链表中点我们可以用快慢指针的方法  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">public TreeNode sortedListToBST(ListNode head) &#123;</span><br><span class="line">        return dfsFillNode(head, null);</span><br><span class="line">    &#125;</span><br><span class="line">	public TreeNode dfsFillNode(ListNode left,ListNode right) &#123;</span><br><span class="line">		if(left &#x3D;&#x3D; right)</span><br><span class="line">			return null;</span><br><span class="line">		ListNode mid &#x3D; findMiddleNode(left,right);</span><br><span class="line">		TreeNode root &#x3D; new TreeNode(mid.val);</span><br><span class="line">		root.left &#x3D; dfsFillNode(left, mid);</span><br><span class="line">		root.right &#x3D; dfsFillNode(mid.next, right);</span><br><span class="line">		return root;</span><br><span class="line">	&#125;</span><br><span class="line">	public ListNode findMiddleNode(ListNode node,ListNode right) &#123;</span><br><span class="line">		ListNode fast &#x3D; node;</span><br><span class="line">		ListNode slow &#x3D; node;</span><br><span class="line">		while(fast!&#x3D;right&amp;&amp;fast.next!&#x3D;right) &#123;</span><br><span class="line">			fast &#x3D; fast.next.next;</span><br><span class="line">			slow &#x3D; slow.next;</span><br><span class="line">		&#125;</span><br><span class="line">		return slow;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+
+	
+
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/数据结构与算法//" class="article-tag-list-link color3">数据结构与算法</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/08/18/%E6%9C%89%E5%BA%8F%E9%93%BE%E8%A1%A8%E8%BD%AC%E6%8D%A2%E4%B8%BAAVL%E6%A0%91/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-DDL" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -841,84 +918,6 @@ public int height(TreeNode root) {
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2020/07/20/%E5%AF%BB%E6%89%BE%E7%9B%B8%E4%BA%A4%E9%93%BE%E8%A1%A8%E7%9A%84%E4%BA%A4%E7%82%B9/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-反转字符串里的单词" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/07/20/%E5%8F%8D%E8%BD%AC%E5%AD%97%E7%AC%A6%E4%B8%B2%E9%87%8C%E7%9A%84%E5%8D%95%E8%AF%8D/">反转字符串里的单词</a>
-    </h1>
-  
-
-        
-        <a href="/2020/07/20/%E5%8F%8D%E8%BD%AC%E5%AD%97%E7%AC%A6%E4%B8%B2%E9%87%8C%E7%9A%84%E5%8D%95%E8%AF%8D/" class="archive-article-date">
-  	<time datetime="2020-07-20T13:14:02.686Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-20</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-
-	
-		<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">给定一个字符串，逐个翻转字符串中的每个单词。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">示例 1：</span><br><span class="line"></span><br><span class="line">输入: &quot;the sky is blue&quot;</span><br><span class="line">输出:&quot;blue is sky the&quot;</span><br><span class="line">示例 2：</span><br><span class="line"></span><br><span class="line">输入: &quot; hello world! &quot;</span><br><span class="line">输出:&quot;world! hello&quot;</span><br><span class="line">解释: 输入字符串可以在前面或者后面包含多余的空格，但是反转后的字符不能包括。</span><br><span class="line">示例 3：</span><br><span class="line"></span><br><span class="line">输入: &quot;a good  example&quot;</span><br><span class="line">输出:&quot;example good a&quot;</span><br><span class="line">解释: 如果两个单词间有多余的空格，将反转后单词间的空格减少到只含一个。</span><br><span class="line">说明：</span><br><span class="line">无空格字符构成一个单词。</span><br><span class="line">输入字符串可以在前面或者后面包含多余的空格，但是反转后的字符不能包括。</span><br><span class="line">如果两个单词间有多余的空格，将反转后单词间的空格减少到只含一个。</span><br></pre></td></tr></table></figure>
-<p>思路:利用双指针的想法，我们可以从后往前截取单词然后加入到StringBuffer中，当我们取出来是就是倒叙，类似于栈的运用<br>然后利用i，j双指针，根据ij来确定截取单词的位置 </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    public String reverseWords(String s) &#123;</span><br><span class="line">        if(s.length() &#x3D;&#x3D; 0) &#123;</span><br><span class="line">			return &quot;&quot;;</span><br><span class="line">		&#125;</span><br><span class="line">		s &#x3D; s.trim();</span><br><span class="line">		StringBuffer res &#x3D; new StringBuffer();</span><br><span class="line">		int  j &#x3D; s.length()-1;</span><br><span class="line">		int i &#x3D; j;</span><br><span class="line">		while(i&gt;&#x3D;0) &#123;</span><br><span class="line">			while(i&gt;&#x3D;0&amp;&amp;s.charAt(i)!&#x3D;&#39; &#39;) &#123;</span><br><span class="line">				i--;</span><br><span class="line">			&#125;</span><br><span class="line">			res.append(s.substring(i+1, j+1)+&quot; &quot;);</span><br><span class="line">			while(i&gt;&#x3D;0&amp;&amp;s.charAt(i)&#x3D;&#x3D;&#39; &#39;) i--;&#x2F;&#x2F;去除单词间的空格</span><br><span class="line">			j &#x3D; i;</span><br><span class="line">			</span><br><span class="line">		&#125;</span><br><span class="line">		return res.toString().trim();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-	
-
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/数据结构与算法//" class="article-tag-list-link color3">数据结构与算法</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/07/20/%E5%8F%8D%E8%BD%AC%E5%AD%97%E7%AC%A6%E4%B8%B2%E9%87%8C%E7%9A%84%E5%8D%95%E8%AF%8D/">展开全文 >></a>
         </p>
       
 

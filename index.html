@@ -158,6 +158,84 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-最短回文串" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/08/29/%E6%9C%80%E7%9F%AD%E5%9B%9E%E6%96%87%E4%B8%B2/">最短回文串</a>
+    </h1>
+  
+
+        
+        <a href="/2020/08/29/%E6%9C%80%E7%9F%AD%E5%9B%9E%E6%96%87%E4%B8%B2/" class="archive-article-date">
+  	<time datetime="2020-08-29T15:16:36.074Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-29</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+
+	
+		<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">给定一个字符串 s，你可以通过在字符串前面添加字符将其转换为回文串。找到并返回可以用这种方式转换的最短回文串。</span><br><span class="line"></span><br><span class="line">示例1:</span><br><span class="line"></span><br><span class="line">输入: &quot;aacecaaa&quot;</span><br><span class="line">输出: &quot;aaacecaaa&quot;</span><br><span class="line">示例 2:</span><br><span class="line"></span><br><span class="line">输入: &quot;abcd&quot;</span><br><span class="line">输出: &quot;dcbabcd&quot;</span><br></pre></td></tr></table></figure>
+<p><strong>主要思路：</strong><br><strong>本题是KMP算法的一种运用，利用Next数组解题法宝，利用KMP求解最长回文前缀</strong><br>例如abc这个字符串，前缀加上cba，由于a一个字符可以看作是回文的，所以我们删除a，只用加上cb构成cbabc这个最短的回文字符串，再比如cbjbcb这个字符串，先反转得到bcbjbc，由于cbjbc本身就是回文的，反转后还是本身，所以这个删除两个字符串重叠的部分，得到bcbjbcb这个最短的回文子串<br><strong>继续分析，其实我们就是求s的最长回文前缀，那么我们怎么求解这个最长回文前缀呢？</strong><br>我们将s反转后s的前缀将会变成后缀，所以我们将s和s的反转字符串拼在一起，就是寻找这个新字符串的最长公共前后缀，然后return reverse删除公共部分+s原字符串即为答案<br><strong>tips：</strong> 这里我们在拼接两个字符串时，加了一个‘#’号，如果不加，例如aaa这种情况，拼接后变成aaaaaa，利用KMP求得为6，其实最长回文前缀为3，可以有效防止此类特殊情况出现</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">public class ShortestPalindrome &#123;</span><br><span class="line"></span><br><span class="line">	public static void main(String[] args) &#123;</span><br><span class="line">		&#x2F;&#x2F; TODO 自动生成的方法存根</span><br><span class="line">		String s &#x3D; &quot;aacecaaa&quot;;</span><br><span class="line">		String res &#x3D; shortestPalindrome(s);</span><br><span class="line">		System.out.println(res);</span><br><span class="line">	&#125;</span><br><span class="line">	public static String  shortestPalindrome(String s) &#123;</span><br><span class="line">		String reverse &#x3D; &quot;&quot;;</span><br><span class="line">		int l &#x3D; s.length()-1;</span><br><span class="line">		for(int i &#x3D; l;i&gt;&#x3D;0;i--) &#123;</span><br><span class="line">			reverse+&#x3D;s.charAt(i);</span><br><span class="line">		&#125;</span><br><span class="line">		String s1 &#x3D; s+&#39;#&#39;+reverse;</span><br><span class="line">		int max_len &#x3D; getNext(s1);</span><br><span class="line">		return reverse.substring(0, l-max_len)+s;</span><br><span class="line">		</span><br><span class="line">    &#125;</span><br><span class="line">	public static int getNext(String s) &#123;</span><br><span class="line">		int l &#x3D; s.length();</span><br><span class="line">		int i &#x3D; 0;</span><br><span class="line">		int j &#x3D; -1;</span><br><span class="line">		int [] next &#x3D; new int[s.length()];</span><br><span class="line">		next[0] &#x3D; -1;</span><br><span class="line">		</span><br><span class="line">		while(i&lt;l-1) &#123;</span><br><span class="line">			if(j&#x3D;&#x3D;-1||s.charAt(i)&#x3D;&#x3D;s.charAt(j)) &#123;</span><br><span class="line">				i++;</span><br><span class="line">				j++;</span><br><span class="line">				next[i] &#x3D; j;</span><br><span class="line">			&#125;else</span><br><span class="line">				j &#x3D; next[j];</span><br><span class="line">		&#125;</span><br><span class="line">		return next[l-1];		</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+	
+
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/数据结构与算法//" class="article-tag-list-link color3">数据结构与算法</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/08/29/%E6%9C%80%E7%9F%AD%E5%9B%9E%E6%96%87%E4%B8%B2/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-KMP" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -839,83 +917,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2020/08/21/%E5%9B%9E%E6%96%87%E5%AD%97%E4%B8%B2%E7%9A%84%E6%95%B0%E9%87%8F/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-有序链表转换为AVL树" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/08/18/%E6%9C%89%E5%BA%8F%E9%93%BE%E8%A1%A8%E8%BD%AC%E6%8D%A2%E4%B8%BAAVL%E6%A0%91/">转换AVL树</a>
-    </h1>
-  
-
-        
-        <a href="/2020/08/18/%E6%9C%89%E5%BA%8F%E9%93%BE%E8%A1%A8%E8%BD%AC%E6%8D%A2%E4%B8%BAAVL%E6%A0%91/" class="archive-article-date">
-  	<time datetime="2020-08-18T13:10:02.753Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-18</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-
-	
-		<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">给定一个单链表，其中的元素按升序排序，将其转换为高度平衡的二叉搜索树。</span><br><span class="line"></span><br><span class="line">本题中，一个高度平衡二叉树是指一个二叉树每个节点的左右两个子树的高度差的绝对值不超过 1。</span><br><span class="line"></span><br><span class="line">示例:</span><br><span class="line"></span><br><span class="line">给定的有序链表： [-10, -3, 0, 5, 9],</span><br><span class="line"></span><br><span class="line">一个可能的答案是：[0, -3, 9, -10, null, 5], 它可以表示下面这个高度平衡二叉搜索树：</span><br><span class="line"></span><br><span class="line">      0</span><br><span class="line">     &#x2F; \</span><br><span class="line">   -3   9</span><br><span class="line">   &#x2F;   &#x2F;</span><br><span class="line"> -10  5</span><br></pre></td></tr></table></figure>
-<p><strong>解题思路：</strong><br>1.题中我们得知，这是一个升序链表，所以我们不需要根据节点的value再来判断添加到左还是右节点<br>2.由于二叉搜索树要求左右子树高度差&lt;=1，所以我们取链表的中点作为根节点，如果链表个数为偶数，那么左边比右边少一个，如果链表个数为奇数，那么左右个数恰好相等<br>3.那么整棵树的root找到了，左子树的root其实就是左子树的中点，右子树同理，我们利用分治的思想，可以一直递归下去，直到左==右，则return null，我们返回已经排好的子节点<br>4.关于找链表中点我们可以用快慢指针的方法  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">public TreeNode sortedListToBST(ListNode head) &#123;</span><br><span class="line">        return dfsFillNode(head, null);</span><br><span class="line">    &#125;</span><br><span class="line">	public TreeNode dfsFillNode(ListNode left,ListNode right) &#123;</span><br><span class="line">		if(left &#x3D;&#x3D; right)</span><br><span class="line">			return null;</span><br><span class="line">		ListNode mid &#x3D; findMiddleNode(left,right);</span><br><span class="line">		TreeNode root &#x3D; new TreeNode(mid.val);</span><br><span class="line">		root.left &#x3D; dfsFillNode(left, mid);</span><br><span class="line">		root.right &#x3D; dfsFillNode(mid.next, right);</span><br><span class="line">		return root;</span><br><span class="line">	&#125;</span><br><span class="line">	public ListNode findMiddleNode(ListNode node,ListNode right) &#123;</span><br><span class="line">		ListNode fast &#x3D; node;</span><br><span class="line">		ListNode slow &#x3D; node;</span><br><span class="line">		while(fast!&#x3D;right&amp;&amp;fast.next!&#x3D;right) &#123;</span><br><span class="line">			fast &#x3D; fast.next.next;</span><br><span class="line">			slow &#x3D; slow.next;</span><br><span class="line">		&#125;</span><br><span class="line">		return slow;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
-
-	
-
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/数据结构与算法//" class="article-tag-list-link color3">数据结构与算法</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/08/18/%E6%9C%89%E5%BA%8F%E9%93%BE%E8%A1%A8%E8%BD%AC%E6%8D%A2%E4%B8%BAAVL%E6%A0%91/">展开全文 >></a>
         </p>
       
 
