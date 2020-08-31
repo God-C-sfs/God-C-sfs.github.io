@@ -158,6 +158,83 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-反转字符串中的单词1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/08/30/%E5%8F%8D%E8%BD%AC%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%AD%E7%9A%84%E5%8D%95%E8%AF%8D1/">最短回文串</a>
+    </h1>
+  
+
+        
+        <a href="/2020/08/30/%E5%8F%8D%E8%BD%AC%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%AD%E7%9A%84%E5%8D%95%E8%AF%8D1/" class="archive-article-date">
+  	<time datetime="2020-08-30T13:52:14.981Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-30</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+
+	
+		<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">给定一个字符串，你需要反转字符串中每个单词的字符顺序，同时仍保留空格和单词的初始顺序。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">示例：</span><br><span class="line"></span><br><span class="line">输入：&quot;Let&#39;s take LeetCode contest&quot;</span><br><span class="line">输出：&quot;s&#39;teL ekat edoCteeL tsetnoc&quot;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">提示：</span><br><span class="line"></span><br><span class="line">在字符串中，每个单词由单个空格分隔，并且字符串中不会有任何额外的空格。</span><br></pre></td></tr></table></figure>
+<p><strong>此题目的</strong><br>学会熟练使用java中字符串中的一些操作API函数，例如本题的spilt，trim函数等，此外，String类以及字符串都不提供反转操作，但StringBuffer中有此操作，所以可以转换成StringBuffer再转成String  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    public String reverseWords(String s) &#123;</span><br><span class="line">        String[] strs &#x3D; s.split(&quot; &quot;);</span><br><span class="line">		 StringBuffer tem &#x3D; new StringBuffer();</span><br><span class="line">		 for(String str:strs) &#123;</span><br><span class="line">		    &#x2F;&#x2F;利用库函数反转字符串</span><br><span class="line">			 tem.append(new StringBuffer(str).reverse().toString());</span><br><span class="line">			 tem.append(&quot; &quot;);</span><br><span class="line">		 &#125;</span><br><span class="line">		 return tem.toString().trim();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+	
+
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/数据结构与算法//" class="article-tag-list-link color3">数据结构与算法</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/08/30/%E5%8F%8D%E8%BD%AC%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%AD%E7%9A%84%E5%8D%95%E8%AF%8D1/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-最短回文串" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -260,7 +337,7 @@
 	
 		<p>这是我第三次再次尝试学习KMP算法，以前总觉得是一个拦路虎，面对比我整个人还长的文章长度直接劝退，当再次遇到KMP后，痛定思痛下定决心来学习KMP算法，现在回头来看，只要静下心来对于聪明的你来说，一定不是难题<br><strong>按照惯例，我们先来看一下暴力匹配是如何工作的</strong><br><img src="https://gitee.com/bingjie__chai/PicOfHexo/raw/master/pic_hexo/20200829125115.png" alt=""><br>如下图所示我们利用双指针，i指向模板链的头部，j指向目标链的头部，开始逐个遍历是否相等，当不相等时，我们会令i回溯到i-j+1即模板链的下一个位置，j回溯到目标链的开头，重新开始匹配<br><img src="https://gitee.com/bingjie__chai/PicOfHexo/raw/master/pic_hexo/2.png" alt=""><br>当完全匹配时返回目标链在模板链中的位置<br><img src="https://gitee.com/bingjie__chai/PicOfHexo/raw/master/pic_hexo/3.png" alt=""></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">public int bfSearch(String s1,String s2)&#123;</span><br><span class="line">    int l1 &#x3D; s1.length;</span><br><span class="line">    int l2 &#x3D; s2.length;</span><br><span class="line">    int i &#x3D; 0;</span><br><span class="line">    int j &#x3D; 0;</span><br><span class="line">    while(i&lt;l1&amp;&amp;j&lt;l2)&#123;</span><br><span class="line">        if(s1.charAt(i)&#x3D;&#x3D;s2.charAt(j))&#123;</span><br><span class="line">            i++;</span><br><span class="line">            j++;</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">            i &#x3D; i-j+1;</span><br><span class="line">            j &#x3D; 0;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    if(j &#x3D;&#x3D; l2)&#123;</span><br><span class="line">        return i-j;</span><br><span class="line">    &#125;</span><br><span class="line">    return -1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>在上述的暴力算法中，当目标链和模板链失配时，i会回溯到下一个位置再重新匹配，时间效率非常底下，那我们有没有办法不让i去回溯，只令指针j去移动目标链，这就是KMP算法的精髓所在，在KMP算法中我们利用部分匹配表，next数组来确定下一次j移动的位置<br><strong>这也正是KMP算法的核心，部分匹配表</strong><br>下面我们来解释一下什么是部分匹配表，例如字符串”abababca”的匹配表如下<br><img src="https://gitee.com/bingjie__chai/PicOfHexo/raw/master/pic_hexo/4.png" alt=""><br>例如:<br>index等于3对应的value值为2，表示以index等于3之前的字符串“abab”最长的公共前缀和后缀的长度<br>abab的前缀有a，ab，aba（不包括自身），后缀有b，ab，bab，最长公共部分ab长度为2，所以index=3位置对应的value为2，其他部分同理<br><strong>了解了什么是部分匹配表，那么如何用部分比配表来加速匹配呢</strong><br><img src="https://gitee.com/bingjie__chai/PicOfHexo/raw/master/pic_hexo/20200829150047.png" alt=""><br>如图所示，当失配时，我们发现只有最后一位是失配的，如果暴力解将i回溯会浪费大量的时间，此处我们利用next数组来是i的指针不发生回溯，只移动j指针，下面我们来分析利用next数组下一次将会移动到什么位置<br><img src="https://gitee.com/bingjie__chai/PicOfHexo/raw/master/pic_hexo/20200829150848.png" alt=""><br>如果指针能移动到_和D的对比处说明D之前的字符是匹配的，所以括号括起来的位置是相等的，又因为在目标链中，AB恰巧有一个相同的前缀AB，那么说明目标链的前缀和模板链的AB是相等的<br><img src="https://gitee.com/bingjie__chai/PicOfHexo/raw/master/pic_hexo/20200829151338.png" alt=""><br>即斜体下划线处不用再比较了，所以直接将目标链移动到如下位置<br><img src="https://gitee.com/bingjie__chai/PicOfHexo/raw/master/pic_hexo/20200829151539.png" alt=""><br>所以我们将这个过程通解化，即主字符串中i指针之前的 PMT[j −1] 位就一定与模式字符串的第 0 位至第 PMT[j−1] 位是相同的，保持i指针不动，然后将j指针指向模式字符串的PMT[j −1]位即可<br><strong>为了利于程序的编写，我们将PMT数组做一些优化</strong><br>我们发现，当字符失配时，影响j指针移动的是next[j-1],所以我们将next数组整体后移一位，并将next[0]默认值设为1，为什么设为1呢？<br><img src="https://gitee.com/bingjie__chai/PicOfHexo/raw/master/pic_hexo/20200829152007.png" alt=""><br>如图所示我们再首位就发现失配了，按照规则我们无法移动j指针，此时我们只能移动i指针去继续匹配，当我们执行i++，j++代码后，i后移，j不变，实现移动i指针<br><img src="https://gitee.com/bingjie__chai/PicOfHexo/raw/master/pic_hexo/20200829152245.png" alt=""><br><strong>所以KMP的代码就呼之欲出了，此处我们假设next数组已知，下文中我们将解释如何求解</strong>  </p>
+<p>在上述的暴力算法中，当目标链和模板链失配时，i会回溯到下一个位置再重新匹配，时间效率非常底下，那我们有没有办法不让i去回溯，只令指针j去移动目标链，这就是KMP算法的精髓所在，在KMP算法中我们利用部分匹配表，next数组来确定下一次j移动的位置<br><strong>这也正是KMP算法的核心，部分匹配表</strong><br>下面我们来解释一下什么是部分匹配表，例如字符串”abababca”的匹配表如下<br><img src="https://gitee.com/bingjie__chai/PicOfHexo/raw/master/pic_hexo/4.png" alt=""><br>例如:<br>index等于3对应的value值为2，表示以index等于3之前的字符串“abab”最长的公共前缀和后缀的长度<br>abab的前缀有a，ab，aba（不包括自身），后缀有b，ab，bab，最长公共部分ab长度为2，所以index=3位置对应的value为2，其他部分同理<br><strong>了解了什么是部分匹配表，那么如何用部分比配表来加速匹配呢</strong><br><img src="https://gitee.com/bingjie__chai/PicOfHexo/raw/master/pic_hexo/20200829150047.png" alt=""><br>如图所示，当失配时，我们发现只有最后一位是失配的，如果暴力解将i回溯会浪费大量的时间，此处我们利用next数组来是i的指针不发生回溯，只移动j指针，下面我们来分析利用next数组下一次将会移动到什么位置<br><img src="https://gitee.com/bingjie__chai/PicOfHexo/raw/master/pic_hexo/20200829150848.png" alt=""><br>如果指针能移动到_和D的对比处说明D之前的字符是匹配的，所以括号括起来的位置是相等的，又因为在目标链中，AB恰巧有一个相同的前缀AB，那么说明目标链的前缀和模板链的AB是相等的<br><img src="https://gitee.com/bingjie__chai/PicOfHexo/raw/master/pic_hexo/20200829151338.png" alt=""><br>即斜体下划线处不用再比较了，所以直接将目标链移动到如下位置<br><img src="https://gitee.com/bingjie__chai/PicOfHexo/raw/master/pic_hexo/20200829151539.png" alt=""><br>所以我们将这个过程通解化，即主字符串中i指针之前的 PMT[j −1] 位就一定与模式字符串的第 0 位至第 PMT[j−1] 位是相同的，保持i指针不动，然后将j指针指向模式字符串的PMT[j −1]位即可<br><strong>为了利于程序的编写，我们将PMT数组做一些优化</strong><br>我们发现，当字符失配时，影响j指针移动的是next[j-1],所以我们将next数组整体后移一位，并将next[0]默认值设为-1，为什么设为-1呢？<br><img src="https://gitee.com/bingjie__chai/PicOfHexo/raw/master/pic_hexo/20200829152007.png" alt=""><br>如图所示我们再首位就发现失配了，按照规则我们无法移动j指针，此时我们只能移动i指针去继续匹配，当我们执行i++，j++代码后，i后移，j不变，实现移动i指针<br><img src="https://gitee.com/bingjie__chai/PicOfHexo/raw/master/pic_hexo/20200829152245.png" alt=""><br><strong>所以KMP的代码就呼之欲出了，此处我们假设next数组已知，下文中我们将解释如何求解</strong>  </p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">public int KMP(String s1,String s2) &#123;</span><br><span class="line">		int l1 &#x3D; s1.length();</span><br><span class="line">		int l2 &#x3D; s2.length();</span><br><span class="line">		int i &#x3D; 0;</span><br><span class="line">		int j &#x3D; 0;</span><br><span class="line">		int [] next &#x3D; new int[l2];</span><br><span class="line">		while(i&lt;l1&amp;&amp;j&lt;l2) &#123;</span><br><span class="line">			if(j&#x3D;&#x3D;-1||s1.charAt(i)&#x3D;&#x3D;s2.charAt(j)) &#123;</span><br><span class="line">				i++;</span><br><span class="line">				j++;</span><br><span class="line">			&#125;else &#123;</span><br><span class="line">				j &#x3D; next[j];</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		if(j&#x3D;&#x3D;l2)</span><br><span class="line">			return i-j;</span><br><span class="line">		return -1;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
 <p><strong>那么next数组应该怎么求呢？</strong><br>我们使用错位法来求解，接下来我们将以字符串“abababca”来讲解如何求next数组<br><img src="https://gitee.com/bingjie__chai/PicOfHexo/raw/master/pic_hexo/20200829154853.png" alt=""><br>我们错开后可以看作i瞄准的是字符串的后缀（因为后缀不包括自身），同理j瞄准的就是前缀，前后缀的公共部分就是next的值，这个过程也可以看作是KMP的求解过程，其中我们要注意因为我们将next数组后移了一位，所以next[2]看的是i=1处的最长公共字串<br><img src="https://gitee.com/bingjie__chai/PicOfHexo/raw/master/pic_hexo/20200829155159.png" alt=""><br><img src="https://gitee.com/bingjie__chai/PicOfHexo/raw/master/pic_hexo/20200829155214.png" alt=""><br><img src="https://gitee.com/bingjie__chai/PicOfHexo/raw/master/pic_hexo/20200829155244.png" alt=""><br><img src="https://gitee.com/bingjie__chai/PicOfHexo/raw/master/pic_hexo/20200829155301.png" alt=""><br><img src="https://gitee.com/bingjie__chai/PicOfHexo/raw/master/pic_hexo/20200829155313.png" alt=""></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">public static void getNext(int[] next,String s) &#123;</span><br><span class="line">        &#x2F;&#x2F;这个求解过程也可以看作是KMP搜索，自身的前后缀的搜索</span><br><span class="line">		int i &#x3D; 0;</span><br><span class="line">		int j &#x3D; -1;</span><br><span class="line">		next[0] &#x3D; -1;</span><br><span class="line">		while(i&lt;s.length()-1) &#123;</span><br><span class="line">		    &#x2F;&#x2F;在第一轮中，j&#x3D;&#x3D;-1，所以i++，j++后i&#x3D;1，j&#x3D;0，实现错位比较</span><br><span class="line">			if(j&#x3D;&#x3D;-1||s.charAt(i)&#x3D;&#x3D;s.charAt(j)) &#123;</span><br><span class="line">				i++;</span><br><span class="line">				j++;</span><br><span class="line">				next[i] &#x3D; j;</span><br><span class="line">			&#125;else &#123;</span><br><span class="line">				j &#x3D; next[j];</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
@@ -868,87 +945,9 @@
 
 
   
-    <article id="post-回文字串的数量" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/08/21/%E5%9B%9E%E6%96%87%E5%AD%97%E4%B8%B2%E7%9A%84%E6%95%B0%E9%87%8F/">回文字串的数量</a>
-    </h1>
-  
-
-        
-        <a href="/2020/08/21/%E5%9B%9E%E6%96%87%E5%AD%97%E4%B8%B2%E7%9A%84%E6%95%B0%E9%87%8F/" class="archive-article-date">
-  	<time datetime="2020-08-21T07:52:39.330Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-21</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-
-	
-		<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">给定一个字符串，你的任务是计算这个字符串中有多少个回文子串。</span><br><span class="line"></span><br><span class="line">具有不同开始位置或结束位置的子串，即使是由相同的字符组成，也会被视作不同的子串。</span><br><span class="line">示例 1：</span><br><span class="line">输入：&quot;abc&quot;</span><br><span class="line">输出：3</span><br><span class="line">解释：三个回文子串: &quot;a&quot;, &quot;b&quot;, &quot;c&quot;</span><br><span class="line">示例 2：</span><br><span class="line">输入：&quot;aaa&quot;</span><br><span class="line">输出：6</span><br><span class="line">解释：6个回文子串: &quot;a&quot;, &quot;a&quot;, &quot;a&quot;, &quot;aa&quot;, &quot;aa&quot;, &quot;aaa&quot;</span><br></pre></td></tr></table></figure>
-<p><strong>解题思路</strong>:<br>主要思路，我们使用中心扩散的思想，从反转中心向两边扩散，记录所有的回文子串的数量<br>其中有一些细节我们要注意：回文字串的长度分为奇偶，如果为奇数，中间的数就是回文中心，如果是偶数，我们令两个数均为对称中心，我们使用一个函数来统一实现  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">public int countSubstrings(String s) &#123;</span><br><span class="line">        int ans &#x3D; 0;</span><br><span class="line">        for(int i  &#x3D; 0;i&lt;s.length();i++)&#123;</span><br><span class="line">            ans+&#x3D;isReverse(s,i,i);</span><br><span class="line">            ans+&#x3D;isReverse(s,i,i+1);</span><br><span class="line">        &#125;</span><br><span class="line">        return ans;</span><br><span class="line">    &#125;</span><br><span class="line">public int isReverse(String s,int i,int j)&#123;</span><br><span class="line">    int count &#x3D; 0;</span><br><span class="line">    while(i&gt;&#x3D;0&amp;&amp;j&lt;&#x3D;s.length()-1&amp;&amp;String.charAt(i)&#x3D;&#x3D;String.charAt(j))&#123;</span><br><span class="line">        count++;</span><br><span class="line">        i--;</span><br><span class="line">        j++;</span><br><span class="line">    &#125;</span><br><span class="line">    return count;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>拓展：上述方法，主函数中遍历一遍s，调用函数中再次遍历s，复杂度o（n^2），所以我们可以使用解决最长回文字串的经典方法，马拉车算法，将时间复杂度降为o(n)，下面我们来分析以下马拉车算法:  </p>
-
-	
-
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/数据结构与算法//" class="article-tag-list-link color3">数据结构与算法</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/08/21/%E5%9B%9E%E6%96%87%E5%AD%97%E4%B8%B2%E7%9A%84%E6%95%B0%E9%87%8F/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
     </nav>
   
 
