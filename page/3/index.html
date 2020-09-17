@@ -158,6 +158,165 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-大数相加&amp;相乘" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/08/13/%E5%A4%A7%E6%95%B0%E7%9B%B8%E5%8A%A0&%E7%9B%B8%E4%B9%98/">大数运算(乘法&amp;加法)</a>
+    </h1>
+  
+
+        
+        <a href="/2020/08/13/%E5%A4%A7%E6%95%B0%E7%9B%B8%E5%8A%A0&%E7%9B%B8%E4%B9%98/" class="archive-article-date">
+  	<time datetime="2020-08-13T10:21:22.935Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-13</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+
+	
+		<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">给定两个字符串形式的非负整数num1 和num2，计算它们的和。</span><br><span class="line">提示：</span><br><span class="line"></span><br><span class="line">num1 和num2的长度都小于 5100</span><br><span class="line">num1 和num2 都只包含数字0-9</span><br><span class="line">num1 和num2 都不包含任何前导零</span><br><span class="line">你不能使用任何內建 BigInteger 库，也不能直接将输入的字符串转换为整数形式</span><br></pre></td></tr></table></figure>
+<p>思路:模仿竖式相加的过程，巧妙运用carry解决进位的问题，主要注意最后一次进位，当carry不是0的时候，在append一个1</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    public String addStrings(String num1, String num2) &#123;</span><br><span class="line">       int i &#x3D; num1.length()-1;</span><br><span class="line">		int j &#x3D; num2.length()-1;</span><br><span class="line">		int carry &#x3D; 0;</span><br><span class="line">		StringBuilder res &#x3D; new StringBuilder();</span><br><span class="line">		while(j&gt;&#x3D;0||i&gt;&#x3D;0) &#123;</span><br><span class="line">			int n1 &#x3D; i&gt;&#x3D;0?num1.charAt(i)-&#39;0&#39;:0;</span><br><span class="line">			int n2 &#x3D; j&gt;&#x3D;0?num2.charAt(j)-&#39;0&#39;:0;</span><br><span class="line">			int temp &#x3D; n1+n2+carry;</span><br><span class="line">			carry &#x3D; temp&#x2F;10;</span><br><span class="line">			res.append(temp%10);</span><br><span class="line">			i--;</span><br><span class="line">			j--;</span><br><span class="line">		&#125;</span><br><span class="line">		if(carry&#x3D;&#x3D;0) &#123;</span><br><span class="line">			</span><br><span class="line">			return res.reverse().toString();</span><br><span class="line">		&#125;</span><br><span class="line">		return res.append(1).reverse().toString();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">给定两个以字符串形式表示的非负整数num1和num2，返回num1和num2的乘积，它们的乘积也表示为字符串形式。</span><br><span class="line"></span><br><span class="line">示例 1:</span><br><span class="line">输入: num1 &#x3D; &quot;2&quot;, num2 &#x3D; &quot;3&quot;</span><br><span class="line">输出: &quot;6&quot;</span><br><span class="line">示例2:</span><br><span class="line">输入: num1 &#x3D; &quot;123&quot;, num2 &#x3D; &quot;456&quot;</span><br><span class="line">输出: &quot;56088&quot;</span><br><span class="line">说明：</span><br><span class="line">num1和num2的长度小于110。</span><br><span class="line">num1 和num2 只包含数字0-9。</span><br><span class="line">num1 和num2均不以零开头，除非是数字 0 本身。</span><br><span class="line">不能使用任何标准库的大数类型（比如 BigInteger）或直接将输入转换为整数来处理</span><br></pre></td></tr></table></figure>
+<p>思路:主要细节见注释:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    public  String multiply(String num1, String num2) &#123;</span><br><span class="line">        if(num1&#x3D;&#x3D;&quot;0&quot;||num2&#x3D;&#x3D;&quot;0&quot;) &#123;</span><br><span class="line">			return &quot;0&quot;;</span><br><span class="line">		&#125;</span><br><span class="line">		int i &#x3D; num1.length()-1;</span><br><span class="line">		int j &#x3D; num2.length()-1;</span><br><span class="line">		String s &#x3D; &quot;0&quot;;</span><br><span class="line">		String ans &#x3D; null;</span><br><span class="line">		int numOfZero &#x3D; 0;&#x2F;&#x2F;用于num1和num2的每一位相乘时错位相加</span><br><span class="line">		while(j&gt;&#x3D;0) &#123;</span><br><span class="line">			StringBuilder res &#x3D; new StringBuilder();</span><br><span class="line">			int carry &#x3D; 0;</span><br><span class="line">			while(i&gt;&#x3D;0) &#123;&#x2F;&#x2F;num1和num2的每一位相乘</span><br><span class="line">				int n1 &#x3D; num1.charAt(i)-&#39;0&#39;;</span><br><span class="line">				int n2 &#x3D; num2.charAt(j)-&#39;0&#39;;</span><br><span class="line">				int temp &#x3D; n1*n2+carry;</span><br><span class="line">				carry &#x3D; temp&#x2F;10;</span><br><span class="line">				res.append(temp%10);</span><br><span class="line">				i--;</span><br><span class="line">			&#125;</span><br><span class="line">			&#x2F;&#x2F;记得加上最后一个carry</span><br><span class="line">			if(carry&#x3D;&#x3D;0) &#123;</span><br><span class="line">				res &#x3D; res.reverse();</span><br><span class="line">			&#125;else &#123;</span><br><span class="line">				res &#x3D; res.append(carry+&quot;&quot;).reverse();</span><br><span class="line">			&#125;</span><br><span class="line">			&#x2F;&#x2F;用于错位相加</span><br><span class="line">			for(int k &#x3D; 0;k&lt;numOfZero;k++) &#123;</span><br><span class="line">				res &#x3D; res.append(&quot;0&quot;);</span><br><span class="line">			&#125;</span><br><span class="line">			ans &#x3D; add(s, res.toString());</span><br><span class="line">			s &#x3D; ans;</span><br><span class="line">			i &#x3D; num1.length()-1;</span><br><span class="line">			j--;</span><br><span class="line">			numOfZero++;</span><br><span class="line">		&#125;</span><br><span class="line">		return ans;</span><br><span class="line">			</span><br><span class="line">    &#125;</span><br><span class="line">	public  String add(String num1,String num2) &#123;</span><br><span class="line">		int i &#x3D; num1.length()-1;</span><br><span class="line">		int j &#x3D; num2.length()-1;</span><br><span class="line">		int carry &#x3D; 0;</span><br><span class="line">		StringBuilder res &#x3D; new StringBuilder();</span><br><span class="line">		while(j&gt;&#x3D;0||i&gt;&#x3D;0) &#123;</span><br><span class="line">			int n1 &#x3D; i&gt;&#x3D;0?num1.charAt(i)-&#39;0&#39;:0;</span><br><span class="line">			int n2 &#x3D; j&gt;&#x3D;0?num2.charAt(j)-&#39;0&#39;:0;</span><br><span class="line">			int temp &#x3D; n1+n2+carry;</span><br><span class="line">			carry &#x3D; temp&#x2F;10;</span><br><span class="line">			res.append(temp%10);</span><br><span class="line">			i--;</span><br><span class="line">			j--;</span><br><span class="line">		&#125;</span><br><span class="line">		if(carry&#x3D;&#x3D;0) &#123;</span><br><span class="line">			</span><br><span class="line">			return res.reverse().toString();</span><br><span class="line">		&#125;</span><br><span class="line">		return res.append(1).reverse().toString();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+	
+
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/数据结构与算法//" class="article-tag-list-link color3">数据结构与算法</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/08/13/%E5%A4%A7%E6%95%B0%E7%9B%B8%E5%8A%A0&%E7%9B%B8%E4%B9%98/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-相同的树" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/08/13/%E7%9B%B8%E5%90%8C%E7%9A%84%E6%A0%91/">相同的树</a>
+    </h1>
+  
+
+        
+        <a href="/2020/08/13/%E7%9B%B8%E5%90%8C%E7%9A%84%E6%A0%91/" class="archive-article-date">
+  	<time datetime="2020-08-13T10:21:15.632Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-13</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+
+	
+		<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">给定两个二叉树，编写一个函数来检验它们是否相同。</span><br><span class="line"></span><br><span class="line">如果两个树在结构上相同，并且节点具有相同的值，则认为它们是相同的。</span><br><span class="line"></span><br><span class="line">示例1:</span><br><span class="line"></span><br><span class="line">输入:       1         1</span><br><span class="line">          &#x2F; \       &#x2F; \</span><br><span class="line">         2   3     2   3</span><br><span class="line"></span><br><span class="line">        [1,2,3],   [1,2,3]</span><br><span class="line"></span><br><span class="line">输出: true</span><br><span class="line">示例2:</span><br><span class="line"></span><br><span class="line">输入:      1          1</span><br><span class="line">          &#x2F;           \</span><br><span class="line">         2             2</span><br><span class="line"></span><br><span class="line">        [1,2],     [1,null,2]</span><br><span class="line"></span><br><span class="line">输出: false</span><br><span class="line">示例3:</span><br><span class="line"></span><br><span class="line">输入:       1         1</span><br><span class="line">          &#x2F; \       &#x2F; \</span><br><span class="line">         2   1     1   2</span><br><span class="line"></span><br><span class="line">        [1,2,1],   [1,1,2]</span><br><span class="line"></span><br><span class="line">输出: false</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">public boolean isSameTree(TreeNode p, TreeNode q) &#123;</span><br><span class="line">        &#x2F;&#x2F;两者都到底了，没有返回肯定相同</span><br><span class="line">        if(p &#x3D;&#x3D; null&amp;&amp;q &#x3D;&#x3D; null) return true;</span><br><span class="line">        &#x2F;&#x2F;两者深度不同，必不相同</span><br><span class="line">		if(p &#x3D;&#x3D; null||q&#x3D;&#x3D;null) return false;</span><br><span class="line">		&#x2F;&#x2F;值不相同，直接返回</span><br><span class="line">		if(p.val !&#x3D; q.val) return false;</span><br><span class="line">		递归判断左子树和右子树</span><br><span class="line">		return isSameTree(p.left, q.left)&amp;&amp;isSameTree(p.right, q.right);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+	
+
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/数据结构与算法//" class="article-tag-list-link color3">数据结构与算法</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/08/13/%E7%9B%B8%E5%90%8C%E7%9A%84%E6%A0%91/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-判断是否含有环状子链表" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -749,148 +908,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2020/07/09/%E5%B9%B3%E7%A7%BB%E4%B8%8E%E8%BF%87%E6%B8%A1/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-弹性容器" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/07/09/%E5%BC%B9%E6%80%A7%E5%AE%B9%E5%99%A8/">弹性容器</a>
-    </h1>
-  
-
-        
-        <a href="/2020/07/09/%E5%BC%B9%E6%80%A7%E5%AE%B9%E5%99%A8/" class="archive-article-date">
-  	<time datetime="2020-07-09T06:19:07.385Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-09</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-
-	
-		<h1 id="弹性容器"><a href="#弹性容器" class="headerlink" title="弹性容器"></a>弹性容器</h1><p>弹性盒(flex)是css中的又一种布局手段，flex可使元素具有弹性，让元素可以随页面的改变而该改变<br>-<strong>弹性容器</strong>要使用弹性盒，必须先将元素设置为弹性容器，我们通过display:flex来设置成弹性容器<br><strong>1.flex-direction：用于指定容器中弹性元素的排列方式</strong><br>·row-默认值，弹性盒中的弹性元素从左向右排列；<br>·row-revere-从右向左排列；<br>·column-纵向从上向下排列；<br>·column·revere-纵向从下向上排列；<br>·主轴-弹性元素的排列方向成为主轴；<br>·侧轴-与主轴垂直的方向为侧轴；<br><strong>2.flex-wrap:设置弹性元素是否自动换行</strong><br>·nowrap-默认值，不换行；<br>·wrap-沿辅轴方向自动换行；<br>·wrap-reverse-沿辅轴反方向换行；<br><strong>3.flex-flow：wrap direction简写属性</strong><br><strong>4.justify-content：如何分布主轴上的空白空间</strong><br>·flex-start-沿主轴起边排列<br>·flex-end-沿终边排列<br>·center-元素居中排列<br>·space-around-空白分布在元素两侧<br>·space-evently-分布到一侧<br>·space-between-均匀分布到中间<br><strong>5.align-items：如何分布辅轴上的空白空间</strong><br>几乎同水平方向的特点，不在此赘述<br>-<strong>弹性元素</strong>:弹性容器的子元素是弹性元素，一个元素可以同时是弹性容器和弹性元素<br>1.flex-grow：指定弹性元素的伸展系数，当父元素有多余空间时，子元素如何伸展，根据子元素设置的比例来分配多余空间<br>2.flex-shrink：指定压缩系数，当没有指定压缩系数的时候，如果弹性元素大小大于弹性容器，会使弹性元素平均分配弹性空间<br>3.flex的简写属性：增长，缩减，基础，三者顺序不能改变</p>
-
-	
-
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Web//" class="article-tag-list-link color4">Web</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/07/09/%E5%BC%B9%E6%80%A7%E5%AE%B9%E5%99%A8/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-memReverse" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/07/08/memReverse/">memReverse</a>
-    </h1>
-  
-
-        
-        <a href="/2020/07/08/memReverse/" class="archive-article-date">
-  	<time datetime="2020-07-08T14:27:32.005Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-08</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-
-	
-		<h1 id="记忆化搜索："><a href="#记忆化搜索：" class="headerlink" title="记忆化搜索："></a>记忆化搜索：</h1><p>下面用两个比较简单的例子来对记忆化搜索有一个初步了解：<br>例一：Fibonacci数列的记忆化递归过程</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    HashMap&lt;Integer, Integer&gt; cache &#x3D; new HashMap&lt;Integer, Integer&gt;();</span><br><span class="line">    public int fib(int N) &#123;</span><br><span class="line">        if(cache.containsKey(N))&#123;</span><br><span class="line">            return cache.get(N);</span><br><span class="line">        &#125;</span><br><span class="line">        int res &#x3D; 0;</span><br><span class="line">        if(N&lt;2)&#123;</span><br><span class="line">            res &#x3D; N;</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">            res &#x3D; fib(N-1)+fib(N-2);</span><br><span class="line">        &#125;</span><br><span class="line">        cache.put(N,res);</span><br><span class="line">        return res;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>爬楼梯的记忆化递归过程</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    HashMap&lt;Integer, Integer&gt; cache &#x3D; new HashMap&lt;Integer, Integer&gt;();</span><br><span class="line">    public int climbStairs(int n) &#123;</span><br><span class="line">        if(cache.containsKey(n))&#123;</span><br><span class="line">            return cache.get(n);</span><br><span class="line">        &#125;</span><br><span class="line">        int res;</span><br><span class="line">        if(n&lt;&#x3D;2)&#123;</span><br><span class="line">            res &#x3D; n;</span><br><span class="line">        &#125;</span><br><span class="line">        else&#123;</span><br><span class="line">           res &#x3D;  climbStairs(n-1)+climbStairs(n-2);</span><br><span class="line">    &#125;</span><br><span class="line">        cache.put(n,res);</span><br><span class="line">        return res;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-	
-
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/07/08/memReverse/">展开全文 >></a>
         </p>
       
 

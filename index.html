@@ -158,6 +158,150 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-TomCat服务器" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/09/17/TomCat%E6%9C%8D%E5%8A%A1%E5%99%A8/">TomCat服务器</a>
+    </h1>
+  
+
+        
+        <a href="/2020/09/17/TomCat%E6%9C%8D%E5%8A%A1%E5%99%A8/" class="archive-article-date">
+  	<time datetime="2020-09-17T08:29:29.347Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-09-17</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+
+	
+		<p><strong>一、如何下载安装TomCat，安装及配置</strong><br>1.下载：<a href="https://tomcat.apache.org/" target="_blank" rel="noopener">https://tomcat.apache.org/</a> 官方网址，一般下载Tom9，64位，下载后直接安装<br>2.配置TomCat环境变量<br>①.配置JAVA_HOME，将jdk的路径配置到环境变量中C:\Program Files\Java\jdk-14.0.1<br>②.配置CATALINA_HOME，将TomCat的路径加入到环境变量中 D:\apache-tomcat-9.0.37-windows-x64\apache-tomcat-9.0.37<br><strong>二、如何启动和关闭TomCat服务器</strong><br>1.进入tomCat，bin目录下的startup和shutdown的exe后缀文件，或是在bin目录下使用cmd输入startup和shutdown。<br><strong><em>注意事项</em></strong><br>一般在开启服务前，先关闭服务，防止忘记关闭服务再次打开失败<br>当成功启动tomCat服务器后，localhost:8080访问后出现连接成功的页面则表示连接成功<br><strong>三、如何利用idea启动TomCat服务器</strong><br>1.File（文件）-&gt;setting(设置)-&gt;构建、执行、部署-&gt;application service-&gt;点击+号，tomCat service设置tomCat的路径<br>2.准备开关：运行-&gt;编辑配置-&gt;+tomCat service-&gt;默认选项<br>3.当运行按钮后弹出页面，在地址后加上想要访问的目录既可运行成功<br><strong>四、idea创建网站</strong><br>1.创建modea文件，Java Enterprise下Web Application此处位网站起名时可以添加中文<br>2.创建myWeb后下的文件结构：<br>①.src放置作为动态文件资源的Java文件<br>②.web文件架存放作为静态资源文件例如:图片，html，css，js<br>&emsp;–web下的WEB_INF中存放网站的核心配置文件(web.xml)<br>&emsp;&emsp;–WEB-INF下的lib文件夹存放网站运行的核心配置文件时依赖的jar文件<br>3.为开关设置发布行为，运行-&gt;编辑配置-&gt;选到相应开关-&gt;deployment-&gt;+artifat-&gt;为网站起英文别名<br>4.运行即可</p>
+
+	
+
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Web//" class="article-tag-list-link color4">Web</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/09/17/TomCat%E6%9C%8D%E5%8A%A1%E5%99%A8/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-解数独" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/09/16/%E8%A7%A3%E6%95%B0%E7%8B%AC/">解数独</a>
+    </h1>
+  
+
+        
+        <a href="/2020/09/16/%E8%A7%A3%E6%95%B0%E7%8B%AC/" class="archive-article-date">
+  	<time datetime="2020-09-16T15:26:11.324Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-09-16</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+
+	
+		<hr>
+<p>title: 解数独<br>categories: 数据结构与算法</p>
+<hr>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">编写一个程序，通过已填充的空格来解决数独问题。</span><br><span class="line"></span><br><span class="line">一个数独的解法需遵循如下规则：</span><br><span class="line"></span><br><span class="line">数字1-9在每一行只能出现一次。</span><br><span class="line">数字1-9在每一列只能出现一次。</span><br><span class="line">数字1-9在每一个以粗实线分隔的3x3宫内只能出现一次。</span><br><span class="line">空白格用&#39;.&#39;表示。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">一个数独。</span><br><span class="line"></span><br><span class="line">答案被标成红色。</span><br><span class="line">Note:</span><br><span class="line">给定的数独序列只包含数字1-9和字符&#39;.&#39;。</span><br><span class="line">你可以假设给定的数独只有唯一解。</span><br><span class="line">给定数独永远是9x9形式的。</span><br></pre></td></tr></table></figure>
+<p><strong>主要思路：</strong><br>1.首先这里用到了几个技巧，首先是visited数组的设置来标记行使用，列使用，和3*3的方格内的使用情况<br>2.关于返回值为booelan型的递归时，如何确定返回条件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">     boolean [][] lineUsed;</span><br><span class="line">	 boolean [][] colUsed;</span><br><span class="line">	 boolean [][][] boardUsed;</span><br><span class="line">    public void solveSudoku(char[][] board) &#123;</span><br><span class="line">        lineUsed &#x3D; new boolean[9][10];&#x2F;&#x2F;记录行使用情况</span><br><span class="line">		colUsed &#x3D; new boolean[9][10];&#x2F;&#x2F;列使用情况</span><br><span class="line">		boardUsed &#x3D; new boolean[9][9][10];&#x2F;&#x2F;3*3方格内的使用情况</span><br><span class="line">		for(int i &#x3D; 0;i&lt;9;i++) &#123;</span><br><span class="line">			for(int j &#x3D; 0;j&lt;9;j++) &#123;</span><br><span class="line">				if(board[i][j]!&#x3D;&#39;.&#39;) &#123;</span><br><span class="line">					int num &#x3D; board[i][j]-&#39;0&#39;;</span><br><span class="line">					lineUsed[i][num] &#x3D; true;</span><br><span class="line">					colUsed[j][num] &#x3D; true;</span><br><span class="line">					boardUsed[i&#x2F;3][j&#x2F;3][num] &#x3D; true;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;&#x2F;&#x2F;先将已经填好的给标记</span><br><span class="line">		recursion(board,0,0);&#x2F;&#x2F;递归填剩下的空白处</span><br><span class="line">    &#125;</span><br><span class="line">    public  boolean recursion(char[][] board,int i,int j) &#123;</span><br><span class="line">		if(j&#x3D;&#x3D;9) &#123;</span><br><span class="line">			j &#x3D; 0;</span><br><span class="line">			i++;</span><br><span class="line">			if(i&#x3D;&#x3D;9) &#123;</span><br><span class="line">				return true;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		if(board[i][j]!&#x3D;&#39;.&#39;) return recursion(board,i,j+1);&#x2F;&#x2F;不是空白直接递归下一个位置</span><br><span class="line">		for(int k&#x3D; 1;k&lt;&#x3D;9;k++) &#123; &#x2F;&#x2F;尝试填入1-9</span><br><span class="line">			if(lineUsed[i][k]||colUsed[j][k]||boardUsed[i&#x2F;3][j&#x2F;3][k])</span><br><span class="line">				continue;&#x2F;&#x2F;用过了就跳过</span><br><span class="line">			board[i][j] &#x3D; (char)(k+&#39;0&#39;);</span><br><span class="line">			lineUsed[i][k] &#x3D; true;</span><br><span class="line">			colUsed[j][k] &#x3D; true;</span><br><span class="line">			boardUsed[i&#x2F;3][j&#x2F;3][k] &#x3D; true;</span><br><span class="line">			if(recursion(board, i, j+1))return true;</span><br><span class="line">			&#x2F;&#x2F;回溯，状态重置</span><br><span class="line">			board[i][j] &#x3D; &#39;.&#39;;</span><br><span class="line">			lineUsed[i][k] &#x3D; false;</span><br><span class="line">			colUsed[j][k] &#x3D; false;</span><br><span class="line">			boardUsed[i&#x2F;3][j&#x2F;3][k] &#x3D; false;</span><br><span class="line">		&#125;</span><br><span class="line">		&#x2F;&#x2F;如果1-9填入都不行那就return false</span><br><span class="line">		return false;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+	
+
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/09/16/%E8%A7%A3%E6%95%B0%E7%8B%AC/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-只出现一次的数字" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -762,159 +906,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2020/08/26/%E9%80%92%E5%A2%9E%E5%AD%90%E5%BA%8F%E5%88%97/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-全排列" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/08/26/%E5%85%A8%E6%8E%92%E5%88%97/">全排列</a>
-    </h1>
-  
-
-        
-        <a href="/2020/08/26/%E5%85%A8%E6%8E%92%E5%88%97/" class="archive-article-date">
-  	<time datetime="2020-08-26T14:04:34.591Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-26</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-
-	
-		<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">给定一个 没有重复 数字的序列，返回其所有可能的全排列。</span><br><span class="line"></span><br><span class="line">示例:</span><br><span class="line"></span><br><span class="line">输入: [1,2,3]</span><br><span class="line">输出:</span><br><span class="line">[</span><br><span class="line">  [1,2,3],</span><br><span class="line">  [1,3,2],</span><br><span class="line">  [2,1,3],</span><br><span class="line">  [2,3,1],</span><br><span class="line">  [3,1,2],</span><br><span class="line">  [3,2,1]</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
-<p><strong>主要思路：</strong><br>这是一道经典且入门级的回溯算法题目，实质就是利用递归来实现遍历的效果，回溯的过程体现在如何去撤销选择，使状态恢复到上一次递归之前，回溯的另一重要特性就是剪枝，通过剪枝优化算法，是的遍历的次数减少，这在以后的刷题中慢慢会理解的更深，还有对java值传递的特性一步更深的理解 </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">public static List&lt;List&lt;Integer&gt;&gt; permute(int[] nums) &#123;</span><br><span class="line">		int len &#x3D; nums.length;</span><br><span class="line">		&#x2F;&#x2F;用来判断nums中下标为i的数字是否被选过</span><br><span class="line">		boolean [] visited &#x3D; new boolean[nums.length];</span><br><span class="line">		&#x2F;&#x2F;结果集</span><br><span class="line">		List&lt;List&lt;Integer&gt;&gt; res &#x3D; new ArrayList&lt;&gt;();</span><br><span class="line">		&#x2F;&#x2F;中间的每一次结果集</span><br><span class="line">		List&lt;Integer&gt; path &#x3D; new ArrayList&lt;&gt;();</span><br><span class="line">		dfs(nums,len,0,path,res,visited);</span><br><span class="line">		return res;</span><br><span class="line">    &#125;</span><br><span class="line">	public static void dfs(int[] nums, int len, int depth, List&lt;Integer&gt; path, List&lt;List&lt;Integer&gt;&gt; res, boolean[] visited) &#123;</span><br><span class="line">		&#x2F;&#x2F;depth表示选了几个数，当选了len个数时，结束</span><br><span class="line">		if(depth&#x3D;&#x3D;len) &#123;</span><br><span class="line">		    &#x2F;&#x2F;由于我们全部过程只使用了一个结果集，当结束递归时，我们会恢复到最初状泰</span><br><span class="line">		    &#x2F;&#x2F;此时返回的res会是空解，所以在最深处我们进行一次拷贝</span><br><span class="line">			res.add(new ArrayList&lt;&gt;(path));</span><br><span class="line">			return;</span><br><span class="line">		&#125;</span><br><span class="line">		for(int i &#x3D; 0;i&lt;len;i++) &#123;</span><br><span class="line">			if(!visited[i]) &#123;</span><br><span class="line">				path.add(nums[i]);</span><br><span class="line">				visited[i] &#x3D; true;</span><br><span class="line">				dfs(nums, len, depth+1, path, res, visited);</span><br><span class="line">				&#x2F;&#x2F;恢复操作</span><br><span class="line">				visited[i] &#x3D; false;</span><br><span class="line">				path.remove(path.size()-1);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
-
-
-	
-
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/数据结构与算法//" class="article-tag-list-link color3">数据结构与算法</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/08/26/%E5%85%A8%E6%8E%92%E5%88%97/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-pressure" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/08/24/pressure/">蛙广志的日记</a>
-    </h1>
-  
-
-        
-        <a href="/2020/08/24/pressure/" class="archive-article-date">
-  	<time datetime="2020-08-24T12:01:14.489Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-24</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-
-	
-		<p>今天是8.24日，距离大二开学还有3天的时间，总觉得自己要有点压迫力才能去认真学习，来自同龄人的压力，来自将来马上步入社会，离开象牙塔的压力<br>总觉得自己能做成一番事件，自学对自己来说并不是一项挑战，但混乱的学习路线，悠然悠然的学习进度，还有来自大学无用的课程设置，总让自己心烦意乱，害呀，心好烦啊，所以开设此学习目标的子博客，督促自己完成近期目标<br><strong>九月目标</strong><br>1.()8.27-9.11完成期末考试，期间不要被室友的压力而心慌意乱，每天一到leetcode，目前73题，考试结束前必须达到90题<br>2.()9.11-9.13完成剩余的jdbc课程，并整理博客<br>3.()9.14-9.16复习反射和IO流，整理博客<br>4.()9.16-9.18复习HTML.CSS.JS<br>5.()9.19-9.22 jquary<br>6.()9.22-9.25 ajax<br>剩余时间用来完成上述任务，并参加一次leetcode周赛</p>
-
-	
-
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/08/24/pressure/">展开全文 >></a>
         </p>
       
 
