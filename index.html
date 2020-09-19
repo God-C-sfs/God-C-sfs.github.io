@@ -158,6 +158,351 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-Servlet" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/09/19/Servlet/">Servlet接口实现类</a>
+    </h1>
+  
+
+        
+        <a href="/2020/09/19/Servlet/" class="archive-article-date">
+  	<time datetime="2020-09-19T07:19:15.260Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-09-19</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+
+	
+		<p><strong>一、介绍：</strong><br>1.servlet接口来自于Servlet规范下一个接口，这个接口存在Http服务器提供的jar包中<br>2.TomCat服务器下lib文件有一个servlet-api.jar存放servlet接口<br>3.servlet规范中规定，Http服务器能调用的【动态资源文件】必须是一个Servlet接口实现类</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;举个例子</span><br><span class="line">class Student&#123;</span><br><span class="line">    不是动态资源文件，TomCat无法调用</span><br><span class="line">&#125;</span><br><span class="line">class Teacher implements Servlet&#123;</span><br><span class="line">    合法的动态资源文件，TomCat能调用</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>二、ServLet接口实现类开发步骤：</strong><br>1.创建一个Java类继承于HttpServlet父类，使之成为一个servlet接口实现类<br>2.重写HttpServlet父类两个方法，doGet或doPost<br>3.将网站-&gt;web-&gt;web_INF-&gt;web.xml文件配置<br>①将servlet接口实现类类路径地址交给tomCat  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;servlet&gt;</span><br><span class="line">    &lt;servlet-name&gt;名称变量&lt;&#x2F;servlet-name&gt;&#x2F;&#x2F;声明一个变量存储servlet接口实现类路径</span><br><span class="line">    &lt;servlet-class&gt;类路径&lt;&#x2F;serclet-class&gt;&#x2F;&#x2F;声明servlet接口实现类路径</span><br><span class="line">&lt;&#x2F;servlet&gt;</span><br></pre></td></tr></table></figure>
+<p>②为了降低用户访问servlet接口实现类难度，需要设置简短的别名  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;servlet-mapping&gt;</span><br><span class="line">    &lt;servlet-name&gt;名称变量&lt;&#x2F;servlet-name&gt;</span><br><span class="line">    &lt;servlet-pattern&gt;别名&lt;&#x2F;serclet-pattern&gt;&#x2F;&#x2F;声明别名</span><br><span class="line">&lt;&#x2F;servlet-mapping&gt;</span><br></pre></td></tr></table></figure>
+<p><strong>三、servlet对象的声明周期</strong><br>1.网络中所有的servlet接口实现类的实例对象只能由Http服务器负责创建<br>2.在默认情况下，Http服务器接收到对于当前Servlet接口实现类第一次请求时自动创建这个Servlet接口实现类的实例对象<br>在手动配置情况下，要求Http服务器在启动时自动创建接口实现类的实例对象<br>3.在Http服务器运行期间，一个Servlet接口实现类只能被创建出一个实例对象，当你再去访问servlet时，不会再次创建<br>4.在Http服务器关闭时刻，自动将servlet接口实现类全部销毁</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;在xml文件中设置servlet  </span><br><span class="line">&lt;servlet&gt;</span><br><span class="line">    &lt;load-on-startup&gt;填一个大于0的整数&lt;&#x2F;load-on-startup&gt;</span><br><span class="line">&lt;&#x2F;servlet&gt;</span><br></pre></td></tr></table></figure>
+<p><strong><em>下面我们来看看如何使用代码解释</em></strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">public class OneServlet extends HttpServlet &#123;</span><br><span class="line">    public OneServlet()&#123;</span><br><span class="line">        System.out.println(&quot;OneServlet类被实例化&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException &#123;</span><br><span class="line">        System.out.println(&quot;OneServlet&#39;s doGet is running&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">public class TwoServlet extends HttpServlet &#123;</span><br><span class="line">    public  TwoServlet()&#123;</span><br><span class="line">        System.out.println(&quot;TwoServlet实例对象被创建&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException &#123;</span><br><span class="line">        System.out.println(&quot;TwoServlet&#39;s doGet is running&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&lt;servlet&gt;&#x2F;&#x2F;xml文件</span><br><span class="line">        &lt;servlet-name&gt;OneServlet&lt;&#x2F;servlet-name&gt;</span><br><span class="line">        &lt;servlet-class&gt;com.bjpowernode.controller.OneServlet&lt;&#x2F;servlet-class&gt;</span><br><span class="line">    &lt;&#x2F;servlet&gt;</span><br><span class="line">&lt;!--    two会在tomcat启动时就创建实例对象--&gt;</span><br><span class="line">    &lt;servlet&gt;</span><br><span class="line">        &lt;servlet-name&gt;TwoServlet&lt;&#x2F;servlet-name&gt;</span><br><span class="line">        &lt;servlet-class&gt;com.bjpowernode.controller.TwoServlet&lt;&#x2F;servlet-class&gt;</span><br><span class="line">        &lt;load-on-startup&gt;10&lt;&#x2F;load-on-startup&gt;</span><br><span class="line">    &lt;&#x2F;servlet&gt;</span><br><span class="line">    &#x2F;&#x2F;one会在第一次访问时创建实例对象</span><br><span class="line">    &lt;servlet-mapping&gt;</span><br><span class="line">        &lt;servlet-name&gt;OneServlet&lt;&#x2F;servlet-name&gt;</span><br><span class="line">        &lt;url-pattern&gt;&#x2F;one&lt;&#x2F;url-pattern&gt;</span><br><span class="line">    &lt;&#x2F;servlet-mapping&gt;</span><br><span class="line">    &lt;servlet-mapping&gt;</span><br><span class="line">        &lt;servlet-name&gt;TwoServlet&lt;&#x2F;servlet-name&gt;</span><br><span class="line">        &lt;url-pattern&gt;&#x2F;two&lt;&#x2F;url-pattern&gt;</span><br><span class="line">    &lt;&#x2F;servlet-mapping&gt;</span><br></pre></td></tr></table></figure>
+<p>如图所示两个servlet的创建时间<br><img src="https://gitee.com/bingjie__chai/PicOfHexo/raw/master/pic_hexo/20200918195635.png" alt=""><br><strong>四、HttpServletResponse接口</strong><br>1.介绍：<br>1).HttpServletResponse接口来自于Servlet规范中，在TomCat中存在servlet-api.jar包中<br>2).HttpServletResponse接口实现类由Http服务器负责提供<br>3).HttpServletResponse接口负责将doGet和doPost方法执行结果写入到响应体中交给浏览器<br>4).HttpServletResponse接口修饰的对象称为响应对象<br>2.主要功能:<br>1).将执行结果以二进制形式写入到响应体中<br>2).设置响应头中content-type属性值，从而控制使用对应编译器将响应体二进制数据编译为对应的图片，视频或文本<br>3).设置响应头中location属性，将一个请求地址赋值给location从而控制浏览器向指定服务器发送请求<br><strong><em>下面我们来看看代码层面的解释</em></strong><br>其中xml文件在此省略，都是创建和起别名的代码文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line">如何利用request响应对象来实现将执行结果写入到响应体中</span><br><span class="line">**&#x2F;</span><br><span class="line">public class OneServlet extends HttpServlet &#123;</span><br><span class="line"></span><br><span class="line">    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException &#123;</span><br><span class="line">&#x2F;&#x2F;        result扮演执行结果的角色</span><br><span class="line">        String result &#x3D; &quot;hello world&quot;;</span><br><span class="line">&#x2F;&#x2F;        相应对象将结果写入到响应体中</span><br><span class="line">&#x2F;&#x2F;        1.通过响应对象，向tomCat索要输入流</span><br><span class="line">        PrintWriter out &#x3D; response.getWriter();</span><br><span class="line">&#x2F;&#x2F;        2.通过输出流，将执行结果以二进制写入到响应体中</span><br><span class="line">        out.write(result);</span><br><span class="line">    &#125;&#x2F;&#x2F;doGet执行完毕，tomCat将响应包推送给浏览器</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>但上述方法会存在一个问题，如果我们使用write输出字符，字符串，ASCII码写入到二进制文件中</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">public class TwoServlet extends HttpServlet &#123;</span><br><span class="line">    &#x2F;&#x2F;问题描述：浏览器接受数据是2，不是50</span><br><span class="line">    &#x2F;&#x2F;问题原因：out.write方法可以将字符，字符串，ASCII码写入到响应体中</span><br><span class="line">    &#x2F;&#x2F;问题解决：借用print将真实内容写入到响应体中</span><br><span class="line">    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException &#123;</span><br><span class="line">        int money &#x3D; 50;&#x2F;&#x2F;执行结果</span><br><span class="line">        PrintWriter out &#x3D; response.getWriter();</span><br><span class="line">        out.print(money);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>所以经过上述问题，我们在绝大多数情况下均使用print来代替write</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException &#123;</span><br><span class="line"></span><br><span class="line">        String result &#x3D; &quot;Java&lt;&#x2F;br&gt;Mysql&lt;&#x2F;br&gt;HTML&quot;;</span><br><span class="line">        String result2 &#x3D; &quot;红烧肘子&quot;;</span><br><span class="line">        &#x2F;&#x2F;设置响应头content-type</span><br><span class="line">        response.setContentType(&quot;text&#x2F;html;charset&#x3D;utf-8&quot;);</span><br><span class="line">        &#x2F;&#x2F;向Tomcat索要输出流</span><br><span class="line">        PrintWriter out &#x3D; response.getWriter();</span><br><span class="line">        &#x2F;&#x2F;通过输出六将结果写入到响应体</span><br><span class="line">        out.print(result);</span><br><span class="line">        out.print(result2);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>上述代码中出现两个问题:<br>其一：我们希望br作为标签使用，而不是作为字符串形式使用,问题在于浏览器在接受到相应的相应包后，根据相应包中content-type来决定编译方式，默认属性值为text，对应文本编译器，所以一定要在得到输出流之前设置编译方式<br>其二：我们发现如果输入中文会出现乱码形式，那么我们需要根据上述的格式，在content-type后设置UTF-8字符集<br><strong>五、HttpServletRequest接口</strong><br>1.介绍：<br>1).HttpServletRequest接口来自于Servlet规范中，在TomCat中存在servlet-api.jar包中<br>2).HttpServletRequest接口实现类由Http服务器负责提供<br>3).HttpServletRequest接口负责在doGet和doPost方法运行时读取Http请求协议包中的信息<br>4).HttpServletRequest修饰的对象成为请求对象<br>2.作用：<br>1).可以读取Http请求协议包中请求行的信息<br>2).可以读取保存在Http请求协议包中请求头或者请求体中的请求参数<br>3).可以替代浏览器向Http服务器申请资源文件调用<br><strong><em>接下来时代码的实际分析</em></strong><br>xml文件省略</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">public class OneServlet extends HttpServlet &#123;</span><br><span class="line"></span><br><span class="line">    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException &#123;</span><br><span class="line">        &#x2F;&#x2F;1.通过请求对象，读取（请求行）中url信息</span><br><span class="line">        String url &#x3D; request.getRequestURL().toString();</span><br><span class="line">        &#x2F;&#x2F;2.通过请求对象，读取（请求行）中method信息</span><br><span class="line">        String method &#x3D; request.getMethod();</span><br><span class="line">        &#x2F;&#x2F;3.通过请求对象，读取（请求行）中uri信息</span><br><span class="line">        String uri &#x3D; request.getRequestURI();</span><br><span class="line">        &#x2F;**</span><br><span class="line">         * URI：资源文件精准定位地址，在请求行并没有URI这个属性</span><br><span class="line">         *      实际上URL截取一个字符串，格式“&#x2F;网站名&#x2F;资源文件名”</span><br><span class="line">         *      URI用于让http服务器对被访问的资源文件进行定位</span><br><span class="line">         *&#x2F;</span><br><span class="line">        System.out.println(&quot;url &#x3D; &quot;+url);</span><br><span class="line">        System.out.println(&quot;method &#x3D; &quot;+method);</span><br><span class="line">        System.out.println(&quot;uri &#x3D; &quot;+uri);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>上述代码展示了如何利用请求对象的获取请求行中的信息  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">public class TwoServlet extends HttpServlet &#123;</span><br><span class="line"></span><br><span class="line">    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException &#123;</span><br><span class="line">        &#x2F;&#x2F;1.通过请求对象获得请求头中所有请求参数名</span><br><span class="line">        Enumeration&lt;String&gt; parameterNames &#x3D; request.getParameterNames();</span><br><span class="line">        while(parameterNames.hasMoreElements())&#123;</span><br><span class="line">            String s &#x3D; parameterNames.nextElement();</span><br><span class="line">            &#x2F;&#x2F;2.通过请求对象获得参数名对应的值</span><br><span class="line">            String value &#x3D; request.getParameter(s);</span><br><span class="line">            System.out.println(&quot;请求参数名称 &quot;+s);</span><br><span class="line">            System.out.println(&quot;请求参数值&quot;+value);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;利用html文件来改变请求形式，方便测试请求参数的信息</span><br><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang&#x3D;&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset&#x3D;&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;title&gt;Title&lt;&#x2F;title&gt;</span><br><span class="line">&lt;&#x2F;head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">            &lt;center&gt;</span><br><span class="line">                &lt;a href&#x3D;&quot;&#x2F;myWeb&#x2F;two?userName&#x3D;mike&amp;password&#x3D;123&quot;&gt;通过超链接访问TwoServlet并携带请求参数&lt;&#x2F;a&gt;</span><br><span class="line">            &lt;&#x2F;center&gt;</span><br><span class="line">&lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
+<p>上述代码利用request请求对象来获取<strong>请求头</strong>中的参数信息</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">public class ThreeServlet extends HttpServlet &#123;</span><br><span class="line">    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException &#123;</span><br><span class="line">        String username &#x3D; request.getParameter(&quot;username&quot;);</span><br><span class="line">        System.out.println(&quot;从请求体中得到的参数信息为&quot;+username);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException &#123;</span><br><span class="line">        String username &#x3D; request.getParameter(&quot;username&quot;);</span><br><span class="line">        System.out.println(&quot;从请求头中得到的参数信息为&quot;+username);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang&#x3D;&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset&#x3D;&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;title&gt;Title&lt;&#x2F;title&gt;</span><br><span class="line">&lt;&#x2F;head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">        &lt;center&gt;</span><br><span class="line">            &lt;form action&#x3D;&quot;&#x2F;myWeb&#x2F;three&quot; method&#x3D;&quot;get&quot;&gt;</span><br><span class="line">                请求参数:&lt;input type&#x3D;&quot;text&quot; name&#x3D;&quot;userName&quot;&#x2F;&gt;&lt;br&#x2F;&gt;</span><br><span class="line">                &lt;input type&#x3D;&quot;submit&quot; value&#x3D;&quot;get方式访问ThreeServlet&quot;&gt;</span><br><span class="line">            &lt;&#x2F;form&gt;</span><br><span class="line">            &lt;form action&#x3D;&quot;&#x2F;myWeb&#x2F;three&quot; method&#x3D;&quot;Post&quot;&gt;</span><br><span class="line">                请求参数:&lt;input type&#x3D;&quot;text&quot; name&#x3D;&quot;userName&quot;&#x2F;&gt;&lt;br&#x2F;&gt;</span><br><span class="line">                &lt;input type&#x3D;&quot;submit&quot; value&#x3D;&quot;Post方式访问ThreeServlet&quot;&gt;</span><br><span class="line">            &lt;&#x2F;form&gt;</span><br><span class="line">        &lt;&#x2F;center&gt;</span><br><span class="line">&lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
+<p>上述代码表示如何利用请求对象来获取<strong>请求头或请求体</strong>中的参数信息，<strong>但上述代码存在一个问题</strong><br>当Get形式发送中文参数内容，正常得到，当Post形式发送时，收取到的结果会是乱码<br><strong>原因：</strong><br>当浏览器以Get形式发送请求时，请求参数保存在请求头，在http请求包到达http服务器后，第一件事就是进行解码，请求头二进制内容由TomCat服务器进行解码，TomCat9.0默认使用的是UTF-8字符集<br>当浏览器以Post形式发送请求时，请求参数保存在请求体中，在http请求包到达http服务器中，请求体二进制内容由请求对象(request)负责解码，默认使用ISO-8859-1字符集<br><strong>解决方案</strong><br>在Post请求方式下，在读取请求体内容之前，应该通知请求对象使用UTF-8字符集进行解码  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">request.SetCharacterEncoding(&quot;UTF-8&quot;);</span><br></pre></td></tr></table></figure>
+<p><strong>六、请求对象与响应对象的声明周期</strong><br>1.在Http服务器接收到浏览器发送的Http请求协议包后，自动为当前的Http请求协议包生成一个请求对象和响应对象<br>2.Http服务器调用doGet和doPost方法时，负责将请求对象和响应对象作为实参传递到方法中，确保doGet和doPost正确执行<br>3.在Http准备推送Http响应协议包时之前，负责将本次请求故关联的请求对象和响应对象销毁<br><strong>请求对象和响应对象声明周期贯穿一次请求的处理过程</strong></p>
+
+	
+
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Web//" class="article-tag-list-link color4">Web</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/09/19/Servlet/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-所有左叶子节点的和" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/09/19/%E6%89%80%E6%9C%89%E5%B7%A6%E5%8F%B6%E5%AD%90%E8%8A%82%E7%82%B9%E7%9A%84%E5%92%8C/">所有左叶子节点的和</a>
+    </h1>
+  
+
+        
+        <a href="/2020/09/19/%E6%89%80%E6%9C%89%E5%B7%A6%E5%8F%B6%E5%AD%90%E8%8A%82%E7%82%B9%E7%9A%84%E5%92%8C/" class="archive-article-date">
+  	<time datetime="2020-09-19T07:10:21.188Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-09-19</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+
+	
+		<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">计算给定二叉树的所有左叶子之和。</span><br><span class="line"></span><br><span class="line">示例：</span><br><span class="line"></span><br><span class="line">    3</span><br><span class="line">   &#x2F; \</span><br><span class="line">  9  20</span><br><span class="line">    &#x2F;  \</span><br><span class="line">   15   7</span><br><span class="line"></span><br><span class="line">在这个二叉树中，有两个左叶子，分别是 9 和 15，所以返回 24</span><br></pre></td></tr></table></figure>
+<p><strong>主要思路：</strong><br>本题在于判断一个节点是否为左叶子节点，如何判断一个节点是否是左叶子节点的？<br>我们单单通过当前节点是无法判断的，我们需要根据其父节点来判断  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">if(root.left!&#x3D;null&amp;&amp;root.left.left&#x3D;&#x3D;null&amp;&amp;root.left.right&#x3D;&#x3D;null)&#123;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>普通版：  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    int sum &#x3D; 0;</span><br><span class="line">    public int sumOfLeftLeaves(TreeNode root) &#123;        </span><br><span class="line">        if(root&#x3D;&#x3D;null) &#123;</span><br><span class="line">			return 0;</span><br><span class="line">		&#125;</span><br><span class="line">		dfs(root);</span><br><span class="line">		return sum;</span><br><span class="line">    &#125;</span><br><span class="line">    public void dfs(TreeNode root) &#123;</span><br><span class="line">		if(root&#x3D;&#x3D;null)</span><br><span class="line">			return;</span><br><span class="line">		if(root.left!&#x3D;null&amp;&amp;root.left.left&#x3D;&#x3D;null&amp;&amp;root.left.right&#x3D;&#x3D;null) &#123;</span><br><span class="line">			sum+&#x3D;root.left.val;</span><br><span class="line">		&#125;</span><br><span class="line">		dfs(root.left);</span><br><span class="line">		dfs(root.right);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>简洁进化版：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">public static int sumOfLeftLeaves(TreeNode root) &#123;</span><br><span class="line">		if(root&#x3D;&#x3D;null)</span><br><span class="line">			return 0;</span><br><span class="line">		int sum &#x3D; 0;</span><br><span class="line">		if(root.left!&#x3D;null&amp;&amp;root.left.left&#x3D;&#x3D;null&amp;&amp;root.left.right&#x3D;&#x3D;null) &#123;</span><br><span class="line">			sum +&#x3D;root.left.val;</span><br><span class="line">		&#125;</span><br><span class="line">		return sum+sumOfLeftLeaves(root.left)+sumOfLeftLeaves(root.right);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+
+
+	
+
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/数据结构与算法//" class="article-tag-list-link color3">数据结构与算法</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/09/19/%E6%89%80%E6%9C%89%E5%B7%A6%E5%8F%B6%E5%AD%90%E8%8A%82%E7%82%B9%E7%9A%84%E5%92%8C/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Http网络协议" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/09/18/Http%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/">TomCat服务器</a>
+    </h1>
+  
+
+        
+        <a href="/2020/09/18/Http%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/" class="archive-article-date">
+  	<time datetime="2020-09-18T11:26:07.566Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-09-18</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+
+	
+		<h1 id="http网络协议包"><a href="#http网络协议包" class="headerlink" title="http网络协议包"></a>http网络协议包</h1><p><strong>一、网络协议包：</strong><br>1.在网络中传递信息都是以二进制形式催在的<br>2.接收方[浏览器/服务器]在接受信息后，要做的第一件事就是将[二进制数据]进行编译[文字，图片，视频，命令]<br>3.传递信息数据量往往比较巨大，导致接收方很难在一组连续二进制得到对应的数据<br>4.网络协议包一组有规律的二进制数据，在这组数据中存在了固定的空间，每一个固定的空间存放特定的信息，这样接收方在接受网络协议包之后就可以得到固定空间的对应的信息，网络协议包极大降低了接收方接受对应二进制数据编译的难度<br><strong>二、常见的网络协议：</strong><br>1.FTP网络协议包<br>2.Http网络协议包<br><strong>三、Http网络协议包：</strong><br>在基于B/S结构下互联网通信过程中，所有在网络中传递信息都是保存在Http网络协议包中分为<strong><em>Http请求协议包和Http响应协议包</em></strong><br><strong>四、Http请求协议包与Http响应协议包介绍：</strong><br>1.Http请求协议包：<br>在浏览器准备发送请求时，负责创建一个Http请求协议包，浏览器将请求信息以二进制的形式保存在请求协议包各个空间中，由浏览器负责将Http请求协议包推送到指定服务端计算机<br>2.Http响应协议包：<br>Http服务器在定位到被访问的资源后负责创建一个Http响应协议包，Http服务器将定位文件内容以二进制写入到Http响应协议包中推送会发起请求的浏览器上<br><strong>五、Http请求协议包内部空间</strong><br>1.按照自上而下划分，分为4个空间<br>2.空间划分，自上而下：<br>请求行  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">url：请求地址  </span><br><span class="line">method：请求方式</span><br></pre></td></tr></table></figure>
+<p>请求头  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">请求参数信息[当请求方式为GET]</span><br></pre></td></tr></table></figure>
+<p>空白行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">没有任何内容，起到隔离作用</span><br></pre></td></tr></table></figure>
+<p>请求体  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">请求参数信息[当请求方式为POST]</span><br></pre></td></tr></table></figure>
+
+<p><strong>六、Http响应协议包内部结构</strong><br>1.按照自上而下的划分，分为4个空间<br>2.空间划分，自上而下：<br>状态行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Http状态码</span><br></pre></td></tr></table></figure>
+<p>响应头</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">content-type：指定浏览器采用对应的编译器。对响应体二进制数据进行解析</span><br></pre></td></tr></table></figure>
+<p>空白行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">没有任何内容，起到隔离作用</span><br></pre></td></tr></table></figure>
+<p>响应体</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">可能被访问静态资源文件内容</span><br><span class="line">可能被访问的静态资源文件命令</span><br><span class="line">可能被访问的动态资源文件运行结果</span><br><span class="line">（都是以二进制形式）</span><br></pre></td></tr></table></figure>
+<p><img src="https://gitee.com/bingjie__chai/PicOfHexo/raw/master/pic_hexo/20200918192546.png" alt=""></p>
+
+	
+
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Web//" class="article-tag-list-link color4">Web</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/09/18/Http%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-全排列II" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/09/18/%E5%85%A8%E6%8E%92%E5%88%97II/">全排列II</a>
+    </h1>
+  
+
+        
+        <a href="/2020/09/18/%E5%85%A8%E6%8E%92%E5%88%97II/" class="archive-article-date">
+  	<time datetime="2020-09-18T11:05:17.033Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-09-18</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+
+	
+		<hr>
+<p>title: 全排列II<br>categories: 数据结构与算法</p>
+<hr>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">给定一个可包含重复数字的序列，返回所有不重复的全排列。</span><br><span class="line"></span><br><span class="line">示例:</span><br><span class="line"></span><br><span class="line">输入: [1,1,2]</span><br><span class="line">输出:</span><br><span class="line">[</span><br><span class="line">  [1,1,2],</span><br><span class="line">  [1,2,1],</span><br><span class="line">  [2,1,1]</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<p><strong>主要思路:整体思路和全排列是大致相同的，本题的难点在于如何剪枝，如何去重</strong><br><img src="https://gitee.com/bingjie__chai/PicOfHexo/raw/master/pic_hexo/20200918185728.png" alt=""><br>如图所示，当我们把nums数组排好序后，我们思考一个问题，什么时候会产生重复的组合，红色框内标注的情况是和1是一样的，所以当num[i-1]==nums[i]时，可能会发生重复，当我们是要判断层重复，而不是枝重复，如果仅仅只有这个条件那么最左边一条路径在选取第二个i时，也无法选择<br><strong>所以我们还需要另一个判重条件</strong><br>我们在深入分析可以发现，其实我们要剪枝的部分是满足上述条件且刚刚撤销选择的部分，当我们撤销选择时，在重新选取下一个数时，如果num[i-1]==num[i]说明下面的情况都相同<br><strong>剩下的代码和全排列相同</strong>  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">public class PermuteUnique &#123;</span><br><span class="line">	</span><br><span class="line">	public static void main(String[] args) &#123;</span><br><span class="line">		&#x2F;&#x2F; TODO 自动生成的方法存根</span><br><span class="line">		int [] nums &#x3D; &#123;1&#125;;</span><br><span class="line">		List&lt;List&lt;Integer&gt;&gt; permuteUnique &#x3D; permuteUnique(nums);</span><br><span class="line">		for(List list:permuteUnique)</span><br><span class="line">			System.out.println(list.toString());</span><br><span class="line">	&#125;</span><br><span class="line">	public static List&lt;List&lt;Integer&gt;&gt; permuteUnique(int[] nums) &#123;</span><br><span class="line">		if(nums.length &#x3D;&#x3D; 0)</span><br><span class="line">			return null;</span><br><span class="line">		Arrays.sort(nums);</span><br><span class="line">		boolean []used &#x3D; new boolean[nums.length];</span><br><span class="line">		&#x2F;&#x2F;推荐使用Deque来创建stack类</span><br><span class="line">		Deque&lt;Integer&gt; path &#x3D; new ArrayDeque();</span><br><span class="line">		List&lt;List&lt;Integer&gt;&gt; res &#x3D; new ArrayList&lt;&gt;();</span><br><span class="line">		dfs(0, nums,used,path,res);</span><br><span class="line">		return res;</span><br><span class="line">    &#125;</span><br><span class="line">	public static void dfs(int depth,int[] nums,boolean[] used,Deque&lt;Integer&gt; path,List&lt;List&lt;Integer&gt;&gt; res) &#123;</span><br><span class="line">		if(depth&#x3D;&#x3D;nums.length) &#123;</span><br><span class="line">			res.add(new ArrayList&lt;&gt;(path));</span><br><span class="line">			return;</span><br><span class="line">		&#125;</span><br><span class="line">		for(int i &#x3D; 0;i&lt;nums.length;i++) &#123;</span><br><span class="line">		&#x2F;&#x2F;剪枝条件</span><br><span class="line">			if(i&gt;0&amp;&amp;nums[i]&#x3D;&#x3D;nums[i-1]&amp;&amp;used[i-1]&#x3D;&#x3D;false)</span><br><span class="line">				continue;</span><br><span class="line">	    &#x2F;&#x2F;普通全排列保证这个数没有选过</span><br><span class="line">			if(used[i])</span><br><span class="line">				continue;</span><br><span class="line">			path.addLast(nums[i]);</span><br><span class="line">			used[i] &#x3D; true;</span><br><span class="line">			dfs(depth+1, nums, used,path,res);</span><br><span class="line">			used[i] &#x3D; false;</span><br><span class="line">			path.removeLast();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+	
+
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/09/18/%E5%85%A8%E6%8E%92%E5%88%97II/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-TomCat服务器" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -589,323 +934,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2020/08/29/%E6%9C%80%E7%9F%AD%E5%9B%9E%E6%96%87%E4%B8%B2/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-KMP" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/08/29/KMP/">KMP</a>
-    </h1>
-  
-
-        
-        <a href="/2020/08/29/KMP/" class="archive-article-date">
-  	<time datetime="2020-08-29T08:02:32.352Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-29</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-
-	
-		<p>这是我第三次再次尝试学习KMP算法，以前总觉得是一个拦路虎，面对比我整个人还长的文章长度直接劝退，当再次遇到KMP后，痛定思痛下定决心来学习KMP算法，现在回头来看，只要静下心来对于聪明的你来说，一定不是难题<br><strong>按照惯例，我们先来看一下暴力匹配是如何工作的</strong><br><img src="https://gitee.com/bingjie__chai/PicOfHexo/raw/master/pic_hexo/20200829125115.png" alt=""><br>如下图所示我们利用双指针，i指向模板链的头部，j指向目标链的头部，开始逐个遍历是否相等，当不相等时，我们会令i回溯到i-j+1即模板链的下一个位置，j回溯到目标链的开头，重新开始匹配<br><img src="https://gitee.com/bingjie__chai/PicOfHexo/raw/master/pic_hexo/2.png" alt=""><br>当完全匹配时返回目标链在模板链中的位置<br><img src="https://gitee.com/bingjie__chai/PicOfHexo/raw/master/pic_hexo/3.png" alt=""></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">public int bfSearch(String s1,String s2)&#123;</span><br><span class="line">    int l1 &#x3D; s1.length;</span><br><span class="line">    int l2 &#x3D; s2.length;</span><br><span class="line">    int i &#x3D; 0;</span><br><span class="line">    int j &#x3D; 0;</span><br><span class="line">    while(i&lt;l1&amp;&amp;j&lt;l2)&#123;</span><br><span class="line">        if(s1.charAt(i)&#x3D;&#x3D;s2.charAt(j))&#123;</span><br><span class="line">            i++;</span><br><span class="line">            j++;</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">            i &#x3D; i-j+1;</span><br><span class="line">            j &#x3D; 0;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    if(j &#x3D;&#x3D; l2)&#123;</span><br><span class="line">        return i-j;</span><br><span class="line">    &#125;</span><br><span class="line">    return -1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>在上述的暴力算法中，当目标链和模板链失配时，i会回溯到下一个位置再重新匹配，时间效率非常底下，那我们有没有办法不让i去回溯，只令指针j去移动目标链，这就是KMP算法的精髓所在，在KMP算法中我们利用部分匹配表，next数组来确定下一次j移动的位置<br><strong>这也正是KMP算法的核心，部分匹配表</strong><br>下面我们来解释一下什么是部分匹配表，例如字符串”abababca”的匹配表如下<br><img src="https://gitee.com/bingjie__chai/PicOfHexo/raw/master/pic_hexo/4.png" alt=""><br>例如:<br>index等于3对应的value值为2，表示以index等于3之前的字符串“abab”最长的公共前缀和后缀的长度<br>abab的前缀有a，ab，aba（不包括自身），后缀有b，ab，bab，最长公共部分ab长度为2，所以index=3位置对应的value为2，其他部分同理<br><strong>了解了什么是部分匹配表，那么如何用部分比配表来加速匹配呢</strong><br><img src="https://gitee.com/bingjie__chai/PicOfHexo/raw/master/pic_hexo/20200829150047.png" alt=""><br>如图所示，当失配时，我们发现只有最后一位是失配的，如果暴力解将i回溯会浪费大量的时间，此处我们利用next数组来是i的指针不发生回溯，只移动j指针，下面我们来分析利用next数组下一次将会移动到什么位置<br><img src="https://gitee.com/bingjie__chai/PicOfHexo/raw/master/pic_hexo/20200829150848.png" alt=""><br>如果指针能移动到_和D的对比处说明D之前的字符是匹配的，所以括号括起来的位置是相等的，又因为在目标链中，AB恰巧有一个相同的前缀AB，那么说明目标链的前缀和模板链的AB是相等的<br><img src="https://gitee.com/bingjie__chai/PicOfHexo/raw/master/pic_hexo/20200829151338.png" alt=""><br>即斜体下划线处不用再比较了，所以直接将目标链移动到如下位置<br><img src="https://gitee.com/bingjie__chai/PicOfHexo/raw/master/pic_hexo/20200829151539.png" alt=""><br>所以我们将这个过程通解化，即主字符串中i指针之前的 PMT[j −1] 位就一定与模式字符串的第 0 位至第 PMT[j−1] 位是相同的，保持i指针不动，然后将j指针指向模式字符串的PMT[j −1]位即可<br><strong>为了利于程序的编写，我们将PMT数组做一些优化</strong><br>我们发现，当字符失配时，影响j指针移动的是next[j-1],所以我们将next数组整体后移一位，并将next[0]默认值设为-1，为什么设为-1呢？<br><img src="https://gitee.com/bingjie__chai/PicOfHexo/raw/master/pic_hexo/20200829152007.png" alt=""><br>如图所示我们再首位就发现失配了，按照规则我们无法移动j指针，此时我们只能移动i指针去继续匹配，当我们执行i++，j++代码后，i后移，j不变，实现移动i指针<br><img src="https://gitee.com/bingjie__chai/PicOfHexo/raw/master/pic_hexo/20200829152245.png" alt=""><br><strong>所以KMP的代码就呼之欲出了，此处我们假设next数组已知，下文中我们将解释如何求解</strong>  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">public int KMP(String s1,String s2) &#123;</span><br><span class="line">		int l1 &#x3D; s1.length();</span><br><span class="line">		int l2 &#x3D; s2.length();</span><br><span class="line">		int i &#x3D; 0;</span><br><span class="line">		int j &#x3D; 0;</span><br><span class="line">		int [] next &#x3D; new int[l2];</span><br><span class="line">		while(i&lt;l1&amp;&amp;j&lt;l2) &#123;</span><br><span class="line">			if(j&#x3D;&#x3D;-1||s1.charAt(i)&#x3D;&#x3D;s2.charAt(j)) &#123;</span><br><span class="line">				i++;</span><br><span class="line">				j++;</span><br><span class="line">			&#125;else &#123;</span><br><span class="line">				j &#x3D; next[j];</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		if(j&#x3D;&#x3D;l2)</span><br><span class="line">			return i-j;</span><br><span class="line">		return -1;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>那么next数组应该怎么求呢？</strong><br>我们使用错位法来求解，接下来我们将以字符串“abababca”来讲解如何求next数组<br><img src="https://gitee.com/bingjie__chai/PicOfHexo/raw/master/pic_hexo/20200829154853.png" alt=""><br>我们错开后可以看作i瞄准的是字符串的后缀（因为后缀不包括自身），同理j瞄准的就是前缀，前后缀的公共部分就是next的值，这个过程也可以看作是KMP的求解过程，其中我们要注意因为我们将next数组后移了一位，所以next[2]看的是i=1处的最长公共字串<br><img src="https://gitee.com/bingjie__chai/PicOfHexo/raw/master/pic_hexo/20200829155159.png" alt=""><br><img src="https://gitee.com/bingjie__chai/PicOfHexo/raw/master/pic_hexo/20200829155214.png" alt=""><br><img src="https://gitee.com/bingjie__chai/PicOfHexo/raw/master/pic_hexo/20200829155244.png" alt=""><br><img src="https://gitee.com/bingjie__chai/PicOfHexo/raw/master/pic_hexo/20200829155301.png" alt=""><br><img src="https://gitee.com/bingjie__chai/PicOfHexo/raw/master/pic_hexo/20200829155313.png" alt=""></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">public static void getNext(int[] next,String s) &#123;</span><br><span class="line">        &#x2F;&#x2F;这个求解过程也可以看作是KMP搜索，自身的前后缀的搜索</span><br><span class="line">		int i &#x3D; 0;</span><br><span class="line">		int j &#x3D; -1;</span><br><span class="line">		next[0] &#x3D; -1;</span><br><span class="line">		while(i&lt;s.length()-1) &#123;</span><br><span class="line">		    &#x2F;&#x2F;在第一轮中，j&#x3D;&#x3D;-1，所以i++，j++后i&#x3D;1，j&#x3D;0，实现错位比较</span><br><span class="line">			if(j&#x3D;&#x3D;-1||s.charAt(i)&#x3D;&#x3D;s.charAt(j)) &#123;</span><br><span class="line">				i++;</span><br><span class="line">				j++;</span><br><span class="line">				next[i] &#x3D; j;</span><br><span class="line">			&#125;else &#123;</span><br><span class="line">				j &#x3D; next[j];</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
-<p>至此，KMP算法结束！！！！！！！！！！！！</p>
-
-	
-
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/数据结构与算法//" class="article-tag-list-link color3">数据结构与算法</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/08/29/KMP/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-欧拉路径" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/08/28/%E6%AC%A7%E6%8B%89%E8%B7%AF%E5%BE%84/">欧拉路径</a>
-    </h1>
-  
-
-        
-        <a href="/2020/08/28/%E6%AC%A7%E6%8B%89%E8%B7%AF%E5%BE%84/" class="archive-article-date">
-  	<time datetime="2020-08-28T02:36:56.196Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-28</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-
-	
-		<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">给定一个机票的字符串二维数组 [from, to]，子数组中的两个成员分别表示飞机出发和降落的机场地点，对该行程进行重新规划排序。所有这些机票都属于一个从 JFK（肯尼迪国际机场）出发的先生，所以该行程必须从 JFK 开始。</span><br><span class="line"></span><br><span class="line">说明:</span><br><span class="line"></span><br><span class="line">如果存在多种有效的行程，你可以按字符自然排序返回最小的行程组合。例如，行程 [&quot;JFK&quot;, &quot;LGA&quot;] 与 [&quot;JFK&quot;, &quot;LGB&quot;] 相比就更小，排序更靠前</span><br><span class="line">所有的机场都用三个大写字母表示（机场代码）。</span><br><span class="line">假定所有机票至少存在一种合理的行程。</span><br><span class="line">示例 1:</span><br><span class="line"></span><br><span class="line">输入: [[&quot;MUC&quot;, &quot;LHR&quot;], [&quot;JFK&quot;, &quot;MUC&quot;], [&quot;SFO&quot;, &quot;SJC&quot;], [&quot;LHR&quot;, &quot;SFO&quot;]]</span><br><span class="line">输出: [&quot;JFK&quot;, &quot;MUC&quot;, &quot;LHR&quot;, &quot;SFO&quot;, &quot;SJC&quot;]</span><br><span class="line">示例 2:</span><br><span class="line"></span><br><span class="line">输入: [[&quot;JFK&quot;,&quot;SFO&quot;],[&quot;JFK&quot;,&quot;ATL&quot;],[&quot;SFO&quot;,&quot;ATL&quot;],[&quot;ATL&quot;,&quot;JFK&quot;],[&quot;ATL&quot;,&quot;SFO&quot;]]</span><br><span class="line">输出: [&quot;JFK&quot;,&quot;ATL&quot;,&quot;JFK&quot;,&quot;SFO&quot;,&quot;ATL&quot;,&quot;SFO&quot;]</span><br><span class="line">解释: 另一种有效的行程是[&quot;JFK&quot;,&quot;SFO&quot;,&quot;ATL&quot;,&quot;JFK&quot;,&quot;ATL&quot;,&quot;SFO&quot;]。但是它自然排序更大更靠后。</span><br><span class="line">通过次数23,014提交次数52,781</span><br></pre></td></tr></table></figure>
-<p>首先我们先明白一个概念，什么是欧拉图，什么是欧拉路径<br><strong>欧拉路径：</strong> 图M中一条路径能够经过图的每一条边，每一条边有且仅通过一次<br><strong>欧拉回路：</strong> 就是一条封闭的欧拉路径<br><strong>欧拉图：</strong> 含有欧拉回路的图<br><strong>有向图欧拉图：</strong><br>欧拉路径：有一个点出度比入度多1(起点)，有一个点入度比出度多1(终点)，其余点出度等于入度；<br>欧拉回路：每个顶点出度等于入度；<br><strong>无向图欧拉图：</strong><br>欧拉路径：有且仅有两个点的入度为1，分别是起点和终点；<br>欧拉回路：图中所有顶点的度数都是偶数，并且该图是连通图；<br><strong>主要思路：</strong><br>本体的题意表明至少存在一条欧拉路径，当存在多条欧拉路径时，我们输出字典序最小的哪一条路径，为了保证最终的结果是字典序最小的路径，我们贪心的去选择下一次目的地。<br>1.从题目中给定的“JFK”为起点开始遍历整张图<br>2.接下来我们dfs遍历这些节点的邻接节点，并且将已经遍历过的边给删除<br>3.当我们使一个节点没有邻接边时，说明此点已经进入死胡同，那么我们将其加入到结果集中<br>4.随着递归的出栈就能的到一道“JDK”为起点的欧拉路径<br><strong>所用的数据结构</strong><br>由于map中的key可能对应多个值，且这些值明显的具有字典序，那么我们使用优先队列，优先队列默认是小顶堆，poll出堆顶字典序最小的元素，很明显复合我们这个题目的要求<br><img src="https://gitee.com/bingjie__chai/PicOfHexo/raw/master/pic_hexo/Snipaste_2020-08-28_10-20-51.png" alt=""><br><strong>具体代码</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    Map&lt;String,PriorityQueue&lt;String&gt;&gt; map &#x3D; new HashMap&lt;&gt;();</span><br><span class="line">	List&lt;String&gt; res &#x3D; new ArrayList&lt;&gt;();</span><br><span class="line">    public List&lt;String&gt; findItinerary(List&lt;List&lt;String&gt;&gt; tickets) &#123;</span><br><span class="line">          for(List&lt;String&gt; ticket : tickets) &#123;</span><br><span class="line">			String start &#x3D; ticket.get(0);</span><br><span class="line">			String end &#x3D; ticket.get(1);</span><br><span class="line">			if (!map.containsKey(start)) &#123;</span><br><span class="line">                map.put(start, new PriorityQueue&lt;String&gt;());</span><br><span class="line">            &#125;</span><br><span class="line">			map.get(start).offer(end);</span><br><span class="line">		&#125;</span><br><span class="line">		dfs(&quot;JFK&quot;);</span><br><span class="line">		Collections.reverse(res);</span><br><span class="line">		return res;</span><br><span class="line">    &#125;</span><br><span class="line">    public void dfs(String cur) &#123;</span><br><span class="line">		while(map.containsKey(cur)&amp;&amp;map.get(cur).size()&gt;&#x3D;1) &#123;</span><br><span class="line">			String temp &#x3D; map.get(cur).poll();</span><br><span class="line">			dfs(temp);</span><br><span class="line">		&#125;</span><br><span class="line">		res.add(cur);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-	
-
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/数据结构与算法//" class="article-tag-list-link color3">数据结构与算法</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/08/28/%E6%AC%A7%E6%8B%89%E8%B7%AF%E5%BE%84/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-电话号码的字母组合" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/08/26/%E7%94%B5%E8%AF%9D%E5%8F%B7%E7%A0%81%E7%9A%84%E5%AD%97%E6%AF%8D%E7%BB%84%E5%90%88/">电话号码的字母组合</a>
-    </h1>
-  
-
-        
-        <a href="/2020/08/26/%E7%94%B5%E8%AF%9D%E5%8F%B7%E7%A0%81%E7%9A%84%E5%AD%97%E6%AF%8D%E7%BB%84%E5%90%88/" class="archive-article-date">
-  	<time datetime="2020-08-26T14:05:11.158Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-26</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-
-	
-		<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">给定一个仅包含数字2-9的字符串，返回所有它能表示的字母组合。</span><br><span class="line"></span><br><span class="line">给出数字到字母的映射如下（与电话按键相同）。注意 1 不对应任何字母。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">示例:</span><br><span class="line"></span><br><span class="line">输入：&quot;23&quot;</span><br><span class="line">输出：[&quot;ad&quot;, &quot;ae&quot;, &quot;af&quot;, &quot;bd&quot;, &quot;be&quot;, &quot;bf&quot;, &quot;cd&quot;, &quot;ce&quot;, &quot;cf&quot;].</span><br><span class="line">说明:</span><br><span class="line">尽管上面的答案是按字典序排列的，但是你可以任意选择答案输出的顺序。</span><br></pre></td></tr></table></figure>
-<p><strong>主要思路:</strong><br>类似于这种回溯排列问题都有固定的模板，难点在于书写搜索范围，本题思路与递增子序列问题大同小异，我们用map存放数字映射的字母，具体代码如下：  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    List&lt;String&gt; res &#x3D; new ArrayList&lt;&gt;();</span><br><span class="line">	Map&lt;Integer,String&gt; map &#x3D; new HashMap&lt;&gt;();</span><br><span class="line">    public List&lt;String&gt; letterCombinations(String digits) &#123;</span><br><span class="line">        &#x2F;&#x2F;关于字符串的判断，统统用equals方法</span><br><span class="line">        if(digits.equals(&quot;&quot;))</span><br><span class="line">			return res;</span><br><span class="line">        map.put(2, &quot;abc&quot;);</span><br><span class="line">		map.put(3, &quot;def&quot;);</span><br><span class="line">		map.put(4, &quot;ghi&quot;);</span><br><span class="line">		map.put(5, &quot;jkl&quot;);</span><br><span class="line">		map.put(6, &quot;mno&quot;);</span><br><span class="line">		map.put(7, &quot;pqrs&quot;);</span><br><span class="line">		map.put(8, &quot;tuv&quot;);</span><br><span class="line">		map.put(9, &quot;wxyz&quot;);</span><br><span class="line">		StringBuffer path &#x3D; new StringBuffer();</span><br><span class="line">		dfs(digits, path, 0);</span><br><span class="line">		return res;</span><br><span class="line">    &#125;</span><br><span class="line">    public void dfs(String str,StringBuffer path, int i) &#123;&#x2F;&#x2F;i表示组成字符串的第i位</span><br><span class="line">        &#x2F;&#x2F;结束条件</span><br><span class="line">		if(i&#x3D;&#x3D;str.length()) &#123;</span><br><span class="line">			res.add(path.toString());</span><br><span class="line">			return;</span><br><span class="line">		&#125;</span><br><span class="line">		int index &#x3D; str.charAt(i)-&#39;0&#39;;</span><br><span class="line">		String string &#x3D; map.get(index);</span><br><span class="line">		&#x2F;&#x2F;遍历map对应的映射</span><br><span class="line">		for(int j &#x3D; 0;j&lt;string.length();j++) &#123;</span><br><span class="line">			path.append(string.charAt(j));</span><br><span class="line">			dfs(str, path, i+1);</span><br><span class="line">			path.deleteCharAt(i);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-	
-
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/数据结构与算法//" class="article-tag-list-link color3">数据结构与算法</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/08/26/%E7%94%B5%E8%AF%9D%E5%8F%B7%E7%A0%81%E7%9A%84%E5%AD%97%E6%AF%8D%E7%BB%84%E5%90%88/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-递增子序列" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/08/26/%E9%80%92%E5%A2%9E%E5%AD%90%E5%BA%8F%E5%88%97/">递增子序列</a>
-    </h1>
-  
-
-        
-        <a href="/2020/08/26/%E9%80%92%E5%A2%9E%E5%AD%90%E5%BA%8F%E5%88%97/" class="archive-article-date">
-  	<time datetime="2020-08-26T14:04:54.463Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-26</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-
-	
-		<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">给定一个整型数组, 你的任务是找到所有该数组的递增子序列，递增子序列的长度至少是2。</span><br><span class="line"></span><br><span class="line">示例:</span><br><span class="line"></span><br><span class="line">输入: [4, 6, 7, 7]</span><br><span class="line">输出: [[4, 6], [4, 7], [4, 6, 7], [4, 6, 7, 7], [6, 7], [6, 7, 7], [7,7], [4,7,7]]</span><br><span class="line">说明:</span><br><span class="line"></span><br><span class="line">给定数组的长度不会超过15。</span><br><span class="line">数组中的整数范围是[-100,100]。</span><br><span class="line">给定数组中可能包含重复数字，相等的数字应该被视为递增的一种情况。</span><br></pre></td></tr></table></figure>
-<p><strong>主要思路：</strong><br>本题主要考察回溯算法的理解，类似于全排列的思路，根据题目进行剪枝，最主要是如何去重，因为数组中存在重复的数字所以在选择的过程中可能会出现重复的子序列，所以根据去重的思路我们主要分为两种，关于选数的分递归可以用for循环和选与不选两种思路，此处我们Set方法用for循环，剪枝用选与不选的方法<br><strong>一、Set去重</strong>  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    List&lt;List&lt;Integer&gt;&gt; res &#x3D; new ArrayList&lt;&gt;();</span><br><span class="line">    Set&lt;Object&gt; set &#x3D; new HashSet&lt;&gt;();&#x2F;&#x2F;去重</span><br><span class="line">    public List&lt;List&lt;Integer&gt;&gt; findSubsequences(int[] nums) &#123;</span><br><span class="line">        List&lt;Integer&gt; path &#x3D; new ArrayList&lt;&gt;();</span><br><span class="line">		dfs(0,nums,path);</span><br><span class="line">		return res;</span><br><span class="line">    &#125;</span><br><span class="line">    private void dfs(int start, int[] nums,List&lt;Integer&gt; path) &#123;</span><br><span class="line">		if(path.size()&gt;&#x3D;2&amp;&amp;!set.contains(path)) &#123;</span><br><span class="line">		    &#x2F;&#x2F;到达最深处拷贝path</span><br><span class="line">			set.add(new ArrayList&lt;&gt;(path));</span><br><span class="line">			res.add(new ArrayList&lt;&gt;(path));</span><br><span class="line">		&#125;</span><br><span class="line">		for(int i &#x3D; start;i&lt;nums.length;i++) &#123;</span><br><span class="line">			if(path.size()&#x3D;&#x3D;0||path.get(path.size()-1)&lt;&#x3D;nums[i]) &#123;</span><br><span class="line">				path.add(nums[i]);</span><br><span class="line">				dfs(i+1, nums,path);</span><br><span class="line">				path.remove(path.size()-1);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>二、剪枝去重</strong><br>那如何保证没有重复呢？我们需要给「不选择」做一个限定条件，只有当当前的元素不等于上一个选择的元素的时候，才考虑不选择当前元素，直接递归后面的元素。因为如果有两个相同的元素，我们会考虑这样四种情况：</p>
-<p>前者被选择，后者被选择<br>前者被选择，后者不被选择<br>前者不被选择，后者被选择<br>前者不被选择，后者不被选择<br>其中第二种情况和第三种情况其实是等价的，我们这样限制之后，舍弃了第二种，保留了第三种，于是达到了去重的目的。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    List&lt;List&lt;Integer&gt;&gt; res &#x3D; new ArrayList&lt;&gt;();</span><br><span class="line">    public List&lt;List&lt;Integer&gt;&gt; findSubsequences(int[] nums) &#123;</span><br><span class="line">        List&lt;Integer&gt; path &#x3D; new ArrayList&lt;&gt;();</span><br><span class="line">		dfs(0,nums,path,Integer.MIN_VALUE);</span><br><span class="line">		return res;</span><br><span class="line">    &#125;</span><br><span class="line">    private void dfs(int index, int[] nums,List&lt;Integer&gt; path,int last) &#123;</span><br><span class="line">		if(index &#x3D;&#x3D; nums.length) &#123;</span><br><span class="line">			if(path.size()&gt;&#x3D;2)</span><br><span class="line">				res.add(new ArrayList&lt;&gt;(path));</span><br><span class="line">			return;</span><br><span class="line">		&#125;</span><br><span class="line">		if(nums[index]&gt;&#x3D;last) &#123;</span><br><span class="line">			path.add(nums[index]);</span><br><span class="line">			dfs(index+1, nums, path, nums[index]);</span><br><span class="line">			path.remove(path.size()-1);</span><br><span class="line">		&#125;</span><br><span class="line">		if(nums[index]!&#x3D;last)</span><br><span class="line">			dfs(index+1, nums, path, last);</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-	
-
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/数据结构与算法//" class="article-tag-list-link color3">数据结构与算法</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/08/26/%E9%80%92%E5%A2%9E%E5%AD%90%E5%BA%8F%E5%88%97/">展开全文 >></a>
         </p>
       
 

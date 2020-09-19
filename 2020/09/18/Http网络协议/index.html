@@ -6,15 +6,21 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>God-C-sfs</title>
+  <title>TomCat服务器 | God-C-sfs</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="God-C-sfs">
-<meta property="og:url" content="http://yoursite.com/page/3/index.html">
+  <meta name="description" content="http网络协议包一、网络协议包：1.在网络中传递信息都是以二进制形式催在的2.接收方[浏览器&#x2F;服务器]在接受信息后，要做的第一件事就是将[二进制数据]进行编译[文字，图片，视频，命令]3.传递信息数据量往往比较巨大，导致接收方很难在一组连续二进制得到对应的数据4.网络协议包一组有规律的二进制数据，在这组数据中存在了固定的空间，每一个固定的空间存放特定的信息，这样接收方在接受网络协议包之后就可以得">
+<meta property="og:type" content="article">
+<meta property="og:title" content="TomCat服务器">
+<meta property="og:url" content="http://yoursite.com/2020/09/18/Http%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/index.html">
 <meta property="og:site_name" content="God-C-sfs">
+<meta property="og:description" content="http网络协议包一、网络协议包：1.在网络中传递信息都是以二进制形式催在的2.接收方[浏览器&#x2F;服务器]在接受信息后，要做的第一件事就是将[二进制数据]进行编译[文字，图片，视频，命令]3.传递信息数据量往往比较巨大，导致接收方很难在一组连续二进制得到对应的数据4.网络协议包一组有规律的二进制数据，在这组数据中存在了固定的空间，每一个固定的空间存放特定的信息，这样接收方在接受网络协议包之后就可以得">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://gitee.com/bingjie__chai/PicOfHexo/raw/master/pic_hexo/20200918192546.png">
+<meta property="article:published_time" content="2020-09-18T11:26:07.566Z">
+<meta property="article:modified_time" content="2020-09-18T11:26:00.445Z">
 <meta property="article:author" content="蛙广志">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://gitee.com/bingjie__chai/PicOfHexo/raw/master/pic_hexo/20200918192546.png">
   
     <link rel="alternative" href="/atom.xml" title="God-C-sfs" type="application/atom+xml">
   
@@ -156,22 +162,20 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-DDL" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-Http网络协议" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/08/18/DDL/">DDL语言</a>
+    <h1 class="article-title" itemprop="name">
+      TomCat服务器
     </h1>
   
 
         
-        <a href="/2020/08/18/DDL/" class="archive-article-date">
-  	<time datetime="2020-08-18T12:42:46.146Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-18</time>
+        <a href="/2020/09/18/Http%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/" class="archive-article-date">
+  	<time datetime="2020-09-18T11:26:07.566Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-09-18</time>
 </a>
         
       </header>
@@ -180,8 +184,24 @@
       
 
 	
-		<p><strong>DDL语句用于对数据库，表的管理</strong><br><strong><em>库的管理：</em></strong><br><strong>一、创建库</strong><br>create database if not exists 库名<br><strong>二、修改库</strong><br>alter database 库名<br><strong>三、删除库</strong><br>drop database if exists 库名<br><strong><em>表的管理：</em></strong><br><strong>一、创建表</strong><br>create table if not exists 表名（<br>字段名 字段类型【约束】，<br>字段名 字段类型【约束】，<br>字段名 字段类型【约束】，….<br>）<br><strong>二、修改表</strong><br>1.添加列<br>alter table 表名 add column 列名 类型<br>2.修改列的类型或约束<br>alter table 表名 modify column 列名 新类型【新约束】<br>3.修改列名<br>alter table 表名 change column 旧列名 新列名 类型<br>4.删除列<br>alter table 表名 drop column 列名<br>5.修改表名<br>alter table 表名 rename 新表名<br><strong>三、删除表</strong><br>drop table if exists 表名<br><strong>四、复制表</strong><br>1.赋值表的结构<br>crate table 表名 like 旧表<br>2.赋值表的结构+数据<br>create table 表名<br>select 查询列表 from 旧表 where 筛选条件<br><strong><em>数据类型</em></strong><br><strong>一、数值型</strong><br><strong>1.整型</strong><br>tinyint 1子节<br>smallint 2子节<br>mediumint 3子节<br>int/integer 4子节<br>bigint 8子节<br>特点：<br>1.都可以设置无符号和有符号，默认有符号，通过unsigined设置无符号<br>2.如果超出了范围，会报out or range异常，会停留在临界值<br><strong>2.浮点型</strong><br>定点数：decimal（M，D）<br>浮点数：<br>float（M，D） 4子节<br>double（M，D）8子节<br>特点：<br>1.M代表整数部分+小数部分的个数，D代表小数位数<br>2.如果超出了范围，会报out or range异常，会停留在临界值<br>3.M和D都可以省略，但对于定点数，M默认为10，D默认为0<br>4.如果精度要求高，则有限考虑使用定点数<br><strong>3.字符型</strong><br>char：固定长度的字符，写法为char（M），最大长度不能超过M，其中M可以省略，默认为1<br>varchar：可变长度的字符，写法为varchar（M），最大长度不能超过M，M不能省略<br><strong>4.日期型</strong><br>year年<br>date日期<br>time时间<br>datetime日期+时间 8个子节<br><strong><em>常见的约束</em></strong><br>一种限制，用于限制表中的数据，为了保证表中的数据的准确性和可靠性<br><strong>一、常见的约束</strong><br>NOT NULL：非空，该字段的值必填<br>UNIQUE：唯一，该字段的值不可重复<br>DEFAULT：默认，该字段的值不用手动插入有默认值<br>PRIMARY KEY：主键，该字段的值不可重复并且非空 unique+notnull<br>FOREIGN KEY：外键，该字段的值引用了另外的表的字段<br><strong>主键和唯一</strong><br>1.区别：<br>①.一个表至多有一个主键，但可以有多个唯一<br>②.主键不允许为空，唯一可以为空<br>2.相同点：<br>都具有唯一性<br>都支持组合键，但不推荐<br><strong>外键</strong><br>1.用于限制两个表的关系，从表的字段引用了主表的某字段值<br>2.外键列和主表的被引用列要求类型一致<br>3.主表的被引用列要求是一个key<br>4.插入数据，先插入主表，删除数据，先删除从表<br><strong>二、创建表时添加约束</strong><br>create table 表名（<br>字段名 字段类型  not null，<br>字段名 字段类型  primary key，<br>字段名 字段类型  unique，<br>constraint 约束名 foreign key（字段名） references 主表（被引用列）</p>
-<p>）<br><strong>三、修改表时添加或删除约束</strong><br>1.非空<br>添加非空<br>alter table 表名 modify column 字段名 字段类型 not null<br>删除非空<br>alter table 表名 modify column 字段名 字段类型<br>2.默认<br>添加默认<br>alter table 表名 modify column 字段名 字段类型 default 值<br>删除默认<br>alter table 表名 modify column 字段名 字段类型<br>3.主键<br>添加主键<br>alter table 表名 add primary key（字段名）<br>删除主键<br>alter table 表名 drop primary key<br>4.唯一<br>添加唯一<br>alter table 表名 add unique（字段名）<br>删除唯一<br>alter table 表名 drop index 索引名<br>四、自增长列<br>特点：<br>1.不用手动插入值，可以自动提供序列值，默认从1开始，步长为1<br>添加AUTO_INCREMENT<br>如果要更改起始值：手动插入值<br>如果要更改步长：set AUTO_INCREMENT = 值<br>2.一个表至多有一个自增长列<br>3.子增长列只支持数值型<br>4.子增长列必须为一个key</p>
+		<h1 id="http网络协议包"><a href="#http网络协议包" class="headerlink" title="http网络协议包"></a>http网络协议包</h1><p><strong>一、网络协议包：</strong><br>1.在网络中传递信息都是以二进制形式催在的<br>2.接收方[浏览器/服务器]在接受信息后，要做的第一件事就是将[二进制数据]进行编译[文字，图片，视频，命令]<br>3.传递信息数据量往往比较巨大，导致接收方很难在一组连续二进制得到对应的数据<br>4.网络协议包一组有规律的二进制数据，在这组数据中存在了固定的空间，每一个固定的空间存放特定的信息，这样接收方在接受网络协议包之后就可以得到固定空间的对应的信息，网络协议包极大降低了接收方接受对应二进制数据编译的难度<br><strong>二、常见的网络协议：</strong><br>1.FTP网络协议包<br>2.Http网络协议包<br><strong>三、Http网络协议包：</strong><br>在基于B/S结构下互联网通信过程中，所有在网络中传递信息都是保存在Http网络协议包中分为<strong><em>Http请求协议包和Http响应协议包</em></strong><br><strong>四、Http请求协议包与Http响应协议包介绍：</strong><br>1.Http请求协议包：<br>在浏览器准备发送请求时，负责创建一个Http请求协议包，浏览器将请求信息以二进制的形式保存在请求协议包各个空间中，由浏览器负责将Http请求协议包推送到指定服务端计算机<br>2.Http响应协议包：<br>Http服务器在定位到被访问的资源后负责创建一个Http响应协议包，Http服务器将定位文件内容以二进制写入到Http响应协议包中推送会发起请求的浏览器上<br><strong>五、Http请求协议包内部空间</strong><br>1.按照自上而下划分，分为4个空间<br>2.空间划分，自上而下：<br>请求行  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">url：请求地址  </span><br><span class="line">method：请求方式</span><br></pre></td></tr></table></figure>
+<p>请求头  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">请求参数信息[当请求方式为GET]</span><br></pre></td></tr></table></figure>
+<p>空白行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">没有任何内容，起到隔离作用</span><br></pre></td></tr></table></figure>
+<p>请求体  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">请求参数信息[当请求方式为POST]</span><br></pre></td></tr></table></figure>
+
+<p><strong>六、Http响应协议包内部结构</strong><br>1.按照自上而下的划分，分为4个空间<br>2.空间划分，自上而下：<br>状态行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Http状态码</span><br></pre></td></tr></table></figure>
+<p>响应头</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">content-type：指定浏览器采用对应的编译器。对响应体二进制数据进行解析</span><br></pre></td></tr></table></figure>
+<p>空白行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">没有任何内容，起到隔离作用</span><br></pre></td></tr></table></figure>
+<p>响应体</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">可能被访问静态资源文件内容</span><br><span class="line">可能被访问的静态资源文件命令</span><br><span class="line">可能被访问的动态资源文件运行结果</span><br><span class="line">（都是以二进制形式）</span><br></pre></td></tr></table></figure>
+<p><img src="https://gitee.com/bingjie__chai/PicOfHexo/raw/master/pic_hexo/20200918192546.png" alt=""></p>
 
 	
 
@@ -195,7 +215,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/mysql数据库//" class="article-tag-list-link color4">mysql数据库</a>
+        			<a href="/categories/Web//" class="article-tag-list-link color4">Web</a>
         		</li>
       		
 		</ul>
@@ -203,16 +223,84 @@
 
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/08/18/DDL/">展开全文 >></a>
-        </p>
-      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/09/18/Http%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2020/09/19/%E6%89%80%E6%9C%89%E5%B7%A6%E5%8F%B6%E5%AD%90%E8%8A%82%E7%82%B9%E7%9A%84%E5%92%8C/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          所有左叶子节点的和
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/09/18/%E5%85%A8%E6%8E%92%E5%88%97II/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">全排列II</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -232,726 +320,14 @@
 
 
 
-
-  
-    <article id="post-平衡二叉树" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/08/17/%E5%B9%B3%E8%A1%A1%E4%BA%8C%E5%8F%89%E6%A0%91/">相同的树</a>
-    </h1>
-  
-
-        
-        <a href="/2020/08/17/%E5%B9%B3%E8%A1%A1%E4%BA%8C%E5%8F%89%E6%A0%91/" class="archive-article-date">
-  	<time datetime="2020-08-17T13:16:31.078Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-17</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-
-	
-		<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">给定一个二叉树，判断它是否是高度平衡的二叉树。</span><br><span class="line"></span><br><span class="line">本题中，一棵高度平衡二叉树定义为：</span><br><span class="line"></span><br><span class="line">一个二叉树每个节点的左右两个子树的高度差的绝对值不超过1。</span><br><span class="line"></span><br><span class="line">示例 1:</span><br><span class="line"></span><br><span class="line">给定二叉树 [3,9,20,null,null,15,7]</span><br><span class="line"></span><br><span class="line">    3</span><br><span class="line">   &#x2F; \</span><br><span class="line">  9  20</span><br><span class="line">    &#x2F;  \</span><br><span class="line">   15   7</span><br><span class="line">返回 true 。</span><br><span class="line"></span><br><span class="line">示例 2:</span><br><span class="line"></span><br><span class="line">给定二叉树 [1,2,2,3,3,null,null,4,4]</span><br><span class="line"></span><br><span class="line">       1</span><br><span class="line">      &#x2F; \</span><br><span class="line">     2   2</span><br><span class="line">    &#x2F; \</span><br><span class="line">   3   3</span><br><span class="line">  &#x2F; \</span><br><span class="line"> 4   4</span><br><span class="line">返回false </span><br><span class="line">&#96;&#96;&#96;  </span><br><span class="line">题目即判断一颗二叉树是否为平衡二叉树，有两种思路，从顶到底和从底到顶  </span><br><span class="line">**方式一：**  </span><br><span class="line">从顶到底，便于想到，从顶到底判断以每个节点为根节点的子树是否是平衡二叉树，但某些节点的深度会被重复计算导致时间复杂度很高</span><br></pre></td></tr></table></figure>
-<p>class Solution {<br>    public boolean isBalanced(TreeNode root) {<br>        if(root==null)<br>            return true;<br>        return (Math.abs(height(root.left)-height(root.right))&lt;=1&amp;&amp;isBalanced(root.left)&amp;&amp;isBalanced(root.right));<br>        //判断当前子树是否为平衡树，然后先序遍历判断当前子树的左子树，然后判断当前子树的右子树<br>    }<br>    public int height(TreeNode root) {<br>        if(root==null)<br>            return 0;<br>        return Math.max(root.left==null?0:height(root.left), root.right==null?0:height(root.right))+1;<br>    }<br>}</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">**方式二：**  </span><br><span class="line">从底到顶递归，这样每个节点的深度只会被调用一次，这种方法类似于后序遍历，先判断当前节点的左右子树是否是平衡树，在判断当前节点，如果一个子树是平衡树则返回它的高度，否则返回-1，如果一个树的任意子树不是平衡树，则树不是平衡树</span><br></pre></td></tr></table></figure>
-<pre><code>public boolean isBalanced(TreeNode root) {
-    return height(root) &gt;= 0;
-}
-
-public int height(TreeNode root) {
-    if (root == null) {
-        return 0;
-    }
-    int leftHeight = height(root.left);
-    int rightHeight = height(root.right);
-    if (leftHeight == -1 || rightHeight == -1 || Math.abs(leftHeight - rightHeight) &gt; 1) {
-        return -1;
-    } else {
-        return Math.max(leftHeight, rightHeight) + 1;
-    }
-}</code></pre><pre><code></code></pre>
-	
-
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/数据结构与算法//" class="article-tag-list-link color3">数据结构与算法</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/08/17/%E5%B9%B3%E8%A1%A1%E4%BA%8C%E5%8F%89%E6%A0%91/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-DQL" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/08/17/DQL/">DQL语言</a>
-    </h1>
-  
-
-        
-        <a href="/2020/08/17/DQL/" class="archive-article-date">
-  	<time datetime="2020-08-17T12:38:30.771Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-17</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-
-	
-		<p><strong>DQL:全称DataQueryLanguage，数据查询语言，查询语句，凡是select语句都是DQL</strong><br><strong>基础查询:</strong>  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">show databases;&#x2F;&#x2F;展示所有库</span><br><span class="line">use 库名;&#x2F;&#x2F;切换库</span><br><span class="line">show tables;&#x2F;&#x2F;展示库中所有表单</span><br></pre></td></tr></table></figure>
-<p>1.去重关键字:字段前+distinct<br>2.起别名:AS + 别名，通常AS也可以省略<br>3.“+”的作用:<br>·两个数都为数值型，则进行加法运算<br>·只要一方为字符型，试图将字符型转换成数值型，若转换成功，则继续进行加法运算，若转换失败，则将字符型数值变为0<br>·只要一方为null，那么结果就是null<br>4.DESC:关键字+表名 显示表的结构<br>5.IFNULL函数用于判断是否为null，ifnull(字段,0)若字段为null，则转换为0<br>6.concat函数用于拼接字符串<br><strong>条件查询:</strong><br>一、语法:select 查询列表 from 表名 where 筛选条件<br>二、分类:<br>1.按条件运算符筛选:&gt;,&lt;,=,&lt;&gt;不等号,&gt;=,&lt;=<br>2.按逻辑运算符筛选:&amp;&amp;,||,!,and,or,not<br>3.模糊查询:<br>like:一般搭配通配符使用，可以判断字符型或数值型<br>通配符：%表示任意多个字符，可以是0个，_表示任意单个字符<br>between and(包括临界值),in,is null,is not null<br><strong>排序查询:</strong><br>一、语法：select 查询列表 from 表 where 筛选条件 order by 排序列表【asc|desc】<br>二、特点：<br>1.asc升序，如果不写默认升序，desc降序<br>2.排序列表支持单个字符按，多个字段，函数，表达式，别名，当有多个排序方式时，先按前者，若按前者有相同则按后一个排序<br>3.order by的位置一般放在查询语句的最后(除limit语句之外)<br><strong>常见函数:</strong>  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">1.字符函数</span><br><span class="line">concat:连接</span><br><span class="line">substr:截取字串，索引从1开始</span><br><span class="line">upper:变大写</span><br><span class="line">lower:变小写</span><br><span class="line">replace:替代</span><br><span class="line">length:获取长度</span><br><span class="line">trim:去除前后空格</span><br><span class="line">lpad:左填充</span><br><span class="line">rpad:右填充</span><br><span class="line">instr:获取字串第一次出现的索引</span><br><span class="line">2.数学函数</span><br><span class="line">ceil:向上取整</span><br><span class="line">round:四舍五入</span><br><span class="line">mod:取模</span><br><span class="line">floor:向下取整</span><br><span class="line">truncate:截断</span><br><span class="line">rand:获取随机数，[0-1)之间</span><br><span class="line">3.日期函数</span><br><span class="line">now:返回当前日期+时间</span><br><span class="line">year:返回年</span><br><span class="line">month:返回月</span><br><span class="line">day:返回日</span><br><span class="line">date_format:将字符串转换为日期</span><br><span class="line">curdate:当前日期</span><br><span class="line">str_to_data:将日期转换为字符串</span><br><span class="line">curtime:当前时间</span><br><span class="line">hour:返回时</span><br><span class="line">minute:返回分</span><br><span class="line">second:返回秒</span><br><span class="line">datediff:返回两个日期相差的天数</span><br></pre></td></tr></table></figure>
-<p><strong>分组查询:</strong><br>一、语法:<br>select 分组函数，分组后的字段<br>【where筛选条件】<br>group by 分组的字段<br>【having 分组后的是筛选】<br>【order by 排序列表】<br>二、特点<br><img src="https://gitee.com/bingjie__chai/PicOfHexo/raw/master/pic_hexo/Snipaste_2020-07-22_22-37-50.png" alt=""><br><strong>连接查询:</strong>(这里讲的是SQL99语法)<br>一、内连接<br>1.语法:<br>select 查询列表<br>from 表1 别名<br>【inner】join 表2 别名 on 连接条件<br>where 筛选条件<br>group by 分组列表<br>having 分组后的筛选<br>order by 排序列表<br>limit 语句<br>2.特点<br>·表的顺序可以调换<br>·内连接结果=多表的交集<br>·n表连接至少需要n-1个连接条件<br>二、外连接<br>1.语法：<br>select 查询列表<br>from 表1 别名<br>left|right|full join 表2 别名 on 连接条件<br>where 筛选条件<br>group by 分组列表<br>having 分组后的筛选<br>order by 排序列表<br>limit 语句<br>2.特点:<br>·查询的结果=主表中所有的行，如果从表和它匹配的将显示匹配行，如果从表没有匹配的则显示null<br>·left join 左边的是主表，right join右边的是主表<br>·一般用于查询除了交集部分的剩余的不匹配的行<br><strong>子查询:</strong></br>一、含义：嵌套在其他语句内部的select语句称为子查询或内查询，外面的语句可以是insert，update，delete，select等，一般select作为外面语句较多<br>二、分类<br>1.按出现的位置<br>·select后面:仅仅支持标量子查询<br>·from后面：表子查询<br>·where或having后面：标量子查询，列子查询，行子查询<br>·exists：标量子查询，列子查询，行子查询，表子查询<br>2.按结果集的行列<br>·标量子查询（单行子查询）：结果集为一行一列<br>·列子查询（多行子查询）：结果集为多行一列<br>·行子查询：结果集为多行多列<br>·表子查询：结果集为多行多列<br><strong>分页查询：</strong><br>一、应用场景：当要查询的条目数太多，一页显示不全<br>二、语法：<br>select 查询列表<br>from 表<br>limit 【offset，】size；<br>·注意：offset代表的是起始的条目索引，默认从0开始，size代表显示的条目数<br>·公式：假如要显示的页数为page，每一页的条目数为size<br>select 查询列表<br>from 表<br>limit （page-1）<em>size，size<br>*</em>查询总结：**<br>select 查询列表<br>from 表1 别名<br>连接类型 join 表2<br>on 连接条件<br>where 筛选<br>group by 分组列表<br>having 筛选<br>order by 排序列表<br>limit 起始条目索引，条目数</p>
-
-	
-
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/mysql数据库//" class="article-tag-list-link color4">mysql数据库</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/08/17/DQL/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-DML" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/08/17/DML/">DML语言</a>
-    </h1>
-  
-
-        
-        <a href="/2020/08/17/DML/" class="archive-article-date">
-  	<time datetime="2020-08-17T12:38:30.769Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-17</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-
-	
-		<p><strong>DML操作是指对数据库中表记录的操作，主要包括表记录的插入（insert）、更新（update）、删除（delete）和查询（select），是开发人员日常使用最频繁的操作</strong><br>==插入语句：==<br><strong>一、方式一</strong><br>·语法:<br>insert into 表名（列名…） values（值…）<br>·特点:<br>1.要求值的类型和字段的类型要一致或兼容<br>2.字段的个数和顺序不一定与原始表的字段个数和顺序一致但必须保证值和字段一一对应<br>3.假如表中有可以为null的字段，注意可以通过以下两种方式插入null值<br>①.字段和值都省略<br>②.字段写上，值使用null<br>4.字段和值的个数必须一致<br>5.字段名可以省略，默认为所有列<br><strong>二、方式二</strong><br>·语法：<br>insert into 表名 set 字段=值，字段=值…<br><strong>两种方式的区别</strong><br>方式一可以一次插入多行，语法如下:<br>insert into 表名【（字段名）】 values（值，…）,(值，…),…<br>==修改语句：==<br><strong>一、修改单表的记录</strong><br>语法： update 表名 set 字段=值，字段-值【where 筛选条件】<br><strong>二、修改多表的记录</strong><br>语法：update 表名1 别名<br>left|right|inner join 表2 别名<br>on 连接条件<br>set 字段=值，字段=值…<br>【where筛选条件】<br>==删除语句：==<br><strong>方式一：使用delete</strong><br>一、删除单表的记录<br>delete from 表名 where筛选条件 limit 条目数<br>二、级联删除<br>delete 别名1，别名2<br>from 表1 别名<br>inner|left|right join 表2 别名<br>on 连接条件<br>where筛选条件<br>·其中如果只想删除表1中的记录，delete后只用加别名1<br><strong>方式二：使用truncate</strong><br>truncate table 表名</p>
-
-	
-
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/mysql数据库//" class="article-tag-list-link color4">mysql数据库</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/08/17/DML/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-大数相加&amp;相乘" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/08/13/%E5%A4%A7%E6%95%B0%E7%9B%B8%E5%8A%A0&%E7%9B%B8%E4%B9%98/">大数运算(乘法&amp;加法)</a>
-    </h1>
-  
-
-        
-        <a href="/2020/08/13/%E5%A4%A7%E6%95%B0%E7%9B%B8%E5%8A%A0&%E7%9B%B8%E4%B9%98/" class="archive-article-date">
-  	<time datetime="2020-08-13T10:21:22.935Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-13</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-
-	
-		<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">给定两个字符串形式的非负整数num1 和num2，计算它们的和。</span><br><span class="line">提示：</span><br><span class="line"></span><br><span class="line">num1 和num2的长度都小于 5100</span><br><span class="line">num1 和num2 都只包含数字0-9</span><br><span class="line">num1 和num2 都不包含任何前导零</span><br><span class="line">你不能使用任何內建 BigInteger 库，也不能直接将输入的字符串转换为整数形式</span><br></pre></td></tr></table></figure>
-<p>思路:模仿竖式相加的过程，巧妙运用carry解决进位的问题，主要注意最后一次进位，当carry不是0的时候，在append一个1</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    public String addStrings(String num1, String num2) &#123;</span><br><span class="line">       int i &#x3D; num1.length()-1;</span><br><span class="line">		int j &#x3D; num2.length()-1;</span><br><span class="line">		int carry &#x3D; 0;</span><br><span class="line">		StringBuilder res &#x3D; new StringBuilder();</span><br><span class="line">		while(j&gt;&#x3D;0||i&gt;&#x3D;0) &#123;</span><br><span class="line">			int n1 &#x3D; i&gt;&#x3D;0?num1.charAt(i)-&#39;0&#39;:0;</span><br><span class="line">			int n2 &#x3D; j&gt;&#x3D;0?num2.charAt(j)-&#39;0&#39;:0;</span><br><span class="line">			int temp &#x3D; n1+n2+carry;</span><br><span class="line">			carry &#x3D; temp&#x2F;10;</span><br><span class="line">			res.append(temp%10);</span><br><span class="line">			i--;</span><br><span class="line">			j--;</span><br><span class="line">		&#125;</span><br><span class="line">		if(carry&#x3D;&#x3D;0) &#123;</span><br><span class="line">			</span><br><span class="line">			return res.reverse().toString();</span><br><span class="line">		&#125;</span><br><span class="line">		return res.append(1).reverse().toString();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">给定两个以字符串形式表示的非负整数num1和num2，返回num1和num2的乘积，它们的乘积也表示为字符串形式。</span><br><span class="line"></span><br><span class="line">示例 1:</span><br><span class="line">输入: num1 &#x3D; &quot;2&quot;, num2 &#x3D; &quot;3&quot;</span><br><span class="line">输出: &quot;6&quot;</span><br><span class="line">示例2:</span><br><span class="line">输入: num1 &#x3D; &quot;123&quot;, num2 &#x3D; &quot;456&quot;</span><br><span class="line">输出: &quot;56088&quot;</span><br><span class="line">说明：</span><br><span class="line">num1和num2的长度小于110。</span><br><span class="line">num1 和num2 只包含数字0-9。</span><br><span class="line">num1 和num2均不以零开头，除非是数字 0 本身。</span><br><span class="line">不能使用任何标准库的大数类型（比如 BigInteger）或直接将输入转换为整数来处理</span><br></pre></td></tr></table></figure>
-<p>思路:主要细节见注释:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    public  String multiply(String num1, String num2) &#123;</span><br><span class="line">        if(num1&#x3D;&#x3D;&quot;0&quot;||num2&#x3D;&#x3D;&quot;0&quot;) &#123;</span><br><span class="line">			return &quot;0&quot;;</span><br><span class="line">		&#125;</span><br><span class="line">		int i &#x3D; num1.length()-1;</span><br><span class="line">		int j &#x3D; num2.length()-1;</span><br><span class="line">		String s &#x3D; &quot;0&quot;;</span><br><span class="line">		String ans &#x3D; null;</span><br><span class="line">		int numOfZero &#x3D; 0;&#x2F;&#x2F;用于num1和num2的每一位相乘时错位相加</span><br><span class="line">		while(j&gt;&#x3D;0) &#123;</span><br><span class="line">			StringBuilder res &#x3D; new StringBuilder();</span><br><span class="line">			int carry &#x3D; 0;</span><br><span class="line">			while(i&gt;&#x3D;0) &#123;&#x2F;&#x2F;num1和num2的每一位相乘</span><br><span class="line">				int n1 &#x3D; num1.charAt(i)-&#39;0&#39;;</span><br><span class="line">				int n2 &#x3D; num2.charAt(j)-&#39;0&#39;;</span><br><span class="line">				int temp &#x3D; n1*n2+carry;</span><br><span class="line">				carry &#x3D; temp&#x2F;10;</span><br><span class="line">				res.append(temp%10);</span><br><span class="line">				i--;</span><br><span class="line">			&#125;</span><br><span class="line">			&#x2F;&#x2F;记得加上最后一个carry</span><br><span class="line">			if(carry&#x3D;&#x3D;0) &#123;</span><br><span class="line">				res &#x3D; res.reverse();</span><br><span class="line">			&#125;else &#123;</span><br><span class="line">				res &#x3D; res.append(carry+&quot;&quot;).reverse();</span><br><span class="line">			&#125;</span><br><span class="line">			&#x2F;&#x2F;用于错位相加</span><br><span class="line">			for(int k &#x3D; 0;k&lt;numOfZero;k++) &#123;</span><br><span class="line">				res &#x3D; res.append(&quot;0&quot;);</span><br><span class="line">			&#125;</span><br><span class="line">			ans &#x3D; add(s, res.toString());</span><br><span class="line">			s &#x3D; ans;</span><br><span class="line">			i &#x3D; num1.length()-1;</span><br><span class="line">			j--;</span><br><span class="line">			numOfZero++;</span><br><span class="line">		&#125;</span><br><span class="line">		return ans;</span><br><span class="line">			</span><br><span class="line">    &#125;</span><br><span class="line">	public  String add(String num1,String num2) &#123;</span><br><span class="line">		int i &#x3D; num1.length()-1;</span><br><span class="line">		int j &#x3D; num2.length()-1;</span><br><span class="line">		int carry &#x3D; 0;</span><br><span class="line">		StringBuilder res &#x3D; new StringBuilder();</span><br><span class="line">		while(j&gt;&#x3D;0||i&gt;&#x3D;0) &#123;</span><br><span class="line">			int n1 &#x3D; i&gt;&#x3D;0?num1.charAt(i)-&#39;0&#39;:0;</span><br><span class="line">			int n2 &#x3D; j&gt;&#x3D;0?num2.charAt(j)-&#39;0&#39;:0;</span><br><span class="line">			int temp &#x3D; n1+n2+carry;</span><br><span class="line">			carry &#x3D; temp&#x2F;10;</span><br><span class="line">			res.append(temp%10);</span><br><span class="line">			i--;</span><br><span class="line">			j--;</span><br><span class="line">		&#125;</span><br><span class="line">		if(carry&#x3D;&#x3D;0) &#123;</span><br><span class="line">			</span><br><span class="line">			return res.reverse().toString();</span><br><span class="line">		&#125;</span><br><span class="line">		return res.append(1).reverse().toString();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-	
-
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/数据结构与算法//" class="article-tag-list-link color3">数据结构与算法</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/08/13/%E5%A4%A7%E6%95%B0%E7%9B%B8%E5%8A%A0&%E7%9B%B8%E4%B9%98/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-相同的树" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/08/13/%E7%9B%B8%E5%90%8C%E7%9A%84%E6%A0%91/">相同的树</a>
-    </h1>
-  
-
-        
-        <a href="/2020/08/13/%E7%9B%B8%E5%90%8C%E7%9A%84%E6%A0%91/" class="archive-article-date">
-  	<time datetime="2020-08-13T10:21:15.632Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-13</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-
-	
-		<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">给定两个二叉树，编写一个函数来检验它们是否相同。</span><br><span class="line"></span><br><span class="line">如果两个树在结构上相同，并且节点具有相同的值，则认为它们是相同的。</span><br><span class="line"></span><br><span class="line">示例1:</span><br><span class="line"></span><br><span class="line">输入:       1         1</span><br><span class="line">          &#x2F; \       &#x2F; \</span><br><span class="line">         2   3     2   3</span><br><span class="line"></span><br><span class="line">        [1,2,3],   [1,2,3]</span><br><span class="line"></span><br><span class="line">输出: true</span><br><span class="line">示例2:</span><br><span class="line"></span><br><span class="line">输入:      1          1</span><br><span class="line">          &#x2F;           \</span><br><span class="line">         2             2</span><br><span class="line"></span><br><span class="line">        [1,2],     [1,null,2]</span><br><span class="line"></span><br><span class="line">输出: false</span><br><span class="line">示例3:</span><br><span class="line"></span><br><span class="line">输入:       1         1</span><br><span class="line">          &#x2F; \       &#x2F; \</span><br><span class="line">         2   1     1   2</span><br><span class="line"></span><br><span class="line">        [1,2,1],   [1,1,2]</span><br><span class="line"></span><br><span class="line">输出: false</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">public boolean isSameTree(TreeNode p, TreeNode q) &#123;</span><br><span class="line">        &#x2F;&#x2F;两者都到底了，没有返回肯定相同</span><br><span class="line">        if(p &#x3D;&#x3D; null&amp;&amp;q &#x3D;&#x3D; null) return true;</span><br><span class="line">        &#x2F;&#x2F;两者深度不同，必不相同</span><br><span class="line">		if(p &#x3D;&#x3D; null||q&#x3D;&#x3D;null) return false;</span><br><span class="line">		&#x2F;&#x2F;值不相同，直接返回</span><br><span class="line">		if(p.val !&#x3D; q.val) return false;</span><br><span class="line">		递归判断左子树和右子树</span><br><span class="line">		return isSameTree(p.left, q.left)&amp;&amp;isSameTree(p.right, q.right);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-
-	
-
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/数据结构与算法//" class="article-tag-list-link color3">数据结构与算法</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/08/13/%E7%9B%B8%E5%90%8C%E7%9A%84%E6%A0%91/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-判断是否含有环状子链表" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/07/20/%E5%88%A4%E6%96%AD%E6%98%AF%E5%90%A6%E5%90%AB%E6%9C%89%E7%8E%AF%E7%8A%B6%E5%AD%90%E9%93%BE%E8%A1%A8/">判断是否含有环状子链表</a>
-    </h1>
-  
-
-        
-        <a href="/2020/07/20/%E5%88%A4%E6%96%AD%E6%98%AF%E5%90%A6%E5%90%AB%E6%9C%89%E7%8E%AF%E7%8A%B6%E5%AD%90%E9%93%BE%E8%A1%A8/" class="archive-article-date">
-  	<time datetime="2020-07-20T13:14:18.138Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-20</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-
-	
-		<p>本文将提供两种解法：哈希表和双指针(快慢指针)<br>1.哈希表解法:我们将已经遍历过的节点加入到Set集合中，然后判断如果遍历的当前节点在集合中已存在，那么就是有环状结构，如果没有，将一直遍历到链表尾部，需要用额外的空间来辅助:  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">public boolean hasCycle(ListNode head) &#123;</span><br><span class="line">    Set&lt;ListNode&gt; nodesSeen &#x3D; new HashSet&lt;&gt;();</span><br><span class="line">    while (head !&#x3D; null) &#123;</span><br><span class="line">        if (nodesSeen.contains(head)) &#123;</span><br><span class="line">            return true;</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            nodesSeen.add(head);</span><br><span class="line">        &#125;</span><br><span class="line">        head &#x3D; head.next;</span><br><span class="line">    &#125;</span><br><span class="line">    return false;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>2.利用双指针，利用fast和slow两个指针，可以想象成两个运动员在环形赛道上奔跑，fast在slow前方，那么总有一个时刻，fast会再次与slow相遇，我们就是采取这种想法  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">public class Solution &#123;</span><br><span class="line">    public boolean hasCycle(ListNode head) &#123;</span><br><span class="line">        if(head&#x3D;&#x3D;null||head.next&#x3D;&#x3D;null) &#123;</span><br><span class="line">			return false;</span><br><span class="line">		&#125;</span><br><span class="line">		ListNode slow &#x3D; head;</span><br><span class="line">		ListNode fast &#x3D; head.next;</span><br><span class="line">		while(slow!&#x3D;fast) &#123;</span><br><span class="line">		    &#x2F;&#x2F;如果fast能到达尾部，则不存在环，由于我们一次走两步，所以为了防止空指针，要判断两个位置</span><br><span class="line">			if(fast&#x3D;&#x3D;null||fast.next&#x3D;&#x3D;null) &#123;</span><br><span class="line">				return false;</span><br><span class="line">			&#125;</span><br><span class="line">			slow &#x3D; slow.next;</span><br><span class="line">			fast &#x3D; fast.next.next;</span><br><span class="line">		&#125;</span><br><span class="line">		return true;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-	
-
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/数据结构与算法//" class="article-tag-list-link color3">数据结构与算法</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/07/20/%E5%88%A4%E6%96%AD%E6%98%AF%E5%90%A6%E5%90%AB%E6%9C%89%E7%8E%AF%E7%8A%B6%E5%AD%90%E9%93%BE%E8%A1%A8/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-找到环状子链表的入口" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/07/20/%E6%89%BE%E5%88%B0%E7%8E%AF%E7%8A%B6%E5%AD%90%E9%93%BE%E8%A1%A8%E7%9A%84%E5%85%A5%E5%8F%A3/">找到环状子链表的入口</a>
-    </h1>
-  
-
-        
-        <a href="/2020/07/20/%E6%89%BE%E5%88%B0%E7%8E%AF%E7%8A%B6%E5%AD%90%E9%93%BE%E8%A1%A8%E7%9A%84%E5%85%A5%E5%8F%A3/" class="archive-article-date">
-  	<time datetime="2020-07-20T13:14:18.134Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-20</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-
-	
-		<p>整体思路：<br>我们通过构造两次相遇来解决这个问题，首先我们要用双指针fast和slow来辅助解题，我们将两个指针的初始位置都指向头节点，然后fast一次走两步，slow一次走一步，这里分为两种情况:<br><strong>第一种情况</strong>:fast直接到达了链表的尾部，那么是不含有环状结构的，直接return fasle<br><strong>第二种情况</strong>:根据运动员的例子我们可以得知如果含有环状结构那么fast和slow是一定会相遇的，这里我们来分析以下fast和slow走过的路程，首先fast走的路程一定是slow的2倍，所以f = 2s①，然后fast比slow多走了n圈，所以f=s+nb②，联立①和②我们可以得出f=2nb,s=nb，这是第一次相遇时，f和s走的总路程。<br><strong>根据第二种情况继续分析</strong>：此时我们记录总共走的步数为k，那么指针走到环状链表的入口时，k=a+nb,a为head到入口的距离，而此时s走的总路程是nb,所以如果我们s继续走a步就可以使s到达入口处，但我们不知道a的值<br/><br><strong>为了求a我们构造第二次相遇</strong>:所以此时我们令fast指向head，两者一同以相同速度走，那么fast走a步到了入口，s同样到了入口，所以当fast和slow相遇时，就是入口</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">public class Solution &#123;</span><br><span class="line">   	public ListNode detectCycle(ListNode head) &#123;</span><br><span class="line">		if(head &#x3D;&#x3D; null||head.next &#x3D;&#x3D; null) &#123;</span><br><span class="line">			return null;</span><br><span class="line">		&#125;</span><br><span class="line">		ListNode slow &#x3D; head;</span><br><span class="line">		ListNode fast &#x3D; head;</span><br><span class="line">		&#x2F;&#x2F;构建第一次相遇</span><br><span class="line">		while(true) &#123;</span><br><span class="line">			if(fast&#x3D;&#x3D;null||fast.next&#x3D;&#x3D;null) &#123;</span><br><span class="line">				return null;</span><br><span class="line">			&#125;</span><br><span class="line">			slow &#x3D; slow.next;</span><br><span class="line">			fast &#x3D; fast.next.next;</span><br><span class="line">			if(fast &#x3D;&#x3D; slow) &#123;</span><br><span class="line">				break;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		&#x2F;&#x2F;构建第二次相遇</span><br><span class="line">		fast &#x3D; head;</span><br><span class="line">		while(slow!&#x3D;fast) &#123;</span><br><span class="line">			slow &#x3D; slow.next;</span><br><span class="line">			fast &#x3D; fast.next;</span><br><span class="line">		&#125;</span><br><span class="line">		return slow;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-	
-
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/数据结构与算法//" class="article-tag-list-link color3">数据结构与算法</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/07/20/%E6%89%BE%E5%88%B0%E7%8E%AF%E7%8A%B6%E5%AD%90%E9%93%BE%E8%A1%A8%E7%9A%84%E5%85%A5%E5%8F%A3/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-寻找相交链表的交点" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/07/20/%E5%AF%BB%E6%89%BE%E7%9B%B8%E4%BA%A4%E9%93%BE%E8%A1%A8%E7%9A%84%E4%BA%A4%E7%82%B9/">寻找相交链表的交点</a>
-    </h1>
-  
-
-        
-        <a href="/2020/07/20/%E5%AF%BB%E6%89%BE%E7%9B%B8%E4%BA%A4%E9%93%BE%E8%A1%A8%E7%9A%84%E4%BA%A4%E7%82%B9/" class="archive-article-date">
-  	<time datetime="2020-07-20T13:14:18.133Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-20</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-
-	
-		<p>思路:<br>我们利用fa和fb两个指针来辅助解决，两指针遍历链表，当一者到达尾部，那么根据两指针的差值我们可以找到交点<br>此处我们换一种思路来求的插值，拼接链表<br><img src="https://gitee.com/bingjie__chai/PicOfHexo/raw/master/pic_hexo/%E9%93%BE%E8%A1%A8%E4%BA%A4%E7%82%B9.png" alt=""></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">public class Solution &#123;</span><br><span class="line">    public ListNode getIntersectionNode(ListNode headA, ListNode headB) &#123;</span><br><span class="line">        ListNode ha &#x3D; headA, hb &#x3D; headB;</span><br><span class="line">        while (ha !&#x3D; hb) &#123;</span><br><span class="line">            ha &#x3D; ha !&#x3D; null ? ha.next : headB;</span><br><span class="line">            hb &#x3D; hb !&#x3D; null ? hb.next : headA;</span><br><span class="line">        &#125;</span><br><span class="line">        return ha;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-	
-
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/数据结构与算法//" class="article-tag-list-link color3">数据结构与算法</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/07/20/%E5%AF%BB%E6%89%BE%E7%9B%B8%E4%BA%A4%E9%93%BE%E8%A1%A8%E7%9A%84%E4%BA%A4%E7%82%B9/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-反转字符串里的单词" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/07/20/%E5%8F%8D%E8%BD%AC%E5%AD%97%E7%AC%A6%E4%B8%B2%E9%87%8C%E7%9A%84%E5%8D%95%E8%AF%8D/">反转字符串里的单词</a>
-    </h1>
-  
-
-        
-        <a href="/2020/07/20/%E5%8F%8D%E8%BD%AC%E5%AD%97%E7%AC%A6%E4%B8%B2%E9%87%8C%E7%9A%84%E5%8D%95%E8%AF%8D/" class="archive-article-date">
-  	<time datetime="2020-07-20T13:14:02.686Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-20</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-
-	
-		<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">给定一个字符串，逐个翻转字符串中的每个单词。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">示例 1：</span><br><span class="line"></span><br><span class="line">输入: &quot;the sky is blue&quot;</span><br><span class="line">输出:&quot;blue is sky the&quot;</span><br><span class="line">示例 2：</span><br><span class="line"></span><br><span class="line">输入: &quot; hello world! &quot;</span><br><span class="line">输出:&quot;world! hello&quot;</span><br><span class="line">解释: 输入字符串可以在前面或者后面包含多余的空格，但是反转后的字符不能包括。</span><br><span class="line">示例 3：</span><br><span class="line"></span><br><span class="line">输入: &quot;a good  example&quot;</span><br><span class="line">输出:&quot;example good a&quot;</span><br><span class="line">解释: 如果两个单词间有多余的空格，将反转后单词间的空格减少到只含一个。</span><br><span class="line">说明：</span><br><span class="line">无空格字符构成一个单词。</span><br><span class="line">输入字符串可以在前面或者后面包含多余的空格，但是反转后的字符不能包括。</span><br><span class="line">如果两个单词间有多余的空格，将反转后单词间的空格减少到只含一个。</span><br></pre></td></tr></table></figure>
-<p>思路:利用双指针的想法，我们可以从后往前截取单词然后加入到StringBuffer中，当我们取出来是就是倒叙，类似于栈的运用<br>然后利用i，j双指针，根据ij来确定截取单词的位置 </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    public String reverseWords(String s) &#123;</span><br><span class="line">        if(s.length() &#x3D;&#x3D; 0) &#123;</span><br><span class="line">			return &quot;&quot;;</span><br><span class="line">		&#125;</span><br><span class="line">		s &#x3D; s.trim();</span><br><span class="line">		StringBuffer res &#x3D; new StringBuffer();</span><br><span class="line">		int  j &#x3D; s.length()-1;</span><br><span class="line">		int i &#x3D; j;</span><br><span class="line">		while(i&gt;&#x3D;0) &#123;</span><br><span class="line">			while(i&gt;&#x3D;0&amp;&amp;s.charAt(i)!&#x3D;&#39; &#39;) &#123;</span><br><span class="line">				i--;</span><br><span class="line">			&#125;</span><br><span class="line">			res.append(s.substring(i+1, j+1)+&quot; &quot;);</span><br><span class="line">			while(i&gt;&#x3D;0&amp;&amp;s.charAt(i)&#x3D;&#x3D;&#39; &#39;) i--;&#x2F;&#x2F;去除单词间的空格</span><br><span class="line">			j &#x3D; i;</span><br><span class="line">			</span><br><span class="line">		&#125;</span><br><span class="line">		return res.toString().trim();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-	
-
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/数据结构与算法//" class="article-tag-list-link color3">数据结构与算法</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/07/20/%E5%8F%8D%E8%BD%AC%E5%AD%97%E7%AC%A6%E4%B8%B2%E9%87%8C%E7%9A%84%E5%8D%95%E8%AF%8D/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
   
   
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/2/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/4/">Next &amp;raquo;</a>
-    </nav>
+  
+
+  
+
+  
+
   
 
 
@@ -976,8 +352,8 @@ public int height(TreeNode root) {
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
