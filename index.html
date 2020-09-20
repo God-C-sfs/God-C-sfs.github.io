@@ -158,6 +158,254 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-JDBC工具类的封装" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/09/20/JDBC%E5%B7%A5%E5%85%B7%E7%B1%BB%E7%9A%84%E5%B0%81%E8%A3%85/">JDBC工具类的封装</a>
+    </h1>
+  
+
+        
+        <a href="/2020/09/20/JDBC%E5%B7%A5%E5%85%B7%E7%B1%BB%E7%9A%84%E5%B0%81%E8%A3%85/" class="archive-article-date">
+  	<time datetime="2020-09-20T06:45:57.475Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-09-20</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+
+	
+		<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">public class JDBCUtil &#123;</span><br><span class="line">    &#x2F;**</span><br><span class="line">     * 一般工具类的构造方法都是私有的，</span><br><span class="line">     * 因为工具类中的方法都是静态的，不需要new对象，直接类名调用即可</span><br><span class="line">     *&#x2F;</span><br><span class="line">    private JDBCUtil()&#123;&#125;;</span><br><span class="line">    static &#123;</span><br><span class="line">        try &#123;</span><br><span class="line">            Class.forName(&quot;com.mysql.cj.jdbc.Driver&quot;);</span><br><span class="line">        &#125; catch (ClassNotFoundException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    public static Connection getConnection() throws SQLException &#123;</span><br><span class="line">        return DriverManager.getConnection(&quot;jdbc:mysql:&#x2F;&#x2F;localhost:3306&#x2F;bjpowernode?&amp;useSSL&#x3D;false&amp;serverTimezone&#x3D;UTC&quot;,&quot;root&quot;,&quot;123456&quot;);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    public static void close(Connection conn, Statement ps, ResultSet rs)&#123;</span><br><span class="line">        if(rs!&#x3D;null)&#123;</span><br><span class="line">            try &#123;</span><br><span class="line">                rs.close();</span><br><span class="line">            &#125; catch (SQLException e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        if(ps!&#x3D;null)&#123;</span><br><span class="line">            try &#123;</span><br><span class="line">                ps.close();</span><br><span class="line">            &#125; catch (SQLException e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        if(conn!&#x3D;null)&#123;</span><br><span class="line">            try &#123;</span><br><span class="line">                conn.close();</span><br><span class="line">            &#125; catch (SQLException e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+	
+
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/mysql数据库//" class="article-tag-list-link color4">mysql数据库</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/09/20/JDBC%E5%B7%A5%E5%85%B7%E7%B1%BB%E7%9A%84%E5%B0%81%E8%A3%85/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-JDBC" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/09/20/JDBC/">JDBC</a>
+    </h1>
+  
+
+        
+        <a href="/2020/09/20/JDBC/" class="archive-article-date">
+  	<time datetime="2020-09-20T06:45:57.475Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-09-20</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+
+			<p><strong>一、首先什么是JDBC</strong>  </p>
+<ul>
+<li>JDBC接口（API）包括两个层次：<ul>
+<li><strong>面向应用的API</strong>：Java API，抽象接口，供应用程序开发人员使用（连接数据库，执行SQL语句，获得结果）。</li>
+<li><strong>面向数据库的API</strong>：Java Driver API，供开发商开发数据库驱动程序用。</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p><strong>JDBC是sun公司提供一套用于数据库操作的接口，java程序员只需要面向这套接口编程即可。</strong></p>
+<p><strong>不同的数据库厂商，需要针对这套接口，提供不同实现。不同的实现的集合，即为不同数据库的驱动。                                                                ————面向接口编程</strong>  </p>
+</blockquote>
+<ul>
+<li><strong>二、编写JDBC程序的步骤（六个步骤）</strong>  <ul>
+<li>加载并注册驱动  </li>
+<li>创建Connection对象来获取连接  </li>
+<li>获取数据库的操作对象  </li>
+<li>执行sql语句  </li>
+<li>返回结果集  </li>
+<li>关闭资源  </li>
+</ul>
+</li>
+</ul>
+<p><strong><em>1.注册驱动</em></strong><br>首先我们要new出Driver类，Driver接口在java.sql.Driver()中，Driver接口实现类在com.mysql.jdbc.Driver()中，两者包名不同但名字相同，注意正确地导包</p>
+	
+
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/mysql数据库//" class="article-tag-list-link color4">mysql数据库</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/09/20/JDBC/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-关于排列组合和子集的区别" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/09/20/%E5%85%B3%E4%BA%8E%E6%8E%92%E5%88%97%E7%BB%84%E5%90%88%E5%92%8C%E5%AD%90%E9%9B%86%E7%9A%84%E5%8C%BA%E5%88%AB/">关于排列组合和子集的区别</a>
+    </h1>
+  
+
+        
+        <a href="/2020/09/20/%E5%85%B3%E4%BA%8E%E6%8E%92%E5%88%97%E7%BB%84%E5%90%88%E5%92%8C%E5%AD%90%E9%9B%86%E7%9A%84%E5%8C%BA%E5%88%AB/" class="archive-article-date">
+  	<time datetime="2020-09-20T00:15:31.144Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-09-20</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+
+	
+		<p>这篇文章将会比较两种常见的回溯体型，一种是全排列问题，一种是求子集的问题，两者都是利用回溯解法，但是两者的for循环选取下一个可选值时的起始坐标是不同的，先上部分代码我们来比较以下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;子集求法</span><br><span class="line">for(int j &#x3D; i;j&lt;nums.length;j++) &#123;</span><br><span class="line">			temp.add(nums[j]);</span><br><span class="line">			dfs(nums, j+1);</span><br><span class="line">			temp.remove(temp.size()-1);</span><br><span class="line">		&#125;</span><br><span class="line">&#x2F;&#x2F;全排列求法		</span><br><span class="line">for(int i &#x3D; 0;i&lt;len;i++) &#123;</span><br><span class="line">			if(!visited[i]) &#123;</span><br><span class="line">				path.add(nums[i]);</span><br><span class="line">				visited[i] &#x3D; true;</span><br><span class="line">				dfs(nums, len, depth+1, path, res, visited);</span><br><span class="line">				&#x2F;&#x2F;恢复操作</span><br><span class="line">				visited[i] &#x3D; false;</span><br><span class="line">				path.remove(path.size()-1);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="https://gitee.com/bingjie__chai/PicOfHexo/raw/master/pic_hexo/20200920080942.png" alt=""><br><img src="https://gitee.com/bingjie__chai/PicOfHexo/raw/master/pic_hexo/20200920081126.png" alt=""><br>我们观察两者的区别，发现前者的代码for循环是从startIndex开始的，而后者的代码for循环总是从0开始的，这是为什么呢？<br>因为全排列是有顺序的1，2和2，1是不同的，而对于集合来说1，2和2，1是相同的，所以在变量集合的过程中，我们不能回头，否则会产生重复，<strong>正是因为子集求法没有回头，所以我们不需要创建used数组来判断数字是否使用过</strong>，仔细品味上述的图片和代码就会明白其中的道理！！</p>
+
+	
+
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/数据结构与算法//" class="article-tag-list-link color3">数据结构与算法</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/09/20/%E5%85%B3%E4%BA%8E%E6%8E%92%E5%88%97%E7%BB%84%E5%90%88%E5%92%8C%E5%AD%90%E9%9B%86%E7%9A%84%E5%8C%BA%E5%88%AB/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-Servlet" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -730,242 +978,9 @@
 
 
   
-    <article id="post-单词搜索" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/09/13/%E5%8D%95%E8%AF%8D%E6%90%9C%E7%B4%A2/">单词搜索</a>
-    </h1>
-  
-
-        
-        <a href="/2020/09/13/%E5%8D%95%E8%AF%8D%E6%90%9C%E7%B4%A2/" class="archive-article-date">
-  	<time datetime="2020-09-13T02:34:40.302Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-09-13</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-
-	
-		<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">给定一个二维网格和一个单词，找出该单词是否存在于网格中。</span><br><span class="line"></span><br><span class="line">单词必须按照字母顺序，通过相邻的单元格内的字母构成，其中“相邻”单元格是那些水平相邻或垂直相邻的单元格。同一个单元格内的字母不允许被重复使用。</span><br><span class="line"></span><br><span class="line">示例:</span><br><span class="line"></span><br><span class="line">board &#x3D;</span><br><span class="line">[</span><br><span class="line">  [&#39;A&#39;,&#39;B&#39;,&#39;C&#39;,&#39;E&#39;],</span><br><span class="line">  [&#39;S&#39;,&#39;F&#39;,&#39;C&#39;,&#39;S&#39;],</span><br><span class="line">  [&#39;A&#39;,&#39;D&#39;,&#39;E&#39;,&#39;E&#39;]</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line">给定 word &#x3D; &quot;ABCCED&quot;, 返回 true</span><br><span class="line">给定 word &#x3D; &quot;SEE&quot;, 返回 true</span><br><span class="line">给定 word &#x3D; &quot;ABCB&quot;, 返回 false</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">提示：</span><br><span class="line"></span><br><span class="line">board 和 word 中只包含大写和小写英文字母。</span><br><span class="line">1 &lt;&#x3D; board.length &lt;&#x3D; 200</span><br><span class="line">1 &lt;&#x3D; board[i].length &lt;&#x3D; 200</span><br><span class="line">1 &lt;&#x3D; word.length &lt;&#x3D; 10^3</span><br></pre></td></tr></table></figure>
-<p><strong>主要思路</strong><br>本题本质上还是回溯算法的运用，啊啊啊啊，回溯好难啊，今天的卡点在于怎么正确的在回溯过程中设置返回值，有进步的在于整体思路还是没得问题，重点在于返回值的确定，多刷题，多看吧<br>技巧：利用二维偏移量数组来简化代码</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    public boolean exist(char[][] board, String word) &#123;</span><br><span class="line">        if(board.length&#x3D;&#x3D;0)</span><br><span class="line">			return false;</span><br><span class="line">		int l &#x3D; board.length;</span><br><span class="line">		int w &#x3D; board[0].length;</span><br><span class="line">		boolean [][] visited &#x3D; new  boolean[l][w];</span><br><span class="line">		for(int i &#x3D; 0;i&lt;l;i++) &#123;</span><br><span class="line">			for(int j &#x3D; 0;j&lt;w;j++) &#123;</span><br><span class="line">				if(board[i][j]&#x3D;&#x3D;word.charAt(0)) &#123;</span><br><span class="line">					if(dfs(board, visited, i, j, word, 0))</span><br><span class="line">						return true;</span><br><span class="line">					</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		return false;</span><br><span class="line">    &#125;</span><br><span class="line">    public static boolean dfs(char [][] board,boolean [][] visited,int i,int j,String word,int index) &#123;</span><br><span class="line">		if(index&#x3D;&#x3D;word.length()-1)</span><br><span class="line">			return board[i][j]&#x3D;&#x3D;word.charAt(index);</span><br><span class="line">        if(board[i][j]!&#x3D;word.charAt(index))</span><br><span class="line">			return false;</span><br><span class="line">		visited[i][j] &#x3D; true;</span><br><span class="line">		int [][] directions &#x3D; &#123;&#123;0,1&#125;,&#123;0,-1&#125;,&#123;1,0&#125;,&#123;-1,0&#125;&#125;;</span><br><span class="line">		for(int[]com:directions) &#123;</span><br><span class="line">			int newX &#x3D; i+com[0];</span><br><span class="line">			int newY &#x3D; j+com[1];</span><br><span class="line">			if(newX&gt;&#x3D;0&amp;&amp;newX&lt;board.length&amp;&amp;newY&gt;&#x3D;0&amp;&amp;newY&lt;board[0].length&amp;&amp;visited[newX][newY]&#x3D;&#x3D;false)</span><br><span class="line">				if(dfs(board, visited, newX, newY, word, index+1)) &#123;</span><br><span class="line">					return true;</span><br><span class="line">				&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		visited[i][j] &#x3D; false;</span><br><span class="line">		return false;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-	
-
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/数据结构与算法//" class="article-tag-list-link color3">数据结构与算法</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/09/13/%E5%8D%95%E8%AF%8D%E6%90%9C%E7%B4%A2/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-反转字符串中的单词1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/08/30/%E5%8F%8D%E8%BD%AC%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%AD%E7%9A%84%E5%8D%95%E8%AF%8D1/">最短回文串</a>
-    </h1>
-  
-
-        
-        <a href="/2020/08/30/%E5%8F%8D%E8%BD%AC%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%AD%E7%9A%84%E5%8D%95%E8%AF%8D1/" class="archive-article-date">
-  	<time datetime="2020-08-30T13:52:14.981Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-30</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-
-	
-		<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">给定一个字符串，你需要反转字符串中每个单词的字符顺序，同时仍保留空格和单词的初始顺序。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">示例：</span><br><span class="line"></span><br><span class="line">输入：&quot;Let&#39;s take LeetCode contest&quot;</span><br><span class="line">输出：&quot;s&#39;teL ekat edoCteeL tsetnoc&quot;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">提示：</span><br><span class="line"></span><br><span class="line">在字符串中，每个单词由单个空格分隔，并且字符串中不会有任何额外的空格。</span><br></pre></td></tr></table></figure>
-<p><strong>此题目的</strong><br>学会熟练使用java中字符串中的一些操作API函数，例如本题的spilt，trim函数等，此外，String类以及字符串都不提供反转操作，但StringBuffer中有此操作，所以可以转换成StringBuffer再转成String  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    public String reverseWords(String s) &#123;</span><br><span class="line">        String[] strs &#x3D; s.split(&quot; &quot;);</span><br><span class="line">		 StringBuffer tem &#x3D; new StringBuffer();</span><br><span class="line">		 for(String str:strs) &#123;</span><br><span class="line">		    &#x2F;&#x2F;利用库函数反转字符串</span><br><span class="line">			 tem.append(new StringBuffer(str).reverse().toString());</span><br><span class="line">			 tem.append(&quot; &quot;);</span><br><span class="line">		 &#125;</span><br><span class="line">		 return tem.toString().trim();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-	
-
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/数据结构与算法//" class="article-tag-list-link color3">数据结构与算法</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/08/30/%E5%8F%8D%E8%BD%AC%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%AD%E7%9A%84%E5%8D%95%E8%AF%8D1/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-最短回文串" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/08/29/%E6%9C%80%E7%9F%AD%E5%9B%9E%E6%96%87%E4%B8%B2/">最短回文串</a>
-    </h1>
-  
-
-        
-        <a href="/2020/08/29/%E6%9C%80%E7%9F%AD%E5%9B%9E%E6%96%87%E4%B8%B2/" class="archive-article-date">
-  	<time datetime="2020-08-29T15:16:36.074Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-29</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-
-	
-		<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">给定一个字符串 s，你可以通过在字符串前面添加字符将其转换为回文串。找到并返回可以用这种方式转换的最短回文串。</span><br><span class="line"></span><br><span class="line">示例1:</span><br><span class="line"></span><br><span class="line">输入: &quot;aacecaaa&quot;</span><br><span class="line">输出: &quot;aaacecaaa&quot;</span><br><span class="line">示例 2:</span><br><span class="line"></span><br><span class="line">输入: &quot;abcd&quot;</span><br><span class="line">输出: &quot;dcbabcd&quot;</span><br></pre></td></tr></table></figure>
-<p><strong>主要思路：</strong><br><strong>本题是KMP算法的一种运用，利用Next数组解题法宝，利用KMP求解最长回文前缀</strong><br>例如abc这个字符串，前缀加上cba，由于a一个字符可以看作是回文的，所以我们删除a，只用加上cb构成cbabc这个最短的回文字符串，再比如cbjbcb这个字符串，先反转得到bcbjbc，由于cbjbc本身就是回文的，反转后还是本身，所以这个删除两个字符串重叠的部分，得到bcbjbcb这个最短的回文子串<br><strong>继续分析，其实我们就是求s的最长回文前缀，那么我们怎么求解这个最长回文前缀呢？</strong><br>我们将s反转后s的前缀将会变成后缀，所以我们将s和s的反转字符串拼在一起，就是寻找这个新字符串的最长公共前后缀，然后return reverse删除公共部分+s原字符串即为答案<br><strong>tips：</strong> 这里我们在拼接两个字符串时，加了一个‘#’号，如果不加，例如aaa这种情况，拼接后变成aaaaaa，利用KMP求得为6，其实最长回文前缀为3，可以有效防止此类特殊情况出现</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">public class ShortestPalindrome &#123;</span><br><span class="line"></span><br><span class="line">	public static void main(String[] args) &#123;</span><br><span class="line">		&#x2F;&#x2F; TODO 自动生成的方法存根</span><br><span class="line">		String s &#x3D; &quot;aacecaaa&quot;;</span><br><span class="line">		String res &#x3D; shortestPalindrome(s);</span><br><span class="line">		System.out.println(res);</span><br><span class="line">	&#125;</span><br><span class="line">	public static String  shortestPalindrome(String s) &#123;</span><br><span class="line">		String reverse &#x3D; &quot;&quot;;</span><br><span class="line">		int l &#x3D; s.length()-1;</span><br><span class="line">		for(int i &#x3D; l;i&gt;&#x3D;0;i--) &#123;</span><br><span class="line">			reverse+&#x3D;s.charAt(i);</span><br><span class="line">		&#125;</span><br><span class="line">		String s1 &#x3D; s+&#39;#&#39;+reverse;</span><br><span class="line">		int max_len &#x3D; getNext(s1);</span><br><span class="line">		return reverse.substring(0, l-max_len)+s;</span><br><span class="line">		</span><br><span class="line">    &#125;</span><br><span class="line">	public static int getNext(String s) &#123;</span><br><span class="line">		int l &#x3D; s.length();</span><br><span class="line">		int i &#x3D; 0;</span><br><span class="line">		int j &#x3D; -1;</span><br><span class="line">		int [] next &#x3D; new int[s.length()];</span><br><span class="line">		next[0] &#x3D; -1;</span><br><span class="line">		</span><br><span class="line">		while(i&lt;l-1) &#123;</span><br><span class="line">			if(j&#x3D;&#x3D;-1||s.charAt(i)&#x3D;&#x3D;s.charAt(j)) &#123;</span><br><span class="line">				i++;</span><br><span class="line">				j++;</span><br><span class="line">				next[i] &#x3D; j;</span><br><span class="line">			&#125;else</span><br><span class="line">				j &#x3D; next[j];</span><br><span class="line">		&#125;</span><br><span class="line">		return next[l-1];		</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-	
-
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/数据结构与算法//" class="article-tag-list-link color3">数据结构与算法</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/08/29/%E6%9C%80%E7%9F%AD%E5%9B%9E%E6%96%87%E4%B8%B2/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
     </nav>
   
 
