@@ -158,6 +158,164 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-二叉搜索树的众数" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/09/24/%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E7%9A%84%E4%BC%97%E6%95%B0/">二叉搜索树的众数</a>
+    </h1>
+  
+
+        
+        <a href="/2020/09/24/%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E7%9A%84%E4%BC%97%E6%95%B0/" class="archive-article-date">
+  	<time datetime="2020-09-24T03:24:11.820Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-09-24</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+
+	
+		<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">给定一个有相同值的二叉搜索树（BST），找出 BST 中的所有众数（出现频率最高的元素）。</span><br><span class="line"></span><br><span class="line">假定 BST 有如下定义：</span><br><span class="line"></span><br><span class="line">结点左子树中所含结点的值小于等于当前结点的值</span><br><span class="line">结点右子树中所含结点的值大于等于当前结点的值</span><br><span class="line">左子树和右子树都是二叉搜索树</span><br><span class="line">例如：</span><br><span class="line">给定 BST [1,null,2,2],</span><br><span class="line"></span><br><span class="line">   1</span><br><span class="line">    \</span><br><span class="line">     2</span><br><span class="line">    &#x2F;</span><br><span class="line">   2</span><br><span class="line">返回[2].</span><br><span class="line"></span><br><span class="line">提示：如果众数超过1个，不需考虑输出顺序</span><br><span class="line"></span><br><span class="line">进阶：你可以不使用额外的空间吗？（假设由递归产生的隐式调用栈的开销不被计算在内）</span><br></pre></td></tr></table></figure>
+<p><strong>主要思路:</strong><br>本题难点在于如何不利用额外的空间实现，这就需要我们深度去思考一些二叉搜索树的性质，<strong>二叉搜索树的中序遍历得到的序列是单调不减的</strong>利用这条性质，我们中序遍历二叉搜索树后，可以得到一组有序的序列<br><strong>接下来的问题在于如何不用额外空间找到这个有序数列的众数，其中众数还可能不只有一个，那么我们使用三个变量来解决这个问题</strong><br>current_value:当前节点的value<br>current_count:当前值出现的次数<br>max_count:出现最多的次数<br>list:用于储存众数的结果  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">List&lt;Integer&gt; list &#x3D; new ArrayList&lt;&gt;();</span><br><span class="line">	int current &#x3D; 0;</span><br><span class="line">	int current_count &#x3D; 0;</span><br><span class="line">	int max_count &#x3D; 0;</span><br><span class="line">	public int[] findMode(TreeNode root) &#123;</span><br><span class="line">		midOrder(root);</span><br><span class="line">		int res[] &#x3D; new int[list.size()];</span><br><span class="line">		for(int i &#x3D; 0;i&lt;list.size();i++) &#123;</span><br><span class="line">			res[i] &#x3D; list.get(i);</span><br><span class="line">		&#125;</span><br><span class="line">		return res;</span><br><span class="line">	&#125;</span><br><span class="line">	public void midOrder(TreeNode node) &#123;</span><br><span class="line">		if(node&#x3D;&#x3D;null) return;</span><br><span class="line">		&#x2F;&#x2F;先左子树</span><br><span class="line">		midOrder(node.left);</span><br><span class="line">		int value &#x3D; node.val;&#x2F;&#x2F;当前节点的值</span><br><span class="line">		if(value&#x3D;&#x3D;current) &#123;&#x2F;&#x2F;如果相同计数器++</span><br><span class="line">			current_count++;</span><br><span class="line">		&#125;else &#123;&#x2F;&#x2F;不同就更新current的值，同时计数器重置</span><br><span class="line">			current &#x3D; value;</span><br><span class="line">			current_count &#x3D; 1;</span><br><span class="line">		&#125;</span><br><span class="line">		if(current_count &#x3D;&#x3D; max_count) &#123;</span><br><span class="line">			list.add(value);&#x2F;&#x2F;如果次数和最大次数相同，说明不止一个众数，都加入到list中</span><br><span class="line">		&#125;else if(current_count&gt;max_count)&#123;</span><br><span class="line">		&#x2F;&#x2F;如果比max大，那么就先移除list中的值，然后在添加当前值，最后max更新</span><br><span class="line">			list.clear();</span><br><span class="line">			list.add(current);</span><br><span class="line">			max_count &#x3D; current_count;</span><br><span class="line">		&#125;</span><br><span class="line">		&#x2F;&#x2F;右子树</span><br><span class="line">		midOrder(node.right);</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+	
+
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/数据结构与算法//" class="article-tag-list-link color3">数据结构与算法</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/09/24/%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E7%9A%84%E4%BC%97%E6%95%B0/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-把二叉树转换成累加数" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/09/21/%E6%8A%8A%E4%BA%8C%E5%8F%89%E6%A0%91%E8%BD%AC%E6%8D%A2%E6%88%90%E7%B4%AF%E5%8A%A0%E6%95%B0/">把二叉树搜索转换成累加树</a>
+    </h1>
+  
+
+        
+        <a href="/2020/09/21/%E6%8A%8A%E4%BA%8C%E5%8F%89%E6%A0%91%E8%BD%AC%E6%8D%A2%E6%88%90%E7%B4%AF%E5%8A%A0%E6%95%B0/" class="archive-article-date">
+  	<time datetime="2020-09-21T03:22:47.651Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-09-21</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+
+	
+		<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">给定一个二叉搜索树（Binary Search Tree），把它转换成为累加树（Greater Tree)，使得每个节点的值是原来的节点值加上所有大于它的节点值之和。</span><br><span class="line">例如：</span><br><span class="line">输入: 原始二叉搜索树:</span><br><span class="line">              5</span><br><span class="line">            &#x2F;   \</span><br><span class="line">           2     13</span><br><span class="line"></span><br><span class="line">输出: 转换为累加树:</span><br><span class="line">             18</span><br><span class="line">            &#x2F;   \</span><br><span class="line">          20     13</span><br></pre></td></tr></table></figure>
+<p><strong>主要思路</strong><br>重要关键字，这个一颗二叉搜索树，所以根据性质，当前节点的值大于左结点，小于右节点，所以我们要让当前节点加上在这个节点右边的所有节点，当前为例，5需要加上13，2需要加上5，13；可以看到本质上是一种反后序遍历，那代码就比较简单了</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">public static TreeNode convertBST(TreeNode root) &#123;</span><br><span class="line">		if(root&#x3D;&#x3D;null)</span><br><span class="line">			return null;</span><br><span class="line">		fillNumber(root);</span><br><span class="line">		return root;</span><br><span class="line">    &#125;</span><br><span class="line">	static int sum &#x3D; 0;</span><br><span class="line">public static addNumber(TreeNode node)&#123;</span><br><span class="line">    if(node&#x3D;&#x3D;null) return;</span><br><span class="line">    addNumber(node.right);&#x2F;&#x2F;后</span><br><span class="line">    node.val +&#x3D; sum;&#x2F;&#x2F;中</span><br><span class="line">    sum &#x3D; node.val;</span><br><span class="line">    add(node.left);&#x2F;&#x2F;左</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+	
+
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/数据结构与算法//" class="article-tag-list-link color3">数据结构与算法</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/09/21/%E6%8A%8A%E4%BA%8C%E5%8F%89%E6%A0%91%E8%BD%AC%E6%8D%A2%E6%88%90%E7%B4%AF%E5%8A%A0%E6%95%B0/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-JDBC工具类的封装" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -427,35 +585,7 @@
     <div class="article-entry" itemprop="articleBody">
       
 
-	
-		<p><strong>一、介绍：</strong><br>1.servlet接口来自于Servlet规范下一个接口，这个接口存在Http服务器提供的jar包中<br>2.TomCat服务器下lib文件有一个servlet-api.jar存放servlet接口<br>3.servlet规范中规定，Http服务器能调用的【动态资源文件】必须是一个Servlet接口实现类</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;举个例子</span><br><span class="line">class Student&#123;</span><br><span class="line">    不是动态资源文件，TomCat无法调用</span><br><span class="line">&#125;</span><br><span class="line">class Teacher implements Servlet&#123;</span><br><span class="line">    合法的动态资源文件，TomCat能调用</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>二、ServLet接口实现类开发步骤：</strong><br>1.创建一个Java类继承于HttpServlet父类，使之成为一个servlet接口实现类<br>2.重写HttpServlet父类两个方法，doGet或doPost<br>3.将网站-&gt;web-&gt;web_INF-&gt;web.xml文件配置<br>①将servlet接口实现类类路径地址交给tomCat  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;servlet&gt;</span><br><span class="line">    &lt;servlet-name&gt;名称变量&lt;&#x2F;servlet-name&gt;&#x2F;&#x2F;声明一个变量存储servlet接口实现类路径</span><br><span class="line">    &lt;servlet-class&gt;类路径&lt;&#x2F;serclet-class&gt;&#x2F;&#x2F;声明servlet接口实现类路径</span><br><span class="line">&lt;&#x2F;servlet&gt;</span><br></pre></td></tr></table></figure>
-<p>②为了降低用户访问servlet接口实现类难度，需要设置简短的别名  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;servlet-mapping&gt;</span><br><span class="line">    &lt;servlet-name&gt;名称变量&lt;&#x2F;servlet-name&gt;</span><br><span class="line">    &lt;servlet-pattern&gt;别名&lt;&#x2F;serclet-pattern&gt;&#x2F;&#x2F;声明别名</span><br><span class="line">&lt;&#x2F;servlet-mapping&gt;</span><br></pre></td></tr></table></figure>
-<p><strong>三、servlet对象的声明周期</strong><br>1.网络中所有的servlet接口实现类的实例对象只能由Http服务器负责创建<br>2.在默认情况下，Http服务器接收到对于当前Servlet接口实现类第一次请求时自动创建这个Servlet接口实现类的实例对象<br>在手动配置情况下，要求Http服务器在启动时自动创建接口实现类的实例对象<br>3.在Http服务器运行期间，一个Servlet接口实现类只能被创建出一个实例对象，当你再去访问servlet时，不会再次创建<br>4.在Http服务器关闭时刻，自动将servlet接口实现类全部销毁</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;在xml文件中设置servlet  </span><br><span class="line">&lt;servlet&gt;</span><br><span class="line">    &lt;load-on-startup&gt;填一个大于0的整数&lt;&#x2F;load-on-startup&gt;</span><br><span class="line">&lt;&#x2F;servlet&gt;</span><br></pre></td></tr></table></figure>
-<p><strong><em>下面我们来看看如何使用代码解释</em></strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">public class OneServlet extends HttpServlet &#123;</span><br><span class="line">    public OneServlet()&#123;</span><br><span class="line">        System.out.println(&quot;OneServlet类被实例化&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException &#123;</span><br><span class="line">        System.out.println(&quot;OneServlet&#39;s doGet is running&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">public class TwoServlet extends HttpServlet &#123;</span><br><span class="line">    public  TwoServlet()&#123;</span><br><span class="line">        System.out.println(&quot;TwoServlet实例对象被创建&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException &#123;</span><br><span class="line">        System.out.println(&quot;TwoServlet&#39;s doGet is running&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&lt;servlet&gt;&#x2F;&#x2F;xml文件</span><br><span class="line">        &lt;servlet-name&gt;OneServlet&lt;&#x2F;servlet-name&gt;</span><br><span class="line">        &lt;servlet-class&gt;com.bjpowernode.controller.OneServlet&lt;&#x2F;servlet-class&gt;</span><br><span class="line">    &lt;&#x2F;servlet&gt;</span><br><span class="line">&lt;!--    two会在tomcat启动时就创建实例对象--&gt;</span><br><span class="line">    &lt;servlet&gt;</span><br><span class="line">        &lt;servlet-name&gt;TwoServlet&lt;&#x2F;servlet-name&gt;</span><br><span class="line">        &lt;servlet-class&gt;com.bjpowernode.controller.TwoServlet&lt;&#x2F;servlet-class&gt;</span><br><span class="line">        &lt;load-on-startup&gt;10&lt;&#x2F;load-on-startup&gt;</span><br><span class="line">    &lt;&#x2F;servlet&gt;</span><br><span class="line">    &#x2F;&#x2F;one会在第一次访问时创建实例对象</span><br><span class="line">    &lt;servlet-mapping&gt;</span><br><span class="line">        &lt;servlet-name&gt;OneServlet&lt;&#x2F;servlet-name&gt;</span><br><span class="line">        &lt;url-pattern&gt;&#x2F;one&lt;&#x2F;url-pattern&gt;</span><br><span class="line">    &lt;&#x2F;servlet-mapping&gt;</span><br><span class="line">    &lt;servlet-mapping&gt;</span><br><span class="line">        &lt;servlet-name&gt;TwoServlet&lt;&#x2F;servlet-name&gt;</span><br><span class="line">        &lt;url-pattern&gt;&#x2F;two&lt;&#x2F;url-pattern&gt;</span><br><span class="line">    &lt;&#x2F;servlet-mapping&gt;</span><br></pre></td></tr></table></figure>
-<p>如图所示两个servlet的创建时间<br><img src="https://gitee.com/bingjie__chai/PicOfHexo/raw/master/pic_hexo/20200918195635.png" alt=""><br><strong>四、HttpServletResponse接口</strong><br>1.介绍：<br>1).HttpServletResponse接口来自于Servlet规范中，在TomCat中存在servlet-api.jar包中<br>2).HttpServletResponse接口实现类由Http服务器负责提供<br>3).HttpServletResponse接口负责将doGet和doPost方法执行结果写入到响应体中交给浏览器<br>4).HttpServletResponse接口修饰的对象称为响应对象<br>2.主要功能:<br>1).将执行结果以二进制形式写入到响应体中<br>2).设置响应头中content-type属性值，从而控制使用对应编译器将响应体二进制数据编译为对应的图片，视频或文本<br>3).设置响应头中location属性，将一个请求地址赋值给location从而控制浏览器向指定服务器发送请求<br><strong><em>下面我们来看看代码层面的解释</em></strong><br>其中xml文件在此省略，都是创建和起别名的代码文件</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line">如何利用request响应对象来实现将执行结果写入到响应体中</span><br><span class="line">**&#x2F;</span><br><span class="line">public class OneServlet extends HttpServlet &#123;</span><br><span class="line"></span><br><span class="line">    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException &#123;</span><br><span class="line">&#x2F;&#x2F;        result扮演执行结果的角色</span><br><span class="line">        String result &#x3D; &quot;hello world&quot;;</span><br><span class="line">&#x2F;&#x2F;        相应对象将结果写入到响应体中</span><br><span class="line">&#x2F;&#x2F;        1.通过响应对象，向tomCat索要输入流</span><br><span class="line">        PrintWriter out &#x3D; response.getWriter();</span><br><span class="line">&#x2F;&#x2F;        2.通过输出流，将执行结果以二进制写入到响应体中</span><br><span class="line">        out.write(result);</span><br><span class="line">    &#125;&#x2F;&#x2F;doGet执行完毕，tomCat将响应包推送给浏览器</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>但上述方法会存在一个问题，如果我们使用write输出字符，字符串，ASCII码写入到二进制文件中</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">public class TwoServlet extends HttpServlet &#123;</span><br><span class="line">    &#x2F;&#x2F;问题描述：浏览器接受数据是2，不是50</span><br><span class="line">    &#x2F;&#x2F;问题原因：out.write方法可以将字符，字符串，ASCII码写入到响应体中</span><br><span class="line">    &#x2F;&#x2F;问题解决：借用print将真实内容写入到响应体中</span><br><span class="line">    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException &#123;</span><br><span class="line">        int money &#x3D; 50;&#x2F;&#x2F;执行结果</span><br><span class="line">        PrintWriter out &#x3D; response.getWriter();</span><br><span class="line">        out.print(money);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>所以经过上述问题，我们在绝大多数情况下均使用print来代替write</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException &#123;</span><br><span class="line"></span><br><span class="line">        String result &#x3D; &quot;Java&lt;&#x2F;br&gt;Mysql&lt;&#x2F;br&gt;HTML&quot;;</span><br><span class="line">        String result2 &#x3D; &quot;红烧肘子&quot;;</span><br><span class="line">        &#x2F;&#x2F;设置响应头content-type</span><br><span class="line">        response.setContentType(&quot;text&#x2F;html;charset&#x3D;utf-8&quot;);</span><br><span class="line">        &#x2F;&#x2F;向Tomcat索要输出流</span><br><span class="line">        PrintWriter out &#x3D; response.getWriter();</span><br><span class="line">        &#x2F;&#x2F;通过输出六将结果写入到响应体</span><br><span class="line">        out.print(result);</span><br><span class="line">        out.print(result2);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>上述代码中出现两个问题:<br>其一：我们希望br作为标签使用，而不是作为字符串形式使用,问题在于浏览器在接受到相应的相应包后，根据相应包中content-type来决定编译方式，默认属性值为text，对应文本编译器，所以一定要在得到输出流之前设置编译方式<br>其二：我们发现如果输入中文会出现乱码形式，那么我们需要根据上述的格式，在content-type后设置UTF-8字符集<br><strong>五、HttpServletRequest接口</strong><br>1.介绍：<br>1).HttpServletRequest接口来自于Servlet规范中，在TomCat中存在servlet-api.jar包中<br>2).HttpServletRequest接口实现类由Http服务器负责提供<br>3).HttpServletRequest接口负责在doGet和doPost方法运行时读取Http请求协议包中的信息<br>4).HttpServletRequest修饰的对象成为请求对象<br>2.作用：<br>1).可以读取Http请求协议包中请求行的信息<br>2).可以读取保存在Http请求协议包中请求头或者请求体中的请求参数<br>3).可以替代浏览器向Http服务器申请资源文件调用<br><strong><em>接下来时代码的实际分析</em></strong><br>xml文件省略</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">public class OneServlet extends HttpServlet &#123;</span><br><span class="line"></span><br><span class="line">    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException &#123;</span><br><span class="line">        &#x2F;&#x2F;1.通过请求对象，读取（请求行）中url信息</span><br><span class="line">        String url &#x3D; request.getRequestURL().toString();</span><br><span class="line">        &#x2F;&#x2F;2.通过请求对象，读取（请求行）中method信息</span><br><span class="line">        String method &#x3D; request.getMethod();</span><br><span class="line">        &#x2F;&#x2F;3.通过请求对象，读取（请求行）中uri信息</span><br><span class="line">        String uri &#x3D; request.getRequestURI();</span><br><span class="line">        &#x2F;**</span><br><span class="line">         * URI：资源文件精准定位地址，在请求行并没有URI这个属性</span><br><span class="line">         *      实际上URL截取一个字符串，格式“&#x2F;网站名&#x2F;资源文件名”</span><br><span class="line">         *      URI用于让http服务器对被访问的资源文件进行定位</span><br><span class="line">         *&#x2F;</span><br><span class="line">        System.out.println(&quot;url &#x3D; &quot;+url);</span><br><span class="line">        System.out.println(&quot;method &#x3D; &quot;+method);</span><br><span class="line">        System.out.println(&quot;uri &#x3D; &quot;+uri);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>上述代码展示了如何利用请求对象的获取请求行中的信息  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">public class TwoServlet extends HttpServlet &#123;</span><br><span class="line"></span><br><span class="line">    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException &#123;</span><br><span class="line">        &#x2F;&#x2F;1.通过请求对象获得请求头中所有请求参数名</span><br><span class="line">        Enumeration&lt;String&gt; parameterNames &#x3D; request.getParameterNames();</span><br><span class="line">        while(parameterNames.hasMoreElements())&#123;</span><br><span class="line">            String s &#x3D; parameterNames.nextElement();</span><br><span class="line">            &#x2F;&#x2F;2.通过请求对象获得参数名对应的值</span><br><span class="line">            String value &#x3D; request.getParameter(s);</span><br><span class="line">            System.out.println(&quot;请求参数名称 &quot;+s);</span><br><span class="line">            System.out.println(&quot;请求参数值&quot;+value);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;利用html文件来改变请求形式，方便测试请求参数的信息</span><br><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang&#x3D;&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset&#x3D;&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;title&gt;Title&lt;&#x2F;title&gt;</span><br><span class="line">&lt;&#x2F;head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">            &lt;center&gt;</span><br><span class="line">                &lt;a href&#x3D;&quot;&#x2F;myWeb&#x2F;two?userName&#x3D;mike&amp;password&#x3D;123&quot;&gt;通过超链接访问TwoServlet并携带请求参数&lt;&#x2F;a&gt;</span><br><span class="line">            &lt;&#x2F;center&gt;</span><br><span class="line">&lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
-<p>上述代码利用request请求对象来获取<strong>请求头</strong>中的参数信息</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">public class ThreeServlet extends HttpServlet &#123;</span><br><span class="line">    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException &#123;</span><br><span class="line">        String username &#x3D; request.getParameter(&quot;username&quot;);</span><br><span class="line">        System.out.println(&quot;从请求体中得到的参数信息为&quot;+username);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException &#123;</span><br><span class="line">        String username &#x3D; request.getParameter(&quot;username&quot;);</span><br><span class="line">        System.out.println(&quot;从请求头中得到的参数信息为&quot;+username);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang&#x3D;&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset&#x3D;&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;title&gt;Title&lt;&#x2F;title&gt;</span><br><span class="line">&lt;&#x2F;head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">        &lt;center&gt;</span><br><span class="line">            &lt;form action&#x3D;&quot;&#x2F;myWeb&#x2F;three&quot; method&#x3D;&quot;get&quot;&gt;</span><br><span class="line">                请求参数:&lt;input type&#x3D;&quot;text&quot; name&#x3D;&quot;userName&quot;&#x2F;&gt;&lt;br&#x2F;&gt;</span><br><span class="line">                &lt;input type&#x3D;&quot;submit&quot; value&#x3D;&quot;get方式访问ThreeServlet&quot;&gt;</span><br><span class="line">            &lt;&#x2F;form&gt;</span><br><span class="line">            &lt;form action&#x3D;&quot;&#x2F;myWeb&#x2F;three&quot; method&#x3D;&quot;Post&quot;&gt;</span><br><span class="line">                请求参数:&lt;input type&#x3D;&quot;text&quot; name&#x3D;&quot;userName&quot;&#x2F;&gt;&lt;br&#x2F;&gt;</span><br><span class="line">                &lt;input type&#x3D;&quot;submit&quot; value&#x3D;&quot;Post方式访问ThreeServlet&quot;&gt;</span><br><span class="line">            &lt;&#x2F;form&gt;</span><br><span class="line">        &lt;&#x2F;center&gt;</span><br><span class="line">&lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
-<p>上述代码表示如何利用请求对象来获取<strong>请求头或请求体</strong>中的参数信息，<strong>但上述代码存在一个问题</strong><br>当Get形式发送中文参数内容，正常得到，当Post形式发送时，收取到的结果会是乱码<br><strong>原因：</strong><br>当浏览器以Get形式发送请求时，请求参数保存在请求头，在http请求包到达http服务器后，第一件事就是进行解码，请求头二进制内容由TomCat服务器进行解码，TomCat9.0默认使用的是UTF-8字符集<br>当浏览器以Post形式发送请求时，请求参数保存在请求体中，在http请求包到达http服务器中，请求体二进制内容由请求对象(request)负责解码，默认使用ISO-8859-1字符集<br><strong>解决方案</strong><br>在Post请求方式下，在读取请求体内容之前，应该通知请求对象使用UTF-8字符集进行解码  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">request.SetCharacterEncoding(&quot;UTF-8&quot;);</span><br></pre></td></tr></table></figure>
-<p><strong>六、请求对象与响应对象的声明周期</strong><br>1.在Http服务器接收到浏览器发送的Http请求协议包后，自动为当前的Http请求协议包生成一个请求对象和响应对象<br>2.Http服务器调用doGet和doPost方法时，负责将请求对象和响应对象作为实参传递到方法中，确保doGet和doPost正确执行<br>3.在Http准备推送Http响应协议包时之前，负责将本次请求故关联的请求对象和响应对象销毁<br><strong>请求对象和响应对象声明周期贯穿一次请求的处理过程</strong></p>
-
+			<p><strong>一、介绍：</strong><br>1.servlet接口来自于Servlet规范下一个接口，这个接口存在Http服务器提供的jar包中<br>2.TomCat服务器下lib文件有一个servlet-api.jar存放servlet接口<br>3.servlet规范中规定，Http服务器能调用的【动态资源文件】必须是一个Servlet接口实现类</p>
 	
 
     </div>
@@ -797,158 +927,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2020/09/17/TomCat%E6%9C%8D%E5%8A%A1%E5%99%A8/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-解数独" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/09/16/%E8%A7%A3%E6%95%B0%E7%8B%AC/">解数独</a>
-    </h1>
-  
-
-        
-        <a href="/2020/09/16/%E8%A7%A3%E6%95%B0%E7%8B%AC/" class="archive-article-date">
-  	<time datetime="2020-09-16T15:26:11.324Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-09-16</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-
-	
-		<hr>
-<p>title: 解数独<br>categories: 数据结构与算法</p>
-<hr>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">编写一个程序，通过已填充的空格来解决数独问题。</span><br><span class="line"></span><br><span class="line">一个数独的解法需遵循如下规则：</span><br><span class="line"></span><br><span class="line">数字1-9在每一行只能出现一次。</span><br><span class="line">数字1-9在每一列只能出现一次。</span><br><span class="line">数字1-9在每一个以粗实线分隔的3x3宫内只能出现一次。</span><br><span class="line">空白格用&#39;.&#39;表示。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">一个数独。</span><br><span class="line"></span><br><span class="line">答案被标成红色。</span><br><span class="line">Note:</span><br><span class="line">给定的数独序列只包含数字1-9和字符&#39;.&#39;。</span><br><span class="line">你可以假设给定的数独只有唯一解。</span><br><span class="line">给定数独永远是9x9形式的。</span><br></pre></td></tr></table></figure>
-<p><strong>主要思路：</strong><br>1.首先这里用到了几个技巧，首先是visited数组的设置来标记行使用，列使用，和3*3的方格内的使用情况<br>2.关于返回值为booelan型的递归时，如何确定返回条件</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">     boolean [][] lineUsed;</span><br><span class="line">	 boolean [][] colUsed;</span><br><span class="line">	 boolean [][][] boardUsed;</span><br><span class="line">    public void solveSudoku(char[][] board) &#123;</span><br><span class="line">        lineUsed &#x3D; new boolean[9][10];&#x2F;&#x2F;记录行使用情况</span><br><span class="line">		colUsed &#x3D; new boolean[9][10];&#x2F;&#x2F;列使用情况</span><br><span class="line">		boardUsed &#x3D; new boolean[9][9][10];&#x2F;&#x2F;3*3方格内的使用情况</span><br><span class="line">		for(int i &#x3D; 0;i&lt;9;i++) &#123;</span><br><span class="line">			for(int j &#x3D; 0;j&lt;9;j++) &#123;</span><br><span class="line">				if(board[i][j]!&#x3D;&#39;.&#39;) &#123;</span><br><span class="line">					int num &#x3D; board[i][j]-&#39;0&#39;;</span><br><span class="line">					lineUsed[i][num] &#x3D; true;</span><br><span class="line">					colUsed[j][num] &#x3D; true;</span><br><span class="line">					boardUsed[i&#x2F;3][j&#x2F;3][num] &#x3D; true;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;&#x2F;&#x2F;先将已经填好的给标记</span><br><span class="line">		recursion(board,0,0);&#x2F;&#x2F;递归填剩下的空白处</span><br><span class="line">    &#125;</span><br><span class="line">    public  boolean recursion(char[][] board,int i,int j) &#123;</span><br><span class="line">		if(j&#x3D;&#x3D;9) &#123;</span><br><span class="line">			j &#x3D; 0;</span><br><span class="line">			i++;</span><br><span class="line">			if(i&#x3D;&#x3D;9) &#123;</span><br><span class="line">				return true;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		if(board[i][j]!&#x3D;&#39;.&#39;) return recursion(board,i,j+1);&#x2F;&#x2F;不是空白直接递归下一个位置</span><br><span class="line">		for(int k&#x3D; 1;k&lt;&#x3D;9;k++) &#123; &#x2F;&#x2F;尝试填入1-9</span><br><span class="line">			if(lineUsed[i][k]||colUsed[j][k]||boardUsed[i&#x2F;3][j&#x2F;3][k])</span><br><span class="line">				continue;&#x2F;&#x2F;用过了就跳过</span><br><span class="line">			board[i][j] &#x3D; (char)(k+&#39;0&#39;);</span><br><span class="line">			lineUsed[i][k] &#x3D; true;</span><br><span class="line">			colUsed[j][k] &#x3D; true;</span><br><span class="line">			boardUsed[i&#x2F;3][j&#x2F;3][k] &#x3D; true;</span><br><span class="line">			if(recursion(board, i, j+1))return true;</span><br><span class="line">			&#x2F;&#x2F;回溯，状态重置</span><br><span class="line">			board[i][j] &#x3D; &#39;.&#39;;</span><br><span class="line">			lineUsed[i][k] &#x3D; false;</span><br><span class="line">			colUsed[j][k] &#x3D; false;</span><br><span class="line">			boardUsed[i&#x2F;3][j&#x2F;3][k] &#x3D; false;</span><br><span class="line">		&#125;</span><br><span class="line">		&#x2F;&#x2F;如果1-9填入都不行那就return false</span><br><span class="line">		return false;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-	
-
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/09/16/%E8%A7%A3%E6%95%B0%E7%8B%AC/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-只出现一次的数字" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/09/15/%E5%8F%AA%E5%87%BA%E7%8E%B0%E4%B8%80%E6%AC%A1%E7%9A%84%E6%95%B0%E5%AD%97/">只出现一次 的数字</a>
-    </h1>
-  
-
-        
-        <a href="/2020/09/15/%E5%8F%AA%E5%87%BA%E7%8E%B0%E4%B8%80%E6%AC%A1%E7%9A%84%E6%95%B0%E5%AD%97/" class="archive-article-date">
-  	<time datetime="2020-09-15T07:53:46.787Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-09-15</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-
-	
-		<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">给定一个非空整数数组，除了某个元素只出现一次以外，其余每个元素均出现两次。找出那个只出现了一次的元素。</span><br><span class="line"></span><br><span class="line">说明：</span><br><span class="line"></span><br><span class="line">你的算法应该具有线性时间复杂度。 你可以不使用额外空间来实现吗？</span><br><span class="line"></span><br><span class="line">示例 1:</span><br><span class="line"></span><br><span class="line">输入: [2,2,1]</span><br><span class="line">输出: 1</span><br><span class="line">示例2:</span><br><span class="line"></span><br><span class="line">输入: [4,1,2,1,2]</span><br><span class="line">输出: 4</span><br></pre></td></tr></table></figure>
-<p>这道题如果不限制时间和空间的复杂度其实有很多种解法，接下来我们着重讲三种做法，不在于结果而在于解决这个问题过程种的分析<br><strong>一、利用hashMap对应存储每个数字的次数，最后取出次数为1的数字，但时间复杂度为o（n）</strong>  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    public int singleNumber(int[] nums) &#123;</span><br><span class="line">        Map&lt;Integer, Integer&gt; map &#x3D; new HashMap&lt;&gt;();</span><br><span class="line">        for (Integer i : nums) &#123;</span><br><span class="line">            Integer count &#x3D; map.get(i);</span><br><span class="line">            count &#x3D; count &#x3D;&#x3D; null ? 1 : ++count;</span><br><span class="line">            map.put(i, count);</span><br><span class="line">        &#125;</span><br><span class="line">        for (Integer i : map.keySet()) &#123;</span><br><span class="line">            Integer count &#x3D; map.get(i);</span><br><span class="line">            if (count &#x3D;&#x3D; 1) &#123;</span><br><span class="line">                return i;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return -1; </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>二、我们如果利用暴力方法对每一个数组在后面的集合中查找时间复杂度为o(n^2),但我们思索一下，如果我们将数组排序一下，就可以讲复杂度降到o(n),且是线性复杂度</strong>  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">public static int singleNumber(int[] nums) &#123;</span><br><span class="line">		Arrays.sort(nums);</span><br><span class="line">		int i;</span><br><span class="line">		for( i &#x3D; 0;i+1&lt;nums.length;i&#x3D;i+2) &#123;</span><br><span class="line">			if(nums[i]!&#x3D;nums[i+1])</span><br><span class="line">				return nums[i];</span><br><span class="line">		&#125;</span><br><span class="line">		return nums[i];</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<p><strong>三、接下来的方法非常牛，利用位运算来解决问题，接下来就来分析一下位运算，以及如何利用位运算来解决这个问题,由于输入问题我们用#代替^符号</strong><br>首先我们来理解一下或与运算符的规则，位运算有以下三种性质<br>即根据操作数的二级制数来运算，对应位相同则为0，不同则为1，利用这个衍生处三个性质<br>1.任何与0做位运算的数字结果都为数字本身：0#a=a<br>2.任何数于本事做位运算结果都为0:a#a=0<br>3.位运算满足交换律和结合律即:a#b=b#a,a#b#c#d=(a#b)#(c#d)<br>所以我们利用上述的结论，对数组进行分析，我们假设该数组有2*m+1个数字，其中m组数组均为出现2次，剩余一个数字出现1次，那么我们总可以将这个数组化成下列形式<br>(a1#a1)#(a2#a2)……(am#am)#am+1,其中成对的结果都为0最终就是0#am+1就是只出现了一次的数字</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">public static int singleNumber2(int [] nums) &#123;</span><br><span class="line">		int res &#x3D; 0;</span><br><span class="line">		for(int num:nums) &#123;</span><br><span class="line">			res^&#x3D;num;</span><br><span class="line">		&#125;</span><br><span class="line">		return res;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-	
-
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/数据结构与算法//" class="article-tag-list-link color3">数据结构与算法</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/09/15/%E5%8F%AA%E5%87%BA%E7%8E%B0%E4%B8%80%E6%AC%A1%E7%9A%84%E6%95%B0%E5%AD%97/">展开全文 >></a>
         </p>
       
 
