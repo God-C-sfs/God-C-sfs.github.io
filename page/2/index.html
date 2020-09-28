@@ -158,6 +158,242 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-Http网络协议" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/09/18/Http%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/">TomCat服务器</a>
+    </h1>
+  
+
+        
+        <a href="/2020/09/18/Http%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/" class="archive-article-date">
+  	<time datetime="2020-09-18T11:26:07.566Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-09-18</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+
+	
+		<h1 id="http网络协议包"><a href="#http网络协议包" class="headerlink" title="http网络协议包"></a>http网络协议包</h1><p><strong>一、网络协议包：</strong><br>1.在网络中传递信息都是以二进制形式催在的<br>2.接收方[浏览器/服务器]在接受信息后，要做的第一件事就是将[二进制数据]进行编译[文字，图片，视频，命令]<br>3.传递信息数据量往往比较巨大，导致接收方很难在一组连续二进制得到对应的数据<br>4.网络协议包一组有规律的二进制数据，在这组数据中存在了固定的空间，每一个固定的空间存放特定的信息，这样接收方在接受网络协议包之后就可以得到固定空间的对应的信息，网络协议包极大降低了接收方接受对应二进制数据编译的难度<br><strong>二、常见的网络协议：</strong><br>1.FTP网络协议包<br>2.Http网络协议包<br><strong>三、Http网络协议包：</strong><br>在基于B/S结构下互联网通信过程中，所有在网络中传递信息都是保存在Http网络协议包中分为<strong><em>Http请求协议包和Http响应协议包</em></strong><br><strong>四、Http请求协议包与Http响应协议包介绍：</strong><br>1.Http请求协议包：<br>在浏览器准备发送请求时，负责创建一个Http请求协议包，浏览器将请求信息以二进制的形式保存在请求协议包各个空间中，由浏览器负责将Http请求协议包推送到指定服务端计算机<br>2.Http响应协议包：<br>Http服务器在定位到被访问的资源后负责创建一个Http响应协议包，Http服务器将定位文件内容以二进制写入到Http响应协议包中推送会发起请求的浏览器上<br><strong>五、Http请求协议包内部空间</strong><br>1.按照自上而下划分，分为4个空间<br>2.空间划分，自上而下：<br>请求行  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">url：请求地址  </span><br><span class="line">method：请求方式</span><br></pre></td></tr></table></figure>
+<p>请求头  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">请求参数信息[当请求方式为GET]</span><br></pre></td></tr></table></figure>
+<p>空白行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">没有任何内容，起到隔离作用</span><br></pre></td></tr></table></figure>
+<p>请求体  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">请求参数信息[当请求方式为POST]</span><br></pre></td></tr></table></figure>
+
+<p><strong>六、Http响应协议包内部结构</strong><br>1.按照自上而下的划分，分为4个空间<br>2.空间划分，自上而下：<br>状态行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Http状态码</span><br></pre></td></tr></table></figure>
+<p>响应头</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">content-type：指定浏览器采用对应的编译器。对响应体二进制数据进行解析</span><br></pre></td></tr></table></figure>
+<p>空白行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">没有任何内容，起到隔离作用</span><br></pre></td></tr></table></figure>
+<p>响应体</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">可能被访问静态资源文件内容</span><br><span class="line">可能被访问的静态资源文件命令</span><br><span class="line">可能被访问的动态资源文件运行结果</span><br><span class="line">（都是以二进制形式）</span><br></pre></td></tr></table></figure>
+<p><img src="https://gitee.com/bingjie__chai/PicOfHexo/raw/master/pic_hexo/20200918192546.png" alt=""></p>
+
+	
+
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Web//" class="article-tag-list-link color4">Web</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/09/18/Http%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-全排列II" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/09/18/%E5%85%A8%E6%8E%92%E5%88%97II/">全排列II</a>
+    </h1>
+  
+
+        
+        <a href="/2020/09/18/%E5%85%A8%E6%8E%92%E5%88%97II/" class="archive-article-date">
+  	<time datetime="2020-09-18T11:05:17.033Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-09-18</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+
+	
+		<hr>
+<p>title: 全排列II<br>categories: 数据结构与算法</p>
+<hr>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">给定一个可包含重复数字的序列，返回所有不重复的全排列。</span><br><span class="line"></span><br><span class="line">示例:</span><br><span class="line"></span><br><span class="line">输入: [1,1,2]</span><br><span class="line">输出:</span><br><span class="line">[</span><br><span class="line">  [1,1,2],</span><br><span class="line">  [1,2,1],</span><br><span class="line">  [2,1,1]</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<p><strong>主要思路:整体思路和全排列是大致相同的，本题的难点在于如何剪枝，如何去重</strong><br><img src="https://gitee.com/bingjie__chai/PicOfHexo/raw/master/pic_hexo/20200918185728.png" alt=""><br>如图所示，当我们把nums数组排好序后，我们思考一个问题，什么时候会产生重复的组合，红色框内标注的情况是和1是一样的，所以当num[i-1]==nums[i]时，可能会发生重复，当我们是要判断层重复，而不是枝重复，如果仅仅只有这个条件那么最左边一条路径在选取第二个i时，也无法选择<br><strong>所以我们还需要另一个判重条件</strong><br>我们在深入分析可以发现，其实我们要剪枝的部分是满足上述条件且刚刚撤销选择的部分，当我们撤销选择时，在重新选取下一个数时，如果num[i-1]==num[i]说明下面的情况都相同<br><strong>剩下的代码和全排列相同</strong>  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">public class PermuteUnique &#123;</span><br><span class="line">	</span><br><span class="line">	public static void main(String[] args) &#123;</span><br><span class="line">		&#x2F;&#x2F; TODO 自动生成的方法存根</span><br><span class="line">		int [] nums &#x3D; &#123;1&#125;;</span><br><span class="line">		List&lt;List&lt;Integer&gt;&gt; permuteUnique &#x3D; permuteUnique(nums);</span><br><span class="line">		for(List list:permuteUnique)</span><br><span class="line">			System.out.println(list.toString());</span><br><span class="line">	&#125;</span><br><span class="line">	public static List&lt;List&lt;Integer&gt;&gt; permuteUnique(int[] nums) &#123;</span><br><span class="line">		if(nums.length &#x3D;&#x3D; 0)</span><br><span class="line">			return null;</span><br><span class="line">		Arrays.sort(nums);</span><br><span class="line">		boolean []used &#x3D; new boolean[nums.length];</span><br><span class="line">		&#x2F;&#x2F;推荐使用Deque来创建stack类</span><br><span class="line">		Deque&lt;Integer&gt; path &#x3D; new ArrayDeque();</span><br><span class="line">		List&lt;List&lt;Integer&gt;&gt; res &#x3D; new ArrayList&lt;&gt;();</span><br><span class="line">		dfs(0, nums,used,path,res);</span><br><span class="line">		return res;</span><br><span class="line">    &#125;</span><br><span class="line">	public static void dfs(int depth,int[] nums,boolean[] used,Deque&lt;Integer&gt; path,List&lt;List&lt;Integer&gt;&gt; res) &#123;</span><br><span class="line">		if(depth&#x3D;&#x3D;nums.length) &#123;</span><br><span class="line">			res.add(new ArrayList&lt;&gt;(path));</span><br><span class="line">			return;</span><br><span class="line">		&#125;</span><br><span class="line">		for(int i &#x3D; 0;i&lt;nums.length;i++) &#123;</span><br><span class="line">		&#x2F;&#x2F;剪枝条件</span><br><span class="line">			if(i&gt;0&amp;&amp;nums[i]&#x3D;&#x3D;nums[i-1]&amp;&amp;used[i-1]&#x3D;&#x3D;false)</span><br><span class="line">				continue;</span><br><span class="line">	    &#x2F;&#x2F;普通全排列保证这个数没有选过</span><br><span class="line">			if(used[i])</span><br><span class="line">				continue;</span><br><span class="line">			path.addLast(nums[i]);</span><br><span class="line">			used[i] &#x3D; true;</span><br><span class="line">			dfs(depth+1, nums, used,path,res);</span><br><span class="line">			used[i] &#x3D; false;</span><br><span class="line">			path.removeLast();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+	
+
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/09/18/%E5%85%A8%E6%8E%92%E5%88%97II/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-TomCat服务器" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/09/17/TomCat%E6%9C%8D%E5%8A%A1%E5%99%A8/">TomCat服务器</a>
+    </h1>
+  
+
+        
+        <a href="/2020/09/17/TomCat%E6%9C%8D%E5%8A%A1%E5%99%A8/" class="archive-article-date">
+  	<time datetime="2020-09-17T08:29:29.347Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-09-17</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+
+	
+		<p><strong>一、如何下载安装TomCat，安装及配置</strong><br>1.下载：<a href="https://tomcat.apache.org/" target="_blank" rel="noopener">https://tomcat.apache.org/</a> 官方网址，一般下载Tom9，64位，下载后直接安装<br>2.配置TomCat环境变量<br>①.配置JAVA_HOME，将jdk的路径配置到环境变量中C:\Program Files\Java\jdk-14.0.1<br>②.配置CATALINA_HOME，将TomCat的路径加入到环境变量中 D:\apache-tomcat-9.0.37-windows-x64\apache-tomcat-9.0.37<br><strong>二、如何启动和关闭TomCat服务器</strong><br>1.进入tomCat，bin目录下的startup和shutdown的exe后缀文件，或是在bin目录下使用cmd输入startup和shutdown。<br><strong><em>注意事项</em></strong><br>一般在开启服务前，先关闭服务，防止忘记关闭服务再次打开失败<br>当成功启动tomCat服务器后，localhost:8080访问后出现连接成功的页面则表示连接成功<br><strong>三、如何利用idea启动TomCat服务器</strong><br>1.File（文件）-&gt;setting(设置)-&gt;构建、执行、部署-&gt;application service-&gt;点击+号，tomCat service设置tomCat的路径<br>2.准备开关：运行-&gt;编辑配置-&gt;+tomCat service-&gt;默认选项<br>3.当运行按钮后弹出页面，在地址后加上想要访问的目录既可运行成功<br><strong>四、idea创建网站</strong><br>1.创建modea文件，Java Enterprise下Web Application此处位网站起名时可以添加中文<br>2.创建myWeb后下的文件结构：<br>①.src放置作为动态文件资源的Java文件<br>②.web文件架存放作为静态资源文件例如:图片，html，css，js<br>&emsp;–web下的WEB_INF中存放网站的核心配置文件(web.xml)<br>&emsp;&emsp;–WEB-INF下的lib文件夹存放网站运行的核心配置文件时依赖的jar文件<br>3.为开关设置发布行为，运行-&gt;编辑配置-&gt;选到相应开关-&gt;deployment-&gt;+artifat-&gt;为网站起英文别名<br>4.运行即可</p>
+
+	
+
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Web//" class="article-tag-list-link color4">Web</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/09/17/TomCat%E6%9C%8D%E5%8A%A1%E5%99%A8/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-解数独" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -673,242 +909,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2020/08/28/%E6%AC%A7%E6%8B%89%E8%B7%AF%E5%BE%84/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-电话号码的字母组合" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/08/26/%E7%94%B5%E8%AF%9D%E5%8F%B7%E7%A0%81%E7%9A%84%E5%AD%97%E6%AF%8D%E7%BB%84%E5%90%88/">电话号码的字母组合</a>
-    </h1>
-  
-
-        
-        <a href="/2020/08/26/%E7%94%B5%E8%AF%9D%E5%8F%B7%E7%A0%81%E7%9A%84%E5%AD%97%E6%AF%8D%E7%BB%84%E5%90%88/" class="archive-article-date">
-  	<time datetime="2020-08-26T14:05:11.158Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-26</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-
-	
-		<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">给定一个仅包含数字2-9的字符串，返回所有它能表示的字母组合。</span><br><span class="line"></span><br><span class="line">给出数字到字母的映射如下（与电话按键相同）。注意 1 不对应任何字母。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">示例:</span><br><span class="line"></span><br><span class="line">输入：&quot;23&quot;</span><br><span class="line">输出：[&quot;ad&quot;, &quot;ae&quot;, &quot;af&quot;, &quot;bd&quot;, &quot;be&quot;, &quot;bf&quot;, &quot;cd&quot;, &quot;ce&quot;, &quot;cf&quot;].</span><br><span class="line">说明:</span><br><span class="line">尽管上面的答案是按字典序排列的，但是你可以任意选择答案输出的顺序。</span><br></pre></td></tr></table></figure>
-<p><strong>主要思路:</strong><br>类似于这种回溯排列问题都有固定的模板，难点在于书写搜索范围，本题思路与递增子序列问题大同小异，我们用map存放数字映射的字母，具体代码如下：  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    List&lt;String&gt; res &#x3D; new ArrayList&lt;&gt;();</span><br><span class="line">	Map&lt;Integer,String&gt; map &#x3D; new HashMap&lt;&gt;();</span><br><span class="line">    public List&lt;String&gt; letterCombinations(String digits) &#123;</span><br><span class="line">        &#x2F;&#x2F;关于字符串的判断，统统用equals方法</span><br><span class="line">        if(digits.equals(&quot;&quot;))</span><br><span class="line">			return res;</span><br><span class="line">        map.put(2, &quot;abc&quot;);</span><br><span class="line">		map.put(3, &quot;def&quot;);</span><br><span class="line">		map.put(4, &quot;ghi&quot;);</span><br><span class="line">		map.put(5, &quot;jkl&quot;);</span><br><span class="line">		map.put(6, &quot;mno&quot;);</span><br><span class="line">		map.put(7, &quot;pqrs&quot;);</span><br><span class="line">		map.put(8, &quot;tuv&quot;);</span><br><span class="line">		map.put(9, &quot;wxyz&quot;);</span><br><span class="line">		StringBuffer path &#x3D; new StringBuffer();</span><br><span class="line">		dfs(digits, path, 0);</span><br><span class="line">		return res;</span><br><span class="line">    &#125;</span><br><span class="line">    public void dfs(String str,StringBuffer path, int i) &#123;&#x2F;&#x2F;i表示组成字符串的第i位</span><br><span class="line">        &#x2F;&#x2F;结束条件</span><br><span class="line">		if(i&#x3D;&#x3D;str.length()) &#123;</span><br><span class="line">			res.add(path.toString());</span><br><span class="line">			return;</span><br><span class="line">		&#125;</span><br><span class="line">		int index &#x3D; str.charAt(i)-&#39;0&#39;;</span><br><span class="line">		String string &#x3D; map.get(index);</span><br><span class="line">		&#x2F;&#x2F;遍历map对应的映射</span><br><span class="line">		for(int j &#x3D; 0;j&lt;string.length();j++) &#123;</span><br><span class="line">			path.append(string.charAt(j));</span><br><span class="line">			dfs(str, path, i+1);</span><br><span class="line">			path.deleteCharAt(i);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-	
-
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/数据结构与算法//" class="article-tag-list-link color3">数据结构与算法</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/08/26/%E7%94%B5%E8%AF%9D%E5%8F%B7%E7%A0%81%E7%9A%84%E5%AD%97%E6%AF%8D%E7%BB%84%E5%90%88/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-递增子序列" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/08/26/%E9%80%92%E5%A2%9E%E5%AD%90%E5%BA%8F%E5%88%97/">递增子序列</a>
-    </h1>
-  
-
-        
-        <a href="/2020/08/26/%E9%80%92%E5%A2%9E%E5%AD%90%E5%BA%8F%E5%88%97/" class="archive-article-date">
-  	<time datetime="2020-08-26T14:04:54.463Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-26</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-
-	
-		<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">给定一个整型数组, 你的任务是找到所有该数组的递增子序列，递增子序列的长度至少是2。</span><br><span class="line"></span><br><span class="line">示例:</span><br><span class="line"></span><br><span class="line">输入: [4, 6, 7, 7]</span><br><span class="line">输出: [[4, 6], [4, 7], [4, 6, 7], [4, 6, 7, 7], [6, 7], [6, 7, 7], [7,7], [4,7,7]]</span><br><span class="line">说明:</span><br><span class="line"></span><br><span class="line">给定数组的长度不会超过15。</span><br><span class="line">数组中的整数范围是[-100,100]。</span><br><span class="line">给定数组中可能包含重复数字，相等的数字应该被视为递增的一种情况。</span><br></pre></td></tr></table></figure>
-<p><strong>主要思路：</strong><br>本题主要考察回溯算法的理解，类似于全排列的思路，根据题目进行剪枝，最主要是如何去重，因为数组中存在重复的数字所以在选择的过程中可能会出现重复的子序列，所以根据去重的思路我们主要分为两种，关于选数的分递归可以用for循环和选与不选两种思路，此处我们Set方法用for循环，剪枝用选与不选的方法<br><strong>一、Set去重</strong>  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    List&lt;List&lt;Integer&gt;&gt; res &#x3D; new ArrayList&lt;&gt;();</span><br><span class="line">    Set&lt;Object&gt; set &#x3D; new HashSet&lt;&gt;();&#x2F;&#x2F;去重</span><br><span class="line">    public List&lt;List&lt;Integer&gt;&gt; findSubsequences(int[] nums) &#123;</span><br><span class="line">        List&lt;Integer&gt; path &#x3D; new ArrayList&lt;&gt;();</span><br><span class="line">		dfs(0,nums,path);</span><br><span class="line">		return res;</span><br><span class="line">    &#125;</span><br><span class="line">    private void dfs(int start, int[] nums,List&lt;Integer&gt; path) &#123;</span><br><span class="line">		if(path.size()&gt;&#x3D;2&amp;&amp;!set.contains(path)) &#123;</span><br><span class="line">		    &#x2F;&#x2F;到达最深处拷贝path</span><br><span class="line">			set.add(new ArrayList&lt;&gt;(path));</span><br><span class="line">			res.add(new ArrayList&lt;&gt;(path));</span><br><span class="line">		&#125;</span><br><span class="line">		for(int i &#x3D; start;i&lt;nums.length;i++) &#123;</span><br><span class="line">			if(path.size()&#x3D;&#x3D;0||path.get(path.size()-1)&lt;&#x3D;nums[i]) &#123;</span><br><span class="line">				path.add(nums[i]);</span><br><span class="line">				dfs(i+1, nums,path);</span><br><span class="line">				path.remove(path.size()-1);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>二、剪枝去重</strong><br>那如何保证没有重复呢？我们需要给「不选择」做一个限定条件，只有当当前的元素不等于上一个选择的元素的时候，才考虑不选择当前元素，直接递归后面的元素。因为如果有两个相同的元素，我们会考虑这样四种情况：</p>
-<p>前者被选择，后者被选择<br>前者被选择，后者不被选择<br>前者不被选择，后者被选择<br>前者不被选择，后者不被选择<br>其中第二种情况和第三种情况其实是等价的，我们这样限制之后，舍弃了第二种，保留了第三种，于是达到了去重的目的。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    List&lt;List&lt;Integer&gt;&gt; res &#x3D; new ArrayList&lt;&gt;();</span><br><span class="line">    public List&lt;List&lt;Integer&gt;&gt; findSubsequences(int[] nums) &#123;</span><br><span class="line">        List&lt;Integer&gt; path &#x3D; new ArrayList&lt;&gt;();</span><br><span class="line">		dfs(0,nums,path,Integer.MIN_VALUE);</span><br><span class="line">		return res;</span><br><span class="line">    &#125;</span><br><span class="line">    private void dfs(int index, int[] nums,List&lt;Integer&gt; path,int last) &#123;</span><br><span class="line">		if(index &#x3D;&#x3D; nums.length) &#123;</span><br><span class="line">			if(path.size()&gt;&#x3D;2)</span><br><span class="line">				res.add(new ArrayList&lt;&gt;(path));</span><br><span class="line">			return;</span><br><span class="line">		&#125;</span><br><span class="line">		if(nums[index]&gt;&#x3D;last) &#123;</span><br><span class="line">			path.add(nums[index]);</span><br><span class="line">			dfs(index+1, nums, path, nums[index]);</span><br><span class="line">			path.remove(path.size()-1);</span><br><span class="line">		&#125;</span><br><span class="line">		if(nums[index]!&#x3D;last)</span><br><span class="line">			dfs(index+1, nums, path, last);</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-	
-
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/数据结构与算法//" class="article-tag-list-link color3">数据结构与算法</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/08/26/%E9%80%92%E5%A2%9E%E5%AD%90%E5%BA%8F%E5%88%97/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-全排列" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/08/26/%E5%85%A8%E6%8E%92%E5%88%97/">全排列</a>
-    </h1>
-  
-
-        
-        <a href="/2020/08/26/%E5%85%A8%E6%8E%92%E5%88%97/" class="archive-article-date">
-  	<time datetime="2020-08-26T14:04:34.591Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-26</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-
-	
-		<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">给定一个 没有重复 数字的序列，返回其所有可能的全排列。</span><br><span class="line"></span><br><span class="line">示例:</span><br><span class="line"></span><br><span class="line">输入: [1,2,3]</span><br><span class="line">输出:</span><br><span class="line">[</span><br><span class="line">  [1,2,3],</span><br><span class="line">  [1,3,2],</span><br><span class="line">  [2,1,3],</span><br><span class="line">  [2,3,1],</span><br><span class="line">  [3,1,2],</span><br><span class="line">  [3,2,1]</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
-<p><strong>主要思路：</strong><br>这是一道经典且入门级的回溯算法题目，实质就是利用递归来实现遍历的效果，回溯的过程体现在如何去撤销选择，使状态恢复到上一次递归之前，回溯的另一重要特性就是剪枝，通过剪枝优化算法，是的遍历的次数减少，这在以后的刷题中慢慢会理解的更深，还有对java值传递的特性一步更深的理解 </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">public static List&lt;List&lt;Integer&gt;&gt; permute(int[] nums) &#123;</span><br><span class="line">		int len &#x3D; nums.length;</span><br><span class="line">		&#x2F;&#x2F;用来判断nums中下标为i的数字是否被选过</span><br><span class="line">		boolean [] visited &#x3D; new boolean[nums.length];</span><br><span class="line">		&#x2F;&#x2F;结果集</span><br><span class="line">		List&lt;List&lt;Integer&gt;&gt; res &#x3D; new ArrayList&lt;&gt;();</span><br><span class="line">		&#x2F;&#x2F;中间的每一次结果集</span><br><span class="line">		List&lt;Integer&gt; path &#x3D; new ArrayList&lt;&gt;();</span><br><span class="line">		dfs(nums,len,0,path,res,visited);</span><br><span class="line">		return res;</span><br><span class="line">    &#125;</span><br><span class="line">	public static void dfs(int[] nums, int len, int depth, List&lt;Integer&gt; path, List&lt;List&lt;Integer&gt;&gt; res, boolean[] visited) &#123;</span><br><span class="line">		&#x2F;&#x2F;depth表示选了几个数，当选了len个数时，结束</span><br><span class="line">		if(depth&#x3D;&#x3D;len) &#123;</span><br><span class="line">		    &#x2F;&#x2F;由于我们全部过程只使用了一个结果集，当结束递归时，我们会恢复到最初状泰</span><br><span class="line">		    &#x2F;&#x2F;此时返回的res会是空解，所以在最深处我们进行一次拷贝</span><br><span class="line">			res.add(new ArrayList&lt;&gt;(path));</span><br><span class="line">			return;</span><br><span class="line">		&#125;</span><br><span class="line">		for(int i &#x3D; 0;i&lt;len;i++) &#123;</span><br><span class="line">			if(!visited[i]) &#123;</span><br><span class="line">				path.add(nums[i]);</span><br><span class="line">				visited[i] &#x3D; true;</span><br><span class="line">				dfs(nums, len, depth+1, path, res, visited);</span><br><span class="line">				&#x2F;&#x2F;恢复操作</span><br><span class="line">				visited[i] &#x3D; false;</span><br><span class="line">				path.remove(path.size()-1);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
-
-
-	
-
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/数据结构与算法//" class="article-tag-list-link color3">数据结构与算法</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/08/26/%E5%85%A8%E6%8E%92%E5%88%97/">展开全文 >></a>
         </p>
       
 

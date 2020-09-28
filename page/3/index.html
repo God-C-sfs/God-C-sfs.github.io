@@ -158,6 +158,242 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-电话号码的字母组合" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/08/26/%E7%94%B5%E8%AF%9D%E5%8F%B7%E7%A0%81%E7%9A%84%E5%AD%97%E6%AF%8D%E7%BB%84%E5%90%88/">电话号码的字母组合</a>
+    </h1>
+  
+
+        
+        <a href="/2020/08/26/%E7%94%B5%E8%AF%9D%E5%8F%B7%E7%A0%81%E7%9A%84%E5%AD%97%E6%AF%8D%E7%BB%84%E5%90%88/" class="archive-article-date">
+  	<time datetime="2020-08-26T14:05:11.158Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-26</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+
+	
+		<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">给定一个仅包含数字2-9的字符串，返回所有它能表示的字母组合。</span><br><span class="line"></span><br><span class="line">给出数字到字母的映射如下（与电话按键相同）。注意 1 不对应任何字母。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">示例:</span><br><span class="line"></span><br><span class="line">输入：&quot;23&quot;</span><br><span class="line">输出：[&quot;ad&quot;, &quot;ae&quot;, &quot;af&quot;, &quot;bd&quot;, &quot;be&quot;, &quot;bf&quot;, &quot;cd&quot;, &quot;ce&quot;, &quot;cf&quot;].</span><br><span class="line">说明:</span><br><span class="line">尽管上面的答案是按字典序排列的，但是你可以任意选择答案输出的顺序。</span><br></pre></td></tr></table></figure>
+<p><strong>主要思路:</strong><br>类似于这种回溯排列问题都有固定的模板，难点在于书写搜索范围，本题思路与递增子序列问题大同小异，我们用map存放数字映射的字母，具体代码如下：  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    List&lt;String&gt; res &#x3D; new ArrayList&lt;&gt;();</span><br><span class="line">	Map&lt;Integer,String&gt; map &#x3D; new HashMap&lt;&gt;();</span><br><span class="line">    public List&lt;String&gt; letterCombinations(String digits) &#123;</span><br><span class="line">        &#x2F;&#x2F;关于字符串的判断，统统用equals方法</span><br><span class="line">        if(digits.equals(&quot;&quot;))</span><br><span class="line">			return res;</span><br><span class="line">        map.put(2, &quot;abc&quot;);</span><br><span class="line">		map.put(3, &quot;def&quot;);</span><br><span class="line">		map.put(4, &quot;ghi&quot;);</span><br><span class="line">		map.put(5, &quot;jkl&quot;);</span><br><span class="line">		map.put(6, &quot;mno&quot;);</span><br><span class="line">		map.put(7, &quot;pqrs&quot;);</span><br><span class="line">		map.put(8, &quot;tuv&quot;);</span><br><span class="line">		map.put(9, &quot;wxyz&quot;);</span><br><span class="line">		StringBuffer path &#x3D; new StringBuffer();</span><br><span class="line">		dfs(digits, path, 0);</span><br><span class="line">		return res;</span><br><span class="line">    &#125;</span><br><span class="line">    public void dfs(String str,StringBuffer path, int i) &#123;&#x2F;&#x2F;i表示组成字符串的第i位</span><br><span class="line">        &#x2F;&#x2F;结束条件</span><br><span class="line">		if(i&#x3D;&#x3D;str.length()) &#123;</span><br><span class="line">			res.add(path.toString());</span><br><span class="line">			return;</span><br><span class="line">		&#125;</span><br><span class="line">		int index &#x3D; str.charAt(i)-&#39;0&#39;;</span><br><span class="line">		String string &#x3D; map.get(index);</span><br><span class="line">		&#x2F;&#x2F;遍历map对应的映射</span><br><span class="line">		for(int j &#x3D; 0;j&lt;string.length();j++) &#123;</span><br><span class="line">			path.append(string.charAt(j));</span><br><span class="line">			dfs(str, path, i+1);</span><br><span class="line">			path.deleteCharAt(i);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+	
+
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/数据结构与算法//" class="article-tag-list-link color3">数据结构与算法</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/08/26/%E7%94%B5%E8%AF%9D%E5%8F%B7%E7%A0%81%E7%9A%84%E5%AD%97%E6%AF%8D%E7%BB%84%E5%90%88/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-递增子序列" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/08/26/%E9%80%92%E5%A2%9E%E5%AD%90%E5%BA%8F%E5%88%97/">递增子序列</a>
+    </h1>
+  
+
+        
+        <a href="/2020/08/26/%E9%80%92%E5%A2%9E%E5%AD%90%E5%BA%8F%E5%88%97/" class="archive-article-date">
+  	<time datetime="2020-08-26T14:04:54.463Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-26</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+
+	
+		<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">给定一个整型数组, 你的任务是找到所有该数组的递增子序列，递增子序列的长度至少是2。</span><br><span class="line"></span><br><span class="line">示例:</span><br><span class="line"></span><br><span class="line">输入: [4, 6, 7, 7]</span><br><span class="line">输出: [[4, 6], [4, 7], [4, 6, 7], [4, 6, 7, 7], [6, 7], [6, 7, 7], [7,7], [4,7,7]]</span><br><span class="line">说明:</span><br><span class="line"></span><br><span class="line">给定数组的长度不会超过15。</span><br><span class="line">数组中的整数范围是[-100,100]。</span><br><span class="line">给定数组中可能包含重复数字，相等的数字应该被视为递增的一种情况。</span><br></pre></td></tr></table></figure>
+<p><strong>主要思路：</strong><br>本题主要考察回溯算法的理解，类似于全排列的思路，根据题目进行剪枝，最主要是如何去重，因为数组中存在重复的数字所以在选择的过程中可能会出现重复的子序列，所以根据去重的思路我们主要分为两种，关于选数的分递归可以用for循环和选与不选两种思路，此处我们Set方法用for循环，剪枝用选与不选的方法<br><strong>一、Set去重</strong>  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    List&lt;List&lt;Integer&gt;&gt; res &#x3D; new ArrayList&lt;&gt;();</span><br><span class="line">    Set&lt;Object&gt; set &#x3D; new HashSet&lt;&gt;();&#x2F;&#x2F;去重</span><br><span class="line">    public List&lt;List&lt;Integer&gt;&gt; findSubsequences(int[] nums) &#123;</span><br><span class="line">        List&lt;Integer&gt; path &#x3D; new ArrayList&lt;&gt;();</span><br><span class="line">		dfs(0,nums,path);</span><br><span class="line">		return res;</span><br><span class="line">    &#125;</span><br><span class="line">    private void dfs(int start, int[] nums,List&lt;Integer&gt; path) &#123;</span><br><span class="line">		if(path.size()&gt;&#x3D;2&amp;&amp;!set.contains(path)) &#123;</span><br><span class="line">		    &#x2F;&#x2F;到达最深处拷贝path</span><br><span class="line">			set.add(new ArrayList&lt;&gt;(path));</span><br><span class="line">			res.add(new ArrayList&lt;&gt;(path));</span><br><span class="line">		&#125;</span><br><span class="line">		for(int i &#x3D; start;i&lt;nums.length;i++) &#123;</span><br><span class="line">			if(path.size()&#x3D;&#x3D;0||path.get(path.size()-1)&lt;&#x3D;nums[i]) &#123;</span><br><span class="line">				path.add(nums[i]);</span><br><span class="line">				dfs(i+1, nums,path);</span><br><span class="line">				path.remove(path.size()-1);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>二、剪枝去重</strong><br>那如何保证没有重复呢？我们需要给「不选择」做一个限定条件，只有当当前的元素不等于上一个选择的元素的时候，才考虑不选择当前元素，直接递归后面的元素。因为如果有两个相同的元素，我们会考虑这样四种情况：</p>
+<p>前者被选择，后者被选择<br>前者被选择，后者不被选择<br>前者不被选择，后者被选择<br>前者不被选择，后者不被选择<br>其中第二种情况和第三种情况其实是等价的，我们这样限制之后，舍弃了第二种，保留了第三种，于是达到了去重的目的。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    List&lt;List&lt;Integer&gt;&gt; res &#x3D; new ArrayList&lt;&gt;();</span><br><span class="line">    public List&lt;List&lt;Integer&gt;&gt; findSubsequences(int[] nums) &#123;</span><br><span class="line">        List&lt;Integer&gt; path &#x3D; new ArrayList&lt;&gt;();</span><br><span class="line">		dfs(0,nums,path,Integer.MIN_VALUE);</span><br><span class="line">		return res;</span><br><span class="line">    &#125;</span><br><span class="line">    private void dfs(int index, int[] nums,List&lt;Integer&gt; path,int last) &#123;</span><br><span class="line">		if(index &#x3D;&#x3D; nums.length) &#123;</span><br><span class="line">			if(path.size()&gt;&#x3D;2)</span><br><span class="line">				res.add(new ArrayList&lt;&gt;(path));</span><br><span class="line">			return;</span><br><span class="line">		&#125;</span><br><span class="line">		if(nums[index]&gt;&#x3D;last) &#123;</span><br><span class="line">			path.add(nums[index]);</span><br><span class="line">			dfs(index+1, nums, path, nums[index]);</span><br><span class="line">			path.remove(path.size()-1);</span><br><span class="line">		&#125;</span><br><span class="line">		if(nums[index]!&#x3D;last)</span><br><span class="line">			dfs(index+1, nums, path, last);</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+	
+
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/数据结构与算法//" class="article-tag-list-link color3">数据结构与算法</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/08/26/%E9%80%92%E5%A2%9E%E5%AD%90%E5%BA%8F%E5%88%97/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-全排列" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/08/26/%E5%85%A8%E6%8E%92%E5%88%97/">全排列</a>
+    </h1>
+  
+
+        
+        <a href="/2020/08/26/%E5%85%A8%E6%8E%92%E5%88%97/" class="archive-article-date">
+  	<time datetime="2020-08-26T14:04:34.591Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-26</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+
+	
+		<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">给定一个 没有重复 数字的序列，返回其所有可能的全排列。</span><br><span class="line"></span><br><span class="line">示例:</span><br><span class="line"></span><br><span class="line">输入: [1,2,3]</span><br><span class="line">输出:</span><br><span class="line">[</span><br><span class="line">  [1,2,3],</span><br><span class="line">  [1,3,2],</span><br><span class="line">  [2,1,3],</span><br><span class="line">  [2,3,1],</span><br><span class="line">  [3,1,2],</span><br><span class="line">  [3,2,1]</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<p><strong>主要思路：</strong><br>这是一道经典且入门级的回溯算法题目，实质就是利用递归来实现遍历的效果，回溯的过程体现在如何去撤销选择，使状态恢复到上一次递归之前，回溯的另一重要特性就是剪枝，通过剪枝优化算法，是的遍历的次数减少，这在以后的刷题中慢慢会理解的更深，还有对java值传递的特性一步更深的理解 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">public static List&lt;List&lt;Integer&gt;&gt; permute(int[] nums) &#123;</span><br><span class="line">		int len &#x3D; nums.length;</span><br><span class="line">		&#x2F;&#x2F;用来判断nums中下标为i的数字是否被选过</span><br><span class="line">		boolean [] visited &#x3D; new boolean[nums.length];</span><br><span class="line">		&#x2F;&#x2F;结果集</span><br><span class="line">		List&lt;List&lt;Integer&gt;&gt; res &#x3D; new ArrayList&lt;&gt;();</span><br><span class="line">		&#x2F;&#x2F;中间的每一次结果集</span><br><span class="line">		List&lt;Integer&gt; path &#x3D; new ArrayList&lt;&gt;();</span><br><span class="line">		dfs(nums,len,0,path,res,visited);</span><br><span class="line">		return res;</span><br><span class="line">    &#125;</span><br><span class="line">	public static void dfs(int[] nums, int len, int depth, List&lt;Integer&gt; path, List&lt;List&lt;Integer&gt;&gt; res, boolean[] visited) &#123;</span><br><span class="line">		&#x2F;&#x2F;depth表示选了几个数，当选了len个数时，结束</span><br><span class="line">		if(depth&#x3D;&#x3D;len) &#123;</span><br><span class="line">		    &#x2F;&#x2F;由于我们全部过程只使用了一个结果集，当结束递归时，我们会恢复到最初状泰</span><br><span class="line">		    &#x2F;&#x2F;此时返回的res会是空解，所以在最深处我们进行一次拷贝</span><br><span class="line">			res.add(new ArrayList&lt;&gt;(path));</span><br><span class="line">			return;</span><br><span class="line">		&#125;</span><br><span class="line">		for(int i &#x3D; 0;i&lt;len;i++) &#123;</span><br><span class="line">			if(!visited[i]) &#123;</span><br><span class="line">				path.add(nums[i]);</span><br><span class="line">				visited[i] &#x3D; true;</span><br><span class="line">				dfs(nums, len, depth+1, path, res, visited);</span><br><span class="line">				&#x2F;&#x2F;恢复操作</span><br><span class="line">				visited[i] &#x3D; false;</span><br><span class="line">				path.remove(path.size()-1);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+
+
+	
+
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/数据结构与算法//" class="article-tag-list-link color3">数据结构与算法</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/08/26/%E5%85%A8%E6%8E%92%E5%88%97/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-pressure" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -689,242 +925,6 @@ public int height(TreeNode root) {
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2020/08/17/%E5%B9%B3%E8%A1%A1%E4%BA%8C%E5%8F%89%E6%A0%91/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-DQL" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/08/17/DQL/">DQL语言</a>
-    </h1>
-  
-
-        
-        <a href="/2020/08/17/DQL/" class="archive-article-date">
-  	<time datetime="2020-08-17T12:38:30.771Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-17</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-
-	
-		<p><strong>DQL:全称DataQueryLanguage，数据查询语言，查询语句，凡是select语句都是DQL</strong><br><strong>基础查询:</strong>  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">show databases;&#x2F;&#x2F;展示所有库</span><br><span class="line">use 库名;&#x2F;&#x2F;切换库</span><br><span class="line">show tables;&#x2F;&#x2F;展示库中所有表单</span><br></pre></td></tr></table></figure>
-<p>1.去重关键字:字段前+distinct<br>2.起别名:AS + 别名，通常AS也可以省略<br>3.“+”的作用:<br>·两个数都为数值型，则进行加法运算<br>·只要一方为字符型，试图将字符型转换成数值型，若转换成功，则继续进行加法运算，若转换失败，则将字符型数值变为0<br>·只要一方为null，那么结果就是null<br>4.DESC:关键字+表名 显示表的结构<br>5.IFNULL函数用于判断是否为null，ifnull(字段,0)若字段为null，则转换为0<br>6.concat函数用于拼接字符串<br><strong>条件查询:</strong><br>一、语法:select 查询列表 from 表名 where 筛选条件<br>二、分类:<br>1.按条件运算符筛选:&gt;,&lt;,=,&lt;&gt;不等号,&gt;=,&lt;=<br>2.按逻辑运算符筛选:&amp;&amp;,||,!,and,or,not<br>3.模糊查询:<br>like:一般搭配通配符使用，可以判断字符型或数值型<br>通配符：%表示任意多个字符，可以是0个，_表示任意单个字符<br>between and(包括临界值),in,is null,is not null<br><strong>排序查询:</strong><br>一、语法：select 查询列表 from 表 where 筛选条件 order by 排序列表【asc|desc】<br>二、特点：<br>1.asc升序，如果不写默认升序，desc降序<br>2.排序列表支持单个字符按，多个字段，函数，表达式，别名，当有多个排序方式时，先按前者，若按前者有相同则按后一个排序<br>3.order by的位置一般放在查询语句的最后(除limit语句之外)<br><strong>常见函数:</strong>  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">1.字符函数</span><br><span class="line">concat:连接</span><br><span class="line">substr:截取字串，索引从1开始</span><br><span class="line">upper:变大写</span><br><span class="line">lower:变小写</span><br><span class="line">replace:替代</span><br><span class="line">length:获取长度</span><br><span class="line">trim:去除前后空格</span><br><span class="line">lpad:左填充</span><br><span class="line">rpad:右填充</span><br><span class="line">instr:获取字串第一次出现的索引</span><br><span class="line">2.数学函数</span><br><span class="line">ceil:向上取整</span><br><span class="line">round:四舍五入</span><br><span class="line">mod:取模</span><br><span class="line">floor:向下取整</span><br><span class="line">truncate:截断</span><br><span class="line">rand:获取随机数，[0-1)之间</span><br><span class="line">3.日期函数</span><br><span class="line">now:返回当前日期+时间</span><br><span class="line">year:返回年</span><br><span class="line">month:返回月</span><br><span class="line">day:返回日</span><br><span class="line">date_format:将字符串转换为日期</span><br><span class="line">curdate:当前日期</span><br><span class="line">str_to_data:将日期转换为字符串</span><br><span class="line">curtime:当前时间</span><br><span class="line">hour:返回时</span><br><span class="line">minute:返回分</span><br><span class="line">second:返回秒</span><br><span class="line">datediff:返回两个日期相差的天数</span><br></pre></td></tr></table></figure>
-<p><strong>分组查询:</strong><br>一、语法:<br>select 分组函数，分组后的字段<br>【where筛选条件】<br>group by 分组的字段<br>【having 分组后的是筛选】<br>【order by 排序列表】<br>二、特点<br><img src="https://gitee.com/bingjie__chai/PicOfHexo/raw/master/pic_hexo/Snipaste_2020-07-22_22-37-50.png" alt=""><br><strong>连接查询:</strong>(这里讲的是SQL99语法)<br>一、内连接<br>1.语法:<br>select 查询列表<br>from 表1 别名<br>【inner】join 表2 别名 on 连接条件<br>where 筛选条件<br>group by 分组列表<br>having 分组后的筛选<br>order by 排序列表<br>limit 语句<br>2.特点<br>·表的顺序可以调换<br>·内连接结果=多表的交集<br>·n表连接至少需要n-1个连接条件<br>二、外连接<br>1.语法：<br>select 查询列表<br>from 表1 别名<br>left|right|full join 表2 别名 on 连接条件<br>where 筛选条件<br>group by 分组列表<br>having 分组后的筛选<br>order by 排序列表<br>limit 语句<br>2.特点:<br>·查询的结果=主表中所有的行，如果从表和它匹配的将显示匹配行，如果从表没有匹配的则显示null<br>·left join 左边的是主表，right join右边的是主表<br>·一般用于查询除了交集部分的剩余的不匹配的行<br><strong>子查询:</strong></br>一、含义：嵌套在其他语句内部的select语句称为子查询或内查询，外面的语句可以是insert，update，delete，select等，一般select作为外面语句较多<br>二、分类<br>1.按出现的位置<br>·select后面:仅仅支持标量子查询<br>·from后面：表子查询<br>·where或having后面：标量子查询，列子查询，行子查询<br>·exists：标量子查询，列子查询，行子查询，表子查询<br>2.按结果集的行列<br>·标量子查询（单行子查询）：结果集为一行一列<br>·列子查询（多行子查询）：结果集为多行一列<br>·行子查询：结果集为多行多列<br>·表子查询：结果集为多行多列<br><strong>分页查询：</strong><br>一、应用场景：当要查询的条目数太多，一页显示不全<br>二、语法：<br>select 查询列表<br>from 表<br>limit 【offset，】size；<br>·注意：offset代表的是起始的条目索引，默认从0开始，size代表显示的条目数<br>·公式：假如要显示的页数为page，每一页的条目数为size<br>select 查询列表<br>from 表<br>limit （page-1）<em>size，size<br>*</em>查询总结：**<br>select 查询列表<br>from 表1 别名<br>连接类型 join 表2<br>on 连接条件<br>where 筛选<br>group by 分组列表<br>having 筛选<br>order by 排序列表<br>limit 起始条目索引，条目数</p>
-
-	
-
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/mysql数据库//" class="article-tag-list-link color4">mysql数据库</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/08/17/DQL/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-DML" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/08/17/DML/">DML语言</a>
-    </h1>
-  
-
-        
-        <a href="/2020/08/17/DML/" class="archive-article-date">
-  	<time datetime="2020-08-17T12:38:30.769Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-17</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-
-	
-		<p><strong>DML操作是指对数据库中表记录的操作，主要包括表记录的插入（insert）、更新（update）、删除（delete）和查询（select），是开发人员日常使用最频繁的操作</strong><br>==插入语句：==<br><strong>一、方式一</strong><br>·语法:<br>insert into 表名（列名…） values（值…）<br>·特点:<br>1.要求值的类型和字段的类型要一致或兼容<br>2.字段的个数和顺序不一定与原始表的字段个数和顺序一致但必须保证值和字段一一对应<br>3.假如表中有可以为null的字段，注意可以通过以下两种方式插入null值<br>①.字段和值都省略<br>②.字段写上，值使用null<br>4.字段和值的个数必须一致<br>5.字段名可以省略，默认为所有列<br><strong>二、方式二</strong><br>·语法：<br>insert into 表名 set 字段=值，字段=值…<br><strong>两种方式的区别</strong><br>方式一可以一次插入多行，语法如下:<br>insert into 表名【（字段名）】 values（值，…）,(值，…),…<br>==修改语句：==<br><strong>一、修改单表的记录</strong><br>语法： update 表名 set 字段=值，字段-值【where 筛选条件】<br><strong>二、修改多表的记录</strong><br>语法：update 表名1 别名<br>left|right|inner join 表2 别名<br>on 连接条件<br>set 字段=值，字段=值…<br>【where筛选条件】<br>==删除语句：==<br><strong>方式一：使用delete</strong><br>一、删除单表的记录<br>delete from 表名 where筛选条件 limit 条目数<br>二、级联删除<br>delete 别名1，别名2<br>from 表1 别名<br>inner|left|right join 表2 别名<br>on 连接条件<br>where筛选条件<br>·其中如果只想删除表1中的记录，delete后只用加别名1<br><strong>方式二：使用truncate</strong><br>truncate table 表名</p>
-
-	
-
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/mysql数据库//" class="article-tag-list-link color4">mysql数据库</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/08/17/DML/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-大数相加&amp;相乘" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/08/13/%E5%A4%A7%E6%95%B0%E7%9B%B8%E5%8A%A0&%E7%9B%B8%E4%B9%98/">大数运算(乘法&amp;加法)</a>
-    </h1>
-  
-
-        
-        <a href="/2020/08/13/%E5%A4%A7%E6%95%B0%E7%9B%B8%E5%8A%A0&%E7%9B%B8%E4%B9%98/" class="archive-article-date">
-  	<time datetime="2020-08-13T10:21:22.935Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-13</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-
-	
-		<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">给定两个字符串形式的非负整数num1 和num2，计算它们的和。</span><br><span class="line">提示：</span><br><span class="line"></span><br><span class="line">num1 和num2的长度都小于 5100</span><br><span class="line">num1 和num2 都只包含数字0-9</span><br><span class="line">num1 和num2 都不包含任何前导零</span><br><span class="line">你不能使用任何內建 BigInteger 库，也不能直接将输入的字符串转换为整数形式</span><br></pre></td></tr></table></figure>
-<p>思路:模仿竖式相加的过程，巧妙运用carry解决进位的问题，主要注意最后一次进位，当carry不是0的时候，在append一个1</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    public String addStrings(String num1, String num2) &#123;</span><br><span class="line">       int i &#x3D; num1.length()-1;</span><br><span class="line">		int j &#x3D; num2.length()-1;</span><br><span class="line">		int carry &#x3D; 0;</span><br><span class="line">		StringBuilder res &#x3D; new StringBuilder();</span><br><span class="line">		while(j&gt;&#x3D;0||i&gt;&#x3D;0) &#123;</span><br><span class="line">			int n1 &#x3D; i&gt;&#x3D;0?num1.charAt(i)-&#39;0&#39;:0;</span><br><span class="line">			int n2 &#x3D; j&gt;&#x3D;0?num2.charAt(j)-&#39;0&#39;:0;</span><br><span class="line">			int temp &#x3D; n1+n2+carry;</span><br><span class="line">			carry &#x3D; temp&#x2F;10;</span><br><span class="line">			res.append(temp%10);</span><br><span class="line">			i--;</span><br><span class="line">			j--;</span><br><span class="line">		&#125;</span><br><span class="line">		if(carry&#x3D;&#x3D;0) &#123;</span><br><span class="line">			</span><br><span class="line">			return res.reverse().toString();</span><br><span class="line">		&#125;</span><br><span class="line">		return res.append(1).reverse().toString();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">给定两个以字符串形式表示的非负整数num1和num2，返回num1和num2的乘积，它们的乘积也表示为字符串形式。</span><br><span class="line"></span><br><span class="line">示例 1:</span><br><span class="line">输入: num1 &#x3D; &quot;2&quot;, num2 &#x3D; &quot;3&quot;</span><br><span class="line">输出: &quot;6&quot;</span><br><span class="line">示例2:</span><br><span class="line">输入: num1 &#x3D; &quot;123&quot;, num2 &#x3D; &quot;456&quot;</span><br><span class="line">输出: &quot;56088&quot;</span><br><span class="line">说明：</span><br><span class="line">num1和num2的长度小于110。</span><br><span class="line">num1 和num2 只包含数字0-9。</span><br><span class="line">num1 和num2均不以零开头，除非是数字 0 本身。</span><br><span class="line">不能使用任何标准库的大数类型（比如 BigInteger）或直接将输入转换为整数来处理</span><br></pre></td></tr></table></figure>
-<p>思路:主要细节见注释:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    public  String multiply(String num1, String num2) &#123;</span><br><span class="line">        if(num1&#x3D;&#x3D;&quot;0&quot;||num2&#x3D;&#x3D;&quot;0&quot;) &#123;</span><br><span class="line">			return &quot;0&quot;;</span><br><span class="line">		&#125;</span><br><span class="line">		int i &#x3D; num1.length()-1;</span><br><span class="line">		int j &#x3D; num2.length()-1;</span><br><span class="line">		String s &#x3D; &quot;0&quot;;</span><br><span class="line">		String ans &#x3D; null;</span><br><span class="line">		int numOfZero &#x3D; 0;&#x2F;&#x2F;用于num1和num2的每一位相乘时错位相加</span><br><span class="line">		while(j&gt;&#x3D;0) &#123;</span><br><span class="line">			StringBuilder res &#x3D; new StringBuilder();</span><br><span class="line">			int carry &#x3D; 0;</span><br><span class="line">			while(i&gt;&#x3D;0) &#123;&#x2F;&#x2F;num1和num2的每一位相乘</span><br><span class="line">				int n1 &#x3D; num1.charAt(i)-&#39;0&#39;;</span><br><span class="line">				int n2 &#x3D; num2.charAt(j)-&#39;0&#39;;</span><br><span class="line">				int temp &#x3D; n1*n2+carry;</span><br><span class="line">				carry &#x3D; temp&#x2F;10;</span><br><span class="line">				res.append(temp%10);</span><br><span class="line">				i--;</span><br><span class="line">			&#125;</span><br><span class="line">			&#x2F;&#x2F;记得加上最后一个carry</span><br><span class="line">			if(carry&#x3D;&#x3D;0) &#123;</span><br><span class="line">				res &#x3D; res.reverse();</span><br><span class="line">			&#125;else &#123;</span><br><span class="line">				res &#x3D; res.append(carry+&quot;&quot;).reverse();</span><br><span class="line">			&#125;</span><br><span class="line">			&#x2F;&#x2F;用于错位相加</span><br><span class="line">			for(int k &#x3D; 0;k&lt;numOfZero;k++) &#123;</span><br><span class="line">				res &#x3D; res.append(&quot;0&quot;);</span><br><span class="line">			&#125;</span><br><span class="line">			ans &#x3D; add(s, res.toString());</span><br><span class="line">			s &#x3D; ans;</span><br><span class="line">			i &#x3D; num1.length()-1;</span><br><span class="line">			j--;</span><br><span class="line">			numOfZero++;</span><br><span class="line">		&#125;</span><br><span class="line">		return ans;</span><br><span class="line">			</span><br><span class="line">    &#125;</span><br><span class="line">	public  String add(String num1,String num2) &#123;</span><br><span class="line">		int i &#x3D; num1.length()-1;</span><br><span class="line">		int j &#x3D; num2.length()-1;</span><br><span class="line">		int carry &#x3D; 0;</span><br><span class="line">		StringBuilder res &#x3D; new StringBuilder();</span><br><span class="line">		while(j&gt;&#x3D;0||i&gt;&#x3D;0) &#123;</span><br><span class="line">			int n1 &#x3D; i&gt;&#x3D;0?num1.charAt(i)-&#39;0&#39;:0;</span><br><span class="line">			int n2 &#x3D; j&gt;&#x3D;0?num2.charAt(j)-&#39;0&#39;:0;</span><br><span class="line">			int temp &#x3D; n1+n2+carry;</span><br><span class="line">			carry &#x3D; temp&#x2F;10;</span><br><span class="line">			res.append(temp%10);</span><br><span class="line">			i--;</span><br><span class="line">			j--;</span><br><span class="line">		&#125;</span><br><span class="line">		if(carry&#x3D;&#x3D;0) &#123;</span><br><span class="line">			</span><br><span class="line">			return res.reverse().toString();</span><br><span class="line">		&#125;</span><br><span class="line">		return res.append(1).reverse().toString();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-	
-
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/数据结构与算法//" class="article-tag-list-link color3">数据结构与算法</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/08/13/%E5%A4%A7%E6%95%B0%E7%9B%B8%E5%8A%A0&%E7%9B%B8%E4%B9%98/">展开全文 >></a>
         </p>
       
 
