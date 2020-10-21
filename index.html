@@ -158,6 +158,278 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-批量sqlSession" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/10/21/%E6%89%B9%E9%87%8FsqlSession/">批量sqlSession</a>
+    </h1>
+  
+
+        
+        <a href="/2020/10/21/%E6%89%B9%E9%87%8FsqlSession/" class="archive-article-date">
+  	<time datetime="2020-10-21T14:48:16.027Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-21</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+
+	
+		<p>在spring配置文件中，有一个属性executorType可以设置，其value值常用的有BATCH和SIMPLE，如果不设置默认获取的sqlSession是SIMPLE类型的<br><strong>BATCH的执行效果</strong><br><img src="https://gitee.com/bingjie__chai/PicOfHexo/raw/master/pic_hexo/20201021212853.png" alt=""><br>如上图所示，BATCH模式，只发出一条SQL语句，预编译一次，但设置参数N次，执行一次。<br><strong>SIMPLE的执行效果</strong><br><img src="https://gitee.com/bingjie__chai/PicOfHexo/raw/master/pic_hexo/20201021212952.png" alt=""><br>如上图所示，SIMPLE模式，每一条语句都会发出一条SQL，进行一次预编译，设置一次参数，执行一次。<br><strong>耗时对比</strong><br>BATCH模式下，SQL语句只是预编译一次，所以在插入的效率上是远高于SIMPLE模式的，所以当我们想要批量插入数据时，我们应在配置文件上声明其模式  </p>
+<pre><code>&lt;!--    批量插入sql的操作--&gt;
+    &lt;bean id=&quot;sqlSession&quot; class=&quot;org.mybatis.spring.SqlSessionTemplate&quot;&gt;
+        &lt;constructor-arg name=&quot;sqlSessionFactory&quot; ref=&quot;sqlSessionFactory&quot;/&gt;
+        &lt;constructor-arg name=&quot;executorType&quot; value=&quot;BATCH&quot;/&gt;
+    &lt;/bean&gt;</code></pre><p>这样，当我们获取到sqlSession后，利用for循环进行批量插入时的效率就会比较高</p>
+
+	
+
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/框架//" class="article-tag-list-link color3">框架</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/10/21/%E6%89%B9%E9%87%8FsqlSession/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Mybatis的逆向工程" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/10/21/Mybatis%E7%9A%84%E9%80%86%E5%90%91%E5%B7%A5%E7%A8%8B/">Mybatis的逆向工程</a>
+    </h1>
+  
+
+        
+        <a href="/2020/10/21/Mybatis%E7%9A%84%E9%80%86%E5%90%91%E5%B7%A5%E7%A8%8B/" class="archive-article-date">
+  	<time datetime="2020-10-21T14:48:16.025Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-21</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+
+	
+		<p><strong>MyBatis Generator：MBG</strong><br>我们在发开过程中，需要根据表的数据结构定义相关的domain下的实体类，以及对应的mapper文件，但当我们的项目数据表比较多时，一个一个创建实体类和对应的mapper文件显然不太可行，此时我们可以利用mybatis框架为我们提供的逆向工程帮助我们创建和使用实体类以及对应的mapper文件<br><strong>实现步骤</strong>  </p>
+<ol>
+<li>在pom文件中加入对应的依赖  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">      &lt;groupId&gt;org.mybatis.generator&lt;&#x2F;groupId&gt;</span><br><span class="line">      &lt;artifactId&gt;mybatis-generator-core&lt;&#x2F;artifactId&gt;</span><br><span class="line">      &lt;version&gt;1.3.5&lt;&#x2F;version&gt;</span><br><span class="line">&lt;&#x2F;dependency&gt;</span><br></pre></td></tr></table></figure></li>
+<li>编写MBG的配置文件<br>在工程根目录下创建mbg.xml文件<br><img src="https://gitee.com/bingjie__chai/PicOfHexo/raw/master/pic_hexo/20201021221317.png" alt=""><br>接下来完成对MBG的配置文件的编写。在编写MBG的配置文件的时候，需要注意五处重要的配置，这五个配置也是编写MBG的配置文件最基本的五个步骤  </li>
+</ol>
+<ul>
+<li>jdbcConnection：配置数据库连接信息</li>
+<li>javaModelGenerator：配置javaBean的生成策略</li>
+<li>sqlMapGenerator ：配置sql映射文件生成策略</li>
+<li>javaClientGenerator：配置Mapper接口的生成策略</li>
+<li>table ：配置要逆向解析的数据表，tableName：表名，domainObjectName：对应的javaBean名  </li>
+<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">&lt;generatorConfiguration&gt;</span><br><span class="line">    &lt;context id&#x3D;&quot;DB2Tables&quot; targetRuntime&#x3D;&quot;MyBatis3&quot;&gt;</span><br><span class="line">&lt;!--        去掉注释的操作--&gt;</span><br><span class="line">        &lt;commentGenerator&gt;</span><br><span class="line">            &lt;property name&#x3D;&quot;suppressAllComments&quot; value&#x3D;&quot;true&quot; &#x2F;&gt;</span><br><span class="line">        &lt;&#x2F;commentGenerator&gt;</span><br><span class="line">        &lt;!-- 1.配置数据库连接 --&gt;</span><br><span class="line">        &lt;jdbcConnection driverClass&#x3D;&quot;com.mysql.cj.jdbc.Driver&quot;</span><br><span class="line">                        connectionURL&#x3D;&quot;jdbc:mysql:&#x2F;&#x2F;localhost:3306&#x2F;bjpowernode?useSSL&#x3D;false&amp;serverTimezone&#x3D;UTC&quot; userId&#x3D;&quot;root&quot;</span><br><span class="line">                        password&#x3D;&quot;123456&quot;&gt;</span><br><span class="line">        &lt;&#x2F;jdbcConnection&gt;</span><br><span class="line"></span><br><span class="line">        &lt;javaTypeResolver&gt;</span><br><span class="line">            &lt;property name&#x3D;&quot;forceBigDecimals&quot; value&#x3D;&quot;false&quot; &#x2F;&gt;</span><br><span class="line">        &lt;&#x2F;javaTypeResolver&gt;</span><br><span class="line"></span><br><span class="line">        &lt;!-- 2.指定javaBean生成的位置 --&gt;</span><br><span class="line">        &lt;javaModelGenerator targetPackage&#x3D;&quot;com.atguigu.crud.bean&quot;</span><br><span class="line">                            targetProject&#x3D;&quot;.\src\main\java&quot;&gt;</span><br><span class="line">            &lt;property name&#x3D;&quot;enableSubPackages&quot; value&#x3D;&quot;true&quot; &#x2F;&gt;</span><br><span class="line">            &lt;property name&#x3D;&quot;trimStrings&quot; value&#x3D;&quot;true&quot; &#x2F;&gt;</span><br><span class="line">        &lt;&#x2F;javaModelGenerator&gt;</span><br><span class="line"></span><br><span class="line">        &lt;!--3.指定sql映射文件生成的位置 --&gt;</span><br><span class="line">        &lt;sqlMapGenerator targetPackage&#x3D;&quot;mapper&quot; targetProject&#x3D;&quot;.\src\main\resources&quot;&gt;</span><br><span class="line">            &lt;property name&#x3D;&quot;enableSubPackages&quot; value&#x3D;&quot;true&quot; &#x2F;&gt;</span><br><span class="line">        &lt;&#x2F;sqlMapGenerator&gt;</span><br><span class="line"></span><br><span class="line">        &lt;!-- 4.指定dao接口生成的位置，mapper接口 --&gt;</span><br><span class="line">        &lt;javaClientGenerator type&#x3D;&quot;XMLMAPPER&quot;</span><br><span class="line">                             targetPackage&#x3D;&quot;com.atguigu.crud.dao&quot; targetProject&#x3D;&quot;.\src\main\java&quot;&gt;</span><br><span class="line">            &lt;property name&#x3D;&quot;enableSubPackages&quot; value&#x3D;&quot;true&quot; &#x2F;&gt;</span><br><span class="line">        &lt;&#x2F;javaClientGenerator&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        &lt;!-- 5.table指定每个表的生成策略 --&gt;</span><br><span class="line">&lt;!--        tableName表示表名，domainObjectName表示返回类的实体类名称--&gt;</span><br><span class="line">        &lt;table tableName&#x3D;&quot;tbl_emp&quot; domainObjectName&#x3D;&quot;Employee&quot;&gt;&lt;&#x2F;table&gt;</span><br><span class="line">        &lt;table tableName&#x3D;&quot;tbl_dept&quot; domainObjectName&#x3D;&quot;Department&quot;&gt;&lt;&#x2F;table&gt;</span><br><span class="line">    &lt;&#x2F;context&gt;</span><br><span class="line">&lt;&#x2F;generatorConfiguration&gt;</span><br></pre></td></tr></table></figure>
+更详细的配置信息:<a href="https://blog.csdn.net/testcs_dn/article/details/77881776" target="_blank" rel="noopener">https://blog.csdn.net/testcs_dn/article/details/77881776</a>  </li>
+</ul>
+<p>3.在单元测试类中运行下面代码  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">@org.junit.Test</span><br><span class="line">public void MBG() throws Exception&#123;</span><br><span class="line">    List&lt;String&gt; warnings &#x3D; new ArrayList&lt;String&gt;();</span><br><span class="line">    boolean overwrite &#x3D; true;</span><br><span class="line">    File configFile &#x3D; new File(&quot;mbg.xml&quot;);</span><br><span class="line">    ConfigurationParser cp &#x3D; new ConfigurationParser(warnings);</span><br><span class="line">    Configuration config &#x3D; cp.parseConfiguration(configFile);</span><br><span class="line">    DefaultShellCallback callback &#x3D; new DefaultShellCallback(overwrite);</span><br><span class="line">    MyBatisGenerator myBatisGenerator &#x3D; new MyBatisGenerator(config, callback, warnings);</span><br><span class="line">    myBatisGenerator.generate(null);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这样就可以获取到对应的bean下的实体类，dao下的接口，以及对应的mapper文件<br><strong>这里建议当工程较大时，将mapper文件整体放在resources目录下的mapper文件中，并加上如下配置</strong><br>以前我们将dao接口对应的mapper文件下载同一目录下，这时实在mybatis的主配置文件中， <mappers>标签中声明mapper，<strong>并且mapper和对应接口必须在同一目录下</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;在mybatis和spring整合代码的sqlSessionFactory步骤中加下下面代码指定mapper文件的位置</span><br><span class="line">&lt;bean id&#x3D;&quot;sqlSessionFactory&quot; class&#x3D;&quot;org.mybatis.spring.SqlSessionFactoryBean&quot;&gt;</span><br><span class="line">&lt;!--       mybatis的全局配置文件 --&gt;</span><br><span class="line">        &lt;property name&#x3D;&quot;configLocation&quot; value&#x3D;&quot;classpath:mybatis.xml&quot;&gt;&lt;&#x2F;property&gt;</span><br><span class="line">        &lt;property name&#x3D;&quot;dataSource&quot; ref&#x3D;&quot;pooledDataSource&quot;&gt;&lt;&#x2F;property&gt;</span><br><span class="line">        &lt;property name&#x3D;&quot;mapperLocations&quot; value&#x3D;&quot;classpath:mapper&#x2F;*Mapper.xml&quot;&gt;&lt;&#x2F;property&gt;</span><br><span class="line">&lt;&#x2F;bean&gt;</span><br></pre></td></tr></table></figure>
+
+
+
+
+<p>　　</p>
+
+	
+
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/框架//" class="article-tag-list-link color3">框架</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/10/21/Mybatis%E7%9A%84%E9%80%86%E5%90%91%E5%B7%A5%E7%A8%8B/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-maven" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/10/07/maven/">maven</a>
+    </h1>
+  
+
+        
+        <a href="/2020/10/07/maven/" class="archive-article-date">
+  	<time datetime="2020-10-07T14:30:21.108Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-07</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+
+	
+		<p><strong>1.maven能作什么</strong><br>1).maven可以管理jar文件<br>2).自动下载jar和他的文档，源代码<br>3).管理jar直接的依赖<br>4).帮你编译程序，把java编译为class<br>5).帮你测试代码是否正确<br>6).帮你打包文件，形成jar文件，或者war文件<br>7).帮你部署项目<br><strong>2.Maven的九个核心概念</strong><br>①POM:一个文件，名称是pom.xml，pom翻译过来叫做项目对象模型。maven把一个项目当一个模型使用，控制maven构建项目的过程，管理jar依赖<br>②约定的目录结构:maven项目的目录和文件的位置都是规定的<br>③坐标:是一个唯一的字符串，用来表示资源的<br>④依赖管理:管理你的项目可以使用jar文件<br>⑤仓库管理:你的资源存放的位置<br>⑥生命周期:maven工具项目构建过程就是声明周期<br>插件和目标，继承，聚合(了解)<br><strong>3.maven的配置</strong><br>注意解压目录非中文目录<br>配置环境变量:在系统的环境变量中，新建MAVEN_HOME的名称，指定他的值是maven工具安装目录，bin之前的目录<br>配置Path:在Path下新建%MAVEN_HOME%\bin\<br>打开cmd输入mvn -v指令如果出现下图则表示成功<br><img src="https://gitee.com/bingjie__chai/PicOfHexo/raw/master/pic_hexo/20200930102405.png" alt=""><br><strong>4.maven的核心概念</strong><br>1).Maven工程约定目录结构:<br>每一个maven项目在磁盘中都是一个文件夹，eg:一个Hello项目</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Hello&#x2F;</span><br><span class="line">    ---&#x2F;src</span><br><span class="line">        ---&#x2F;main放置主程序的java代码和配置文件</span><br><span class="line">            ---&#x2F;java你的java程序中要使用的配置</span><br><span class="line">            ---&#x2F;resources你的java程序中要使用的配置文件</span><br><span class="line">        ---&#x2F;test放置测试程序代码和文件（可以没有）</span><br><span class="line">            ---&#x2F;java你的java程序中要使用的配置</span><br><span class="line">            ---&#x2F;resources你的java程序中要使用的配置文件</span><br><span class="line">    ---&#x2F;pom.xml</span><br></pre></td></tr></table></figure>
+<p><strong>5.仓库</strong><br>1)仓库是什么:仓库是存放东西的，存放maven使用的jar和我们项目使用的jar</p>
+<blockquote>
+<p>maven使用的插件<br>项目使用的jar(第三方工具)  </p>
+</blockquote>
+<p>2)仓库的分类  </p>
+<blockquote>
+<p>本地仓库，就是你的个人计算机上的文件架<br>远程仓库，在互联网上<br>①：中央仓库，最权威的，所有的开发人员都共享使用的一个集中的仓库<br>②：中央仓库的镜像：就是中央仓库的备份<br>③：私服，在公司内部，在局域网中使用的  </p>
+</blockquote>
+<p>3)仓库的使用，maven的使用不需要人为参与。<br>例如开发人员需要mysql驱动—&gt;maven首先查本地仓库—-&gt;私服—&gt;镜像—&gt;中央仓库<br><strong>6.pom文件</strong><br>pom:项目对象模型，是一个pom.xml文件<br>1).坐标:唯一值，在互联网中唯一表示一个项目的  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;groupId&gt;公司域名的倒写&lt;&#x2F;grooupId&gt;</span><br><span class="line">&lt;artifactId&gt;自定义项目名称&lt;&#x2F;artifactId&gt;</span><br><span class="line">&lt;version&gt;自定版本号&lt;&#x2F;version&gt;</span><br></pre></td></tr></table></figure>
+<p><a href="http://mvnrepository.com/搜索使用的中央仓库" target="_blank" rel="noopener">http://mvnrepository.com/搜索使用的中央仓库</a><br>2).packaging:打包后压缩文件的拓展名，默认时jar，web应用是war<br>3).依赖<br>dependencies和dependency<br>例如我想在文件中加入mysql的jar包</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependencies&gt;</span><br><span class="line">    &lt;dependency&gt;</span><br><span class="line">        &lt;groupId&gt;mysql&lt;&#x2F;groupId&gt;</span><br><span class="line">        &lt;artifactId&gt;mysql-connection&lt;&#x2F;artifactId&gt;</span><br><span class="line">        &lt;version&gt;5.1.9&lt;&#x2F;version&gt;</span><br><span class="line">    &lt;&#x2F;dependency&gt;</span><br><span class="line">&lt;&#x2F;dependencies&gt;</span><br></pre></td></tr></table></figure>
+<p>4).properties:设置属性<br>5).build:maven在进行项目的构建时<br><strong>7.坐标(gav)</strong><br>定义资源文件的路径由，groupId，artifactId,version三者共同决定，先去本地仓库找，没有去中央仓库<br><strong>8.Maven常用命令,maven的命令,maven的插件</strong><br>maven的生命周期，就是maven构建项目的过程:清理，编译，测试，报告，打包，安装，部署<br>maven的命令:maven可以独立使用，通过命令，完成maven的生命周期的执行。maven可以使用命令完成项目的清理，编译等等<br>maven的插件:maven命令执行时，真正完成功能的是一些插件，插件就是一些jar文件<br>1).单元测试:用的是junit，用来测试类中的方法，每一个方法都是独立测试的，方法时测试的基本单位<br>maven借助单元测试，批量的测试类中的大量方法是否符合预期的<br>2).使用步骤<br>加入依赖  </p>
+<pre><code>&lt;dependency&gt;
+    &lt;groupId&gt;junit&lt;/groupId&gt;
+    &lt;artifactId&gt;junit&lt;/artifactId&gt;
+    &lt;version&gt;4.11&lt;/version&gt;
+    &lt;scope&gt;test&lt;/scope&gt;
+&lt;/dependency&gt;</code></pre><p>在maven项目中的src/test/java目录下，创建测试程序<br><strong>9.idea中使用maven</strong><br>配置的入口:<br>1.配置当前工程的配置file–setting–执行，构建，部署–构建工具–maven–配置<br><img src="https://gitee.com/bingjie__chai/PicOfHexo/raw/master/pic_hexo/20201003224422.png" alt=""><br>2.配置以后新建工程的匹配值file–other settings<br><strong>10.使用模板创建项目</strong><br>1).maven-archetype-quickstart:普通的java项目<br>2).maven-archetype-webapp:web工程<br><strong>11.依赖范围</strong><br>scope的值有compile，test，provided<br>scope:表示依赖使用的范围，也就是在maven构建项目的哪些阶段中起作用<br><strong>12.maven常用操作</strong>  </p>
+
+	
+
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/框架//" class="article-tag-list-link color3">框架</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/10/07/maven/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-状态码" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -682,239 +954,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2020/09/20/JDBC/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-关于排列组合和子集的区别" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/09/20/%E5%85%B3%E4%BA%8E%E6%8E%92%E5%88%97%E7%BB%84%E5%90%88%E5%92%8C%E5%AD%90%E9%9B%86%E7%9A%84%E5%8C%BA%E5%88%AB/">关于排列组合和子集的区别</a>
-    </h1>
-  
-
-        
-        <a href="/2020/09/20/%E5%85%B3%E4%BA%8E%E6%8E%92%E5%88%97%E7%BB%84%E5%90%88%E5%92%8C%E5%AD%90%E9%9B%86%E7%9A%84%E5%8C%BA%E5%88%AB/" class="archive-article-date">
-  	<time datetime="2020-09-20T00:15:31.144Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-09-20</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-
-	
-		<p>这篇文章将会比较两种常见的回溯体型，一种是全排列问题，一种是求子集的问题，两者都是利用回溯解法，但是两者的for循环选取下一个可选值时的起始坐标是不同的，先上部分代码我们来比较以下</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;子集求法</span><br><span class="line">for(int j &#x3D; i;j&lt;nums.length;j++) &#123;</span><br><span class="line">			temp.add(nums[j]);</span><br><span class="line">			dfs(nums, j+1);</span><br><span class="line">			temp.remove(temp.size()-1);</span><br><span class="line">		&#125;</span><br><span class="line">&#x2F;&#x2F;全排列求法		</span><br><span class="line">for(int i &#x3D; 0;i&lt;len;i++) &#123;</span><br><span class="line">			if(!visited[i]) &#123;</span><br><span class="line">				path.add(nums[i]);</span><br><span class="line">				visited[i] &#x3D; true;</span><br><span class="line">				dfs(nums, len, depth+1, path, res, visited);</span><br><span class="line">				&#x2F;&#x2F;恢复操作</span><br><span class="line">				visited[i] &#x3D; false;</span><br><span class="line">				path.remove(path.size()-1);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br></pre></td></tr></table></figure>
-<p><img src="https://gitee.com/bingjie__chai/PicOfHexo/raw/master/pic_hexo/20200920080942.png" alt=""><br><img src="https://gitee.com/bingjie__chai/PicOfHexo/raw/master/pic_hexo/20200920081126.png" alt=""><br>我们观察两者的区别，发现前者的代码for循环是从startIndex开始的，而后者的代码for循环总是从0开始的，这是为什么呢？<br>因为全排列是有顺序的1，2和2，1是不同的，而对于集合来说1，2和2，1是相同的，所以在变量集合的过程中，我们不能回头，否则会产生重复，<strong>正是因为子集求法没有回头，所以我们不需要创建used数组来判断数字是否使用过</strong>，仔细品味上述的图片和代码就会明白其中的道理！！</p>
-
-	
-
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/数据结构与算法//" class="article-tag-list-link color3">数据结构与算法</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/09/20/%E5%85%B3%E4%BA%8E%E6%8E%92%E5%88%97%E7%BB%84%E5%90%88%E5%92%8C%E5%AD%90%E9%9B%86%E7%9A%84%E5%8C%BA%E5%88%AB/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Servlet" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/09/19/Servlet/">Servlet接口实现类</a>
-    </h1>
-  
-
-        
-        <a href="/2020/09/19/Servlet/" class="archive-article-date">
-  	<time datetime="2020-09-19T07:19:15.260Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-09-19</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-
-			<p><strong>一、介绍：</strong><br>1.servlet接口来自于Servlet规范下一个接口，这个接口存在Http服务器提供的jar包中<br>2.TomCat服务器下lib文件有一个servlet-api.jar存放servlet接口<br>3.servlet规范中规定，Http服务器能调用的【动态资源文件】必须是一个Servlet接口实现类</p>
-	
-
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Web//" class="article-tag-list-link color4">Web</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/09/19/Servlet/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-所有左叶子节点的和" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/09/19/%E6%89%80%E6%9C%89%E5%B7%A6%E5%8F%B6%E5%AD%90%E8%8A%82%E7%82%B9%E7%9A%84%E5%92%8C/">所有左叶子节点的和</a>
-    </h1>
-  
-
-        
-        <a href="/2020/09/19/%E6%89%80%E6%9C%89%E5%B7%A6%E5%8F%B6%E5%AD%90%E8%8A%82%E7%82%B9%E7%9A%84%E5%92%8C/" class="archive-article-date">
-  	<time datetime="2020-09-19T07:10:21.188Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-09-19</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-
-	
-		<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">计算给定二叉树的所有左叶子之和。</span><br><span class="line"></span><br><span class="line">示例：</span><br><span class="line"></span><br><span class="line">    3</span><br><span class="line">   &#x2F; \</span><br><span class="line">  9  20</span><br><span class="line">    &#x2F;  \</span><br><span class="line">   15   7</span><br><span class="line"></span><br><span class="line">在这个二叉树中，有两个左叶子，分别是 9 和 15，所以返回 24</span><br></pre></td></tr></table></figure>
-<p><strong>主要思路：</strong><br>本题在于判断一个节点是否为左叶子节点，如何判断一个节点是否是左叶子节点的？<br>我们单单通过当前节点是无法判断的，我们需要根据其父节点来判断  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">if(root.left!&#x3D;null&amp;&amp;root.left.left&#x3D;&#x3D;null&amp;&amp;root.left.right&#x3D;&#x3D;null)&#123;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>普通版：  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    int sum &#x3D; 0;</span><br><span class="line">    public int sumOfLeftLeaves(TreeNode root) &#123;        </span><br><span class="line">        if(root&#x3D;&#x3D;null) &#123;</span><br><span class="line">			return 0;</span><br><span class="line">		&#125;</span><br><span class="line">		dfs(root);</span><br><span class="line">		return sum;</span><br><span class="line">    &#125;</span><br><span class="line">    public void dfs(TreeNode root) &#123;</span><br><span class="line">		if(root&#x3D;&#x3D;null)</span><br><span class="line">			return;</span><br><span class="line">		if(root.left!&#x3D;null&amp;&amp;root.left.left&#x3D;&#x3D;null&amp;&amp;root.left.right&#x3D;&#x3D;null) &#123;</span><br><span class="line">			sum+&#x3D;root.left.val;</span><br><span class="line">		&#125;</span><br><span class="line">		dfs(root.left);</span><br><span class="line">		dfs(root.right);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>简洁进化版：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">public static int sumOfLeftLeaves(TreeNode root) &#123;</span><br><span class="line">		if(root&#x3D;&#x3D;null)</span><br><span class="line">			return 0;</span><br><span class="line">		int sum &#x3D; 0;</span><br><span class="line">		if(root.left!&#x3D;null&amp;&amp;root.left.left&#x3D;&#x3D;null&amp;&amp;root.left.right&#x3D;&#x3D;null) &#123;</span><br><span class="line">			sum +&#x3D;root.left.val;</span><br><span class="line">		&#125;</span><br><span class="line">		return sum+sumOfLeftLeaves(root.left)+sumOfLeftLeaves(root.right);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-
-
-
-	
-
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/数据结构与算法//" class="article-tag-list-link color3">数据结构与算法</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/09/19/%E6%89%80%E6%9C%89%E5%B7%A6%E5%8F%B6%E5%AD%90%E8%8A%82%E7%82%B9%E7%9A%84%E5%92%8C/">展开全文 >></a>
         </p>
       
 

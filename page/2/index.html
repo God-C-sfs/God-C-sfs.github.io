@@ -158,6 +158,239 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-关于排列组合和子集的区别" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/09/20/%E5%85%B3%E4%BA%8E%E6%8E%92%E5%88%97%E7%BB%84%E5%90%88%E5%92%8C%E5%AD%90%E9%9B%86%E7%9A%84%E5%8C%BA%E5%88%AB/">关于排列组合和子集的区别</a>
+    </h1>
+  
+
+        
+        <a href="/2020/09/20/%E5%85%B3%E4%BA%8E%E6%8E%92%E5%88%97%E7%BB%84%E5%90%88%E5%92%8C%E5%AD%90%E9%9B%86%E7%9A%84%E5%8C%BA%E5%88%AB/" class="archive-article-date">
+  	<time datetime="2020-09-20T00:15:31.144Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-09-20</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+
+	
+		<p>这篇文章将会比较两种常见的回溯体型，一种是全排列问题，一种是求子集的问题，两者都是利用回溯解法，但是两者的for循环选取下一个可选值时的起始坐标是不同的，先上部分代码我们来比较以下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;子集求法</span><br><span class="line">for(int j &#x3D; i;j&lt;nums.length;j++) &#123;</span><br><span class="line">			temp.add(nums[j]);</span><br><span class="line">			dfs(nums, j+1);</span><br><span class="line">			temp.remove(temp.size()-1);</span><br><span class="line">		&#125;</span><br><span class="line">&#x2F;&#x2F;全排列求法		</span><br><span class="line">for(int i &#x3D; 0;i&lt;len;i++) &#123;</span><br><span class="line">			if(!visited[i]) &#123;</span><br><span class="line">				path.add(nums[i]);</span><br><span class="line">				visited[i] &#x3D; true;</span><br><span class="line">				dfs(nums, len, depth+1, path, res, visited);</span><br><span class="line">				&#x2F;&#x2F;恢复操作</span><br><span class="line">				visited[i] &#x3D; false;</span><br><span class="line">				path.remove(path.size()-1);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="https://gitee.com/bingjie__chai/PicOfHexo/raw/master/pic_hexo/20200920080942.png" alt=""><br><img src="https://gitee.com/bingjie__chai/PicOfHexo/raw/master/pic_hexo/20200920081126.png" alt=""><br>我们观察两者的区别，发现前者的代码for循环是从startIndex开始的，而后者的代码for循环总是从0开始的，这是为什么呢？<br>因为全排列是有顺序的1，2和2，1是不同的，而对于集合来说1，2和2，1是相同的，所以在变量集合的过程中，我们不能回头，否则会产生重复，<strong>正是因为子集求法没有回头，所以我们不需要创建used数组来判断数字是否使用过</strong>，仔细品味上述的图片和代码就会明白其中的道理！！</p>
+
+	
+
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/数据结构与算法//" class="article-tag-list-link color3">数据结构与算法</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/09/20/%E5%85%B3%E4%BA%8E%E6%8E%92%E5%88%97%E7%BB%84%E5%90%88%E5%92%8C%E5%AD%90%E9%9B%86%E7%9A%84%E5%8C%BA%E5%88%AB/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Servlet" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/09/19/Servlet/">Servlet接口实现类</a>
+    </h1>
+  
+
+        
+        <a href="/2020/09/19/Servlet/" class="archive-article-date">
+  	<time datetime="2020-09-19T07:19:15.260Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-09-19</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+
+			<p><strong>一、介绍：</strong><br>1.servlet接口来自于Servlet规范下一个接口，这个接口存在Http服务器提供的jar包中<br>2.TomCat服务器下lib文件有一个servlet-api.jar存放servlet接口<br>3.servlet规范中规定，Http服务器能调用的【动态资源文件】必须是一个Servlet接口实现类</p>
+	
+
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Web//" class="article-tag-list-link color4">Web</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/09/19/Servlet/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-所有左叶子节点的和" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/09/19/%E6%89%80%E6%9C%89%E5%B7%A6%E5%8F%B6%E5%AD%90%E8%8A%82%E7%82%B9%E7%9A%84%E5%92%8C/">所有左叶子节点的和</a>
+    </h1>
+  
+
+        
+        <a href="/2020/09/19/%E6%89%80%E6%9C%89%E5%B7%A6%E5%8F%B6%E5%AD%90%E8%8A%82%E7%82%B9%E7%9A%84%E5%92%8C/" class="archive-article-date">
+  	<time datetime="2020-09-19T07:10:21.188Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-09-19</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+
+	
+		<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">计算给定二叉树的所有左叶子之和。</span><br><span class="line"></span><br><span class="line">示例：</span><br><span class="line"></span><br><span class="line">    3</span><br><span class="line">   &#x2F; \</span><br><span class="line">  9  20</span><br><span class="line">    &#x2F;  \</span><br><span class="line">   15   7</span><br><span class="line"></span><br><span class="line">在这个二叉树中，有两个左叶子，分别是 9 和 15，所以返回 24</span><br></pre></td></tr></table></figure>
+<p><strong>主要思路：</strong><br>本题在于判断一个节点是否为左叶子节点，如何判断一个节点是否是左叶子节点的？<br>我们单单通过当前节点是无法判断的，我们需要根据其父节点来判断  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">if(root.left!&#x3D;null&amp;&amp;root.left.left&#x3D;&#x3D;null&amp;&amp;root.left.right&#x3D;&#x3D;null)&#123;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>普通版：  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    int sum &#x3D; 0;</span><br><span class="line">    public int sumOfLeftLeaves(TreeNode root) &#123;        </span><br><span class="line">        if(root&#x3D;&#x3D;null) &#123;</span><br><span class="line">			return 0;</span><br><span class="line">		&#125;</span><br><span class="line">		dfs(root);</span><br><span class="line">		return sum;</span><br><span class="line">    &#125;</span><br><span class="line">    public void dfs(TreeNode root) &#123;</span><br><span class="line">		if(root&#x3D;&#x3D;null)</span><br><span class="line">			return;</span><br><span class="line">		if(root.left!&#x3D;null&amp;&amp;root.left.left&#x3D;&#x3D;null&amp;&amp;root.left.right&#x3D;&#x3D;null) &#123;</span><br><span class="line">			sum+&#x3D;root.left.val;</span><br><span class="line">		&#125;</span><br><span class="line">		dfs(root.left);</span><br><span class="line">		dfs(root.right);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>简洁进化版：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">public static int sumOfLeftLeaves(TreeNode root) &#123;</span><br><span class="line">		if(root&#x3D;&#x3D;null)</span><br><span class="line">			return 0;</span><br><span class="line">		int sum &#x3D; 0;</span><br><span class="line">		if(root.left!&#x3D;null&amp;&amp;root.left.left&#x3D;&#x3D;null&amp;&amp;root.left.right&#x3D;&#x3D;null) &#123;</span><br><span class="line">			sum +&#x3D;root.left.val;</span><br><span class="line">		&#125;</span><br><span class="line">		return sum+sumOfLeftLeaves(root.left)+sumOfLeftLeaves(root.right);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+
+
+	
+
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/数据结构与算法//" class="article-tag-list-link color3">数据结构与算法</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/09/19/%E6%89%80%E6%9C%89%E5%B7%A6%E5%8F%B6%E5%AD%90%E8%8A%82%E7%82%B9%E7%9A%84%E5%92%8C/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-Http网络协议" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -672,243 +905,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2020/08/30/%E5%8F%8D%E8%BD%AC%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%AD%E7%9A%84%E5%8D%95%E8%AF%8D1/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-最短回文串" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/08/29/%E6%9C%80%E7%9F%AD%E5%9B%9E%E6%96%87%E4%B8%B2/">最短回文串</a>
-    </h1>
-  
-
-        
-        <a href="/2020/08/29/%E6%9C%80%E7%9F%AD%E5%9B%9E%E6%96%87%E4%B8%B2/" class="archive-article-date">
-  	<time datetime="2020-08-29T15:16:36.074Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-29</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-
-	
-		<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">给定一个字符串 s，你可以通过在字符串前面添加字符将其转换为回文串。找到并返回可以用这种方式转换的最短回文串。</span><br><span class="line"></span><br><span class="line">示例1:</span><br><span class="line"></span><br><span class="line">输入: &quot;aacecaaa&quot;</span><br><span class="line">输出: &quot;aaacecaaa&quot;</span><br><span class="line">示例 2:</span><br><span class="line"></span><br><span class="line">输入: &quot;abcd&quot;</span><br><span class="line">输出: &quot;dcbabcd&quot;</span><br></pre></td></tr></table></figure>
-<p><strong>主要思路：</strong><br><strong>本题是KMP算法的一种运用，利用Next数组解题法宝，利用KMP求解最长回文前缀</strong><br>例如abc这个字符串，前缀加上cba，由于a一个字符可以看作是回文的，所以我们删除a，只用加上cb构成cbabc这个最短的回文字符串，再比如cbjbcb这个字符串，先反转得到bcbjbc，由于cbjbc本身就是回文的，反转后还是本身，所以这个删除两个字符串重叠的部分，得到bcbjbcb这个最短的回文子串<br><strong>继续分析，其实我们就是求s的最长回文前缀，那么我们怎么求解这个最长回文前缀呢？</strong><br>我们将s反转后s的前缀将会变成后缀，所以我们将s和s的反转字符串拼在一起，就是寻找这个新字符串的最长公共前后缀，然后return reverse删除公共部分+s原字符串即为答案<br><strong>tips：</strong> 这里我们在拼接两个字符串时，加了一个‘#’号，如果不加，例如aaa这种情况，拼接后变成aaaaaa，利用KMP求得为6，其实最长回文前缀为3，可以有效防止此类特殊情况出现</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">public class ShortestPalindrome &#123;</span><br><span class="line"></span><br><span class="line">	public static void main(String[] args) &#123;</span><br><span class="line">		&#x2F;&#x2F; TODO 自动生成的方法存根</span><br><span class="line">		String s &#x3D; &quot;aacecaaa&quot;;</span><br><span class="line">		String res &#x3D; shortestPalindrome(s);</span><br><span class="line">		System.out.println(res);</span><br><span class="line">	&#125;</span><br><span class="line">	public static String  shortestPalindrome(String s) &#123;</span><br><span class="line">		String reverse &#x3D; &quot;&quot;;</span><br><span class="line">		int l &#x3D; s.length()-1;</span><br><span class="line">		for(int i &#x3D; l;i&gt;&#x3D;0;i--) &#123;</span><br><span class="line">			reverse+&#x3D;s.charAt(i);</span><br><span class="line">		&#125;</span><br><span class="line">		String s1 &#x3D; s+&#39;#&#39;+reverse;</span><br><span class="line">		int max_len &#x3D; getNext(s1);</span><br><span class="line">		return reverse.substring(0, l-max_len)+s;</span><br><span class="line">		</span><br><span class="line">    &#125;</span><br><span class="line">	public static int getNext(String s) &#123;</span><br><span class="line">		int l &#x3D; s.length();</span><br><span class="line">		int i &#x3D; 0;</span><br><span class="line">		int j &#x3D; -1;</span><br><span class="line">		int [] next &#x3D; new int[s.length()];</span><br><span class="line">		next[0] &#x3D; -1;</span><br><span class="line">		</span><br><span class="line">		while(i&lt;l-1) &#123;</span><br><span class="line">			if(j&#x3D;&#x3D;-1||s.charAt(i)&#x3D;&#x3D;s.charAt(j)) &#123;</span><br><span class="line">				i++;</span><br><span class="line">				j++;</span><br><span class="line">				next[i] &#x3D; j;</span><br><span class="line">			&#125;else</span><br><span class="line">				j &#x3D; next[j];</span><br><span class="line">		&#125;</span><br><span class="line">		return next[l-1];		</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-	
-
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/数据结构与算法//" class="article-tag-list-link color3">数据结构与算法</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/08/29/%E6%9C%80%E7%9F%AD%E5%9B%9E%E6%96%87%E4%B8%B2/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-KMP" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/08/29/KMP/">KMP</a>
-    </h1>
-  
-
-        
-        <a href="/2020/08/29/KMP/" class="archive-article-date">
-  	<time datetime="2020-08-29T08:02:32.352Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-29</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-
-	
-		<p>这是我第三次再次尝试学习KMP算法，以前总觉得是一个拦路虎，面对比我整个人还长的文章长度直接劝退，当再次遇到KMP后，痛定思痛下定决心来学习KMP算法，现在回头来看，只要静下心来对于聪明的你来说，一定不是难题<br><strong>按照惯例，我们先来看一下暴力匹配是如何工作的</strong><br><img src="https://gitee.com/bingjie__chai/PicOfHexo/raw/master/pic_hexo/20200829125115.png" alt=""><br>如下图所示我们利用双指针，i指向模板链的头部，j指向目标链的头部，开始逐个遍历是否相等，当不相等时，我们会令i回溯到i-j+1即模板链的下一个位置，j回溯到目标链的开头，重新开始匹配<br><img src="https://gitee.com/bingjie__chai/PicOfHexo/raw/master/pic_hexo/2.png" alt=""><br>当完全匹配时返回目标链在模板链中的位置<br><img src="https://gitee.com/bingjie__chai/PicOfHexo/raw/master/pic_hexo/3.png" alt=""></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">public int bfSearch(String s1,String s2)&#123;</span><br><span class="line">    int l1 &#x3D; s1.length;</span><br><span class="line">    int l2 &#x3D; s2.length;</span><br><span class="line">    int i &#x3D; 0;</span><br><span class="line">    int j &#x3D; 0;</span><br><span class="line">    while(i&lt;l1&amp;&amp;j&lt;l2)&#123;</span><br><span class="line">        if(s1.charAt(i)&#x3D;&#x3D;s2.charAt(j))&#123;</span><br><span class="line">            i++;</span><br><span class="line">            j++;</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">            i &#x3D; i-j+1;</span><br><span class="line">            j &#x3D; 0;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    if(j &#x3D;&#x3D; l2)&#123;</span><br><span class="line">        return i-j;</span><br><span class="line">    &#125;</span><br><span class="line">    return -1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>在上述的暴力算法中，当目标链和模板链失配时，i会回溯到下一个位置再重新匹配，时间效率非常底下，那我们有没有办法不让i去回溯，只令指针j去移动目标链，这就是KMP算法的精髓所在，在KMP算法中我们利用部分匹配表，next数组来确定下一次j移动的位置<br><strong>这也正是KMP算法的核心，部分匹配表</strong><br>下面我们来解释一下什么是部分匹配表，例如字符串”abababca”的匹配表如下<br><img src="https://gitee.com/bingjie__chai/PicOfHexo/raw/master/pic_hexo/4.png" alt=""><br>例如:<br>index等于3对应的value值为2，表示以index等于3之前的字符串“abab”最长的公共前缀和后缀的长度<br>abab的前缀有a，ab，aba（不包括自身），后缀有b，ab，bab，最长公共部分ab长度为2，所以index=3位置对应的value为2，其他部分同理<br><strong>了解了什么是部分匹配表，那么如何用部分比配表来加速匹配呢</strong><br><img src="https://gitee.com/bingjie__chai/PicOfHexo/raw/master/pic_hexo/20200829150047.png" alt=""><br>如图所示，当失配时，我们发现只有最后一位是失配的，如果暴力解将i回溯会浪费大量的时间，此处我们利用next数组来是i的指针不发生回溯，只移动j指针，下面我们来分析利用next数组下一次将会移动到什么位置<br><img src="https://gitee.com/bingjie__chai/PicOfHexo/raw/master/pic_hexo/20200829150848.png" alt=""><br>如果指针能移动到_和D的对比处说明D之前的字符是匹配的，所以括号括起来的位置是相等的，又因为在目标链中，AB恰巧有一个相同的前缀AB，那么说明目标链的前缀和模板链的AB是相等的<br><img src="https://gitee.com/bingjie__chai/PicOfHexo/raw/master/pic_hexo/20200829151338.png" alt=""><br>即斜体下划线处不用再比较了，所以直接将目标链移动到如下位置<br><img src="https://gitee.com/bingjie__chai/PicOfHexo/raw/master/pic_hexo/20200829151539.png" alt=""><br>所以我们将这个过程通解化，即主字符串中i指针之前的 PMT[j −1] 位就一定与模式字符串的第 0 位至第 PMT[j−1] 位是相同的，保持i指针不动，然后将j指针指向模式字符串的PMT[j −1]位即可<br><strong>为了利于程序的编写，我们将PMT数组做一些优化</strong><br>我们发现，当字符失配时，影响j指针移动的是next[j-1],所以我们将next数组整体后移一位，并将next[0]默认值设为-1，为什么设为-1呢？<br><img src="https://gitee.com/bingjie__chai/PicOfHexo/raw/master/pic_hexo/20200829152007.png" alt=""><br>如图所示我们再首位就发现失配了，按照规则我们无法移动j指针，此时我们只能移动i指针去继续匹配，当我们执行i++，j++代码后，i后移，j不变，实现移动i指针<br><img src="https://gitee.com/bingjie__chai/PicOfHexo/raw/master/pic_hexo/20200829152245.png" alt=""><br><strong>所以KMP的代码就呼之欲出了，此处我们假设next数组已知，下文中我们将解释如何求解</strong>  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">public int KMP(String s1,String s2) &#123;</span><br><span class="line">		int l1 &#x3D; s1.length();</span><br><span class="line">		int l2 &#x3D; s2.length();</span><br><span class="line">		int i &#x3D; 0;</span><br><span class="line">		int j &#x3D; 0;</span><br><span class="line">		int [] next &#x3D; new int[l2];</span><br><span class="line">		while(i&lt;l1&amp;&amp;j&lt;l2) &#123;</span><br><span class="line">			if(j&#x3D;&#x3D;-1||s1.charAt(i)&#x3D;&#x3D;s2.charAt(j)) &#123;</span><br><span class="line">				i++;</span><br><span class="line">				j++;</span><br><span class="line">			&#125;else &#123;</span><br><span class="line">				j &#x3D; next[j];</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		if(j&#x3D;&#x3D;l2)</span><br><span class="line">			return i-j;</span><br><span class="line">		return -1;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>那么next数组应该怎么求呢？</strong><br>我们使用错位法来求解，接下来我们将以字符串“abababca”来讲解如何求next数组<br><img src="https://gitee.com/bingjie__chai/PicOfHexo/raw/master/pic_hexo/20200829154853.png" alt=""><br>我们错开后可以看作i瞄准的是字符串的后缀（因为后缀不包括自身），同理j瞄准的就是前缀，前后缀的公共部分就是next的值，这个过程也可以看作是KMP的求解过程，其中我们要注意因为我们将next数组后移了一位，所以next[2]看的是i=1处的最长公共字串<br><img src="https://gitee.com/bingjie__chai/PicOfHexo/raw/master/pic_hexo/20200829155159.png" alt=""><br><img src="https://gitee.com/bingjie__chai/PicOfHexo/raw/master/pic_hexo/20200829155214.png" alt=""><br><img src="https://gitee.com/bingjie__chai/PicOfHexo/raw/master/pic_hexo/20200829155244.png" alt=""><br><img src="https://gitee.com/bingjie__chai/PicOfHexo/raw/master/pic_hexo/20200829155301.png" alt=""><br><img src="https://gitee.com/bingjie__chai/PicOfHexo/raw/master/pic_hexo/20200829155313.png" alt=""></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">public static void getNext(int[] next,String s) &#123;</span><br><span class="line">        &#x2F;&#x2F;这个求解过程也可以看作是KMP搜索，自身的前后缀的搜索</span><br><span class="line">		int i &#x3D; 0;</span><br><span class="line">		int j &#x3D; -1;</span><br><span class="line">		next[0] &#x3D; -1;</span><br><span class="line">		while(i&lt;s.length()-1) &#123;</span><br><span class="line">		    &#x2F;&#x2F;在第一轮中，j&#x3D;&#x3D;-1，所以i++，j++后i&#x3D;1，j&#x3D;0，实现错位比较</span><br><span class="line">			if(j&#x3D;&#x3D;-1||s.charAt(i)&#x3D;&#x3D;s.charAt(j)) &#123;</span><br><span class="line">				i++;</span><br><span class="line">				j++;</span><br><span class="line">				next[i] &#x3D; j;</span><br><span class="line">			&#125;else &#123;</span><br><span class="line">				j &#x3D; next[j];</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
-<p>至此，KMP算法结束！！！！！！！！！！！！</p>
-
-	
-
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/数据结构与算法//" class="article-tag-list-link color3">数据结构与算法</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/08/29/KMP/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-欧拉路径" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/08/28/%E6%AC%A7%E6%8B%89%E8%B7%AF%E5%BE%84/">欧拉路径</a>
-    </h1>
-  
-
-        
-        <a href="/2020/08/28/%E6%AC%A7%E6%8B%89%E8%B7%AF%E5%BE%84/" class="archive-article-date">
-  	<time datetime="2020-08-28T02:36:56.196Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-28</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-
-	
-		<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">给定一个机票的字符串二维数组 [from, to]，子数组中的两个成员分别表示飞机出发和降落的机场地点，对该行程进行重新规划排序。所有这些机票都属于一个从 JFK（肯尼迪国际机场）出发的先生，所以该行程必须从 JFK 开始。</span><br><span class="line"></span><br><span class="line">说明:</span><br><span class="line"></span><br><span class="line">如果存在多种有效的行程，你可以按字符自然排序返回最小的行程组合。例如，行程 [&quot;JFK&quot;, &quot;LGA&quot;] 与 [&quot;JFK&quot;, &quot;LGB&quot;] 相比就更小，排序更靠前</span><br><span class="line">所有的机场都用三个大写字母表示（机场代码）。</span><br><span class="line">假定所有机票至少存在一种合理的行程。</span><br><span class="line">示例 1:</span><br><span class="line"></span><br><span class="line">输入: [[&quot;MUC&quot;, &quot;LHR&quot;], [&quot;JFK&quot;, &quot;MUC&quot;], [&quot;SFO&quot;, &quot;SJC&quot;], [&quot;LHR&quot;, &quot;SFO&quot;]]</span><br><span class="line">输出: [&quot;JFK&quot;, &quot;MUC&quot;, &quot;LHR&quot;, &quot;SFO&quot;, &quot;SJC&quot;]</span><br><span class="line">示例 2:</span><br><span class="line"></span><br><span class="line">输入: [[&quot;JFK&quot;,&quot;SFO&quot;],[&quot;JFK&quot;,&quot;ATL&quot;],[&quot;SFO&quot;,&quot;ATL&quot;],[&quot;ATL&quot;,&quot;JFK&quot;],[&quot;ATL&quot;,&quot;SFO&quot;]]</span><br><span class="line">输出: [&quot;JFK&quot;,&quot;ATL&quot;,&quot;JFK&quot;,&quot;SFO&quot;,&quot;ATL&quot;,&quot;SFO&quot;]</span><br><span class="line">解释: 另一种有效的行程是[&quot;JFK&quot;,&quot;SFO&quot;,&quot;ATL&quot;,&quot;JFK&quot;,&quot;ATL&quot;,&quot;SFO&quot;]。但是它自然排序更大更靠后。</span><br><span class="line">通过次数23,014提交次数52,781</span><br></pre></td></tr></table></figure>
-<p>首先我们先明白一个概念，什么是欧拉图，什么是欧拉路径<br><strong>欧拉路径：</strong> 图M中一条路径能够经过图的每一条边，每一条边有且仅通过一次<br><strong>欧拉回路：</strong> 就是一条封闭的欧拉路径<br><strong>欧拉图：</strong> 含有欧拉回路的图<br><strong>有向图欧拉图：</strong><br>欧拉路径：有一个点出度比入度多1(起点)，有一个点入度比出度多1(终点)，其余点出度等于入度；<br>欧拉回路：每个顶点出度等于入度；<br><strong>无向图欧拉图：</strong><br>欧拉路径：有且仅有两个点的入度为1，分别是起点和终点；<br>欧拉回路：图中所有顶点的度数都是偶数，并且该图是连通图；<br><strong>主要思路：</strong><br>本体的题意表明至少存在一条欧拉路径，当存在多条欧拉路径时，我们输出字典序最小的哪一条路径，为了保证最终的结果是字典序最小的路径，我们贪心的去选择下一次目的地。<br>1.从题目中给定的“JFK”为起点开始遍历整张图<br>2.接下来我们dfs遍历这些节点的邻接节点，并且将已经遍历过的边给删除<br>3.当我们使一个节点没有邻接边时，说明此点已经进入死胡同，那么我们将其加入到结果集中<br>4.随着递归的出栈就能的到一道“JDK”为起点的欧拉路径<br><strong>所用的数据结构</strong><br>由于map中的key可能对应多个值，且这些值明显的具有字典序，那么我们使用优先队列，优先队列默认是小顶堆，poll出堆顶字典序最小的元素，很明显复合我们这个题目的要求<br><img src="https://gitee.com/bingjie__chai/PicOfHexo/raw/master/pic_hexo/Snipaste_2020-08-28_10-20-51.png" alt=""><br><strong>具体代码</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    Map&lt;String,PriorityQueue&lt;String&gt;&gt; map &#x3D; new HashMap&lt;&gt;();</span><br><span class="line">	List&lt;String&gt; res &#x3D; new ArrayList&lt;&gt;();</span><br><span class="line">    public List&lt;String&gt; findItinerary(List&lt;List&lt;String&gt;&gt; tickets) &#123;</span><br><span class="line">          for(List&lt;String&gt; ticket : tickets) &#123;</span><br><span class="line">			String start &#x3D; ticket.get(0);</span><br><span class="line">			String end &#x3D; ticket.get(1);</span><br><span class="line">			if (!map.containsKey(start)) &#123;</span><br><span class="line">                map.put(start, new PriorityQueue&lt;String&gt;());</span><br><span class="line">            &#125;</span><br><span class="line">			map.get(start).offer(end);</span><br><span class="line">		&#125;</span><br><span class="line">		dfs(&quot;JFK&quot;);</span><br><span class="line">		Collections.reverse(res);</span><br><span class="line">		return res;</span><br><span class="line">    &#125;</span><br><span class="line">    public void dfs(String cur) &#123;</span><br><span class="line">		while(map.containsKey(cur)&amp;&amp;map.get(cur).size()&gt;&#x3D;1) &#123;</span><br><span class="line">			String temp &#x3D; map.get(cur).poll();</span><br><span class="line">			dfs(temp);</span><br><span class="line">		&#125;</span><br><span class="line">		res.add(cur);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-	
-
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/数据结构与算法//" class="article-tag-list-link color3">数据结构与算法</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/08/28/%E6%AC%A7%E6%8B%89%E8%B7%AF%E5%BE%84/">展开全文 >></a>
         </p>
       
 
