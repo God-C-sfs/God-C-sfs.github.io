@@ -158,6 +158,102 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-JDBC" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/09/20/JDBC/">JDBC</a>
+    </h1>
+  
+
+        
+        <a href="/2020/09/20/JDBC/" class="archive-article-date">
+  	<time datetime="2020-09-20T06:45:57.475Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-09-20</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+
+			<p><strong>一、首先什么是JDBC</strong>  </p>
+<ul>
+<li>JDBC接口（API）包括两个层次：<ul>
+<li><strong>面向应用的API</strong>：Java API，抽象接口，供应用程序开发人员使用（连接数据库，执行SQL语句，获得结果）。</li>
+<li><strong>面向数据库的API</strong>：Java Driver API，供开发商开发数据库驱动程序用。</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p><strong>JDBC是sun公司提供一套用于数据库操作的接口，java程序员只需要面向这套接口编程即可。</strong></p>
+<p><strong>不同的数据库厂商，需要针对这套接口，提供不同实现。不同的实现的集合，即为不同数据库的驱动。                                                                ————面向接口编程</strong>  </p>
+</blockquote>
+<ul>
+<li><strong>二、编写JDBC程序的步骤（六个步骤）</strong>  <ul>
+<li>加载并注册驱动  </li>
+<li>创建Connection对象来获取连接  </li>
+<li>获取数据库的操作对象  </li>
+<li>执行sql语句  </li>
+<li>返回结果集  </li>
+<li>关闭资源  </li>
+</ul>
+</li>
+</ul>
+<p><strong><em>1.注册驱动</em></strong><br>首先我们要new出Driver类，Driver接口在java.sql.Driver()中，Driver接口实现类在com.mysql.jdbc.Driver()中，两者包名不同但名字相同，注意正确地导包</p>
+	
+
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/mysql数据库//" class="article-tag-list-link color4">mysql数据库</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/09/20/JDBC/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-关于排列组合和子集的区别" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -857,86 +953,9 @@
 
 
   
-    <article id="post-反转字符串中的单词1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/08/30/%E5%8F%8D%E8%BD%AC%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%AD%E7%9A%84%E5%8D%95%E8%AF%8D1/">最短回文串</a>
-    </h1>
-  
-
-        
-        <a href="/2020/08/30/%E5%8F%8D%E8%BD%AC%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%AD%E7%9A%84%E5%8D%95%E8%AF%8D1/" class="archive-article-date">
-  	<time datetime="2020-08-30T13:52:14.981Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-30</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-
-	
-		<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">给定一个字符串，你需要反转字符串中每个单词的字符顺序，同时仍保留空格和单词的初始顺序。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">示例：</span><br><span class="line"></span><br><span class="line">输入：&quot;Let&#39;s take LeetCode contest&quot;</span><br><span class="line">输出：&quot;s&#39;teL ekat edoCteeL tsetnoc&quot;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">提示：</span><br><span class="line"></span><br><span class="line">在字符串中，每个单词由单个空格分隔，并且字符串中不会有任何额外的空格。</span><br></pre></td></tr></table></figure>
-<p><strong>此题目的</strong><br>学会熟练使用java中字符串中的一些操作API函数，例如本题的spilt，trim函数等，此外，String类以及字符串都不提供反转操作，但StringBuffer中有此操作，所以可以转换成StringBuffer再转成String  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    public String reverseWords(String s) &#123;</span><br><span class="line">        String[] strs &#x3D; s.split(&quot; &quot;);</span><br><span class="line">		 StringBuffer tem &#x3D; new StringBuffer();</span><br><span class="line">		 for(String str:strs) &#123;</span><br><span class="line">		    &#x2F;&#x2F;利用库函数反转字符串</span><br><span class="line">			 tem.append(new StringBuffer(str).reverse().toString());</span><br><span class="line">			 tem.append(&quot; &quot;);</span><br><span class="line">		 &#125;</span><br><span class="line">		 return tem.toString().trim();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-	
-
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/数据结构与算法//" class="article-tag-list-link color3">数据结构与算法</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/08/30/%E5%8F%8D%E8%BD%AC%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%AD%E7%9A%84%E5%8D%95%E8%AF%8D1/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/3/">Next &amp;raquo;</a>
+      <a class="extend prev" rel="prev" href="/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/3/">Next &amp;raquo;</a>
     </nav>
   
 
