@@ -158,6 +158,81 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-热度算法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/01/15/%E7%83%AD%E5%BA%A6%E7%AE%97%E6%B3%95/">新闻模块的热度算法</a>
+    </h1>
+  
+
+        
+        <a href="/2021/01/15/%E7%83%AD%E5%BA%A6%E7%AE%97%E6%B3%95/" class="archive-article-date">
+  	<time datetime="2021-01-15T10:45:04.177Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-15</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+
+	
+		<p><strong>写在前面</strong><br>新闻模块的热度算法如果深入研究十分复杂，经过我这段时间的研究将算法的核心简述一下，供团队人员理解，我们首先要知道互联网公司的热度智能化推送算法是非常复杂的，也是一个核心技术，所以我本人将其简化。<br><strong>整体思路</strong><br><strong>一、大致分为三个阶段，入库阶段:</strong><br>当我们将一个新闻加入数据库之后我们要给其赋予一个初始热度值，这里记作h0,我们对于不同新闻类型的初始值也不应该相同，一些国家大事，校园热搜，我们一旦入库就应该有一个比较高的初始值，所以这里还需要关键词的匹配算法<br><img src="https://gitee.com/bingjie__chai/PicOfHexo/raw/master/pic_hexo/20210115183447.png" alt=""><br><strong>二、其次就是用户行为对于新闻的影响</strong><br>我们基于点赞，收藏，评论等行为对于新闻有一个用于影响<br>H(Users) = 1×click + 5×favor + 10×comment + 20×share，当用户量比较大时，用户对于新闻的影响应该适当减少，这个作为后期的参考标准，这样保证了不同规模下用户影响的准确性<br><strong>三、自然衰减对于新闻的影响</strong><br>由于新闻的强时效性，已经发布的新闻的热度值必须随着时间流逝而衰减，并且趋势应该是衰减越来越快，直至趋近于零热度。换句话说，如果一条新闻要一直处于很靠前的位置，随着时间的推移它必须要有越来越多的用户来维持。否则会出现霸榜的现象，无法获取到及时的资讯，关于冷却算法我在网上查找之后大多数公司采取的是参考牛顿冷却定律，时间衰减因子应该是一个类似于指数函数：<br>H(Time) = e ^ (k<em>(T1 – T0))<br>其中T0是新闻发布时间，T1是当前时间。<br>*</em>四、score的计算公式**<br>Score = ( H0(Type) + H(Users) ) / H(Time)<br>**这是一个后期我们不断完善后才能做出来的热度分析，现阶段我们没有用户，用户权限也比较小，没有收藏，分享等功能，所以我们暂时可以使用第二套方案，著名的Hacker News开源的算法公式，简单也易于理解<br>Heat=(P – 1) / (t + 2)^1.8<br>P是得票数，t是时间，天为单位。因此时间越短得票数越多的文章排名靠前，得票数一定，随着时间的增加，文章的排名也会慢慢降低。</p>
+
+	
+
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/数据结构与算法//" class="article-tag-list-link color3">数据结构与算法</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/01/15/%E7%83%AD%E5%BA%A6%E7%AE%97%E6%B3%95/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-linux" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -888,81 +963,6 @@
 
 
   
-    <article id="post-JDBC工具类的封装" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/09/20/JDBC%E5%B7%A5%E5%85%B7%E7%B1%BB%E7%9A%84%E5%B0%81%E8%A3%85/">JDBC工具类的封装</a>
-    </h1>
-  
-
-        
-        <a href="/2020/09/20/JDBC%E5%B7%A5%E5%85%B7%E7%B1%BB%E7%9A%84%E5%B0%81%E8%A3%85/" class="archive-article-date">
-  	<time datetime="2020-09-20T06:45:57.475Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-09-20</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-
-	
-		<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">public class JDBCUtil &#123;</span><br><span class="line">    &#x2F;**</span><br><span class="line">     * 一般工具类的构造方法都是私有的，</span><br><span class="line">     * 因为工具类中的方法都是静态的，不需要new对象，直接类名调用即可</span><br><span class="line">     *&#x2F;</span><br><span class="line">    private JDBCUtil()&#123;&#125;;</span><br><span class="line">    static &#123;</span><br><span class="line">        try &#123;</span><br><span class="line">            Class.forName(&quot;com.mysql.cj.jdbc.Driver&quot;);</span><br><span class="line">        &#125; catch (ClassNotFoundException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    public static Connection getConnection() throws SQLException &#123;</span><br><span class="line">        return DriverManager.getConnection(&quot;jdbc:mysql:&#x2F;&#x2F;localhost:3306&#x2F;bjpowernode?&amp;useSSL&#x3D;false&amp;serverTimezone&#x3D;UTC&quot;,&quot;root&quot;,&quot;123456&quot;);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    public static void close(Connection conn, Statement ps, ResultSet rs)&#123;</span><br><span class="line">        if(rs!&#x3D;null)&#123;</span><br><span class="line">            try &#123;</span><br><span class="line">                rs.close();</span><br><span class="line">            &#125; catch (SQLException e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        if(ps!&#x3D;null)&#123;</span><br><span class="line">            try &#123;</span><br><span class="line">                ps.close();</span><br><span class="line">            &#125; catch (SQLException e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        if(conn!&#x3D;null)&#123;</span><br><span class="line">            try &#123;</span><br><span class="line">                conn.close();</span><br><span class="line">            &#125; catch (SQLException e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-	
-
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/mysql数据库//" class="article-tag-list-link color4">mysql数据库</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/09/20/JDBC%E5%B7%A5%E5%85%B7%E7%B1%BB%E7%9A%84%E5%B0%81%E8%A3%85/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
@@ -977,7 +977,7 @@
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2020 蛙广志
+    		&copy; 2021 蛙广志
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten

@@ -158,6 +158,81 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-JDBC工具类的封装" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/09/20/JDBC%E5%B7%A5%E5%85%B7%E7%B1%BB%E7%9A%84%E5%B0%81%E8%A3%85/">JDBC工具类的封装</a>
+    </h1>
+  
+
+        
+        <a href="/2020/09/20/JDBC%E5%B7%A5%E5%85%B7%E7%B1%BB%E7%9A%84%E5%B0%81%E8%A3%85/" class="archive-article-date">
+  	<time datetime="2020-09-20T06:45:57.475Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-09-20</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+
+	
+		<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">public class JDBCUtil &#123;</span><br><span class="line">    &#x2F;**</span><br><span class="line">     * 一般工具类的构造方法都是私有的，</span><br><span class="line">     * 因为工具类中的方法都是静态的，不需要new对象，直接类名调用即可</span><br><span class="line">     *&#x2F;</span><br><span class="line">    private JDBCUtil()&#123;&#125;;</span><br><span class="line">    static &#123;</span><br><span class="line">        try &#123;</span><br><span class="line">            Class.forName(&quot;com.mysql.cj.jdbc.Driver&quot;);</span><br><span class="line">        &#125; catch (ClassNotFoundException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    public static Connection getConnection() throws SQLException &#123;</span><br><span class="line">        return DriverManager.getConnection(&quot;jdbc:mysql:&#x2F;&#x2F;localhost:3306&#x2F;bjpowernode?&amp;useSSL&#x3D;false&amp;serverTimezone&#x3D;UTC&quot;,&quot;root&quot;,&quot;123456&quot;);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    public static void close(Connection conn, Statement ps, ResultSet rs)&#123;</span><br><span class="line">        if(rs!&#x3D;null)&#123;</span><br><span class="line">            try &#123;</span><br><span class="line">                rs.close();</span><br><span class="line">            &#125; catch (SQLException e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        if(ps!&#x3D;null)&#123;</span><br><span class="line">            try &#123;</span><br><span class="line">                ps.close();</span><br><span class="line">            &#125; catch (SQLException e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        if(conn!&#x3D;null)&#123;</span><br><span class="line">            try &#123;</span><br><span class="line">                conn.close();</span><br><span class="line">            &#125; catch (SQLException e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+	
+
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/mysql数据库//" class="article-tag-list-link color4">mysql数据库</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/09/20/JDBC%E5%B7%A5%E5%85%B7%E7%B1%BB%E7%9A%84%E5%B0%81%E8%A3%85/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-JDBC" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -875,84 +950,6 @@
 
 
   
-    <article id="post-单词搜索" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/09/13/%E5%8D%95%E8%AF%8D%E6%90%9C%E7%B4%A2/">单词搜索</a>
-    </h1>
-  
-
-        
-        <a href="/2020/09/13/%E5%8D%95%E8%AF%8D%E6%90%9C%E7%B4%A2/" class="archive-article-date">
-  	<time datetime="2020-09-13T02:34:40.302Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-09-13</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-
-	
-		<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">给定一个二维网格和一个单词，找出该单词是否存在于网格中。</span><br><span class="line"></span><br><span class="line">单词必须按照字母顺序，通过相邻的单元格内的字母构成，其中“相邻”单元格是那些水平相邻或垂直相邻的单元格。同一个单元格内的字母不允许被重复使用。</span><br><span class="line"></span><br><span class="line">示例:</span><br><span class="line"></span><br><span class="line">board &#x3D;</span><br><span class="line">[</span><br><span class="line">  [&#39;A&#39;,&#39;B&#39;,&#39;C&#39;,&#39;E&#39;],</span><br><span class="line">  [&#39;S&#39;,&#39;F&#39;,&#39;C&#39;,&#39;S&#39;],</span><br><span class="line">  [&#39;A&#39;,&#39;D&#39;,&#39;E&#39;,&#39;E&#39;]</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line">给定 word &#x3D; &quot;ABCCED&quot;, 返回 true</span><br><span class="line">给定 word &#x3D; &quot;SEE&quot;, 返回 true</span><br><span class="line">给定 word &#x3D; &quot;ABCB&quot;, 返回 false</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">提示：</span><br><span class="line"></span><br><span class="line">board 和 word 中只包含大写和小写英文字母。</span><br><span class="line">1 &lt;&#x3D; board.length &lt;&#x3D; 200</span><br><span class="line">1 &lt;&#x3D; board[i].length &lt;&#x3D; 200</span><br><span class="line">1 &lt;&#x3D; word.length &lt;&#x3D; 10^3</span><br></pre></td></tr></table></figure>
-<p><strong>主要思路</strong><br>本题本质上还是回溯算法的运用，啊啊啊啊，回溯好难啊，今天的卡点在于怎么正确的在回溯过程中设置返回值，有进步的在于整体思路还是没得问题，重点在于返回值的确定，多刷题，多看吧<br>技巧：利用二维偏移量数组来简化代码</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    public boolean exist(char[][] board, String word) &#123;</span><br><span class="line">        if(board.length&#x3D;&#x3D;0)</span><br><span class="line">			return false;</span><br><span class="line">		int l &#x3D; board.length;</span><br><span class="line">		int w &#x3D; board[0].length;</span><br><span class="line">		boolean [][] visited &#x3D; new  boolean[l][w];</span><br><span class="line">		for(int i &#x3D; 0;i&lt;l;i++) &#123;</span><br><span class="line">			for(int j &#x3D; 0;j&lt;w;j++) &#123;</span><br><span class="line">				if(board[i][j]&#x3D;&#x3D;word.charAt(0)) &#123;</span><br><span class="line">					if(dfs(board, visited, i, j, word, 0))</span><br><span class="line">						return true;</span><br><span class="line">					</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		return false;</span><br><span class="line">    &#125;</span><br><span class="line">    public static boolean dfs(char [][] board,boolean [][] visited,int i,int j,String word,int index) &#123;</span><br><span class="line">		if(index&#x3D;&#x3D;word.length()-1)</span><br><span class="line">			return board[i][j]&#x3D;&#x3D;word.charAt(index);</span><br><span class="line">        if(board[i][j]!&#x3D;word.charAt(index))</span><br><span class="line">			return false;</span><br><span class="line">		visited[i][j] &#x3D; true;</span><br><span class="line">		int [][] directions &#x3D; &#123;&#123;0,1&#125;,&#123;0,-1&#125;,&#123;1,0&#125;,&#123;-1,0&#125;&#125;;</span><br><span class="line">		for(int[]com:directions) &#123;</span><br><span class="line">			int newX &#x3D; i+com[0];</span><br><span class="line">			int newY &#x3D; j+com[1];</span><br><span class="line">			if(newX&gt;&#x3D;0&amp;&amp;newX&lt;board.length&amp;&amp;newY&gt;&#x3D;0&amp;&amp;newY&lt;board[0].length&amp;&amp;visited[newX][newY]&#x3D;&#x3D;false)</span><br><span class="line">				if(dfs(board, visited, newX, newY, word, index+1)) &#123;</span><br><span class="line">					return true;</span><br><span class="line">				&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		visited[i][j] &#x3D; false;</span><br><span class="line">		return false;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-	
-
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/数据结构与算法//" class="article-tag-list-link color3">数据结构与算法</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/09/13/%E5%8D%95%E8%AF%8D%E6%90%9C%E7%B4%A2/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/3/">Next &amp;raquo;</a>
@@ -967,7 +964,7 @@
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2020 蛙广志
+    		&copy; 2021 蛙广志
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
